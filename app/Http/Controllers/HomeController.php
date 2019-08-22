@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SchoolYear;
+use App\Models\Student;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -54,7 +55,17 @@ class HomeController extends Controller
 
     public function test()
     {
-        session()->flush();
+        $students = Student::where('section', '!=', "")->get();
+        $schoolyear = getSchoolYear();
+
+        foreach ($students as $student):
+            DB::table('students_section')->insert([
+                "student_id" => $student->student_id,
+                "section" => $student->section,
+                "schoolyear" => $schoolyear
+            ]);
+        endforeach;
+
     }
 
     public function databaseIntegrate($schoolyear)

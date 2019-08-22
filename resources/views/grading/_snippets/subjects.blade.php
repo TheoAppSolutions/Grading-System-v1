@@ -29,6 +29,7 @@
                 @php($user_list[$subject->subject_id]["user2_id"] = '')
             @endif
 
+
             @foreach($users as $user)
                 @if ($user_list[$subject->subject_id]["user_id"]==$user->id)
                     @php($teacher[1] = $user->lastname . ', ' . $user->firstname)

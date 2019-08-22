@@ -6,9 +6,9 @@
     "address2": "Country"
   },
   "function": {
-    "import": false,
-    "type": false,
-    "section": false
+    "import": true,
+    "type": true,
+    "section": true
   },
   "student": {
     "student.lrn": false,

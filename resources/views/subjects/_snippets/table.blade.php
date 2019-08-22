@@ -9,6 +9,10 @@
             <th>Teacher 1</th>
             <th>Teacher 2</th>
             <th>Units</th>
+            @if (schema("student")->{'senior.high.school'} and $gradelevel >= 11 and $gradelevel <= 12)
+                <th>Semester</th>
+                <th>Section</th>
+            @endif
             <th>Action</th>
         </tr>
         </thead>
@@ -72,6 +76,34 @@
                            name="subject[{{ $subject->subject_id }}][unit]" title=""
                            value="{{ $units[$subject->subject_id]['unit'] ?? 0 }}">
                 </td>
+                @if (schema("student")->{'senior.high.school'} and $gradelevel >= 11 and $gradelevel <= 12)
+                    <td class="p-1">
+                        <select class="select2-placeholder form-control hide-search"
+                                name="subject[{{ $subject->subject_id }}][semester]">
+                            <optgroup label="Semester">
+                                @for($semester = 1; $semester <= 2; $semester++)
+                                    <option value="{{ $semester }}" {{ $semester == $subject->semester ? "selected" : "" }}>
+                                        {{ $semester }}
+                                    </option>
+                                @endfor
+                            </optgroup>
+                        </select>
+                    </td>
+                    <td class="p-1">
+                        <select class="select2-placeholder form-control hide-search"
+                                name="subject[{{ $subject->subject_id }}][section]">
+                            @php($sections = schema("student")->{"strands"})
+                            <option value=" "></option>
+                            <optgroup label="Sections">
+                                @foreach($sections as $section)
+                                    <option value="{{ $section }}" {{ $section == $subject->section ? "selected" : "" }}>
+                                        {{ $section }}
+                                    </option>
+                                @endforeach
+                            </optgroup>
+                        </select>
+                    </td>
+                @endif
                 <td class="p-1">
                     <a href="{{ route('subject.show', $subject->subject_id) }}" title="Edit"
                        class="btn btn-primary">
@@ -80,7 +112,8 @@
                     @if ($user_list[$subject->subject_id]["user_id"] != "")
                         <a href="{{ route('report.subject', [$subject->subject_id,'schoolyear='.$schoolyear]) }}"
                            target="_blank" title="Summary" class="btn btn-warning">
-                            <i class="ft ft-file-text"></i>
+                            <i
+                                    class="ft ft-file-text"></i>
                         </a>
 
                         <a href="#" title="Exclude Student" class="btn btn-danger" data-target='#modal'
@@ -101,6 +134,10 @@
             <th>Teacher 1</th>
             <th>Teacher 2</th>
             <th>Units</th>
+            @if (schema("student")->{'senior.high.school'} and $gradelevel >= 11 and $gradelevel <= 12)
+                <th>Semester</th>
+                <th>Section</th>
+            @endif
             <th>Action</th>
         </tr>
         </tfoot>

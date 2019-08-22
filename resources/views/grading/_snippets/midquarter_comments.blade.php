@@ -13,36 +13,86 @@
         <div style="overflow: auto; max-height: 400px;">
             <table class="table table-bordered table-responsive-lg table-striped">
 
-                @php($schema = schema("comments.midquarter"))
+                @if ($subject->gradelevel >= 1 and $subject->gradelevel <= 6)
+                    @php($schema = schema("comments.mid.lower.school"))
+                    @php($additional = schema("comments.mid.additional.comments"))
+                @elseif ($subject->gradelevel >= 7 and $subject->gradelevel <= 10)
+                    @php($schema = schema("comments.mid.upper.school"))
+                    @php($additional = schema("comments.mid.additional.comments"))
+                @elseif ($subject->gradelevel >= 11 and $subject->gradelevel <= 12)
+                    @php($schema = schema("comments.mid.senior.high"))
+                @endif
+
                 @foreach($schema as $title => $item)
                     @if($subject->subjectname == $title)
-                        <tr>
-                            <td colspan="2" style="vertical-align: top;" class="alert-success">
-                                <b>{{ $title }}</b>
-                            </td>
-                        </tr>
-
                         @foreach($item as $key => $value)
-                            <tr>
-                                <td style="vertical-align: middle;">
-                                    {!! $value !!}
-                                </td>
-                                <td>
-                                    <select class="text-center form-control select" title="" name="comment[]" style="min-width: 80px;">
-                                        <option {{ $comments->{ $key }==0?'selected':'' }} value="0">&nbsp;</option>
-                                        <option {{ $comments->{ $key }==1?'selected':'' }} value="1">1</option>
-                                        <option {{ $comments->{ $key }==1.5?'selected':'' }} value="1.5">1.5</option>
-                                        <option {{ $comments->{ $key }==2?'selected':'' }} value="2">2</option>
-                                        <option {{ $comments->{ $key }==2.5?'selected':'' }} value="2.5">2.5</option>
-                                        <option {{ $comments->{ $key }==3?'selected':'' }} value="3">3</option>
-                                        <option {{ $comments->{ $key }=='N / A'?'selected':'' }} value="N / A">N/A
-                                        </option>
-                                    </select>
-                                </td>
-                            </tr>
+                            @if ($key == "Title" or $key == "Title2")
+                                <tr>
+                                    <td colspan="2" style="vertical-align: top;" class="alert-success">
+                                        <b>{!! $value !!}</b>
+                                    </td>
+                                </tr>
+                            @elseif ($key != "Title" or $key != "Title2")
+                                <tr>
+                                    <td style="vertical-align: middle;">
+                                        {!! $value !!}
+                                    </td>
+                                    <td>
+                                        <select class="text-center form-control select" title="" name="comment[]"
+                                                style="min-width: 80px;">
+                                            <option {{ $comments->{ $key }==0?'selected':'' }} value="0">&nbsp;</option>
+                                            <option {{ $comments->{ $key }==1?'selected':'' }} value="1">1</option>
+                                            <option {{ $comments->{ $key }==1.5?'selected':'' }} value="1.5">1.5
+                                            </option>
+                                            <option {{ $comments->{ $key }==2?'selected':'' }} value="2">2</option>
+                                            <option {{ $comments->{ $key }==2.5?'selected':'' }} value="2.5">2.5
+                                            </option>
+                                            <option {{ $comments->{ $key }==3?'selected':'' }} value="3">3</option>
+                                            <option {{ $comments->{ $key }=='N / A'?'selected':'' }} value="N / A">N/A
+                                            </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            @endif
                         @endforeach
                     @endif
                 @endforeach
+
+                @if (isset($additional))
+                    @foreach($additional as $title => $item)
+                        <tr>
+                            <td colspan="2" style="vertical-align: top;" class="alert-primary">
+                                <b>{!! $title !!}</b>
+                            </td>
+                        </tr>
+                        @foreach($item as $key => $value)
+                            @if ($key == "ID")
+                                @php($id = $value)
+                            @else
+                                <tr>
+                                    <td style="vertical-align: middle;">
+                                        {!! $value !!}
+                                    </td>
+                                    <td>
+                                        <select class="text-center form-control select" title="" name="{{ $id }}[]"
+                                                style="min-width: 80px;">
+                                            <option {{ $comments->{ $key }==0?'selected':'' }} value="0">&nbsp;</option>
+                                            <option {{ $comments->{ $key }==1?'selected':'' }} value="1">1</option>
+                                            <option {{ $comments->{ $key }==1.5?'selected':'' }} value="1.5">1.5
+                                            </option>
+                                            <option {{ $comments->{ $key }==2?'selected':'' }} value="2">2</option>
+                                            <option {{ $comments->{ $key }==2.5?'selected':'' }} value="2.5">2.5
+                                            </option>
+                                            <option {{ $comments->{ $key }==3?'selected':'' }} value="3">3</option>
+                                            <option {{ $comments->{ $key }=='N / A'?'selected':'' }} value="N / A">N/A
+                                            </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    @endforeach
+                @endif
             </table>
         </div>
     </form>

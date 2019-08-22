@@ -13,23 +13,18 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
+use App\Models\Comments_Midquarter as Comments;
 
 class GradesController extends Controller
 {
     public function index()
     {
         $subjects = Subject::getAll();
-        $subjectsList = Subject::all();
         $subjectUser = DB::table('subjects_user')->where('schoolyear', getSchoolYear())->get();
         $users = User::byType('', 1);
         $units = Units::getUnits();
 
-        $list = [];
         $user_list = [];
-        foreach ($subjectsList as $subject):
-            $list[$subject->gradelevel][] = $subject;
-        endforeach;
 
         foreach ($subjectUser as $subject):
             $user_list[$subject->subject_id]["user_id"] = $subject->user_id;
@@ -39,7 +34,7 @@ class GradesController extends Controller
         $schoolyears = SchoolYear::all()->sortBy("schoolyear");
 
         return view('grading.index', compact(
-            'subjects', 'users', 'units', 'list', 'user_list', 'schoolyears'
+            'subjects', 'users', 'units', 'user_list', 'schoolyears'
         ));
     }
 
@@ -65,7 +60,7 @@ class GradesController extends Controller
         $grades = $gradesModel->bySubjectID($subject_id, $schoolyear);
 
         $candidateForSEA = Award::getSEA($subject_id, $schoolyear, $grades);
-        $students = Student::bySubjectID($subject_id);
+        $students = Student::bySubjectID($subject_id, $subject->section);
 
         $excluded = Excluded::where([
             ['subject_id', $subject_id],
@@ -80,12 +75,37 @@ class GradesController extends Controller
             endforeach;
         endif;
 
+        $comments = [];
+
         foreach ($students as $student) :
             $studentNames[$student->student_id]["name"] = $student->lastname . ', ' . $student->firstname;
             $studentNames[$student->student_id]["gender"] = $student->gender;
+            $studentNames[$student->student_id]["performance"] = "";
+            $studentNames[$student->student_id]["behavior"] = "";
+
+            if (schema('student')->{"senior.high.school"} and $subject->gradelevel >= 11 and $subject->gradelevel <= 12):
+                $comments = Comments::where([
+                    ['student_id', $student->student_id],
+                    ['schoolyear', $schoolyear],
+                    ["quarter", 1]
+                ])->first();
+
+                if ($comments):
+                    if (isset(json_decode($comments->comments)->{$subject_id})):
+                        $comments = json_decode($comments->comments)->{$subject_id};
+
+                        if (isset($comments->performance)):
+                            $studentNames[$student->student_id]["performance"] = $comments->performance;
+                        endif;
+                        if (isset($comments->behavior)):
+                            $studentNames[$student->student_id]["behavior"] = $comments->behavior;
+                        endif;
+                    endif;
+                endif;
+            endif;
         endforeach;
 
-        return view('grading.show', compact('grades', 'exclude_list', 'subject', 'students', 'currentQuarter', 'studentNames', 'candidateForSEA'));
+        return view('grading.show', compact('grades', 'comments', 'exclude_list', 'subject', 'students', 'currentQuarter', 'studentNames', 'candidateForSEA'));
     }
 
     public function store_grade(Request $request)
@@ -94,6 +114,7 @@ class GradesController extends Controller
         $subject_id = $request->subject_id;
         $grades = $request->grades;
         $quarter = $request->quarter;
+        $type = $request->type;
 
         $schoolyear = getSchoolYear();
         $user = AuthUser();
@@ -118,63 +139,135 @@ class GradesController extends Controller
                 ['quarter', $quarter]
             ])->first();
 
-            $new['final'] = $grades[$ctr]['final'] > 0 ? $grades[$ctr]['final'] : 0;
-            $new['effort'] = $grades[$ctr]['effort'] > 0 ? $grades[$ctr]['effort'] : 0;
-            $new['deportment'] = isset($grades[$ctr]['deportment']) ? $grades[$ctr]['deportment'] > 0 ? $grades[$ctr]['deportment'] : 0 : 0;
+            if ($type == "MidQuarter"):
+                $new['midquarter'] = $grades[$ctr]['midquarter'] > 0 ? $grades[$ctr]['midquarter'] : 0;
+            elseif ($type == "Quarter"):
+                $new['final'] = $grades[$ctr]['final'] > 0 ? $grades[$ctr]['final'] : 0;
+                $new['effort'] = $grades[$ctr]['effort'] > 0 ? $grades[$ctr]['effort'] : 0;
+                $new['deportment'] = isset($grades[$ctr]['deportment']) ? $grades[$ctr]['deportment'] > 0 ? $grades[$ctr]['deportment'] : 0 : 0;
+            endif;
+
             if ($database): //If a record is found then update
-                $original['final'] = $database->final;
-                $original['effort'] = $database->effort;
-                $original['deportment'] = $database->deportment;
-                $database->final = $new['final'];
-                $database->effort = $new['effort'];
-                $database->deportment = $new['deportment'];
+                if ($type == "MidQuarter"):
+                    $original['midquarter'] = $database->midquarter;
+                    $database->midquarter = $new['midquarter'];
+                elseif ($type == "Quarter"):
+                    $original['final'] = $database->final;
+                    $original['effort'] = $database->effort;
+                    $original['deportment'] = $database->deportment;
+                    $database->final = $new['final'];
+                    $database->effort = $new['effort'];
+                    $database->deportment = $new['deportment'];
+                endif;
 
                 if ($database->isDirty()):
                     $logTrue = true;
                     $json["grades"][$logCount]["name"] = getStudentFullname($grades[$ctr]['student_id']);
-                    $json["grades"][$logCount]["final"] = $new["final"];
-                    $json["grades"][$logCount]["effort"] = $new['effort'];
-                    $json["grades"][$logCount]["deportment"] = $new['deportment'];
+                    if ($type == "MidQuarter"):
+                        $json["grades"][$logCount]["midquarter"] = $new["midquarter"];
+                    elseif ($type == "Quarter"):
+                        $json["grades"][$logCount]["final"] = $new["final"];
+                        $json["grades"][$logCount]["effort"] = $new['effort'];
+                        $json["grades"][$logCount]["deportment"] = $new['deportment'];
+                    endif;
 
-                    if ($original['final'] != $new['final']):
-                        $gradeModel->where('entry_id', $database->entry_id)
-                            ->update(['final' => $new['final']]);
-                        $json["grades"][$logCount]["final"] = $original['final'] . " => " . $new["final"];
-                    endif;
-                    if ($original['effort'] != $new['effort']):
-                        $gradeModel->where('entry_id', $database->entry_id)
-                            ->update(['effort' => $new['effort']]);
-                        $json["grades"][$logCount]["effort"] = $original['effort'] . " => " . $new['effort'];
-                    endif;
-                    if ($original['deportment'] != $new['deportment']):
-                        $gradeModel->where('entry_id', $database->entry_id)
-                            ->update(['deportment' => $new['deportment']]);
-                        $json["grades"][$logCount]["deportment"] = $original['deportment'] . " => " . $new['deportment'];
+                    if ($type == "MidQuarter"):
+                        if ($original['midquarter'] != $new['midquarter']):
+                            $gradeModel->where('entry_id', $database->entry_id)
+                                ->update(['midquarter' => $new['midquarter']]);
+                            $json["grades"][$logCount]["midquarter"] = $original['midquarter'] . " => " . $new["midquarter"];
+                        endif;
+
+                    elseif ($type == "Quarter"):
+                        if ($original['final'] != $new['final']):
+                            $gradeModel->where('entry_id', $database->entry_id)
+                                ->update(['final' => $new['final']]);
+                            $json["grades"][$logCount]["final"] = $original['final'] . " => " . $new["final"];
+                        endif;
+
+                        if ($original['effort'] != $new['effort']):
+                            $gradeModel->where('entry_id', $database->entry_id)
+                                ->update(['effort' => $new['effort']]);
+                            $json["grades"][$logCount]["effort"] = $original['effort'] . " => " . $new['effort'];
+                        endif;
+
+                        if ($original['deportment'] != $new['deportment']):
+                            $gradeModel->where('entry_id', $database->entry_id)
+                                ->update(['deportment' => $new['deportment']]);
+                            $json["grades"][$logCount]["deportment"] = $original['deportment'] . " => " . $new['deportment'];
+                        endif;
                     endif;
                     $logCount++;
                 endif;
 
             else: //If the record is not found then create
-                if ($new['final'] > 0 or $new['effort'] > 0 or $new['deportment'] > 0):
-                    $gradeModel->insert([
-                        'student_id' => $grades[$ctr]['student_id'],
-                        'user_id' => $user_id,
-                        'subject_id' => $subject_id,
-                        'quarter' => $quarter,
-                        'schoolyear' => $schoolyear,
-                        'final' => $new['final'],
-                        'effort' => $new['effort'],
-                        'deportment' => $new['deportment']
-                    ]);
+                if ($type == "MidQuarter"):
+                    if ($new['midquarter'] > 0):
+                        $gradeModel->insert([
+                            'student_id' => $grades[$ctr]['student_id'],
+                            'user_id' => $user_id,
+                            'subject_id' => $subject_id,
+                            'quarter' => $quarter,
+                            'schoolyear' => $schoolyear,
+                            'midquarter' => $new['midquarter']
+                        ]);
 
-                    $logTrue = true;
-                    $json["grades"][$logCount]["name"] = getStudentFullname($grades[$ctr]['student_id']);
-                    $json["grades"][$logCount]["final"] = $new["final"];
-                    $json["grades"][$logCount]["effort"] = $new['effort'];
-                    $json["grades"][$logCount]["deportment"] = $new['deportment'];
-                    $logCount++;
+                        $logTrue = true;
+                        $json["grades"][$logCount]["name"] = getStudentFullname($grades[$ctr]['student_id']);
+                        $json["grades"][$logCount]["midquarter"] = $new["midquarter"];
+                        $logCount++;
+                    endif;
+                elseif ($type == "Quarter"):
+                    if ($new['final'] > 0 or $new['effort'] > 0 or $new['deportment'] > 0):
+                        $gradeModel->insert([
+                            'student_id' => $grades[$ctr]['student_id'],
+                            'user_id' => $user_id,
+                            'subject_id' => $subject_id,
+                            'quarter' => $quarter,
+                            'schoolyear' => $schoolyear,
+                            'final' => $new['final'],
+                            'effort' => $new['effort'],
+                            'deportment' => $new['deportment']
+                        ]);
+
+                        $logTrue = true;
+                        $json["grades"][$logCount]["name"] = getStudentFullname($grades[$ctr]['student_id']);
+                        $json["grades"][$logCount]["final"] = $new["final"];
+                        $json["grades"][$logCount]["effort"] = $new['effort'];
+                        $json["grades"][$logCount]["deportment"] = $new['deportment'];
+                        $logCount++;
+                    endif;
                 endif;
             endif;
+
+            /* If Senior High Update Comments MidQuarter */
+
+            if (schema('student')->{"senior.high.school"} and $subject->gradelevel >= 11 and $subject->gradelevel <= 12):
+                if ($type == "MidQuarter"):
+                    $comments = Comments::where([
+                        ['student_id', $grades[$ctr]['student_id']],
+                        ['schoolyear', $schoolyear],
+                        ["quarter", 1]
+                    ])->first();
+
+                    if (!$comments): //If MidQuarter Comments Does Not Exists then create new Instance
+                        $comments = New Comments;
+                        $comments->student_id = $grades[$ctr]['student_id'];
+                        $comments->schoolyear = $schoolyear;
+                        $comments->quarter = 1;
+                        $json = [];
+                    else:
+                        $json = json_decode($comments->comments, true);
+                    endif;
+
+                    $json[$request->subject_id]["performance"] = $grades[$ctr]['performance'];
+                    $json[$request->subject_id]["behavior"] = $grades[$ctr]['behavior'];
+
+                    $comments->comments = json_encode($json);
+                    $comments->save();
+                endif;
+            endif;
+
         endforeach;
         $send = "";
         /*if ($logTrue):
@@ -210,13 +303,12 @@ class GradesController extends Controller
     {
         $currentQuarter = request('currentQuarter');
 
-        return view('modal.import', compact('currentQuarter'));
+        return view('grading._snippets.import', compact('currentQuarter'));
     }
 
     public function import(Request $request)
     {
-        $currentQuarter = $request->quarter;
-        $quarter = $currentQuarter != 'midterm' ? $currentQuarter : getQuarter();
+        $quarter = $request->currentQuarter;
         $importData = explode(',', preg_replace('/\s+/', '', $request->import));
 
         $ctr = 0;

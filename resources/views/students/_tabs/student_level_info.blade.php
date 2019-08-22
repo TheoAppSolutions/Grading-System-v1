@@ -73,6 +73,62 @@
                     </select>
                 </div>
             </div>
+
+            @if (isset($request->section))
+                @php($selected = $request->old('section'))
+            @elseif (isset($student->section))
+                @php($selected = $student->section)
+            @else
+                @php($selected = " ")
+            @endif
+
+            @if (schema("function")->{"section"} and $student->gradelevel >= 1 and $student->gradelevel <= 10)
+                <div class="form-group row">
+                    <label class="col-md-3 label-control"
+                           for="userinput1">Section:
+                    </label>
+                    <div class="col-md-9">
+                        <select class="select2-placeholder form-control hide-search"
+                                name="section" id="section"
+                                data-placeholder="Select Section" required>
+
+                            @php($sections = schema("student")->{"section"})
+                            <option value="" {{ "" == $selected ? "selected" : "" }}> </option>
+                            <optgroup label="Sections">
+                                @foreach($sections as $section)
+                                    <option value="{{ $section }}" {{ $section == $selected ? "selected" : "" }}>
+                                        {{ $section }}
+                                    </option>
+                                @endforeach
+                            </optgroup>
+                        </select>
+                    </div>
+
+                </div>
+            @endif
+            @if (schema("student")->{"senior.high.school"} and $student->gradelevel >= 11 and $student->gradelevel <= 12)
+                <div class="form-group row">
+                    <label class="col-md-3 label-control"
+                           for="userinput1">Strand:
+                    </label>
+                    <div class="col-md-9">
+                        <select class="select2-placeholder form-control hide-search"
+                                name="section" id="section"
+                                data-placeholder="Select Academic Strand" required>
+
+                            @php($sections = schema("student")->{"strands"})
+                            <optgroup label="Sections">
+                                <option value="" {{ "" == $selected ? "selected" : "" }}> </option>
+                            @foreach($sections as $section)
+                                    <option value="{{ $section }}" {{ $section == $selected ? "selected" : "" }}>
+                                        {{ $section }}
+                                    </option>
+                                @endforeach
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </div>

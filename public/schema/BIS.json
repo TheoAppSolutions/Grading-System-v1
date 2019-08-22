@@ -1,0 +1,222 @@
+{
+  "app.name": "Bethel Grading",
+  "report.card": {
+    "school.name": "BETHEL INTERNATIONAL SCHOOL",
+    "address": "Pawing Palo, Leyte",
+    "address2": "Philippines"
+  },
+  "function": {
+    "import": true,
+    "type": true,
+    "section": true
+  },
+  "student": {
+    "student.lrn": true,
+    "pre.school": false,
+    "senior.high.school": true,
+    "section": {
+      "1": "Andrew",
+      "2": "Peter"
+    },
+    "strands": {
+      "1": "ABM",
+      "2": "STEM",
+      "3": "HUMSS"
+    }
+  },
+  "quarter.term": "Quarter",
+  "attendance.type": "Month",
+  "attendance.count": 12,
+  "gradelevel.category": {
+    "Lower School": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6"
+    },
+    "Upper School": {
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10"
+    },
+    "Senior High School": {
+      "11": "11",
+      "12": "12"
+    }
+  },
+  "comments.quarter": {
+    "ACADEMIC PERFORMANCE": {
+      "A1": "<span style=\"font-size: 14px; color: black;\"><b>G</b>rasps new ideas readily and making steady progress</span>",
+      "A2": "<span style=\"font-size: 14px; color: black;\"><b>K</b>eep up the great work!</span>",
+      "A3": "<span style=\"font-size: 14px; color: red;\"><b>I</b>nclined to hurry too much. This affects quality of work.</span>",
+      "A4": "<span style=\"font-size: 14px; color: red;\"><b>L</b>ow grade affects his/her general average</span>",
+      "A5": "<span style=\"font-size: 14px; color: red;\"><b>H</b>as the ability but is not applying himself/herself</span>"
+    },
+    "ATTITUDE": {
+      "B1": "<span style=\"font-size: 14px; color: black;\"><b>I</b>s a steadfast, conscientious worker</span>",
+      "B2": "<span style=\"font-size: 14px; color: black;\"><b>P</b>erforms well in everything he/she undertakes</span>",
+      "B3": "<span style=\"font-size: 14px; color: red;\"><b>D</b>oes not volunteer often but is willing to take part in classwork when requested</span>",
+      "B4": "<span style=\"font-size: 14px; color: red;\"><b>I</b>s learning to share his/her ideas</span>"
+    },
+    "CONDUCT": {
+      "C1": "<span style=\"font-size: 14px; color: black;\"><b>W</b>orks well in groups, planning and carrying out activities</span>",
+      "C2": "<span style=\"font-size: 14px; color: black;\"><b>R</b>espects the authority of those in charge of various </span>",
+      "C3": "<span style=\"font-size: 14px; color: red;\"><b>N</b>eeds to listen and follow directions; has difficulty in concentrating</span>",
+      "C4": "<span style=\"font-size: 14px; color: red;\"><b>N</b>eeds to improve in self-control but seems unconcerned about it</span>"
+    },
+    "NEEDING IMPROVEMENT": {
+      "D1": "<span style=\"font-size: 14px; color: black;\"><b>D</b>oes little work in school unless given full attention by the teacher</span>",
+      "D2": "<span style=\"font-size: 14px; color: black;\"><b>N</b>ot doing school work and seems not to care about doing follow up is needed at home.</span>",
+      "D3": "<span style=\"font-size: 14px; color: red;\"><b>N</b>eeds to give full attention/concentration in all subject areas</span>",
+      "D4": "<span style=\"font-size: 14px; color: red;\"><b>L</b>anguage/Reading handicap is the main source of difficulty.</span>"
+    },
+    "ATTENDANCE AND TARDY": {
+      "E1": "<span style=\"font-size: 14px; color: red;\"><b>D</b>oes good work when present but frequent absences cause difficulties.</span>",
+      "E2": "<span style=\"font-size: 14px; color: red;\"><b>F</b>requent absences affect the quality of work and assignments.</span>",
+      "E3": "<span style=\"font-size: 14px; color: red;\"><b>I</b>s tardy frequently. This disturbs classmates and also affects his/her work.</span>"
+    },
+    "OVERALL REQUEST": {
+      "F1": "<span style=\"font-size: 14px; color: red;\"><b>A</b> Parent-Teacher Conference is requested ASAP</span>"
+    }
+  },
+  "comments.mid.lower.school": {
+    "LANGUAGE": {
+      "Title": "<b>Language Arts - Grammar</b>",
+      "S1": "Uses correct sentence structure in oral/written form",
+      "S2": "Uses capital letters and punctuation marks correctly",
+      "S3": "Expresses ideas in paragraph form clearly",
+      "S4": "Applies spelling skills effectively",
+      "S5": "Edits written words",
+      "S6": "Uses proper strokes in handwriting"
+    },
+    "READING": {
+      "Title": "<b>LANGUAGE ARTS - Reading</b>",
+      "S1": "Reads fluently with expression",
+      "S2": "Reads with meaning Word Level",
+      "S3": "Reads with meaning Sentence Level",
+      "S4": "Reads with meaning Text Level",
+      "S5": "Uses new vocabulary in oral and written work",
+      "S6": "Responds to reading experiences"
+    },
+    "FILIPINO": {
+      "Title": "<b>Filipino</b>",
+      "S1": "Comprehends basic concepts at grade level",
+      "S2": "Applies knowledge in writing skills",
+      "S3": "Can express ideas in oral form"
+    },
+    "SCIENCE": {
+      "Title": "<b>Science</b>",
+      "S1": "Makes inferences / formulates conclusions",
+      "S2": "Performs experiments independently",
+      "S3": "Answers high-order thinking questions"
+    },
+    "MATH": {
+      "Title": "<b>Math</b>",
+      "S1": "Comprehends math concepts",
+      "S2": "Solves word problems"
+    },
+    "CF": {
+      "Title": "<b>Christian Formation</b>",
+      "S1": "Applies Biblical truths in daily living"
+    },
+    "CIVICS": {
+      "Title": "<b>Civics & Culture</b>",
+      "S1": "Interprets symbols and reads the map/globe accurately",
+      "S2": "Respects flexibility in adapting to cultural diversity in school"
+    }
+  },
+  "comments.mid.upper.school": {
+    "ENGLISH": {
+      "Title": "Language Arts - Grammar",
+      "S1": "Uses correct sentence structure in oral/written form",
+      "S2": "Uses capital letters and punctuation marks correctly",
+      "S3": "Expresses ideas in paragraph form clearly",
+      "S4": "Applies spelling skills effectively",
+      "S5": "Edits written words",
+      "S6": "Uses proper strokes in handwriting",
+      "Title2": "Language Arts - Reading",
+      "S7": "Reads fluently with expression",
+      "S8": "Reads literature materials with meaning",
+      "S9": "Uses new vocabulary in oral and written work",
+      "S10": "Responds to reading experiences",
+      "S11": "Uses comprehension strategies for reading and writing connections"
+    },
+    "FILIPINO": {
+      "Title": "<b>Filipino</b>",
+      "S1": "Comprehends basic concepts at grade level",
+      "S2": "Applies knowledge in writing skills",
+      "S3": "Can express ideas in oral form"
+    },
+    "SCIENCE": {
+      "Title": "<b>Science</b>",
+      "S1": "Makes inferences / formulates conclusions",
+      "S2": "Performs experiments independently",
+      "S3": "Answers high-order thinking questions"
+    },
+    "MATH": {
+      "Title": "<b>Math</b>",
+      "S1": "Comprehends math concepts",
+      "S2": "Has mastered basic facts",
+      "S3": "Applies math skills in solving word problems"
+    },
+    "CF": {
+      "Title": "<b>Christian Formation</b>",
+      "S1": "Applies Biblical truths in daily living"
+    },
+    "CIVICS": {
+      "Title": "<b>Civics & Culture</b>",
+      "S1": "Interprets symbols and reads the map/globe accurately",
+      "S2": "Respects flexibility in adapting to cultural diversity in school"
+    }
+  },
+  "comments.mid.senior.high": {
+    "Performance": {
+      "E": "Excellent",
+      "S": "Satisfactory",
+      "U": "Unsatisfactory"
+    },
+    "Behavior": {
+      "E": "Excellent",
+      "S": "Satisfactory",
+      "U": "Unsatisfactory"
+    },
+    "Additional Comments": {
+      "1": "Works for academic excellence",
+      "2": "Shows academic improvement",
+      "3": "Participates effectively",
+      "4": "Positive attitude and effort",
+      "5": "Makes connections and applies knowledge",
+      "6": "Displays good study skills",
+      "7": "Works well in group activities",
+      "8": "Appears disorganized",
+      "9": "Quality of work declining",
+      "10": "Does not bring materials/follow instructions",
+      "11": "Inconsistent effort",
+      "12": "Needs to participate more in discussions",
+      "13": "Difficulty in making connections and applying knowledge",
+      "14": "Has difficulty in exams",
+      "15": "Unable to maintain attentiveness throughout entire class period"
+    }
+  },
+  "comments.mid.additional.comments": {
+    "Personal And Social Relationships": {
+      "ID": "PSR",
+      "PSR1": "Is attentive",
+      "PSR2": "Cooperates willingly with teachers and peers",
+      "PSR3": "Shows respect for authority",
+      "PSR4": "Respects rights and property of others",
+      "PSR5": "Exercises self-control and self-discipline"
+    },
+    "Work And Study Skills": {
+      "ID": "WSS",
+      "WSS1": "Follows directions",
+      "WSS2": "Completes work on time",
+      "WSS3": "Works independently",
+      "WSS4": "Does his / her best in assigned tasks",
+      "WSS5": "Contributes to class discussions"
+    }
+  }
+}

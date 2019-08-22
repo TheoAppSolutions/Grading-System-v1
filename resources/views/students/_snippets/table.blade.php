@@ -120,8 +120,7 @@
                         @endif
                     @endif
 
-                    <a href="{{ route('student.show', $student->student_id) }}" title="Edit" class="btn btn-primary"
-                       target="_blank"><i
+                    <a href="{{ route('student.show', $student->student_id) }}" title="Edit" class="btn btn-primary" target="_blank"><i
                                 class="ft-edit-2"></i></a>
                 </td>
             </tr>

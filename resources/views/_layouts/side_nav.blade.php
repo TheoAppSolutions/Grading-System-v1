@@ -35,6 +35,9 @@
         @if($subjects['has_subject'])
             @include('_layouts._panels.subjects')
         @endif
+        @if(schema('student')->{"senior.high.school"} and $subjects['has_seniorhigh_subject'])
+            @include('_layouts._panels.senior_high')
+        @endif
 
         {{-- Check whether the user has a homeroom assigned --}}
         @php($homerooms = getHomeroom(Auth::id()))

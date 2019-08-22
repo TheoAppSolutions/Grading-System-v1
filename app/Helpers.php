@@ -76,9 +76,16 @@ function getSubjects($id)
     $subjects = Subject::byUserId($id, getSchoolYear());
     $subjects['has_subject'] = false;
 
+    if (schema('student')->{"senior.high.school"}):
+        $subjects['has_seniorhigh_subject'] = false;
+    endif;
+
     if (count($subjects)):
         if (isset($subjects['subjects'])):
             $subjects['has_subject'] = true;
+        endif;
+        if (schema('student')->{"senior.high.school"} and isset($subjects['subjects_seniorhigh'])):
+            $subjects['has_seniorhigh_subject'] = true;
         endif;
     endif;
 

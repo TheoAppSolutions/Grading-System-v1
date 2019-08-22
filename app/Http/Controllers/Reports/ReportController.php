@@ -40,18 +40,22 @@ class ReportController extends Controller
         $homeroom = Homeroom::byGradeLevel($student->gradelevel);
         $gradesModel = new Grade;
         $gradesModel->setTableName($student->gradelevel);
+        $grades = $gradesModel->byStudentID($student_id, '', $schoolyear);
 
-        $grades = $gradesModel->byStudentID($student_id,'',$schoolyear);
-        $subjects = new Subject;
-        $subjects = $subjects->byGradeLevelAndSection($student->gradelevel);
+        if ($student->gradelevel >= 1 and $student->gradelevel <= 10):
+            $subjects = new Subject;
+            $subjects = $subjects->byGradeLevelAndSection($student->gradelevel, $student->section, $semester);
 
-        foreach ($subjects as $subject):
-            if (!isset($subject->user_id)):
-                $grades[$subject->subjectname]['remarks'] = "N / A";
-            else:
-                $grades[$subject->subjectname]['teacher'] = $subject->title . " " . $subject->firstname . " " . $subject->middlename . " " . $subject->lastname . " " . $subject->suffix;
-            endif;
-        endforeach;
+            foreach ($subjects as $subject):
+                if (!isset($subject->user_id)):
+                    $grades[$subject->subjectname]['remarks'] = "N / A";
+                else:
+                    $grades[$subject->subjectname]['teacher'] = $subject->title . " " . $subject->firstname . " " . $subject->middlename . " " . $subject->lastname . " " . $subject->suffix;
+                endif;
+            endforeach;
+
+            $subjects = $subjects->toArray();
+        endif;
 
         if ($quarter == 1 or $quarter == 3):
             $comments = new MidComments;

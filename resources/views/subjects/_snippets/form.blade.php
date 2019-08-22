@@ -112,5 +112,48 @@
                 </select>
             </div>
         </div>
+        <h4 class="form-section"><i class="ft-user"></i> Subject Data</h4>
+        <div class="form-group row">
+            <label class="col-md-3 label-control" for="user_id">Section</label>
+            <div class="col-md-9">
+                <select class="select2-placeholder form-control hide-search"
+                        name="semester">
+                    @php($sections = schema("student")->{"strands"})
+                    <option value=" "></option>
+                    <optgroup label="Sections">
+                        @foreach($sections as $section)
+                            <option value="{{ $section }}" {{ $section == $subject->section ? "selected" : "" }}>
+                                {{ $section }}
+                            </option>
+                        @endforeach
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+        @if ($subject->gradelevel >= 11 and $subject->gradelevel <= 12)
+            <div class="form-group row">
+                <label class="col-md-3 label-control" for="user2_id">
+                    Semester</label>
+                <div class="col-md-9">
+                    <select class="form-control" id="user2_id" title="Subject Teacher"
+                            name="user2_id">
+                        <option value=""> </option>
+                        @php($lastID = "")
+                        @foreach($users as $user)
+                            @if($lastID != $user->id)
+                                <option value="{{ $user->id }}" {{ $subject->user2_id == $user->id ? "selected" : "" }}>
+                                    {{ $user->lastname }}
+                                    {{ isset($user->lastname) ? ',' : '' }} {{ $user->firstname }}</option>
+                                @php($lastID = $user->id)
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        @endif
+    </div>
+
+    <div class="col-12 col-lg-6">
+
     </div>
 </div>

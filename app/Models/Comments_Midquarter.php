@@ -35,7 +35,14 @@ class Comments_Midquarter extends Model
                 if ($subjects->user_id):
                     foreach ($values as $key => $value):
                         if ($value > 0):
-                            $array[$subjects->subjectname][$key] = $value;
+                            if ($subjects->gradelevel >= 11 and $subjects->gradelevel <= 12):
+                                if (!isset($array[$subjects->subjectname]['additional'])):
+                                    $array[$subjects->subjectname]['additional'] = "";
+                                endif;
+                                $array[$subjects->subjectname]['additional'] = $array[$subjects->subjectname]['additional'] . ' ' . $value;
+                            elseif ($subjects->gradelevel >= 1 and $subjects->gradelevel <= 10):
+                                $array[$subjects->subjectname][$key] = $value;
+                            endif;
                         elseif (is_string($value)):
                             $array[$subjects->subjectname][$key] = $value;
                         endif;
