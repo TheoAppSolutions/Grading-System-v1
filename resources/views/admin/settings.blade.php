@@ -175,7 +175,7 @@
                                 <tr>
                                     <td class="text-middle align-middle">Clear Cache</td>
                                     <td class="text-center">
-                                        <a href="{{ route('test') }}" class="btn btn-primary" >
+                                        <a href="{{ route('refresh') }}" class="btn btn-primary" >
                                             <i class="la la-recycle"></i>
                                             Clear
                                         </a>

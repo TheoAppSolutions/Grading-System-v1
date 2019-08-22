@@ -146,7 +146,7 @@ Route::prefix('file')->group(function () {
 });
 
 /*---------------------------------------------------------------------------------------------------------------*/
-/*Route::get('test', 'IntegrationController@refresh')->name('test');*/
+Route::get('refresh', 'SettingsController@refresh')->name('refresh');
 
 /*----------DOWNLOAD COVER PAGE----------------------------------------------------------------------------------*/
 Route::get('cover/{category}/{level?}', 'Reports\ReportController@downloadCover')->name('coverpage');

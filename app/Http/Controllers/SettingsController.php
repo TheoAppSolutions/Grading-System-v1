@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\UserSettings;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
 class SettingsController extends Controller
@@ -55,5 +56,18 @@ class SettingsController extends Controller
         endswitch;
 
         return "true";
+    }
+
+    public function refresh()
+    {
+        Artisan::call("debugbar:clear");
+        Artisan::call("optimize:clear");
+
+        notify()->flash('Success!', 'success', [
+            'timer' => 3000,
+            'text' => 'Clear Cache Successfully',
+        ]);
+
+        return back();
     }
 }
