@@ -6,7 +6,7 @@
 
 @section('content-body')
     <section class="row">
-        <div class="col-lg-8 col-md-12">
+        <div class="col-lg-7 col-md-12">
             <div class="card border-info">
                 <div class="card-content">
                     <div class="card-header card-head-inverse bg-info">
@@ -14,34 +14,35 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                        <form action="{{ route('office.homeroom.update') }}" method="POST">
-                            @csrf
-                            @method("PATCH")
-                            <input type="hidden" name="schoolyear" value="{{ getSchoolYear() }}">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th class="text-center">Grade Level</th>
-                                    <th class="text-center">Homeroom Adviser</th>
-                                </tr>
-                                </thead>
-                                <tfoot>
-                                <tr>
-                                    <th class="text-center">Grade Level</th>
-                                    <th class="text-center">Homeroom Adviser</th>
-                                </tr>
-                                </tfoot>
+                            <form action="{{ route('office.homeroom.update') }}" method="POST">
+                                @csrf
+                                @method("PATCH")
+                                <input type="hidden" name="schoolyear" value="{{ getSchoolYear() }}">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">Grade Level</th>
+                                        <th class="text-center">Homeroom Adviser</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th class="text-center">Grade Level</th>
+                                        <th class="text-center">Homeroom Adviser</th>
+                                    </tr>
+                                    </tfoot>
 
-                                <tbody>
-                                @php($gradelevels = schema()->gradelevel_category)
-                                @foreach($gradelevels as $gradelevel_category => $sub_category)
+                                    <tbody>
+                                    @php($gradelevels = schema()->gradelevel_category)
+                                    @foreach($gradelevels as $gradelevel_category => $sub_category)
                                         @foreach($sub_category as $category => $gradelevel)
                                             <tr>
                                                 <td class="align-middle">
                                                     {{ $gradelevel }}
                                                 </td>
                                                 <td>
-                                                    <select class="select2-placeholder form-control" style="width: 100%;"
+                                                    <select class="select2-placeholder form-control"
+                                                            style="width: 100%;"
                                                             name="homeroom[{{ $gradelevel }}]"
                                                             data-placeholder="Grade {{ $gradelevel }} Homeroom Adviser"
                                                             title="Homeroom Adviser">
@@ -69,24 +70,24 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                @endforeach
-                                </tbody>
-                            </table>
-                            <button type="submit" id="update_homeroom" hidden></button>
-                        </form>
-                        <div class="form-group pull-right">
-                            <button class="btn btn-success" onclick="$('#update_homeroom').click();">
-                                <i class="la la-check-square"></i>
-                                Update
-                            </button>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                                <button type="submit" id="update_homeroom" hidden></button>
+                            </form>
+                            <div class="form-group pull-right">
+                                <button class="btn btn-success" onclick="$('#update_homeroom').click();">
+                                    <i class="la la-check-square"></i>
+                                    Update
+                                </button>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-4 col-md-12">
+        <div class="col-lg-5 col-md-12">
             <div class="card border-info">
                 <div class="card-content">
                     <div class="card-header card-head-inverse bg-info">
@@ -94,59 +95,63 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                        <form action="{{ route('office.schooldays.update') }}" method="POST">
-                            @csrf
-                            @method("PATCH")
-                            <input type="hidden" name="schoolyear" value="{{ getSchoolYear() }}">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th class="text-center">{{ schema()->quarter_term }}</th>
-                                    <th class="text-center"># of School Days</th>
-                                </tr>
-                                </thead>
-                                <tfoot>
-                                <tr>
-                                    <th class="text-center">{{ schema()->quarter_term }}</th>
-                                    <th class="text-center"># of School Days</th>
-                                </tr>
-                                </tfoot>
-
-                                <tbody>
-                                @php($count = schema()->attendance_count)
-                                @for($ctr = 1; $ctr <= $count; $ctr++)
+                            <form action="{{ route('office.schooldays.update') }}" method="POST">
+                                @csrf
+                                @method("PATCH")
+                                <input type="hidden" name="schoolyear" value="{{ getSchoolYear() }}">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
                                     <tr>
-                                        <td class="align-middle">
-                                            @if (schema()->quarter_term == "Term")
-                                                {{ $ctr }}
-                                            @else
-                                                {{ date("F", mktime(0, 0, 0, $ctr)) }}
-                                            @endif
-                                        </td>
-                                        <td class="p-1">
-                                            @isset($terms->{"term" . $ctr})
-                                                <input type="number" name="days[{{ $ctr ?? "" }}]"
-                                                       value="{{ $terms->{"term" . $ctr} ?? "" }}" placeholder="Enter School Days"
-                                                       class="form-control" step="0.5">
-                                            @else
-                                                <input type="number" name="days[{{ $ctr ?? "" }}]"
-                                                       value="" placeholder="Enter School Days"
-                                                       class="form-control" step="0.5">
-                                            @endisset
-                                        </td>
+                                        <th class="text-center">{{ schema()->quarter_term }}</th>
+                                        <th class="text-center"># of School Days</th>
                                     </tr>
-                                @endfor
-                                </tbody>
-                            </table>
-                            <div class="form-group pull-right">
-                                <button class="btn btn-success" type="submit">
-                                    <i class="la la-check-square"></i>
-                                    Update
-                                </button>
-                            </div>
-                        </form>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th class="text-center">{{ schema()->quarter_term }}</th>
+                                        <th class="text-center"># of School Days</th>
+                                    </tr>
+                                    </tfoot>
+
+                                    <tbody>
+                                    @for($ctr = 1, $month = getStartMonth(); $ctr <= schema()->attendance_count; $ctr++, $month++)
+                                        <tr>
+                                            @if (schema()->attendance_type == "Term")
+                                                <td class="align-middle">
+                                                    {{ $ctr }}
+                                                </td>
+                                                <td class="p-1">
+                                                    <input type="number" name="days[{{ $ctr ?? "" }}]"
+                                                           value="{{ $terms->{"term" . $ctr} ?? "" }}"
+                                                           placeholder=""
+                                                           class="form-control" step="0.5">
+                                                </td>
+                                            @elseif (schema()->attendance_type == "Month")
+                                                <td class="align-middle">
+                                                    {{ date("F", mktime(0, 0, 0, $month)) }}
+                                                </td>
+                                                <td class="p-1">
+                                                    <input type="number" name="days[{{ $ctr ?? "" }}]"
+                                                           value="" placeholder=""
+                                                           class="form-control" step="0.5">
+                                                </td>
+                                                @if ($month == 12)
+                                                    @php($month = 0)
+                                                @endif
+                                            @endif
+                                        </tr>
+                                    @endfor
+                                    </tbody>
+                                </table>
+                                <div class="form-group pull-right">
+                                    <button class="btn btn-success" type="submit">
+                                        <i class="la la-check-square"></i>
+                                        Update
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
