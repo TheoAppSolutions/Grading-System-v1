@@ -335,7 +335,8 @@ function checkAdmin($user_id)
 
 function schema()
 {
-    $schema = json_decode(file_get_contents("schema/layout.json"));
+    $schema = "schema/" . env("SCHEMA_NAME") . ".json";
+    $schema = json_decode(file_get_contents($schema));
     return $schema;
 }
 
