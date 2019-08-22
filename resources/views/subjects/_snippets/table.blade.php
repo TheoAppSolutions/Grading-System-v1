@@ -1,0 +1,99 @@
+<div class="table-responsive">
+    <input type="hidden" value="{{ $gradelevel }}" name="gradelevel">
+
+    <table class="table table-white-space table-bordered row-grouping display no-wrap table-middle">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Teacher 1</th>
+            <th>Teacher 2</th>
+            <th>Units</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        @php($lastTeacher = '')
+        @foreach($list[$gradelevel] as $subject)
+            @if(!isset($user_list[$subject->subject_id]["user_id"]))
+                @php($user_list[$subject->subject_id]["user_id"] = '')
+            @endif
+            @if(!isset($user_list[$subject->subject_id]["user2_id"]))
+                @php($user_list[$subject->subject_id]["user2_id"] = '')
+            @endif
+            <tr>
+                <td class="p-1">{{ $subject->subject_id }}</td>
+                <td class="p-1">{{ $subject->subjecttitle }}</td>
+                <td class="p-1">
+                    @php($selected = '')
+                    <select class="form-control" name="subject[{{ $subject->subject_id }}][user_id]" title="">
+                        <option value=""></option>
+                        @foreach($users as $user)
+                            @if($user->lastname != 'ADMIN' and $lastTeacher != $user->id)
+                                <option value="{{ $user->id }}"
+                                @if ($user_list[$subject->subject_id]["user_id"]==$user->id)
+                                    {!! 'selected' !!}
+                                            @php($selected = $user->id)
+                                        @else
+                                    {!! '' !!}
+                                        @endif
+                                >{{ $user->lastname }}
+                                    {{ isset($user->lastname) ? ',' : '' }} {{ $user->firstname }}</option>
+                            @endif
+                            @php($lastTeacher = $user->user_id)
+                        @endforeach
+                    </select>
+                </td>
+                <td class="p-1">
+                    @php($selected = '')
+                    <select class="form-control" name="subject[{{ $subject->subject_id }}][user2_id]" title="">
+                        <option value=""></option>
+                        @php($lastTeacher = '')
+                        @foreach($users as $user)
+                            @if($user->lastname != 'ADMIN' and $lastTeacher != $user->id)
+                                <option value="{{ $user->id }}"
+                                @if ($user_list[$subject->subject_id]["user2_id"]==$user->id)
+                                    {!! 'selected' !!}
+                                            @php($selected = $user->id)
+                                        @else
+                                    {!! '' !!}
+                                        @endif
+                                >{{ $user->lastname }}
+                                    {{ isset($user->lastname) ? ',' : '' }} {{ $user->firstname }}</option>
+                            @endif
+                            @php($lastTeacher = $user->user_id)
+                        @endforeach
+                    </select>
+                </td>
+                <td class="p-1">
+                    <input type="number" class="form-control text-center" min="0" max="5" step="0.01"
+                           name="subject[{{ $subject->subject_id }}][unit]" title=""
+                           value="{{ $units[$subject->subject_id]['unit'] ?? 0 }}">
+                </td>
+                <td class="p-1">
+                    <a href="{{ route('subject.show', $subject->subject_id) }}" title="Edit" class="btn btn-primary"><i
+                                class="ft-edit-2"></i></a>
+                    @if ($user_list[$subject->subject_id]["user_id"] != "")
+                        <a href="{{ route('report.subject', [$subject->subject_id,'schoolyear='.$schoolyear]) }}"
+                           target="_blank" title="Summary" class="btn btn-warning"><i class="ft ft-file-text"></i></a>
+                        <a href="#" title="Exclude Student" class="btn btn-info" data-target='#modal' data-toggle="modal" onclick="loadModal('Exclude Students From Subject',
+                                '{{ route('exclude', $subject->subject_id) }}')"><i class="ft-user-plus"></i></a>
+                    @endif
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+
+        <tfoot>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Teacher 1</th>
+            <th>Teacher 2</th>
+            <th>Units</th>
+            <th>Action</th>
+        </tr>
+        </tfoot>
+    </table>
+</div>
