@@ -32,11 +32,11 @@
   "attendance.type": "Term",
   "attendance.count": 4,
   "template": {
-    "quarter.1": "midquarter",
-    "quarter.2": "quarter",
-    "quarter.3": "midquarter",
-    "quarter.4": "quarter",
-    "values": "choices for template: (midquarter/quarter/both)"
+    "quarter.1": "MidQuarter",
+    "quarter.2": "Quarter",
+    "quarter.3": "MidQuarter",
+    "quarter.4": "Quarter",
+    "values": "choices for template: (MidQuarter/Quarter/Both)"
   },
   "gradelevel.category": {
     "Pre School": {
