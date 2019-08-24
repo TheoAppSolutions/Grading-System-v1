@@ -1,5 +1,5 @@
 {
-  "system_name": "Grading System",
+  "system_name": "Grading",
   "report_card": {
     "school_name": "INTERNATIONAL SCHOOL",
     "address": "Address 1, Address 2",
@@ -8,6 +8,13 @@
   "quarter_term": "Quarter",
   "attendance_type": "Month",
   "attendance_count": 12,
+  "template": {
+    "quarter_1": "midquarter",
+    "quarter_2": "quarter",
+    "quarter_3": "midquarter",
+    "quarter_4": "quarter",
+    "values": "choices for template: (midquarter/quarter/both)"
+  },
   "gradelevel_category": {
     "Lower School": {
       "1": "1",

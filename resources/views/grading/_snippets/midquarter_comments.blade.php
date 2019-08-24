@@ -13,7 +13,7 @@
         <div style="overflow: auto; max-height: 400px;">
             <table class="table table-bordered table-responsive-lg table-striped">
 
-                @php($schema = schema()->comments_midquarter)
+                @php($schema = schema("comments_midquarter"))
                 @foreach($schema as $title => $item)
                     @if($subject->subjectname == $title)
                         <tr>

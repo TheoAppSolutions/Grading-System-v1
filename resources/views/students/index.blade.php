@@ -108,7 +108,7 @@
                         </form>
 
                     @elseif ($status == "enrolled")
-                        <form action="{{ route('test') }}" method="GET" id="deactivate_students">
+                        <form action="{{ route('student.mass.activate') }}" method="POST" id="deactivate_students">
                             @csrf
                             @include('students._snippets.table',['students'=>$studentsArray[$current_GradeLevel]])
                             <button type="submit" class="btn-submit btn btn-success" disabled>Multiple De-activate
@@ -116,7 +116,7 @@
                         </form>
 
                     @elseif ($status == "inactive")
-                        <form action="{{ route('test') }}" method="GET" id="activate_students">
+                        <form action="{{ route('student.mass.activate') }}" method="POST" id="activate_students">
                             @csrf
                             @include('students._snippets.table',['students'=>$studentsArray[$current_GradeLevel]])
                             <button type="submit" class="btn-submit btn btn-success" disabled>Multiple Activate

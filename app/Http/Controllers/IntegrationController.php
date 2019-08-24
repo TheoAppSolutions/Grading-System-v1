@@ -9,16 +9,48 @@ use App\Models\Enrollment;
 use App\Models\SchoolYear;
 use App\Models\Student;
 use App\Models\Subject;
-use App\Models\Units;
 use App\Models\UserSettings;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class IntegrationController extends Controller
 {
+    public function initialize(Request $request)
+    {
+        $admin = User::find(1);
+        if (Hash::check($request->password, $admin->password)):
+            if ($request->hasFile('avatar')) :
+                $request->file('avatar')->storeAs('/images/', 'logo.png');
+            endif;
+
+            $schoolyear = new SchoolYear;
+            $schoolyear->active = 1;
+            $schoolyear->schoolyear = $request->schoolyear;
+            $schoolyear->schoolyear_start = $request->schoolyear_start;
+            $schoolyear->schoolyear_end = $request->schoolyear_end;
+            $schoolyear->days_settings = $request->days_settings;
+            $schoolyear->save();
+
+            notify()->flash('Success!', 'success', [
+                'timer' => 3000,
+                'text' => 'Welcome!',
+            ]);
+
+            return redirect('home');
+        else:
+            notify()->flash('Error!', 'warning', [
+                'timer' => 3000,
+                'text' => 'Admin Password Incorrect!',
+            ]);
+            return back();
+        endif;
+
+    }
+
     public function attendance_integration($schoolyear)
     {
         $rows = 0;

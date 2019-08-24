@@ -333,17 +333,22 @@ function checkAdmin($user_id)
     return false;
 }
 
-function schema()
+function schema($value = "")
 {
     $schema = "schema/" . env("SCHEMA_NAME") . ".json";
     $schema = json_decode(file_get_contents($schema));
+
+    if($value != ""):
+        $schema = $schema->{$value};
+    endif;
+
     return $schema;
 }
 
 function getNextGradeLevel($gradelevel_source = "")
 {
     $next = 0;
-    $array = schema()->gradelevel_category;
+    $array = schema("gradelevel_category");
     foreach ($array as $gradelevel_category => $sub_category):
         foreach ($sub_category as $category => $gradelevel):
             $gradelevels[] = $gradelevel;

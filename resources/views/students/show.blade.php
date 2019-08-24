@@ -269,7 +269,7 @@
                                                         <select class="select2-placeholder form-control hide-search"
                                                                 name="gradelevel" id="gradelevel"
                                                                 data-placeholder="Select Grade Level" required>
-                                                            @php($gradelevels = schema()->gradelevel_category)
+                                                            @php($gradelevels = schema("gradelevel_category"))
                                                             @php($selected = '')
                                                             @foreach($gradelevels as $gradelevel_category => $sub_category)
                                                                 <optgroup label="{{ $gradelevel_category }}">

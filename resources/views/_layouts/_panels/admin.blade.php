@@ -57,8 +57,8 @@
         </li>
     </ul>
 </li>
-<li class="disabled">
-    <a href="#"><i class="la la-eye-slash"></i>
-        <span class="menu-title">Documentation</span>
+<li>
+    <a href="{{ route('grading.index') }}"><i class="la la-certificate"></i>
+        <span class="menu-title">Update Grades</span>
     </a>
 </li>

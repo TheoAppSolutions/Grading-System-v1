@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ResetPassword;
-use App\Models\Log;
 use App\Models\UserSettings;
 use App\User;
 use App\Models\UserInfo;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
@@ -180,7 +175,7 @@ class UsersController extends Controller
 
     public function roles()
     {
-        $arrays = $roles["Registrar"] = DB::table('users_roles')
+        $arrays = DB::table('users_roles')
             ->leftJoin('roles', 'roles.role_id', 'users_roles.role_id')
             ->get();
 

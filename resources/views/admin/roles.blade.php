@@ -36,7 +36,7 @@
                                         <td class="text-middle align-middle">School Registrar</td>
                                         <td class="text-center">
                                             <select class="select2-placeholder form-control hide-search"
-                                                    style="width: 100%;" name="school[Registrar]"
+                                                    style="width: 100%;" name="role[Registrar]"
                                                     data-placeholder="School Registrar" title="School Registrar">
                                                 <option value="0"></option>
                                                     @php($lastID = "")
@@ -55,7 +55,7 @@
                                         <td class="text-middle align-middle">School Secretary</td>
                                         <td class="text-center">
                                             <select class="select2-placeholder form-control hide-search"
-                                                    style="width: 100%;" name="school[Secretary]"
+                                                    style="width: 100%;" name="role[Secretary]"
                                                     data-placeholder="School Secretary" title="School Secretary">
                                                 <option value="0"></option>
                                                     @php($lastID = "")
@@ -74,7 +74,7 @@
                                         <td class="text-middle align-middle">School Principal</td>
                                         <td class="text-center">
                                             <select class="select2-placeholder form-control hide-search"
-                                                    style="width: 100%;" name="school[Principal]"
+                                                    style="width: 100%;" name="role[Principal]"
                                                     data-placeholder="School Principal" title="School Principal">
                                                 <option value="0"></option>
                                                     @php($lastID = "")

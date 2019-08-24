@@ -4,13 +4,44 @@ namespace App\Http\Controllers;
 
 use App\Models\Award;
 use App\Models\Grade;
+use App\Models\SchoolYear;
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\Units;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class GradesController extends Controller
 {
+    public function index()
+    {
+        $subjects = Subject::getAll();
+        $subjectsList = Subject::all();
+        $subjectUser = DB::table('subjects_user')->where('schoolyear', getSchoolYear())->get();
+        $users = User::byType('', 1);
+        $units = Units::getUnits();
+
+        $list = [];
+        $user_list = [];
+        foreach ($subjectsList as $subject):
+            $list[$subject->gradelevel][] = $subject;
+        endforeach;
+
+        foreach ($subjectUser as $subject):
+            $user_list[$subject->subject_id]["user_id"] = $subject->user_id;
+            $user_list[$subject->subject_id]["user2_id"] = $subject->user2_id;
+        endforeach;
+
+        $schoolyears = SchoolYear::all()->sortBy("schoolyear");
+
+        return view('grading.index', compact(
+            'subjects', 'users', 'units', 'list', 'user_list', 'schoolyears'
+        ));
+    }
+
     public function show_grade($subject_id)
     {
         $subject = Subject::bySubjectID($subject_id);

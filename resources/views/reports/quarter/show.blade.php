@@ -4,7 +4,7 @@
 <div class="modal-body">
     <form role="form" class="ajax" name="ajax">
         <table class="table table-bordered table-responsive-lg table-striped">
-            @php($schema = schema()->comments_quarter)
+            @php($schema = schema("comments_quarter"))
             @foreach($schema as $title => $item)
                 <tr>
                     @if($loop->iteration % 2)

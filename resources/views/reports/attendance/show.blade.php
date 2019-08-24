@@ -1,4 +1,4 @@
-@php($type = schema()->attendance_type)
+@php($type = schema("attendance_type"))
 <div class="modal-header">
     <h4><b>{{ $student->lastname . ', ' . $student->firstname }}</b></h4>
 </div>
@@ -17,7 +17,7 @@
             @php($total = 0)
             @php($total_absent = 0)
             @php($total_tardy = 0)
-            @php($count = schema()->attendance_count)
+            @php($count = schema("attendance_count"))
 
             @for($ctr=1, $index=0; $ctr <= $count; $ctr++, $index++)
                 @php($total += $days[$index])

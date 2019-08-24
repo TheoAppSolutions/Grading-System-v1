@@ -64,15 +64,30 @@ class AdminController extends Controller
     /* Method: PATCH */
     public function update_roles(Request $request)
     {
-        $roles = $request->school;
-
+        $roles = $request->role;
         foreach ($roles as $key => $value):
-            $role_id = DB::table("roles")->where("role_description", $key)->first();
-            DB::table("users_roles")->where("role_id", $role_id->role_id)->delete();
-            DB::table("users_roles")->insert([
-                "user_id" => $value,
-                "role_id" => $role_id->role_id
-            ]);
+            $role_id = DB::table("roles")
+                ->where("roles.role_description", $key)
+                ->join("users_roles", "users_roles.role_id", "roles.role_id")
+                ->first();
+
+            if ($role_id):
+                DB::table("users_roles")
+                    ->where("role_id", $role_id->role_id)
+                    ->update([
+                        "user_id" => $value,
+                        "role_id" => $role_id->role_id
+                    ]);
+            else:
+                $role_id = DB::table("roles")
+                    ->where("role_description", $key)
+                    ->first();
+
+                DB::table("users_roles")->insert([
+                    "user_id" => $value,
+                    "role_id" => $role_id->role_id
+                ]);
+            endif;
         endforeach;
 
         notify()->flash('Success!', 'success', [

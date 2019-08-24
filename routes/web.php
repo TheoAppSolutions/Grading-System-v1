@@ -1,8 +1,4 @@
 <?php
-
-/*
-    TODO: Validation
-*/
 app('debugbar')->disable();
 
 Route::get('/', 'HomeController@dashboard')->middleware('auth')->name('home');
@@ -24,6 +20,7 @@ Route::get('json/subjects.json', 'JSONController@get_subjects')->name('json.get_
 Route::patch('subject.mass.update/{subject_id}', 'SubjectsController@massUpdate')->name('subject.mass.update');
 Route::patch('subject.solo.update/{subject_id}', 'SubjectsController@soloUpdate')->name('subject.solo.update');
 Route::post('subject.load.data', 'SubjectsController@loadData')->name('subject.load.data');
+Route::post('students.mass.activate', 'StudentsController@destroy')->name('student.mass.activate');
 
 Route::middleware(['auth'])->group(function () {
     /*----------USER FUNCTIONS----------------------------------------------------------------------------------------*/
@@ -166,3 +163,6 @@ Route::get('announcement/delete/{id}', 'AnnouncementsController@delete')->name('
 Route::get('subject/{id}/exclude', function () {
     return view('subjects._modal.exclude');
 })->name('exclude');
+
+Route::post('setup', 'IntegrationController@initialize')->name('initialize.save');
+Route::get('admin/grades', 'GradesController@index')->name('grading.index');

@@ -17,6 +17,7 @@ class Units extends Model
 
         foreach ($units as $unit):
             $unitset["$unit->subjectname"]['unit'] = $unit->units;
+            $unitset["$unit->subject_id"]['unit'] = $unit->units;
         endforeach;
         return $unitset;// TODO 2015-2016 Units
     }

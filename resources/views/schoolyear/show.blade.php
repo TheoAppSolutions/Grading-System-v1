@@ -73,7 +73,7 @@
                             </div>
 
                             <h4 class="form-section mt-2"><i class="la la-file-pdf-o"></i>Card Template</h4>
-                            @foreach(schema()->gradelevel_category as $gradelevel_category => $category)
+                            @foreach(schema("gradelevel_category") as $gradelevel_category => $category)
                                 <div class="form-group row">
                                     <label class="col-md-3 label-control"
                                            for="userinput2">Report Card Template ({{ $gradelevel_category }}
