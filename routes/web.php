@@ -166,3 +166,5 @@ Route::get('subject/{id}/exclude', function () {
 
 Route::post('setup', 'IntegrationController@initialize')->name('initialize.save');
 Route::get('admin/grades', 'GradesController@index')->name('grading.index');
+
+Route::get('image.editor', 'FilesController@image_editor')->name('image.editor');

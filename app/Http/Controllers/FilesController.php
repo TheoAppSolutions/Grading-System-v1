@@ -84,4 +84,9 @@ class FilesController extends Controller
         endif;
         return false;
     }
+
+    public function image_editor()
+    {
+        return view('forms.image_editor');
+    }
 }

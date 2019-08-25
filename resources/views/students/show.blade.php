@@ -63,6 +63,10 @@
                                                         <i class="la la-upload"></i> Change Image
                                                     </a>
 
+                                                    <a class="dropdown-item" href="{{ route('image.editor') }}" target="_blank">
+                                                        <i class="la la-edit"></i> Image Editor
+                                                    </a>
+
                                                     <a class="dropdown-item" href="#"
                                                        onclick="removeImage();">
                                                         <i class="la la-times"></i> Remove Image

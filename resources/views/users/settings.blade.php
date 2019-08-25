@@ -102,7 +102,7 @@
                                     <td class="text-middle align-middle">Email Notification</td>
                                     <td class="text-center">
                                         <input type="checkbox" class="switch hidden" id="switch2" data-reverse=""
-                                               value="" {{ $settings['email_notification'] == 0 ? '' : 'checked' }}
+                                               value="" {{ $settings['email_notification'] ? '' : 'checked' }}
                                                onchange="system_configuration('email_notification', '{{ Auth::id() }}')"
                                         >
                                     </td>
