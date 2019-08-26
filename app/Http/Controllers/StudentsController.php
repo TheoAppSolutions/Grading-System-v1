@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class StudentsController extends Controller
 {
@@ -213,7 +214,7 @@ class StudentsController extends Controller
         endif;
 
         if ($request->hasFile('avatar')) :
-            $request->file('avatar')->storeAs('/images/students/', $id . '.jpg');
+            $this->image_resize($request->file('avatar'), $id);
         endif;
 
         notify()->flash('Success!', 'success', [
@@ -276,4 +277,15 @@ class StudentsController extends Controller
         return '';
     }
 
+    protected function image_resize($file, $id)
+    {
+        // open an image file
+        $img = Image::make($file);
+
+        // now you are able to resize the instance
+        $img->resize(520, 520);
+
+        // finally we save the image as a new file
+        $img->save('images/students/' . $id . '.jpg');
+    }
 }

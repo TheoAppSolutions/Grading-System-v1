@@ -169,6 +169,8 @@ return [
          * Package Service Providers...
          */
         Codecourse\Notify\NotifyServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+
         /*Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,*/
         /*
          * Application Service Providers...
@@ -230,6 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Notify' => Codecourse\Notify\Facades\Notify::class,
+        'Image' => Intervention\Image\ImageManagerStatic::class,
 
     ],
 

@@ -133,7 +133,7 @@ class UsersController extends Controller
         endif;
 
         if ($request->hasFile('avatar')) :
-            $request->file('avatar')->storeAs('/images/profile/', $id . '.jpg');
+            $this->image_resize($request->file('avatar'), $id);
         endif;
 
         notify()->flash('Success!', 'success', [
@@ -197,7 +197,7 @@ class UsersController extends Controller
         if ($settings):
             $settings = json_decode($settings->settings, true);
         else:
-            $settings = ["email_notification" => 1,"auto_logout" => 1];
+            $settings = ["email_notification" => 1, "auto_logout" => 1];
         endif;
 
         return view("users.settings", compact('settings'));
@@ -234,5 +234,17 @@ class UsersController extends Controller
                 break;
         endswitch;
         return '';
+    }
+
+    protected function image_resize($file, $id)
+    {
+        // open an image file
+        $img = Image::make($file);
+
+        // now you are able to resize the instance
+        $img->resize(520, 520);
+
+        // finally we save the image as a new file
+        $img->save('images/profile/' . $id . '.jpg');
     }
 }

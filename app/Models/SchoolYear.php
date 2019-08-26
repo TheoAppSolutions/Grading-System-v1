@@ -38,7 +38,7 @@ class SchoolYear extends Model
                 $array["total"] += $day;
             endforeach;
         else:
-            for ($ctr = 1; $ctr <= schema("attendance_count"); $ctr++):
+            for ($ctr = 1; $ctr <= schema("attendance.count"); $ctr++):
                 $array[$ctr] = 0;
             endfor;
         endif;

@@ -21,7 +21,7 @@ class Attendance extends Model
 
         if (!$attendance):
             $attendance = new Attendance;
-            for ($ctr = 1; $ctr <= schema("attendance_count"); $ctr++):
+            for ($ctr = 1; $ctr <= schema("attendance.count"); $ctr++):
                 $A = "A" . $ctr;
                 $T = "T" . $ctr;
                 $attendance->{$A} = 0;//A = Absent
@@ -39,7 +39,7 @@ class Attendance extends Model
         $attendance->TotalAbsent = 0;
         $attendance->TotalTardy = 0;
 
-        for ($ctr = 1; $ctr <= schema("attendance_count"); $ctr++):
+        for ($ctr = 1; $ctr <= schema("attendance.count"); $ctr++):
             $P = "P" . $ctr;
             $A = "A" . $ctr;
             $T = "T" . $ctr;

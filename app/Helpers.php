@@ -1,9 +1,7 @@
 <?php
-//composer dump-autoload
-
 use App\Models\SchoolYear;
 
-function system_image()
+function system_logo()
 {
     $image = "images/logo.png";
     return url($image . '?' . time());
@@ -348,7 +346,7 @@ function schema($value = "")
 function getNextGradeLevel($gradelevel_source = "")
 {
     $next = 0;
-    $array = schema("gradelevel_category");
+    $array = schema("gradelevel.category");
     foreach ($array as $gradelevel_category => $sub_category):
         foreach ($sub_category as $category => $gradelevel):
             $gradelevels[] = $gradelevel;

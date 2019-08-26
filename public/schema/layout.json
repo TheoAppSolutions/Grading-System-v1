@@ -1,21 +1,21 @@
 {
-  "system_name": "Grading",
-  "report_card": {
-    "school_name": "INTERNATIONAL SCHOOL",
+  "app.name": "Grading",
+  "report.card": {
+    "school.name": "INTERNATIONAL SCHOOL",
     "address": "Address 1, Address 2",
     "address2": "Country"
   },
-  "quarter_term": "Quarter",
-  "attendance_type": "Month",
-  "attendance_count": 12,
+  "quarter.term": "Quarter",
+  "attendance.type": "Month",
+  "attendance.count": 12,
   "template": {
-    "quarter_1": "midquarter",
-    "quarter_2": "quarter",
-    "quarter_3": "midquarter",
-    "quarter_4": "quarter",
+    "quarter.1": "midquarter",
+    "quarter.2": "quarter",
+    "quarter.3": "midquarter",
+    "quarter.4": "quarter",
     "values": "choices for template: (midquarter/quarter/both)"
   },
-  "gradelevel_category": {
+  "gradelevel.category": {
     "Lower School": {
       "1": "1",
       "2": "2",
@@ -35,7 +35,7 @@
       "12": "12"
     }
   },
-  "comments_quarter": {
+  "comments.quarter": {
     "ACADEMIC PERFORMANCE": {
       "A1": "<span style=\"font-size: 14px; color: black;\"><b>G</b>rasps new ideas readily and making steady progress</span>",
       "A2": "<span style=\"font-size: 14px; color: black;\"><b>K</b>eep up the great work!</span>",
@@ -70,7 +70,7 @@
       "F1": "<span style=\"font-size: 14px; color: red;\"><b>A</b> Parent-Teacher Conference is requested ASAP</span>"
     }
   },
-  "comments_midquarter": {
+  "comments.midquarter": {
     "ENGLISH": {
       "S1": "<span><b>Language:</b> Knowing about the English language</span>",
       "S2": "<span><b>Literature:</b> Understanding, appreciating, responding to, analyzing and creating literary texts</span>",

@@ -22,22 +22,22 @@
                             <li class="nav-item">
                                 <a class="nav-link active" id="baseLable-tab1" data-toggle="tab"
                                    aria-controls="tabLable1" href="#1" aria-expanded="true">
-                                    {{ schema("quarter_term") }} 1</a>
+                                    {{ schema("quarter.term") }} 1</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="baseLable-tab2" data-toggle="tab" aria-controls="tabLable2"
                                    href="#2" aria-expanded="false">
-                                    {{ schema("quarter_term") }} 2</a>
+                                    {{ schema("quarter.term") }} 2</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="baseLable-tab3" data-toggle="tab" aria-controls="tabLable3"
                                    href="#3" aria-expanded="false">
-                                    {{ schema("quarter_term") }} 3</a>
+                                    {{ schema("quarter.term") }} 3</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="baseLable-tab3" data-toggle="tab" aria-controls="tabLable3"
                                    href="#4" aria-expanded="false">
-                                    {{ schema("quarter_term") }} 4</a>
+                                    {{ schema("quarter.term") }} 4</a>
                             </li>
 
                             <li class="nav-item heading-elements">

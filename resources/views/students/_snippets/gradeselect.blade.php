@@ -4,7 +4,7 @@
             data-placeholder="Select Grade Level" onchange="changeTable();"
             title="Select Grade Level">
         <option value=""></option>
-        @php($gradelevels = schema("gradelevel_category"))
+        @php($gradelevels = schema("gradelevel.category"))
         @foreach($gradelevels as $gradelevel_category => $sub_category)
             <optgroup label="{{ $gradelevel_category }}">
                 @foreach($sub_category as $category => $gradelevel)

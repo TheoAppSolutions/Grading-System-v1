@@ -49,7 +49,7 @@
             </h5>
             @php($nextgradelevel = request('nextgradelevel') != "" ? request('nextgradelevel') : $student->next_gradelevel)
             <select id="enroll_gradelevel" name="" class="select2 form-control">
-                    @php($gradelevels = schema("gradelevel_category"))
+                    @php($gradelevels = schema("gradelevel.category"))
                     @foreach($gradelevels as $gradelevel_category => $sub_category)
                         <optgroup label="{{ $gradelevel_category }}">
                             @foreach($sub_category as $category => $gradelevel)

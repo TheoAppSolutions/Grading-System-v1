@@ -9,8 +9,8 @@
             <li class="nav-item mr-auto">
                 <a class="navbar-brand" href="{{ route('home') }}">
                     <img class="brand-logo" alt="modern admin logo"
-                         src="{{ url('/images/logo.png') . '?' . time() }}">
-                    <h3 class="brand-text">{{ schema("system_name") }}</h3>
+                         src="{{ system_logo() }}">
+                    <h3 class="brand-text">{{ schema("app.name") }}</h3>
                 </a>
             </li>
             <li class="nav-item d-none d-md-block float-right">

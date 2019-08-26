@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }}</title>
+    <title>{{ schema("app.name") }}</title>
 
     <link rel="apple-touch-icon" href="{{ url('/favicon.ico') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ url('/favicon.ico') }}">
@@ -49,7 +49,7 @@
                             <div class="card-header border-0">
                                 <div class="card-title text-center">
                                     <div class="p-1">
-                                        <img src="{{ url('/images/logo.png') . '?' . time() }}" alt="branding logo" style="max-height: 100px; max-width: 100px;">
+                                        <img src="{{ system_logo() }}" alt="branding logo" style="max-height: 100px; max-width: 100px;">
                                     </div>
                                 </div>
                                 <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">

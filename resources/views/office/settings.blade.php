@@ -33,7 +33,7 @@
                                     </tfoot>
 
                                     <tbody>
-                                    @php($gradelevels = schema("gradelevel_category"))
+                                    @php($gradelevels = schema("gradelevel.category"))
                                     @foreach($gradelevels as $gradelevel_category => $sub_category)
                                         @foreach($sub_category as $category => $gradelevel)
                                             <tr>
@@ -102,21 +102,21 @@
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th class="text-center">{{ schema("quarter_term") }}</th>
+                                        <th class="text-center">{{ schema("quarter.term") }}</th>
                                         <th class="text-center"># of School Days</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                        <th class="text-center">{{ schema("quarter_term") }}</th>
+                                        <th class="text-center">{{ schema("quarter.term") }}</th>
                                         <th class="text-center"># of School Days</th>
                                     </tr>
                                     </tfoot>
 
                                     <tbody>
-                                    @for($ctr = 1, $month = getStartMonth(); $ctr <= schema("attendance_count"); $ctr++, $month++)
+                                    @for($ctr = 1, $month = getStartMonth(); $ctr <= schema("attendance.count"); $ctr++, $month++)
                                         <tr>
-                                            @if (schema("attendance_type") == "Term")
+                                            @if (schema("attendance.type") == "Term")
                                                 <td class="align-middle">
                                                     {{ $ctr }}
                                                 </td>
@@ -126,7 +126,7 @@
                                                            placeholder=""
                                                            class="form-control" step="0.5">
                                                 </td>
-                                            @elseif (schema("attendance_type") == "Month")
+                                            @elseif (schema("attendance.type") == "Month")
                                                 <td class="align-middle">
                                                     {{ date("F", mktime(0, 0, 0, $month)) }}
                                                 </td>

@@ -57,7 +57,7 @@
                             @php($selected = '')
                         @endif
 
-                        @php($gradelevels = schema("gradelevel_category"))
+                        @php($gradelevels = schema("gradelevel.category"))
                         @foreach($gradelevels as $gradelevel_category => $sub_category)
                             <optgroup label="{{ $gradelevel_category }}">
                                 @foreach($sub_category as $category => $gradelevel)

@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Image Editor</title>
+
     <link href="{{ url('/app-assets/fonts/line-awesome/css/line-awesome.min.css') }}"
           rel="stylesheet">
     <style>
