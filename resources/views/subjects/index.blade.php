@@ -31,7 +31,8 @@
     <script src="{{ url('/app-assets/vendors/js/tables/datatable/dataTables.rowReorder.min.js') }}"
             type="text/javascript"></script>
 
-    <script src="{{ url('/app-assets/js/scripts/pages/users-contacts.js') }}" type="text/javascript"></script>
+    <script src="{{ url('/app-assets/vendors/js/forms/repeater/jquery.repeater.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url('/app-assets/js/scripts/forms/form-repeater.js') }}" type="text/javascript"></script>
 @endpush
 
 @section('content-title')

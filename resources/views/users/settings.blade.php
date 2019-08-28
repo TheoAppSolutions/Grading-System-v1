@@ -101,8 +101,12 @@
                                 <tr>
                                     <td class="text-middle align-middle">Email Notification</td>
                                     <td class="text-center">
+                                        @isset($settings['email_notification'])
+                                        @else
+                                            @php($settings['email_notification'] = 1)
+                                        @endisset
                                         <input type="checkbox" class="switch hidden" id="switch2" data-reverse=""
-                                               value="" {{ $settings['email_notification'] ? '' : 'checked' }}
+                                               value="" {{ $settings['email_notification'] == 0 ? '' : 'checked' }}
                                                onchange="system_configuration('email_notification', '{{ Auth::id() }}')"
                                         >
                                     </td>
@@ -113,6 +117,10 @@
                                 <tr>
                                     <td class="text-middle align-middle">Auto Log Out</td>
                                     <td class="text-center">
+                                        @isset($settings['auto_logout'])
+                                        @else
+                                            @php($settings['auto_logout'] = 1)
+                                        @endisset
                                         <input type="checkbox" class="switch hidden" id="switch2" data-reverse=""
                                                value="" {{ $settings['auto_logout'] == 0 ? '' : 'checked' }}
                                                onchange="system_configuration('auto_logout', '{{ Auth::id() }}')">

@@ -35,7 +35,7 @@
 @endpush
 
 @section('content-title')
-    Subject List
+    Grade Subject List
 @endsection
 
 @if(request("gradelevel") and request("gradelevel") != "")
