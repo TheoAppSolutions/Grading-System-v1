@@ -681,3 +681,17 @@ function announcement_create() {
         }
     });
 }
+
+function runFunction(url, variables) {
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: {
+            "_token": token,
+            "variables": variables
+        },
+        success: function () {
+            location.reload();
+        }
+    });
+}

@@ -160,7 +160,7 @@ class Grade extends Model
 
             $gradeset = Formula::getFinalAveragePerSubject($gradeset, $subjectList, $startCounter, $endCounter, $isAwardReport);
             $gradeset = Formula::getDeportmentAverage($gradeset, $startCounter, $endCounter);
-            $gradeset = Subject::setExcludedSubjects($gradeset);
+            $gradeset = Subject::getExcludedSubjects($gradeset);
         endif;
         
         return $gradeset;

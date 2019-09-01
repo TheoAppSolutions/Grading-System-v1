@@ -9,7 +9,6 @@ class Month extends Model
 
     public static function getMonths()
     {
-        $schoolyear = getSchoolYear();
         //$term = Month::where('schoolyear', $schoolyear)->first();
 
         /*if (!$term):
@@ -26,11 +25,11 @@ class Month extends Model
             endfor;
         endif;*/
 
-        $term = new SchoolYear();
 
         $db = SchoolYear::where("active", 1)->first();
         $array = json_decode($db->school_days);
 
+        $term = new SchoolYear();
         if ($array):
             for ($loop = 0, $ctr = 1; $loop < count($array); $loop++, $ctr++):
                 $term->{"term" . $ctr} = $array[$loop] > 0 ? $array[$loop] : '';

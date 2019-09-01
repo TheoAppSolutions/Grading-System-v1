@@ -104,6 +104,8 @@ class SchoolYearController extends Controller
     {
         SchoolYear::where('active', 1)->update(['active' => 0]);
         SchoolYear::where('schoolyear', $request->schoolyear)->update(['active' => 1]);
+
+        session()->forget('schoolyear');
     }
 
     protected function _month($request)

@@ -91,7 +91,7 @@
             },
             success: function (response) {
                 if (nextprev === 'next') {
-                    loadModal('Enroll Student S.Y. {{ getSchoolYearNow() }}', '{{ route('enrollment', $student->next_notenrolled) }}?nextgradelevel='.gradelevel)
+                    loadModal('Enroll Student S.Y. {{ getSchoolYear() }}', '{{ route('enrollment', $student->next_notenrolled) }}?nextgradelevel='.gradelevel)
                 } else {
                     location.reload();
                 }

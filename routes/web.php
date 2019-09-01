@@ -1,5 +1,5 @@
 <?php
-app('debugbar')->disable();
+/*app('debugbar')->disable();*/
 
 Route::get('/', 'HomeController@dashboard')->middleware('auth')->name('home');
 Route::redirect('/home', '/');
@@ -160,11 +160,11 @@ Route::post('status/student', 'EnrollmentController@change_status')->name('statu
 Route::resource('announcement', 'AnnouncementsController');
 Route::get('announcement/delete/{id}', 'AnnouncementsController@delete')->name('announcement.delete');
 
-Route::get('subject/{id}/exclude', function () {
-    return view('subjects._modal.exclude');
-})->name('exclude');
+Route::get('subject/{id}/exclude', 'SubjectsController@exclude')->name('exclude');
 
 Route::post('setup', 'IntegrationController@initialize')->name('initialize.save');
 Route::get('admin/grades', 'GradesController@index')->name('grading.index');
 
 Route::get('image.editor', 'FilesController@image_editor')->name('image.editor');
+
+Route::get('test', 'HomeController@test');

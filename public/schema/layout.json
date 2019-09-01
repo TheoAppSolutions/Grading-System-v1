@@ -5,6 +5,9 @@
     "address": "Address 1, Address 2",
     "address2": "Country"
   },
+  "function": {
+    "import": false
+  },
   "quarter.term": "Quarter",
   "attendance.type": "Month",
   "attendance.count": 12,
@@ -13,7 +16,7 @@
     "quarter.2": "quarter",
     "quarter.3": "midquarter",
     "quarter.4": "quarter",
-    "values": "choices for template: (midquarter/quarter/both)"
+    "choices": "choices for template: (midquarter/quarter/both)"
   },
   "gradelevel.category": {
     "Lower School": {

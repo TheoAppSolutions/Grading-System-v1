@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Excluded;
 use App\Models\SchoolYear;
+use App\Models\Student;
 use App\Models\Units;
 use Illuminate\Http\Request;
 use App\Models\Subject;
@@ -71,14 +73,14 @@ class SubjectsController extends Controller
         Units::insert([
             'subject_id' => strtoupper($request->subject_id),
             'weight' => $request->units,
-            'schoolyear' => getSchoolYearNow()
+            'schoolyear' => getSchoolYear()
         ]);
 
         \DB::table('subjects_user')->insert([
             'subject_id' => strtoupper($request->subject_id),
             'user_id' => $request->teacher1,
             'user2_id' => $request->teacher2,
-            'schoolyear' => getSchoolYearNow()
+            'schoolyear' => getSchoolYear()
         ]);
 
         notify()->flash('Success!', 'success', [
@@ -261,7 +263,7 @@ class SubjectsController extends Controller
 
     public function loadData(Request $request)
     {
-        $schoolyear = getSchoolYearNow();
+        $schoolyear = getSchoolYear();
 
         $records = DB::table('subjects_user')
             ->join('subjects_units', 'subjects_units.subject_id', 'subjects_user.subject_id')
@@ -315,5 +317,22 @@ class SubjectsController extends Controller
                 $result->save();
             endif;
         endforeach;
+    }
+
+    public function exclude($id)
+    {
+        $schoolyear = getSchoolYear();
+
+        $subject = Subject::where('subject_id', $id)
+            ->first();
+
+        $students = Student::getStudents("enrolled", $subject->gradelevel);
+
+        $excluded = Excluded::where([
+            ['subject_id', $subject->subject_id],
+            ['schoolyear', $schoolyear]
+        ])->get();
+
+        return view('subjects._modal.exclude', compact('students', 'excluded'));
     }
 }

@@ -214,7 +214,7 @@ class GradesController extends Controller
             if ($ctr == 1) : //student_id
                 $student_id = $data;
             elseif ($ctr == 2) : //midquarter grade
-                /*if ($data == 16.67):
+                if ($data == 16.67):
                     $temp = '';
                 elseif ($data >= 100.):
                     $temp = 100;
@@ -223,7 +223,7 @@ class GradesController extends Controller
                 else:
                     $temp = $data;
                 endif;
-                $import[$student_id][$quarter]['midquarter'] = $temp;*/
+                $import[$student_id][$quarter]['midquarter'] = $temp;
             elseif ($ctr == 3) : //final grade
                 if ($data == 16.67):
                     $temp = '';

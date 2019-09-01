@@ -1,4 +1,4 @@
-@if((strpos(getSchoolYearNow(), date("Y")) === false ) or isset($notifications["system"]))
+@if((strpos(getSchoolYear(), date("Y")) === false ) or isset($notifications["system"]))
     <div class="col-lg-6 col-md-12">
         <div class="card box-shadow-0 border-danger">
             <div class="card-header card-head-inverse bg-danger">
@@ -12,10 +12,10 @@
             </div>
             <div class="card-content collapse show">
                 <div class="card-body">
-                    @if(strpos(getSchoolYearNow(), date("Y")) === false)
+                    @if(strpos(getSchoolYear(), date("Y")) === false)
                         <div class="bs-callout-danger callout-border-left mt-1 p-1">
                             <strong>Warning!</strong>
-                            <p> The Current Active School Year <code>{{ getSchoolYearNow() }}</code>
+                            <p> The Current Active School Year <code>{{ getSchoolYear() }}</code>
                                 does not match with the Computer System Year <code>{{ date("Y") }}</code>.
                             </p>
                             <p class="mb-0">

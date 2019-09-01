@@ -9,7 +9,6 @@ class Subject extends Model
     protected $primaryKey = 'subject_id';
     public $timestamps = false;
 
-
     public static function bySubjectID($subject_id)
     {
         $schoolyear = getSchoolYear();
@@ -110,7 +109,7 @@ class Subject extends Model
         return $subjects;
     }
 
-    public static function setExcludedSubjects($gradeset)
+    public static function getExcludedSubjects($gradeset)
     {
         $excluded = Excluded::byStudent($gradeset["student_id"]);
 
@@ -122,7 +121,6 @@ class Subject extends Model
             $gradeset["LIVELIHOOD"]["remarks"] = 'N / A';
             $gradeset["TLE"]["remarks"] = 'N / A';
         endif;
-
 
         return $gradeset;
     }

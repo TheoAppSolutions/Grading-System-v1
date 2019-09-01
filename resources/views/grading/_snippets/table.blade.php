@@ -123,7 +123,7 @@ $fields = ['final', 'effort', 'deportment'];
     </table>
 
     <button type="submit" class="btn btn-success pull-right">Save</button>
-    {{--<button type="button" onclick="loadModal('Import Data From Excel','{{ route('import.show', ['currentQuarter='.$quarter]) }}');" class="btn btn-primary pull-right" data-target='#modal' data-toggle="modal">Import</button>--}}
+    <button type="button" onclick="loadModal('Import Data From Excel','{{ route('grades.import.show', ['currentQuarter='.$quarter]) }}');" class="btn btn-primary pull-right" data-target='#modal' data-toggle="modal">Import</button>
 
     @if($lockOff == 1)
         <button type="button" class="btn btn-info pull-left" onclick="unlockPassword();">Unlock All</button>

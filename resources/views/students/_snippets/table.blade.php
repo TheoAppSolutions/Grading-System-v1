@@ -95,7 +95,7 @@
                         @isset ($nextgradelevel[$student->gradelevel])
                             @php($next_gradelevel = $nextgradelevel[$student->gradelevel])
                             <button type="button" title="Enroll" class="btn btn-success" data-target='#modal' data-toggle="modal"
-                                    onclick="loadModal('Enroll Student S.Y. {{ getSchoolYearNow() }}', '{{ route('enrollment', $student->student_id) }}')">
+                                    onclick="loadModal('Enroll Student S.Y. {{ getSchoolYear() }}', '{{ route('enrollment', $student->student_id) }}')">
                                 <i class="ft-upload"></i>
                             </button>
                         @endisset

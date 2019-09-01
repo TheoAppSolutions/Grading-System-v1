@@ -49,7 +49,7 @@ class StudentsController extends Controller
     public function create()
     {
         $schoolyears = DB::table('schoolyear')->get();
-        $currentSchoolyear = getSchoolYearNow();
+        $currentSchoolyear = getSchoolYear();
 
         return view('students.create', compact('schoolyears', 'currentSchoolyear'));
     }
@@ -164,7 +164,7 @@ class StudentsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $schoolyear = getSchoolYearNow();
+        $schoolyear = getSchoolYear();
         $validate = $this->validateStudent('update');
 
         Student::where('student_id', $id)

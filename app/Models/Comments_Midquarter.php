@@ -10,7 +10,7 @@ class Comments_Midquarter extends Model
 
     /**
      * Used for Generating Report Cards
-    **/
+     **/
     public function byStudentID($student_id)
     {
         $schoolyear = getSchoolYear();
@@ -34,7 +34,11 @@ class Comments_Midquarter extends Model
                 $subjects = Subject::bySubjectID($subject);
                 if ($subjects->user_id):
                     foreach ($values as $key => $value):
-                        $array[$subjects->subjectname][$key] = $value;
+                        if ($value == 'N / A'):
+                            $array[$subjects->subjectname][$key] = $value;
+                        elseif ($value > 0):
+                            $array[$subjects->subjectname][$key] = $value;
+                        endif;
                     endforeach;
                 endif;
             endforeach;

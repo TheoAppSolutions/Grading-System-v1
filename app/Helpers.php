@@ -1,5 +1,10 @@
 <?php
+
 use App\Models\SchoolYear;
+use App\Models\Homeroom;
+use App\Models\Student;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 function system_logo()
 {
@@ -10,13 +15,14 @@ function system_logo()
 function profile_image($id = '')
 {
     if ($id == ""):
-        $id = \Illuminate\Support\Facades\Auth::id();
+        $id = Auth::id();
     endif;
 
     $imageID = "images/profile/" . $id . ".jpg";
     if (!file_exists($imageID)) :
         $imageID = "images/logo.png";
     endif;
+
     return url($imageID . '?' . time());
 }
 
@@ -32,7 +38,7 @@ function student_image($id = '')
 
 function getStudentFullname($student_id)
 {
-    $student = \App\Models\Student::find($student_id);
+    $student = Student::find($student_id);
     $student = $student->firstname . ' ' . $student->lastname;
 
     return $student;
@@ -41,9 +47,9 @@ function getStudentFullname($student_id)
 function AuthUser($id = "")
 {
     if ($id) :
-        $users = \App\User::byId($id);
+        $users = User::byId($id);
     else :
-        $users = \App\User::byId(Auth::user()->id);
+        $users = User::byId(Auth::user()->id);
     endif;
 
     return $users;
@@ -51,18 +57,22 @@ function AuthUser($id = "")
 
 function getHomeroom($id)
 {
-    $homeroom = \App\Models\Homeroom::byUserID($id, getSchoolYearNow());
+    if (!session()->has('homeroom')):
+        $homeroom = Homeroom::byUserID($id, getSchoolYear());
 
-    if (count($homeroom) >= 1) :
-        return $homeroom;
+        if (count($homeroom) >= 1) :
+            session()->put('homeroom', $homeroom);
+        else:
+            session()->put('homeroom', false);
+        endif;
     endif;
 
-    return false;
+    return session('homeroom');
 }
 
 function getSubjects($id)
 {
-    $subjects = \App\Models\Subject::byUserId($id, getSchoolYearNow());
+    $subjects = \App\Models\Subject::byUserId($id, getSchoolYear());
 
     if (count($subjects)):
         $subjects['has'] = true;
@@ -81,71 +91,76 @@ function getSchoolYears()
 
 function getSchoolYear($schoolyear = "")
 {
-    if ($schoolyear != ""):
-        $schoolyear = SchoolYear::where("schoolyear", $schoolyear)->first();
-        if ($schoolyear):
-            return true;
+    if ($schoolyear == ""):
+        if (!session()->has('schoolyear')):
+            $schoolyear = SchoolYear::getSchoolYear();
+            session()->put('schoolyear', $schoolyear);
         else:
-            return false;
+            $schoolyear = session('schoolyear');
         endif;
+    elseif ($schoolyear != ""):
+        $schoolyear = SchoolYear::where('schoolyear', $schoolyear)->first();
     endif;
-    return SchoolYear::getSchoolYear();
+
+    return $schoolyear;
 }
 
-function getStartMonth(){
-    $schoolyear_start = SchoolYear::where("active", 1)->first();
-    return $schoolyear_start->schoolyear_start;
-}
-
-function getSchoolYearNow()
+function getStartMonth()
 {
-    return SchoolYear::getSchoolYearNow();
+    $schoolyear_start = SchoolYear::where("active", 1)
+        ->select('schoolyear_start')
+        ->first();
+
+    return $schoolyear_start->schoolyear_start;
 }
 
 function getQuarter()
 {
-    $month = date('m', strtotime(now()));
+    if (!session()->has('quarter')):
+        $month = date('m', strtotime(now()));
 
-    switch ($month):
-        case '1' :
-            $quarter = 1;
-            break;
-        case '2' :
-            $quarter = 1;
-            break;
-        case '3' :
-            $quarter = 1;
-            break;
-        case '4' :
-            $quarter = 2;
-            break;
-        case '5' :
-            $quarter = 2;
-            break;
-        case '6' :
-            $quarter = 2;
-            break;
-        case '7' :
-            $quarter = 3;
-            break;
-        case '8' :
-            $quarter = 3;
-            break;
-        case '9' :
-            $quarter = 3;
-            break;
-        case '10' :
-            $quarter = 4;
-            break;
-        case '11' :
-            $quarter = 4;
-            break;
-        case '12' :
-            $quarter = 4;
-            break;
-    endswitch;
+        switch ($month):
+            case '1' :
+                $quarter = 1;
+                break;
+            case '2' :
+                $quarter = 1;
+                break;
+            case '3' :
+                $quarter = 1;
+                break;
+            case '4' :
+                $quarter = 2;
+                break;
+            case '5' :
+                $quarter = 2;
+                break;
+            case '6' :
+                $quarter = 2;
+                break;
+            case '7' :
+                $quarter = 3;
+                break;
+            case '8' :
+                $quarter = 3;
+                break;
+            case '9' :
+                $quarter = 3;
+                break;
+            case '10' :
+                $quarter = 4;
+                break;
+            case '11' :
+                $quarter = 4;
+                break;
+            case '12' :
+                $quarter = 4;
+                break;
+        endswitch;
+        session()->put('quarter', $quarter);
+    endif;
 
-    return $quarter;
+    return session('quarter');
 }
 
 function getDefaultPword()
@@ -317,26 +332,37 @@ function getProjectStatus()
 
 function checkAdmin($user_id)
 {
-    $roles = DB::table('users_roles')
-        ->where([
-            ['user_id', $user_id],
-            ['roles.role_description', "Admin"]
-        ])
-        ->leftJoin('roles', 'roles.role_id', 'users_roles.role_id')
-        ->first();
+    if (!session()->has('checkadmin')):
+        $roles = DB::table('users_roles')
+            ->where([
+                ['user_id', $user_id],
+                ['roles.role_description', "Admin"]
+            ])
+            ->leftJoin('roles', 'roles.role_id', 'users_roles.role_id')
+            ->first();
 
-    if ($roles):
-        return true;
+        if ($roles):
+            session()->put('checkadmin', true);
+        else:
+            session()->put('checkadmin', false);
+        endif;
     endif;
-    return false;
+
+    return session('checkadmin');
 }
 
 function schema($value = "")
 {
-    $schema = "schema/" . env("SCHEMA_NAME") . ".json";
-    $schema = json_decode(file_get_contents($schema));
+    if (!session()->has('schema')):
+        $schema = "schema/" . env("SCHEMA_NAME") . ".json";
+        $schema = json_decode(file_get_contents($schema));
+        session()->put('schema', $schema);
+    endif;
 
-    if($value != ""):
+    $schema = session('schema');
+
+    if ($value != ""):
+        $value = str_replace('_', '.', $value);
         $schema = $schema->{$value};
     endif;
 
@@ -376,9 +402,13 @@ function getNextGradeLevel($gradelevel_source = "")
     return array_key_first($gradelevels);
 }
 
-function settings($field_name){
-    $settings = DB::table('settings')->where('field_name', $field_name)->first();
-    return $settings->field_value;
+function settings($field_name)
+{
+    if (!session()->has($field_name)):
+        $setting = DB::table('settings')->where('field_name', $field_name)->first()->field_value;
+        session()->put($field_name, $setting);
+    endif;
+    return session($field_name);
 }
 
 function returnforCard($row)

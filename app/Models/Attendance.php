@@ -12,7 +12,7 @@ class Attendance extends Model
     {
         $schoolyear = getSchoolYear();
 
-        $term = SchoolYear::getSchoolDays($schoolyear);
+        $term = SchoolYear::getSchoolDays();
 
         $attendance = Attendance::where([
             ['student_id', $student_id],

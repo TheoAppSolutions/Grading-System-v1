@@ -48,6 +48,8 @@ class OfficeController extends Controller
             endif;
         endforeach;
 
+        session()->forget('homeroom');
+
         notify()->flash('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Homeroom Updated Successfully',

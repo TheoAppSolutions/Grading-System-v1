@@ -103,7 +103,7 @@
                         <form action="{{ route('enrollment.mass') }}" method="POST" id="enroll_students">
                             @csrf
                             @include('students._snippets.table',['students'=>$studentsArray[$current_GradeLevel]])
-                            <input type="hidden" name="schoolyear" value="{{ getSchoolYearNow() }}">
+                            <input type="hidden" name="schoolyear" value="{{ getSchoolYear() }}">
                             <button type="submit" class="btn-submit btn btn-success" disabled>Multiple Enroll</button>
                         </form>
 

@@ -54,7 +54,7 @@ class HomeController extends Controller
 
     public function test()
     {
-
+        session()->flush();
     }
 
     public function databaseIntegrate($schoolyear)

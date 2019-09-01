@@ -5,23 +5,28 @@
         </a>
     </li>
 
-    @php($roles = getRoles(auth()->id()))
+    @php($roles = getRoles(auth()->id())) {{-- Get roles for the current login user --}}
+    @php($break = false) {{-- Check if role has alread checked then break from the foreach loop if true --}}
+    @foreach($roles as $role) {{-- Loop through all the roles --}}
+    @switch($role->role_description)
+        @case("Admin") {{-- Check if roles has a Admin --}}
+        @include('_layouts._panels.admin')
+        @include('_layouts._panels.office')
+        @break;
 
-    @foreach($roles as $role)
-        @switch($role->role_description)
-            @case("Admin")
-            @include('_layouts._panels.admin')
-            @include('_layouts._panels.office')
-            @break;
-
-            @case("Secretary")
-            @case("Registrar")
-            @case("Principal")
-            @include('_layouts._panels.office')
-            @break;
-        @endswitch
+        @case("Secretary") {{-- Check if any of the 3 roles is applied --}}
+        @case("Registrar")
+        @case("Principal")
+        @include('_layouts._panels.office')
+        @php($break = true)
+        @break;
+    @endswitch
+    @if ($break)
+        @break
+    @endif
     @endforeach
 
+    {{-- Check whether the user has a subject assigned --}}
     @php($subjects = getSubjects(auth()->id()))
     @if($subjects['has'])
         @php($lastSubjectName = '')
@@ -29,6 +34,7 @@
         @include('_layouts._panels.subjects')
     @endif
 
+    {{-- Check whether the user has a homeroom assigned --}}
     @php($homerooms = getHomeroom(Auth::id()))
     @if($homerooms != false)
         @include('_layouts._panels.homeroom')
@@ -44,16 +50,6 @@
             <span class="menu-title">Profile</span>
         </a>
     </li>
-    {{--<li>
-        <a href="{{ route('logs', auth()->id()) }}" class="menu-item"><i class="la la-list"></i>
-            <span class="menu-title">Activity Log</span>
-        </a>
-    </li>
-    <li>
-        <a href="{{ route('user.filestorage', auth()->id()) }}" class="menu-item"><i class="la la-cloud-upload"></i>
-            <span class="menu-title">File Storage</span>
-        </a>
-    </li>--}}
     <li>
         <a href="{{ route('user.settings', auth()->id()) }}" class="menu-item"><i class="la la-cogs"></i>
             <span class="menu-title">Settings</span>
@@ -66,6 +62,7 @@
     </li>
 </ul>
 
+{{-- Script to fix the highlighted side menu link --}}
 @push('js')
     <script>
         let href = location.protocol + '//' + location.host + location.pathname;
