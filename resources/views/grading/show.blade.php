@@ -8,6 +8,15 @@
     {{ $subject->subjecttitle }}
 @endsection
 
+@php($comment_show = false)
+
+@php($schema = schema("comments.midquarter"))
+@foreach($schema as $title => $item)
+    @if($subject->subjectname == $title)
+        @php($comment_show = true)
+    @endif
+@endforeach
+
 @section('content-breadcrumb')
     Grade: {{ $subject->gradelevel }}
 @endsection
