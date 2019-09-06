@@ -145,6 +145,8 @@ class SubjectsController extends Controller
     public function destroy($id)
     {
         Subject::where('subject_id', $id)->delete();
+        Excluded::where('subject_id', $id)->delete();
+        Units::where('subject_id', $id)->delete();
         \DB::table('subjects_user')->where('subject_id', $id)->delete();
 
         notify()->flash('Success!', 'success', [
@@ -333,6 +335,49 @@ class SubjectsController extends Controller
             ['schoolyear', $schoolyear]
         ])->get();
 
-        return view('subjects._modal.exclude', compact('students', 'excluded'));
+        return view('subjects._modal.exclude', compact('students', 'excluded', 'id'));
+    }
+
+    public function excludeSubject(Request $request, $subject_id)
+    {
+        $schoolyear = getSchoolYear();
+        $exclude_list = array_unique($request->exclude_list);
+
+        $excluded = Excluded::where([
+            ['subject_id', $subject_id],
+            ['schoolyear', $schoolyear]
+        ])->get(['student_id']);
+
+        if ($excluded):
+            $data = [];
+
+            foreach ($excluded as $item):
+                array_push($data, $item->student_id);
+            endforeach;
+
+            $exclude_list = array_filter($exclude_list);
+
+            foreach ($exclude_list as $student_id):
+                if (!in_array($student_id, $data)): //Checks if exclude list is not in the database
+                    Excluded::insert([
+                        "student_id" => $student_id,
+                        "subject_id" => $subject_id,
+                        "schoolyear" => $schoolyear
+                    ]);
+                endif;
+            endforeach;
+
+            $data = array_diff($data, $exclude_list);
+
+            if (count($data) > 0):
+                foreach ($data as $student_id):
+                    Excluded::where([
+                        ['subject_id', $subject_id],
+                        ['student_id', $student_id],
+                        ['schoolyear', $schoolyear]
+                    ])->delete();
+                endforeach;
+            endif;
+        endif;
     }
 }

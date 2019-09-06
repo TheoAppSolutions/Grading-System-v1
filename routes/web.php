@@ -91,8 +91,8 @@ Route::middleware("check.role:Secretary,Principal")->prefix('office')->group(fun
 
 /*----------GRADING FUNCTIONS-------------------------------------------------------------------------------------*/
 Route::prefix('grades')->group(function () {
-    Route::get('{subject_id}', 'GradesController@show_grade')->name('grades.show');
-    Route::post('{subject_id}', 'GradesController@store_grade')->name('grades.save');
+    Route::get('/show/{subject_id}', 'GradesController@show_grade')->name('grades.show');
+    Route::post('/show/{subject_id}', 'GradesController@store_grade')->name('grades.save');
 
     Route::get('import', 'GradesController@show_import')->name('grades.import.show');
     Route::post('import', 'GradesController@import')->name('grades.import');
@@ -161,6 +161,7 @@ Route::resource('announcement', 'AnnouncementsController');
 Route::get('announcement/delete/{id}', 'AnnouncementsController@delete')->name('announcement.delete');
 
 Route::get('subject/{id}/exclude', 'SubjectsController@exclude')->name('exclude');
+Route::patch('subject/{id}/exclude', 'SubjectsController@excludeSubject')->name('exclude.patch');
 
 Route::post('setup', 'IntegrationController@initialize')->name('initialize.save');
 Route::get('admin/grades', 'GradesController@index')->name('grading.index');

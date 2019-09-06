@@ -83,8 +83,8 @@
                         <input type="hidden" value="{{ $current_GradeLevel }}"
                                name="gradelevel">
                         @include('subjects._snippets.table',['gradelevel'=>$current_GradeLevel])
-                        <button type="submit" class="btn btn-success pull-right mb-1"><i class="la la-save"></i> Update</button>
 
+                        <button type="submit" class="btn btn-success pull-right mb-1"><i class="la la-save"></i> Update</button>
                     </form>
                 @else
                     No Records

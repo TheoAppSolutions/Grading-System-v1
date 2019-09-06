@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Award;
+use App\Models\Excluded;
 use App\Models\Grade;
 use App\Models\SchoolYear;
 use App\Models\Student;
@@ -66,12 +67,25 @@ class GradesController extends Controller
         $candidateForSEA = Award::getSEA($subject_id, $schoolyear, $grades);
         $students = Student::bySubjectID($subject_id);
 
+        $excluded = Excluded::where([
+            ['subject_id', $subject_id],
+            ['schoolyear', $schoolyear]
+        ])->get(['student_id']);
+
+        $exclude_list = [];
+        if ($excluded):
+
+            foreach ($excluded as $item):
+                array_push($exclude_list, $item->student_id);
+            endforeach;
+        endif;
+
         foreach ($students as $student) :
             $studentNames[$student->student_id]["name"] = $student->lastname . ', ' . $student->firstname;
             $studentNames[$student->student_id]["gender"] = $student->gender;
         endforeach;
 
-        return view('grading.show', compact('grades', 'subject', 'students', 'currentQuarter', 'studentNames', 'candidateForSEA'));
+        return view('grading.show', compact('grades', 'exclude_list', 'subject', 'students', 'currentQuarter', 'studentNames', 'candidateForSEA'));
     }
 
     public function store_grade(Request $request)

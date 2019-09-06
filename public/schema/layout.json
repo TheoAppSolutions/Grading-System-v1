@@ -6,16 +6,17 @@
     "address2": "Country"
   },
   "function": {
-    "import": false
+    "import": true,
+    "type": true
   },
   "quarter.term": "Quarter",
-  "attendance.type": "Month",
-  "attendance.count": 12,
+  "attendance.type": "Term",
+  "attendance.count": 4,
   "template": {
-    "quarter.1": "midquarter",
-    "quarter.2": "quarter",
-    "quarter.3": "midquarter",
-    "quarter.4": "quarter",
+    "quarter.1": "both",
+    "quarter.2": "both",
+    "quarter.3": "both",
+    "quarter.4": "both",
     "choices": "choices for template: (midquarter/quarter/both)"
   },
   "gradelevel.category": {

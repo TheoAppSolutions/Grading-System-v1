@@ -34,39 +34,6 @@
 
 @section('content-body')
     <section class="row">
-        {{--<div class="col-lg-4 col-md-12">
-            <div class="text-center align-middle">
-                <div class="card border-info">
-                    <div class="card-content">
-                        <div class="card-header card-head-inverse bg-info">
-                            <h4 class="card-title text-white"><i class="la la-camera"></i> System Image</h4>
-                        </div>
-                        <div class="card-body">
-                            <img src="{{ system_image() }}" class="img-circle" id="avatar-img"
-                                 style="max-width: 200px; width: 100%;">
-                            <input name="avatar" id="avatar" type="file" accept="image/*" hidden
-                                   onchange="changeImage(this);">
-                            <input type="hidden" value="false" id="removeAvatar" name="removeAvatar">
-                        </div>
-                        <div class="card-footer">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-icon btn-success dropdown-toggle"
-                                        data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="true">
-                                    <i class="la la-camera"></i> Action
-                                </button>
-                                <div class="dropdown-menu" x-placement="bottom-start">
-                                    <a class="dropdown-item" href="#" onclick="$('#avatar').click();">
-                                        <i class="la la-upload"></i> Change Image
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>--}}
-
         <div class="col-lg-4 col-md-12">
             <div class="card border-info">
                 <div class="card-content">
