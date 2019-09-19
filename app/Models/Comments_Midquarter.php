@@ -34,9 +34,9 @@ class Comments_Midquarter extends Model
                 $subjects = Subject::bySubjectID($subject);
                 if ($subjects->user_id):
                     foreach ($values as $key => $value):
-                        if ($value == 'N / A'):
+                        if ($value > 0):
                             $array[$subjects->subjectname][$key] = $value;
-                        elseif ($value > 0):
+                        elseif (is_string($value)):
                             $array[$subjects->subjectname][$key] = $value;
                         endif;
                     endforeach;

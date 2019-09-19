@@ -20,7 +20,7 @@ class ReportStudentController extends Controller
     public function report($student_id)
     {
         $principal = Homeroom::getPrincipal();
-
+        $semester = request("semester");
         $attendance = new Attendance();
         $attendance = $attendance->byStudentID($student_id);
         $days = SchoolYear::getSchoolDays();
@@ -34,7 +34,7 @@ class ReportStudentController extends Controller
 
         $grades = $gradesModel->byStudentID($student_id);
         $subjects = new Subject();
-        $subjects = $subjects->byGradeLevelAndSection($student->gradelevel);
+        $subjects = $subjects->byGradeLevelAndSection($student->gradelevel, '', $semester);
 
         foreach ($subjects as $subject):
             if (!isset($subject->user_id)):
@@ -54,6 +54,7 @@ class ReportStudentController extends Controller
 
         $subjects = $subjects->toArray();
         $award = Award::getAwardsForReportCard($grades, $schoolyear);
+
         if ($student->gradelevel == "Prep" or $student->gradelevel == "Jr. Kindy"): //Pre School
             if ($quarter == 1 or $quarter == 3):
                 return view('reports.templates.pre_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
@@ -72,6 +73,12 @@ class ReportStudentController extends Controller
             elseif ($quarter == 2 or $quarter == 4):
                 return view('reports.templates.upper_school.secondary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
             endif;
+        elseif ($student->gradelevel >= 11 and $student->gradelevel <= 12): //Senior High School
+            if ($quarter == 1 or $quarter == 3):
+                return view('reports.templates.upper_school.secondary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+            elseif ($quarter == 2 or $quarter == 4):
+                return view('reports.templates.upper_school.secondary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+            endif;
         endif;
 
         return false;
@@ -80,6 +87,7 @@ class ReportStudentController extends Controller
     public function by_student($type, $student_id)
     {
         $term = request("term");
+        $semester = request("semester");
         $schoolyear = getSchoolYear();
 
         if ($type == 'midquarter'):
@@ -111,11 +119,11 @@ class ReportStudentController extends Controller
         endif;
 
         if ($type == 'quarter'):
-            $pdf->addPage(route('report.quarter', [$student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type]));
+            $pdf->addPage(route('report.quarter', [$student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type, 'semester=' . $semester]));
         elseif ($type == 'award'):
-            $pdf->addPage(route('report.award', [$student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type]));
+            $pdf->addPage(route('report.award', [$student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type, 'semester=' . $semester]));
         elseif ($type == 'midquarter'):
-            $pdf->addPage(route('report.midquarter', [$student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type]));
+            $pdf->addPage(route('report.midquarter', [$student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type, 'semester=' . $semester]));
         endif;
 
         $pdf->send();

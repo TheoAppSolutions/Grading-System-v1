@@ -1,0 +1,7 @@
+{
+  "import.grades": true,
+  "grading.type": true,
+  "student.sections": true,
+  "pre.school": false,
+  "senior.high.school": true
+}

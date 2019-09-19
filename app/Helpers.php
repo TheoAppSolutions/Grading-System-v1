@@ -4,6 +4,7 @@ use App\Models\SchoolYear;
 use App\Models\Homeroom;
 use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Subject;
 use App\User;
 
 function system_logo()
@@ -72,14 +73,15 @@ function getHomeroom($id)
 
 function getSubjects($id)
 {
-    $subjects = \App\Models\Subject::byUserId($id, getSchoolYear());
+    $subjects = Subject::byUserId($id, getSchoolYear());
+    $subjects['has_subject'] = false;
 
     if (count($subjects)):
-        $subjects['has'] = true;
-        return $subjects;
-    endif;
+        if (isset($subjects['subjects'])):
+            $subjects['has_subject'] = true;
+        endif;
+    endif  ;
 
-    $subjects['has'] = false;
     return $subjects;
 }
 
@@ -289,7 +291,8 @@ function consoleLog($data)
 function ordinal($number)
 {
     $ends = array('th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th');
-    if ((($number % 100) >= 11) && (($number % 100) <= 13)) {
+
+    if ((($number % 100) >= 11) and (($number % 100) <= 12)) {
         return $number . 'th';
     } else {
         return $number . $ends[$number % 10];
@@ -353,13 +356,37 @@ function checkAdmin($user_id)
 
 function schema($value = "")
 {
-    if (!session()->has('schema')):
+    /*if (!session()->has('schema')):
         $schema = "schema/" . env("SCHEMA_NAME") . ".json";
         $schema = json_decode(file_get_contents($schema));
         session()->put('schema', $schema);
     endif;
 
-    $schema = session('schema');
+    $schema = session('schema');*/
+
+    $schema = "schema/" . env("SCHEMA_NAME") . ".json";
+    $schema = json_decode(file_get_contents($schema));
+
+    if ($value != ""):
+        $value = str_replace('_', '.', $value);
+        $schema = $schema->{$value};
+    endif;
+
+    return $schema;
+}
+
+function features($value = "")
+{
+    /*if (!session()->has('schema')):
+        $schema = "schema/" . env("SCHEMA_NAME") . ".json";
+        $schema = json_decode(file_get_contents($schema));
+        session()->put('schema', $schema);
+    endif;
+
+    $schema = session('schema');*/
+
+    $schema = "schema/features.json";
+    $schema = json_decode(file_get_contents($schema));
 
     if ($value != ""):
         $value = str_replace('_', '.', $value);
@@ -446,26 +473,29 @@ function returnforCard($row)
                 <td colspan=6 class=blank>74 - below</td>';
             break;
         case 4:
-            $return = '<td class=blank></td>
-                <td colspan=14 class=centerlabels>EFFORT GRADE</td>';
+            $return = '<td class=blank></td>';
             break;
         case 5:
             $return = '<td class=blank></td>
-                <td colspan=14 class=blank>5 - Exerting maximum effort</td>';
+                <td colspan=14 class=centerlabels>EFFORT GRADE</td>';
             break;
         case 6:
             $return = '<td class=blank></td>
-                <td colspan=14 class=blank>4 - Exerting above satisfactory effort</td>';
+                <td colspan=14 class=blank>5 - Exerting maximum effort</td>';
             break;
         case 7:
             $return = '<td class=blank></td>
-                <td colspan=14 class=blank>3 - Exerting satisfactory effort</td>';
+                <td colspan=14 class=blank>4 - Exerting above satisfactory effort</td>';
             break;
         case 8:
             $return = '<td class=blank></td>
-                <td colspan=14 class=blank>2 - Exerting below satisfactory effort</td>';
+                <td colspan=14 class=blank>3 - Exerting satisfactory effort</td>';
             break;
         case 9:
+            $return = '<td class=blank></td>
+                <td colspan=14 class=blank>2 - Exerting below satisfactory effort</td>';
+            break;
+        case 10:
             $return = '<td class=blank></td>
                 <td colspan=14 class=blank>1 - Exerting minimum effort</td>';
             break;

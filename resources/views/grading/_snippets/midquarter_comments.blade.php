@@ -66,6 +66,16 @@
                 return $(this).val();
             }).get();
 
+        var PSR = $("select[name='PSR[]']")
+            .map(function () {
+                return $(this).val();
+            }).get();
+
+        var WSS = $("select[name='WSS[]']")
+            .map(function () {
+                return $(this).val();
+            }).get();
+
         let student_id = '{{ $student->student_id }}', subject_id = '{{ $subject->subject_id }}', quarter = 1;
 
         $.ajax({
@@ -76,6 +86,8 @@
                 'student_id': student_id,
                 'subject_id': subject_id,
                 'comments': comments,
+                'PSR': PSR,
+                'WSS': WSS,
                 'quarter': quarter
             },
             success: function () {

@@ -37,7 +37,13 @@ class MidQuarterController extends Controller
                 $comments = json_decode($comments->comments)->{$subject_id};
             endif;
         endif;
+
+        if (schema('student')->{"senior.high.school"} and $subject->gradelevel >= 11 and $subject->gradelevel <= 12):
+            return view('grading._snippets.midquarter_seniorhigh', compact('comments', 'schoolyear', 'subject', 'student', 'prev', 'next'));
+        endif;
+
         return view('grading._snippets.midquarter_comments', compact('comments', 'schoolyear', 'subject', 'student', 'prev', 'next'));
+
     }
 
     public function store(Request $request)
@@ -61,11 +67,29 @@ class MidQuarterController extends Controller
             $json = json_decode($comments->comments, true);
         endif;
 
-        $counter = 0;
-        foreach ($request->comments as $comment):
-            $counter++;
-            $json[$request->subject_id]["S" . $counter] = $comment;
-        endforeach;
+        if (isset($request->comments)):
+            $counter = 0;
+            foreach ($request->comments as $comment):
+                $counter++;
+                $json[$request->subject_id]["S" . $counter] = $comment;
+            endforeach;
+        endif;
+
+        if (isset($request->PSR)):
+            $counter = 0;
+            foreach ($request->PSR as $comment):
+                $counter++;
+                $json[$request->subject_id]["PSR" . $counter] = $comment;
+            endforeach;
+        endif;
+
+        if (isset($request->WSS)):
+            $counter = 0;
+            foreach ($request->WSS as $comment):
+                $counter++;
+                $json[$request->subject_id]["WSS" . $counter] = $comment;
+            endforeach;
+        endif;
 
         $comments->comments = json_encode($json);
         $comments->save();

@@ -24,47 +24,46 @@
                                 <h4 class="form-section"><i class="la la-book"></i> Subject Info</h4>
                                 <div class="form-group row">
                                     <label class="col-md-3 label-control"
-                                           for="userinput1">ID#</label>
+                                           for="subject_id">ID#</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="userinput1"
-                                               class="form-control"
-                                               placeholder="Subject ID#" name="firstname">
+                                        <input type="text" id="subject_id" required
+                                               class="form-control" name="subject_id"
+                                               placeholder="Subject Short ID (Ex: ENG01 for ENGLISH 1)">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 label-control"
-                                           for="userinput2">Title</label>
+                                           for="subjecttitle">Title</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="userinput2"
-                                               class="form-control"
-                                               placeholder="Subject Title" name="lastname">
+                                        <input type="text" id="subjecttitle" required
+                                               class="form-control" name="subjecttitle"
+                                               placeholder="Subject Title">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 label-control" for="userinput3">Short
+                                    <label class="col-md-3 label-control" for="subjectname">Short
                                         Term</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="userinput3"
-                                               class="form-control"
-                                               placeholder="Subject Short Term (Ex: ENG01 for ENGLISH 1)"
-                                               name="username">
+                                        <input type="text" id="subjectname"
+                                               class="form-control" name="subjectname" required
+                                               placeholder="Subject Short ID (Ex: ENGLISH 1)">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 label-control"
-                                           for="userinput4">Units</label>
+                                           for="units">Units</label>
                                     <div class="col-md-9">
-                                        <input type="number" id="userinput4" min="0" step="0.01"
-                                               class="form-control"
-                                               placeholder="Subject Units" name="nickname">
+                                        <input type="number" id="units" min="0" step="0.01"
+                                               class="form-control" name="units" required
+                                               placeholder="Subject Units">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 label-control"
-                                           for="userinput4">Grade Level</label>
+                                           for="gradelevel">Grade Level</label>
                                     <div class="col-md-9">
-                                        <select class="select2-placeholder form-control" id="single-placeholder"
-                                                data-placeholder="Subject Grade Level"
+                                        <select class="select2-placeholder form-control" id="gradelevel"
+                                                data-placeholder="Subject Grade Level" name="gradelevel" required
                                                 title="Subject Grade Level">
                                                 <option value=""> </option>
                                                 @php($gradelevels = schema("gradelevel.category"))
@@ -84,9 +83,9 @@
                             <div class="col-12 col-lg-6">
                                 <h4 class="form-section"><i class="ft-user"></i> Subject Teacher</h4>
                                 <div class="form-group row">
-                                    <label class="col-md-3 label-control">Teacher 1</label>
+                                    <label class="col-md-3 label-control" for="teacher1">Teacher 1</label>
                                     <div class="col-md-9">
-                                        <select class="form-control" title="Subject Teacher">
+                                        <select class="form-control" title="Subject Teacher" name="teacher1" id="teacher1" required>
                                             <option value=""> </option>
                                             @php($lastID = "")
                                             @foreach($users as $user)
@@ -100,9 +99,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 label-control">Teacher 2</label>
+                                    <label class="col-md-3 label-control" for="teacher2">Teacher 2</label>
                                     <div class="col-md-9">
-                                        <select class="form-control" title="Subject Teacher">
+                                        <select class="form-control" title="Subject Teacher" name="teacher2" id="teacher2">
                                             <option value=""> </option>
                                             @php($lastID = "")
                                             @foreach($users as $user)

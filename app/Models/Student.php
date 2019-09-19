@@ -21,7 +21,7 @@ class Student extends Model
         $student = Student::join('students_info', 'students_info.student_id', 'students.student_id')
             ->join('enrollment', 'enrollment.student_id', 'students.student_id')
             ->where($where)
-            ->orderBy('schoolyear', 'DESC')
+            ->orderBy('enrollment.schoolyear', 'DESC')
             ->first();
 
         $student->next_gradelevel = getNextGradeLevel($student->gradelevel);
@@ -53,15 +53,15 @@ class Student extends Model
         return $student;
     }
 
-    public static function bySubjectID($subject_id)
+    public static function bySubjectID($subject_id, $section = "")
     {
         $subject = Subject::bySubjectID($subject_id);
-        $students = Student::getStudents("enrolled", $subject->gradelevel);
+        $students = Student::getStudents("enrolled", $subject->gradelevel, false, $section);
 
         return $students;
     }
 
-    public static function getStudents($status = "all", $gradelevel = "all", $toArray = false)
+    public static function getStudents($status = "all", $gradelevel = "all", $toArray = false, $section = "")
     {
         $schoolyear = getSchoolYear();
         switch ($status):
@@ -99,6 +99,10 @@ class Student extends Model
                         ['students.active', 1]
                     ];
 
+                if ($section):
+                    array_push($where, ['students.section', $section]);
+                endif;
+
                 $students = DB::table("enrollment")
                     ->join('students', 'students.student_id', 'enrollment.student_id')
                     ->join('students_info', 'students_info.student_id', 'students.student_id')
@@ -132,6 +136,10 @@ class Student extends Model
                     ['enrollment.schoolyear', '!=', $schoolyear],
                     ['enrollment.gradelevel', $gradelevel]
                 ];
+
+                if ($section):
+                    array_push($where, ['students.section', $section]);
+                endif;
 
                 $students = Student::join('students_info', 'students_info.student_id', 'students.student_id')
                     ->join('enrollment', 'enrollment.student_id', 'students.student_id')

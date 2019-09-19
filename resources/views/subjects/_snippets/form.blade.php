@@ -47,26 +47,26 @@
                 <select class="select2-placeholder form-control" id="single-placeholder"
                         data-placeholder="Subject Grade Level" name="gradelevel"
                         title="Subject Grade Level">
-                        <option value=""> </option>
+                    <option value=""> </option>
 
-                        @if (isset($request->gradelevel))
-                            @php($selected = $request->old('gradelevel'))
-                        @elseif (isset($subject->gradelevel))
-                            @php($selected = $subject->gradelevel)
-                        @else
-                            @php($selected = '')
-                        @endif
+                    @if (isset($request->gradelevel))
+                        @php($selected = $request->old('gradelevel'))
+                    @elseif (isset($subject->gradelevel))
+                        @php($selected = $subject->gradelevel)
+                    @else
+                        @php($selected = '')
+                    @endif
 
-                        @php($gradelevels = schema("gradelevel.category"))
-                        @foreach($gradelevels as $gradelevel_category => $sub_category)
-                            <optgroup label="{{ $gradelevel_category }}">
-                                @foreach($sub_category as $category => $gradelevel)
-                                    <option value="{{ $gradelevel }}" {{ $selected == $gradelevel ? 'selected' : '' }}>
-                                        {{ $gradelevel }}
-                                    </option>
-                                @endforeach
-                            </optgroup>
-                        @endforeach
+                    @php($gradelevels = schema("gradelevel.category"))
+                    @foreach($gradelevels as $gradelevel_category => $sub_category)
+                        <optgroup label="{{ $gradelevel_category }}">
+                            @foreach($sub_category as $category => $gradelevel)
+                                <option value="{{ $gradelevel }}" {{ $selected == $gradelevel ? 'selected' : '' }}>
+                                    {{ $gradelevel }}
+                                </option>
+                            @endforeach
+                        </optgroup>
+                    @endforeach
                 </select>
             </div>
         </div>

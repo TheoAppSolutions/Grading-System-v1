@@ -89,7 +89,7 @@
                             </div>
                             <div class="card-footer">
                                 <div class="">
-                                    <p class="float-sm-left text-center m-0"><a href="#" class="card-link" onclick="passwordReset()">Recover password</a></p>
+                                    {{--<p class="float-sm-left text-center m-0"><a href="#" class="card-link" onclick="passwordReset()">Recover password</a></p>--}}
                                 </div>
                             </div>
                         </div>

@@ -44,7 +44,8 @@
                                 <div class="card border-primary">
                                     <div class="card-content">
                                         <div class="card-header card-head-inverse bg-primary">
-                                            <h4 class="card-title text-white"><i class="la la-camera"></i> Profile Image</h4>
+                                            <h4 class="card-title text-white"><i class="la la-camera"></i> Profile Image
+                                            </h4>
                                         </div>
                                         <div class="card-body">
                                             <img src="{{ profile_image($user->id) }}" class="img-circle" id="avatar-img"
@@ -62,7 +63,8 @@
                                                         <i class="la la-upload"></i> Change Image
                                                     </a>
 
-                                                    <a class="dropdown-item" href="{{ route('image.editor') }}" target="_blank">
+                                                    <a class="dropdown-item" href="{{ route('image.editor') }}"
+                                                       target="_blank">
                                                         <i class="la la-edit"></i> Image Editor
                                                     </a>
 
@@ -87,10 +89,12 @@
                                     <a class="nav-link" id="base-pill2" data-toggle="pill" href="#pill2"
                                        aria-expanded="false"><i class="la la-phone"></i> Contact Info</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="base-pill3" data-toggle="pill" href="#pill3"
-                                       aria-expanded="false"><i class="la la-file"></i> Documents</a>
-                                </li>
+                                @if (settings("file_storage_enabled") === "false" or checkAdmin(auth()->id()))
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="base-pill3" data-toggle="pill" href="#pill3"
+                                           aria-expanded="false"><i class="la la-file"></i> Documents</a>
+                                    </li>
+                                @endif
                             </ul>
 
                             <div class="tab-content">

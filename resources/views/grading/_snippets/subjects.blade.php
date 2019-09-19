@@ -9,47 +9,70 @@
             <th>Teacher 1</th>
             <th>Teacher 2</th>
             <th>Units</th>
+            @if (schema("student")->{'senior.high.school'} and $gradelevel >= 11 and $gradelevel <= 12)
+                <th>Semester</th>
+                <th>Section</th>
+            @endif
             <th>Action</th>
         </tr>
         </thead>
 
         <tbody>
         @php($lastTeacher = '')
-        @foreach($list[$gradelevel] as $subject)
+        @php($teacher=[])
+
+        @foreach($subjects[$gradelevel] as $subject)
             @if(!isset($user_list[$subject->subject_id]["user_id"]))
                 @php($user_list[$subject->subject_id]["user_id"] = '')
             @endif
             @if(!isset($user_list[$subject->subject_id]["user2_id"]))
                 @php($user_list[$subject->subject_id]["user2_id"] = '')
             @endif
-            <tr>
-                <td class="p-1">{{ $subject->subject_id }}</td>
-                <td class="p-1">{{ $subject->subjecttitle }}</td>
-                <td class="p-1">
-                    @foreach($users as $user)
-                        @if ($user_list[$subject->subject_id]["user_id"]==$user->id)
-                            {{ $user->lastname }}
-                            {{ isset($user->lastname) ? ',' : '' }} {{ $user->firstname }}
+
+            @foreach($users as $user)
+                @if ($user_list[$subject->subject_id]["user_id"]==$user->id)
+                    @php($teacher[1] = $user->lastname . ', ' . $user->firstname)
+                @elseif ($user_list[$subject->subject_id]["user2_id"]==$user->id)
+                    @php($teacher[2] = $user->lastname . ', ' . $user->firstname)
+                @endif
+            @endforeach
+
+            @if (isset($teacher[1]) or isset($teacher[2]))
+                <tr>
+                    <td class="p-1">{{ $subject->subject_id }}</td>
+                    <td class="p-1">{{ $subject->subjecttitle }}</td>
+                    <td class="p-1">
+                        {{ $teacher[1] ?? '' }}
+                    </td>
+                    <td class="p-1">
+                        {{ $teacher[2] ?? '' }}
+                    </td>
+                    <td class="p-1">
+                        {{ $units[$subject->subjectname]['unit'] ?? 0 }}
+                    </td>
+                    @if (schema("student")->{'senior.high.school'} and $gradelevel >= 11 and $gradelevel <= 12)
+                        <td class="p-1">
+                            {{ $subject->semester }}
+                        </td>
+                        <td class="p-1">
+                            {{ $subject->section }}
+                        </td>
+                    @endif
+                    <td class="p-1">
+                        @if ($subject->section)
+                            <a href="{{ route('grades.show', [$subject->subject_id,"section=".$subject->section]) }}"
+                               title="Show" class="btn btn-success" target="_blank"><i class="ft-award"></i>
+                            </a>
+                        @else
+                            <a href="{{ route('grades.show', [$subject->subject_id]) }}"
+                               title="Show" class="btn btn-success" target="_blank"><i class="ft-award"></i>
+                            </a>
                         @endif
-                    @endforeach
-                </td>
-                <td class="p-1">
-                    @foreach($users as $user)
-                        @if ($user_list[$subject->subject_id]["user2_id"]==$user->id)
-                            {{ $user->lastname }}
-                            {{ isset($user->lastname) ? ',' : '' }} {{ $user->firstname }}
-                        @endif
-                    @endforeach
-                </td>
-                <td class="p-1">
-                    {{ $units[$subject->subjectname]['unit'] ?? 0 }}
-                </td>
-                <td class="p-1">
-                    <a href="{{ route('grades.show', $subject->subject_id) }}" title="Show" class="btn btn-success"
-                       target="_blank">
-                        <i class="ft-award"></i></a>
-                </td>
-            </tr>
+                    </td>
+                </tr>
+                @php($teacher[1] = "")
+                @php($teacher[2] = "")
+            @endif
         @endforeach
         </tbody>
 
@@ -60,6 +83,10 @@
             <th>Teacher 1</th>
             <th>Teacher 2</th>
             <th>Units</th>
+            @if (schema("student")->{'senior.high.school'} and $gradelevel >= 11 and $gradelevel <= 12)
+                <th>Semester</th>
+                <th>Section</th>
+            @endif
             <th>Action</th>
         </tr>
         </tfoot>

@@ -27,17 +27,20 @@
     @endforeach
 
     {{-- Check whether the user has a subject assigned --}}
-    @php($subjects = getSubjects(auth()->id()))
-    @if($subjects['has'])
+    @if (auth()->id() != 1)
+        @php($subjects = getSubjects(auth()->id()))
         @php($lastSubjectName = '')
         @php($lastGradeLevel = '')
-        @include('_layouts._panels.subjects')
-    @endif
 
-    {{-- Check whether the user has a homeroom assigned --}}
-    @php($homerooms = getHomeroom(Auth::id()))
-    @if($homerooms != false)
-        @include('_layouts._panels.homeroom')
+        @if($subjects['has_subject'])
+            @include('_layouts._panels.subjects')
+        @endif
+
+        {{-- Check whether the user has a homeroom assigned --}}
+        @php($homerooms = getHomeroom(Auth::id()))
+        @if($homerooms != false)
+            @include('_layouts._panels.homeroom')
+        @endif
     @endif
 
 

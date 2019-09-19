@@ -70,7 +70,11 @@
                             </select>
                         </div>
                         <div class="col-12 col-md-6">
-                            @include('students._snippets.gradeselect')
+                            @if ($status != "all")
+                                @include('students._snippets.gradeselect')
+                            @else
+                                <input type="hidden" id="gradelevel-picker" value="">
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -96,36 +100,43 @@
         <div class="card-content">
             <div class="card-body">
                 @if(isset($studentsArray[$current_GradeLevel]) and count($studentsArray[$current_GradeLevel]) > 0)
-                    @if ($status == "all")
+                    @switch($status)
+                        @case ("all")
                         @include('students._snippets.table',['students'=>$studentsArray["all"]])
-
-                    @elseif ($status == "notenrolled")
+                        @break
+                        @case ("notenrolled")
                         <form action="{{ route('enrollment.mass') }}" method="POST" id="enroll_students">
                             @csrf
                             @include('students._snippets.table',['students'=>$studentsArray[$current_GradeLevel]])
                             <input type="hidden" name="schoolyear" value="{{ getSchoolYear() }}">
                             <button type="submit" class="btn-submit btn btn-success" disabled>Multiple Enroll</button>
                         </form>
-
-                    @elseif ($status == "enrolled")
+                        @break
+                        @case ("enrolled")
                         <form action="{{ route('student.mass.activate') }}" method="POST" id="deactivate_students">
                             @csrf
                             @include('students._snippets.table',['students'=>$studentsArray[$current_GradeLevel]])
+                            @if ($current_GradeLevel != "all")
+                                <button type="button" class="btn btn-primary pull-right" onclick="update_sections();">
+                                    <i class="fa fa-check"></i> Update Sections
+                                </button>
+                            @endif
                             <button type="submit" class="btn-submit btn btn-success" disabled>Multiple De-activate
                             </button>
                         </form>
-
-                    @elseif ($status == "inactive")
+                        @break
+                        @case ("inactive")
                         <form action="{{ route('student.mass.activate') }}" method="POST" id="activate_students">
                             @csrf
                             @include('students._snippets.table',['students'=>$studentsArray[$current_GradeLevel]])
                             <button type="submit" class="btn-submit btn btn-success" disabled>Multiple Activate
                             </button>
                         </form>
-
-                    @elseif ($status == "graduates")
+                        @break
+                        @case ("graduates")
                         @include('students._snippets.table',['students'=>$studentsArray["all"]])
-                    @endif
+                        @break
+                    @endswitch
                 @else
                     <code>No Students Records Found.</code> Please Enroll Old Students or Add New Students.
                 @endif
@@ -151,14 +162,7 @@
                         checkboxes: {
                             selectRow: true
                         }
-                    },
-                        @if($status == "enrolled")
-                    {
-                        targets: 6,
-                        visible: false,
-                        searchable: false
                     }
-                    @endif
                 ],
                 select: {
                     style: 'multi'
@@ -204,6 +208,17 @@
                 $('.btn-submit').prop("disabled", true);
             }
         });
+
         @endif
+
+        function changeTable() {
+            var url = window.location.pathname;
+            if ($('#student_status').val() == 'all') {
+                url += '?';
+            } else {
+                url += '?gradelevel=' + $('#gradelevel-picker').val() + '&status=' + $('#student_status').val();
+            }
+            window.location.href = url;
+        }
     </script>
 @endpush

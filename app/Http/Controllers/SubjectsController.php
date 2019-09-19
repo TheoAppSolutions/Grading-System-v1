@@ -21,17 +21,12 @@ class SubjectsController extends Controller
     public function index()
     {
         $subjects = Subject::getAll();
-        $subjectsList = Subject::all();
+
         $subjectUser = DB::table('subjects_user')->where('schoolyear', getSchoolYear())->get();
         $users = User::byType('', 1);
         $units = Units::getUnits();
 
-        $list = [];
         $user_list = [];
-        foreach ($subjectsList as $subject):
-            $list[$subject->gradelevel][] = $subject;
-        endforeach;
-
         foreach ($subjectUser as $subject):
             $user_list[$subject->subject_id]["user_id"] = $subject->user_id;
             $user_list[$subject->subject_id]["user2_id"] = $subject->user2_id;
@@ -40,7 +35,7 @@ class SubjectsController extends Controller
         $schoolyears = SchoolYear::all()->sortBy("schoolyear");
 
         return view('subjects.index', compact(
-            'subjects', 'users', 'units', 'list', 'user_list', 'schoolyears'
+            'subjects', 'users', 'units', 'user_list', 'schoolyears'
         ));
     }
 
@@ -72,7 +67,7 @@ class SubjectsController extends Controller
 
         Units::insert([
             'subject_id' => strtoupper($request->subject_id),
-            'weight' => $request->units,
+            'units' => $request->units,
             'schoolyear' => getSchoolYear()
         ]);
 
@@ -97,7 +92,14 @@ class SubjectsController extends Controller
         $users = User::byType('', 1);
         $units = Units::getUnits();
 
-        return view('subjects.show', compact('subject', 'users', 'units'));
+        $students = Student::getStudents("enrolled", $subject->gradelevel);
+
+        $excluded = Excluded::where([
+            ['subject_id', $subject->subject_id],
+            ['schoolyear', getSchoolYear()]
+        ])->get();
+
+        return view('subjects.show', compact('subject', 'users', 'units', 'students', 'excluded'));
     }
 
     public function edit($id)
@@ -110,15 +112,19 @@ class SubjectsController extends Controller
         $schoolyear = getSchoolYear();
 
         Subject::where('subject_id', $id)->update([
-            'subjecttitle' => strtoupper($request->subjecttitle)
+            'subjecttitle' => ucwords($request->subjecttitle)
         ]);
+
         \DB::table('subjects_user')->where([
             ['subject_id', $id],
             ['schoolyear', $schoolyear]
         ])->update([
             'user_id' => $request->user_id,
-            'user2_id' => $request->user2_id
+            'user2_id' => $request->user2_id,
+            'section' => $request->section,
+            'semester' => $request->semester
         ]);
+
         $result = \DB::table('subjects_units')->where([
             ['subject_id', $id],
             ['schoolyear', $schoolyear]
@@ -163,6 +169,14 @@ class SubjectsController extends Controller
         $schoolyear = getSchoolYear();
 
         foreach ($subjects['subject'] as $subject_id => $subject):
+            if (!isset($subject['section'])):
+                $subject['section'] = "";
+            endif;
+
+            if (!isset($subject['semester'])):
+                $subject['semester'] = "";
+            endif;
+
             $result = \DB::table('subjects_user')->where([
                 ['subject_id', $subject_id],
                 ['schoolyear', $schoolyear]
@@ -173,7 +187,9 @@ class SubjectsController extends Controller
                     'subject_id' => $subject_id,
                     'schoolyear' => $schoolyear,
                     'user_id' => $subject['user_id'],
-                    'user2_id' => $subject['user2_id']
+                    'user2_id' => $subject['user2_id'],
+                    'section' => $subject['section'],
+                    'semester' => $subject['semester']
                 ]);
             else:
                 \DB::table('subjects_user')->where([
@@ -181,7 +197,9 @@ class SubjectsController extends Controller
                     ['schoolyear', $schoolyear]
                 ])->update([
                     'user_id' => $subject['user_id'],
-                    'user2_id' => $subject['user2_id']
+                    'user2_id' => $subject['user2_id'],
+                    'section' => $subject['section'],
+                    'semester' => $subject['semester']
                 ]);
             endif;
 
@@ -217,8 +235,11 @@ class SubjectsController extends Controller
     public function soloUpdate(Request $request, $id)
     {
         $subject_id = $id;
+        $subject = [];
         $subject['user_id'] = $request->user_id;
         $subject['user2_id'] = $request->user2_id;
+        $subject['section'] = $request->section;
+        $subject['semester'] = $request->semester;
         $schoolyear = getSchoolYear();
 
         $result = \DB::table('subjects_user')->where([
@@ -231,7 +252,9 @@ class SubjectsController extends Controller
                 'subject_id' => $subject_id,
                 'schoolyear' => $schoolyear,
                 'user_id' => $subject['user_id'],
-                'user2_id' => $subject['user2_id']
+                'user2_id' => $subject['user2_id'],
+                'section' => $subject['section'],
+                'semester' => $subject['semester']
             ]);
         else:
             \DB::table('subjects_user')->where([
@@ -239,7 +262,9 @@ class SubjectsController extends Controller
                 ['schoolyear', $schoolyear]
             ])->update([
                 'user_id' => $subject['user_id'],
-                'user2_id' => $subject['user2_id']
+                'user2_id' => $subject['user2_id'],
+                'section' => $subject['section'],
+                'semester' => $subject['semester']
             ]);
         endif;
 

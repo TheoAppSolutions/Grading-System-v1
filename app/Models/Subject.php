@@ -20,7 +20,7 @@ class Subject extends Model
             ->leftJoin('subjects_user', 'subjects_user.subject_id', 'subjects.subject_id')
             ->first();
 
-        $subject->units = Units::where([['schoolyear', $schoolyear],['subject_id', $subject_id]])
+        $subject->units = Units::where([['schoolyear', $schoolyear], ['subject_id', $subject_id]])
             ->first()->units;
 
         return $subject;
@@ -31,7 +31,7 @@ class Subject extends Model
         $user_id = $user_id != '' ? $user_id : AuthUser()->id;
         $schoolyear = $schoolyear != '' ? $schoolyear : getSchoolYear();
 
-        $subjects = Subject::leftJoin('subjects_user', 'subjects_user.subject_id', 'subjects.subject_id')
+        $subjects = Subject::join('subjects_user', 'subjects_user.subject_id', 'subjects.subject_id')
             ->where([['user_id', $user_id], ['schoolyear', $schoolyear]])
             ->orWhere([['user2_id', $user_id], ['schoolyear', $schoolyear]])
             ->orderBy('semester', 'ASC')
@@ -40,9 +40,9 @@ class Subject extends Model
 
         $subjectList = [];
         foreach ($subjects as $subject):
-            if ($subject->gradelevel <= 10):
+            if ($subject->gradelevel >= 1 and $subject->gradelevel <= 10):
                 $subjectList['subjects'][$subject->subject_id] = $subject;
-            elseif ($subject->gradelevel >= 11):
+            elseif ($subject->gradelevel >= 11 and $subject->gradelevel <= 12):
                 $subjectList['subjects_seniorhigh'][$subject->semester][$subject->subject_id] = $subject;
             endif;
         endforeach;
@@ -66,7 +66,7 @@ class Subject extends Model
         $subjectList = [];
 
         foreach ($subjects as $subject):
-            $subjectList[$subject->gradelevel . $subject->section][$subject->subjectname] = $subject;
+            $subjectList[$subject->gradelevel][$subject->subjectname] = $subject;
         endforeach;
 
         return $subjectList;
@@ -83,17 +83,29 @@ class Subject extends Model
         return $gradelevels;
     }//For Report Card
 
-    public function byGradeLevelAndSection($gradelevel)
+    public function byGradeLevelAndSection($gradelevel, $section = "", $semester = "")
     {
         $schoolyear = getSchoolYear();
-
-        $subjects = Subject::where([
+        $query = [
             ['subjects.gradelevel', $gradelevel],
             ['subjects_user.schoolyear', $schoolyear]
-        ])
+        ];
+
+        if ($semester != ""):
+            array_push($query, ["semester", $semester]);
+        endif;
+
+        if ($section != ""):
+            array_push($query, ["section", $section]);
+        else:
+            array_push($query, ["section", ""]);
+        endif;
+
+        $subjects = Subject::where($query)
             ->leftJoin('subjects_user', 'subjects_user.subject_id', 'subjects.subject_id')
             ->leftJoin('users', 'users.id', 'subjects_user.user_id')
             ->select('subjects.*', 'subjects_user.*', 'users.lastname', 'users.firstname', 'users.middlename', 'users.suffix', 'users.id', 'users.title')
+            ->orderBy('subjects.subjectname')
             ->get();
 
         return $subjects;

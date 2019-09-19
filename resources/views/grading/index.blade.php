@@ -64,7 +64,7 @@
         <div class="card-content">
             <div class="card-body">
                 @php($schoolyear = getSchoolYear())
-                @if(isset($list[$current_GradeLevel]))
+                @if(isset($subjects[$current_GradeLevel]))
                     <form action="{{ route('subject.mass.update', $current_GradeLevel) }}"
                           method="POST">
                         @csrf

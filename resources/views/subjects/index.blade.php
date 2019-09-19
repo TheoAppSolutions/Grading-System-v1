@@ -70,12 +70,11 @@
                     </ul>
                 </div>
             </div>
-
         </div>
         <div class="card-content">
             <div class="card-body">
                 @php($schoolyear = getSchoolYear())
-                @if(isset($list[$current_GradeLevel]))
+                @if(isset($subjects[$current_GradeLevel]))
                     <form action="{{ route('subject.mass.update', $current_GradeLevel) }}"
                           method="POST">
                         @csrf
@@ -92,8 +91,8 @@
             </div>
         </div>
     </div>
-    @include('_layouts.modal')
 
+    @include('_layouts.modal')
 @endsection
 
 @push('js')

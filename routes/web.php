@@ -9,8 +9,8 @@ Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout');
 
 /*----------RESOURCE LINKS----------------------------------------------------------------------------------------*/
-Route::resource('student', 'StudentsController')->except('destroy');
-Route::resource('subject', 'SubjectsController')->except('destroy');
+Route::resource('student', 'StudentsController');
+Route::resource('subject', 'SubjectsController');
 Route::resource('user', 'UsersController')->except('destroy');
 
 /*----------JSON API LINKS----------------------------------------------------------------------------------------*/
@@ -169,3 +169,5 @@ Route::get('admin/grades', 'GradesController@index')->name('grading.index');
 Route::get('image.editor', 'FilesController@image_editor')->name('image.editor');
 
 Route::get('test', 'HomeController@test');
+
+Route::patch('section/students', 'SectionsController@update')->name('student.sections.update');

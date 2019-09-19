@@ -6,10 +6,29 @@
     "address2": "Country"
   },
   "function": {
-    "import": true,
-    "type": true
+    "import": false,
+    "type": false,
+    "section": false
   },
-  "quarter.term": "Quarter",
+  "student": {
+    "student.lrn": false,
+    "pre.school": false,
+    "senior.high.school": false,
+    "section": {
+      "1": "Andrew",
+      "2": "Peter"
+    },
+    "strands": {
+      "1": "ABM",
+      "2": "STEM",
+      "3": "HUMSS"
+    }
+  },
+  "card": {
+    "decimal.point": 2,
+    "passing.grade": 75
+  },
+  "quarter.term": "Term",
   "attendance.type": "Term",
   "attendance.count": 4,
   "template": {

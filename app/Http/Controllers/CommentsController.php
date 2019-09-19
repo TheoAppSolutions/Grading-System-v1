@@ -20,6 +20,7 @@ class CommentsController extends Controller
             ['student_id', $student_id],
             ['schoolyear', $schoolyear]
         ])->first();
+
         if ($comments):
             $comments->comments = json_decode($comments->comments);
         endif;

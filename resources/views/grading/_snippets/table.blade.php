@@ -54,7 +54,12 @@ $fields = ['final', 'effort', 'deportment'];
                 <input type="hidden" name="grades[{{$loop->index}}][student_id]" value="{{ $student->student_id }}">
 
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>
+                        <input type="hidden" name="grades[{{$loop->index}}][student_id]"
+                               value="{{ $student->student_id }}">
+                        {{ $loop->iteration }}
+                    </td>
+
                     <td>
                         <img src="{{ student_image($student->student_id) }}"
                              style="height: 50px;width:50px;" onclick="$('#img-responsive').attr('src',this.src);"

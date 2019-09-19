@@ -99,11 +99,6 @@ class Grade extends Model
                 ['grades.schoolyear', $schoolyear],
                 ['subjects_user.schoolyear', $schoolyear]
             ])
-            ->orWhere([
-                ['grades.student_id', $student_id],
-                ['grades.schoolyear', $schoolyear],
-                ['subjects_user.schoolyear', $schoolyear]
-            ])
             ->select('subjectname',
                 'gradelevel',
                 'users.title',
@@ -120,6 +115,7 @@ class Grade extends Model
                 'students.firstname as StudFirstname',
                 'students.student_id',
                 'students.gender')
+            ->orderBy('subjects.subjectname')
             ->get();
 
         foreach ($records as $record) :
@@ -131,6 +127,7 @@ class Grade extends Model
                 if ($record->deportment > 0) :
                     $gradeset["deportment"][$record->quarter]["$record->subjectname"] = $record->deportment > 0 ? $record->deportment : '';
                 endif;
+                $gradeset["$record->subjectname"]["teacher"] = $record->title . $record->firstname . ' ' . $record->lastname;
                 $gradeset["$record->subjectname"][$record->quarter]["midquarter"] = $record->midquarter > 0 ? $record->midquarter : '';
                 $gradeset["$record->subjectname"][$record->quarter]["final"] = $record->final > 0 ? round($record->final) : '';
                 $gradeset["$record->subjectname"][$record->quarter]["rawfinal"] = $record->final > 0 ? $record->final : '';
@@ -144,9 +141,9 @@ class Grade extends Model
             endif;
         endforeach;
 
-        $subjectList = Subject::byLevel($student->gradelevel);
-
         if (isset($gradeset["student_id"])): //If no records in the grades database then do not execute computations
+            $subjectList = Subject::byLevel($student->gradelevel);
+
             $startCounter = 1;
             $endCounter = 4;
             $semester = request('semester') == null ? 1 : request('semester');
@@ -162,7 +159,7 @@ class Grade extends Model
             $gradeset = Formula::getDeportmentAverage($gradeset, $startCounter, $endCounter);
             $gradeset = Subject::getExcludedSubjects($gradeset);
         endif;
-        
+
         return $gradeset;
     }//For Report Cards
 }

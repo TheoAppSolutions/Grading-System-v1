@@ -15,13 +15,14 @@
 
         <tbody>
         @php($lastTeacher = '')
-        @foreach($list[$gradelevel] as $subject)
+        @foreach($subjects[$gradelevel] as $subject)
             @if(!isset($user_list[$subject->subject_id]["user_id"]))
                 @php($user_list[$subject->subject_id]["user_id"] = '')
             @endif
             @if(!isset($user_list[$subject->subject_id]["user2_id"]))
                 @php($user_list[$subject->subject_id]["user2_id"] = '')
             @endif
+
             <tr>
                 <td class="p-1">{{ $subject->subject_id }}</td>
                 <td class="p-1">{{ $subject->subjecttitle }}</td>
@@ -55,10 +56,10 @@
                                 <option value="{{ $user->id }}"
                                 @if ($user_list[$subject->subject_id]["user2_id"]==$user->id)
                                     {!! 'selected' !!}
-                                            @php($selected = $user->id)
-                                        @else
+                                    @php($selected = $user->id)
+                                @else
                                     {!! '' !!}
-                                        @endif
+                                @endif
                                 >{{ $user->lastname }}
                                     {{ isset($user->lastname) ? ',' : '' }} {{ $user->firstname }}</option>
                             @endif
@@ -72,15 +73,21 @@
                            value="{{ $units[$subject->subject_id]['unit'] ?? 0 }}">
                 </td>
                 <td class="p-1">
-                    <a href="{{ route('subject.show', $subject->subject_id) }}" title="Edit" class="btn btn-primary"><i
-                                class="ft-edit-2"></i></a>
+                    <a href="{{ route('subject.show', $subject->subject_id) }}" title="Edit"
+                       class="btn btn-primary">
+                        <i class="ft-edit-2"></i>
+                    </a>
                     @if ($user_list[$subject->subject_id]["user_id"] != "")
                         <a href="{{ route('report.subject', [$subject->subject_id,'schoolyear='.$schoolyear]) }}"
-                           target="_blank" title="Summary" class="btn btn-warning"><i class="ft ft-file-text"></i></a>
+                           target="_blank" title="Summary" class="btn btn-warning">
+                            <i class="ft ft-file-text"></i>
+                        </a>
 
                         <a href="#" title="Exclude Student" class="btn btn-danger" data-target='#modal'
-                           data-toggle="modal" onclick="loadModal('Student exclude list for {{ $subject->subjectname }}',
-                                '{{ route('exclude', $subject->subject_id) }}')"><i class="ft-user-plus"></i></a>
+                           data-toggle="modal"
+                           onclick="loadModal('Student exclude list for {{ $subject->subjectname }}',
+                                   '{{ route('exclude', $subject->subject_id) }}')"><i class="ft-user-plus"></i>
+                        </a>
                     @endif
                 </td>
             </tr>
@@ -99,4 +106,3 @@
         </tfoot>
     </table>
 </div>
-{{--TODO--}}
