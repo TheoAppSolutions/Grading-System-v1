@@ -36,7 +36,7 @@ class AdminController extends Controller
             $homeroom->save();
         endforeach;
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Homeroom Updated Successfully',
         ]);
@@ -90,7 +90,7 @@ class AdminController extends Controller
             endif;
         endforeach;
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Updated Successfully',
         ]);

@@ -63,7 +63,7 @@ class SettingsController extends Controller
         Artisan::call("debugbar:clear");
         Artisan::call("optimize:clear");
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Clear Cache Successfully',
         ]);

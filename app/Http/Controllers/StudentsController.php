@@ -122,7 +122,7 @@ class StudentsController extends Controller
             $request->avatar->storeAs('students', $request->student_id . '.jpg');
         }
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Student Saved Successfully',
         ]);
@@ -217,7 +217,7 @@ class StudentsController extends Controller
             $this->image_resize($request->file('avatar'), $id);
         endif;
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Student Updated Successfully',
         ]);

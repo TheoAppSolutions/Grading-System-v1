@@ -71,14 +71,14 @@ class PasswordController extends Controller
         $user = AuthUser();
 
         if (!Hash::check($old_password, $user->password)):
-            notify()->flash('Error!', 'error', [
+            notify('Error!', 'error', [
                 'timer' => 3000,
                 'text' => 'Password does not match in the database records',
             ]);
 
             return back();
         elseif ($old_password == $new_password):
-            notify()->flash('Error!', 'error', [
+            notify('Error!', 'error', [
                 'timer' => 3000,
                 'text' => 'Current password and new password should not be the same',
             ]);
@@ -90,7 +90,7 @@ class PasswordController extends Controller
             "password" => bcrypt($new_password)
         ]);
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Password Updated!',
         ]);

@@ -53,7 +53,7 @@ class UsersController extends Controller
             'email' => $validate['email']
         ]);
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'User Submitted Successfully',
         ]);
@@ -70,7 +70,7 @@ class UsersController extends Controller
     {
         $checker = User::where('id', $id)->first();
         if (!$checker):
-            notify()->flash('Error!', 'error', [
+            notify('Error!', 'error', [
                 'timer' => 3000,
                 'text' => 'No Record Found!',
             ]);
@@ -92,7 +92,7 @@ class UsersController extends Controller
 
         if (!$access):
             if ($id != $Auth_id):
-                notify()->flash('Error!', 'error', [
+                notify('Error!', 'error', [
                     'timer' => 3000,
                     'text' => 'Unauthorized action.',
                 ]);
@@ -136,7 +136,7 @@ class UsersController extends Controller
             $this->image_resize($request->file('avatar'), $id);
         endif;
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Updated Successfully',
         ]);

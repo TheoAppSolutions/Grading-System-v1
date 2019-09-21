@@ -50,7 +50,7 @@ class OfficeController extends Controller
 
         session()->forget('homeroom');
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Homeroom Updated Successfully',
         ]);
@@ -71,7 +71,7 @@ class OfficeController extends Controller
 
         SchoolYear::where("schoolyear", $request->schoolyear)->update(["school_days" => json_encode($array)]);
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'School Days Updated Successfully',
         ]);

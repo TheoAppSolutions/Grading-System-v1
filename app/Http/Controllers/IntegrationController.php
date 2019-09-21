@@ -35,14 +35,14 @@ class IntegrationController extends Controller
             $schoolyear->days_settings = $request->days_settings;
             $schoolyear->save();
 
-            notify()->flash('Success!', 'success', [
+            notify('Success!', 'success', [
                 'timer' => 3000,
                 'text' => 'Welcome!',
             ]);
 
             return redirect('home');
         else:
-            notify()->flash('Error!', 'warning', [
+            notify('Error!', 'warning', [
                 'timer' => 3000,
                 'text' => 'Admin Password Incorrect!',
             ]);
@@ -262,7 +262,7 @@ class IntegrationController extends Controller
         Artisan::call("debugbar:clear");
         Artisan::call("optimize:clear");
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Clear Cache Successfully',
         ]);

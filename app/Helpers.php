@@ -80,7 +80,7 @@ function getSubjects($id)
         if (isset($subjects['subjects'])):
             $subjects['has_subject'] = true;
         endif;
-    endif  ;
+    endif;
 
     return $subjects;
 }
@@ -501,4 +501,16 @@ function returnforCard($row)
             break;
     endswitch;
     return $return;
+}
+
+function notify($message, $type, $option = [])
+{
+    session()->flash("notify", "true");
+
+    session()->flash("notify.message", $message);
+    session()->flash("notify.type", $type);
+
+    foreach ($option as $key => $value):
+        session()->flash("notify.option.".$key, $value);
+    endforeach;
 }

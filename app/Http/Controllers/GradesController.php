@@ -53,7 +53,7 @@ class GradesController extends Controller
             $subject->gradelevel;
             $this->authorize('own-subject', $subject);
         } catch (\Exception $e) {
-            notify()->flash('Error!', 'warning', [
+            notify('Error!', 'warning', [
                 'timer' => 3000,
                 'text' => 'Invalid School Year ' . $schoolyear . ' ',
             ]);
@@ -198,7 +198,7 @@ class GradesController extends Controller
 
         session()->flash('currentQuarter', $quarter);
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Grades Submitted Successfully' . $send,
         ]);
@@ -270,7 +270,7 @@ class GradesController extends Controller
         session()->flash('import', $import);
         session()->flash('currentQuarter', $quarter);
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Grades Successfully Imported',
         ]);

@@ -38,7 +38,7 @@ class SchoolYearController extends Controller
                 "card_template" => $request->card_template
             ]);
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Updated Successfully',
         ]);
@@ -164,7 +164,7 @@ class SchoolYearController extends Controller
             ]);
         endif;*/
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Months Updated Successfully',
         ]);

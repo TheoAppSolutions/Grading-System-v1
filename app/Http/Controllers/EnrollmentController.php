@@ -140,7 +140,7 @@ class EnrollmentController extends Controller
         endforeach;
 
         if (count($errors)):
-            notify()->flash('Success w/ errors!', 'warning', [
+            notify('Success w/ errors!', 'warning', [
                 'timer' => 3000,
                 'text' => 'Some Students Imported Successfully',
             ]);
@@ -148,7 +148,7 @@ class EnrollmentController extends Controller
             return back()->withErrors($errors);
         endif;
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Students Imported Successfully',
         ]);

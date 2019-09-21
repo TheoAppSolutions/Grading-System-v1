@@ -78,7 +78,7 @@ class SubjectsController extends Controller
             'schoolyear' => getSchoolYear()
         ]);
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Subject Submitted Successfully',
         ]);
@@ -155,7 +155,7 @@ class SubjectsController extends Controller
         Units::where('subject_id', $id)->delete();
         \DB::table('subjects_user')->where('subject_id', $id)->delete();
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Subject Removed Successfully',
         ]);
@@ -224,7 +224,7 @@ class SubjectsController extends Controller
 
         endforeach;
 
-        notify()->flash('Success!', 'success', [
+        notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Subject Updated Successfully',
         ]);

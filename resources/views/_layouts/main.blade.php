@@ -113,14 +113,14 @@
 
 <!-- END PAGE LEVEL JS-->
 
-@if (notify()->ready())
+@if (session("notify"))
     <script>
         swal({
-            title: "{!! notify()->message() !!}",
-            type: "{!! notify()->type() !!}",
-            text: "{!! notify()->option('text') !!}",
-            @if (notify()->option('timer'))
-            timer: {{ notify()->option('timer') }},
+            title: "{!! session("notify.message") !!}",
+            type: "{!! session("notify.type") !!}",
+            text: "{!! session("notify.option.text") !!}",
+            @if (session("notify.option.timer"))
+            timer: {{ session("notify.option.timer") }},
             button: true
             @endif
         });
