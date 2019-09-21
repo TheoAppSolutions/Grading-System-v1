@@ -31,6 +31,8 @@
           type="text/css">
     <link rel="stylesheet" href="{{ url('/app-assets/css/core/colors/palette-gradient.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url('/app-assets/fonts/simple-line-icons/style.css') }}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ url("/app-assets/vendors/css/extensions/toastr.css") }}">
+    <link rel="stylesheet" type="text/css" href="{{ url("/app-assets/css/plugins/extensions/toastr.css") }}">
     <!-- END Page Level CSS-->
 
     <!-- BEGIN Custom CSS-->
@@ -106,6 +108,10 @@
 <!-- END MODERN JS-->
 
 <!-- BEGIN PAGE LEVEL JS-->
+<script src="{{ url("/app-assets/vendors/js/extensions/toastr.min.js") }}" type="text/javascript"></script>
+<script src="{{ url("/app-assets/js/scripts/extensions/toastr.js") }}" type="text/javascript"></script>
+<script src="{{ url('/app-assets/vendors/js/forms/repeater/jquery.repeater.min.js') }}"
+        type="text/javascript"></script>
 <script src="{{ url('/app-assets/js/scripts/forms/select/form-select2.js') }}" type="text/javascript"></script>
 <script src="{{ url('/assets/js/scripts.js?') . time() }}"></script>
 @stack('js')

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dfb46a1ce96d7c9b3cc9f95bbc0af78e",
+    "content-hash": "33f0e7529b422e0130078d6ec6d94dec",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -4534,6 +4534,57 @@
             "time": "2019-09-20T09:37:06+00:00"
         },
         {
+            "name": "facade/ignition-code-editor",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facade/ignition-code-editor.git",
+                "reference": "8bb704424bfe20c3c1f6552ba4ffde5883be8d51"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facade/ignition-code-editor/zipball/8bb704424bfe20c3c1f6552ba4ffde5883be8d51",
+                "reference": "8bb704424bfe20c3c1f6552ba4ffde5883be8d51",
+                "shasum": ""
+            },
+            "require": {
+                "facade/ignition": "~1.0",
+                "illuminate/support": " 5.8.*|^6.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Facade\\CodeEditor\\CodeEditorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Facade\\CodeEditor\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A code editor for Ignition",
+            "homepage": "https://github.com/facade/code-editor",
+            "keywords": [
+                "editor",
+                "ignition",
+                "laravel"
+            ],
+            "time": "2019-08-31T00:55:59+00:00"
+        },
+        {
             "name": "facade/ignition-contracts",
             "version": "1.0.0",
             "source": {
@@ -4576,6 +4627,67 @@
                 "ignition"
             ],
             "time": "2019-08-30T14:06:08+00:00"
+        },
+        {
+            "name": "facade/ignition-tinker-tab",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facade/ignition-tinker-tab.git",
+                "reference": "e90033a29820a90865153af959cac53f309d3a7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facade/ignition-tinker-tab/zipball/e90033a29820a90865153af959cac53f309d3a7c",
+                "reference": "e90033a29820a90865153af959cac53f309d3a7c",
+                "shasum": ""
+            },
+            "require": {
+                "facade/ignition": "^1.0",
+                "illuminate/support": "^5.8|^6.0",
+                "laravel/tinker": "^1.0",
+                "php": "^7.2",
+                "spatie/laravel-web-tinker": "^1.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Facade\\IgnitionTinkerTab\\TinkerTabServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Facade\\IgnitionTinkerTab\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Use tinker on the Ignition error page",
+            "homepage": "https://github.com/facade/ignition-tinker-tab",
+            "keywords": [
+                "Tinker",
+                "debug",
+                "development",
+                "facade",
+                "laravel",
+                "web-tinker"
+            ],
+            "time": "2019-08-31T00:54:31+00:00"
         },
         {
             "name": "filp/whoops",
@@ -6464,6 +6576,66 @@
                 "phra"
             ],
             "time": "2015-10-13T18:44:15+00:00"
+        },
+        {
+            "name": "spatie/laravel-web-tinker",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-web-tinker.git",
+                "reference": "412ce5dd94632e44451f0f1627163ff5cec718e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-web-tinker/zipball/412ce5dd94632e44451f0f1627163ff5cec718e0",
+                "reference": "412ce5dd94632e44451f0f1627163ff5cec718e0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.8|^6.0",
+                "laravel/tinker": "^1.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.8|^4.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\WebTinker\\WebTinkerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\WebTinker\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Artisan Tinker in your browser",
+            "homepage": "https://github.com/spatie/laravel-web-tinker",
+            "keywords": [
+                "Tinker",
+                "debug",
+                "development",
+                "laravel",
+                "spatie",
+                "web-tinker"
+            ],
+            "time": "2019-09-04T11:12:27+00:00"
         },
         {
             "name": "symfony/filesystem",

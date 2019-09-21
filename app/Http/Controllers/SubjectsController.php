@@ -360,7 +360,9 @@ class SubjectsController extends Controller
             ['schoolyear', $schoolyear]
         ])->get();
 
-        return view('subjects._modal.exclude', compact('students', 'excluded', 'id'));
+        $type = "modal";
+
+        return view('subjects._modal.exclude', compact('students', 'excluded', 'id', 'type'));
     }
 
     public function excludeSubject(Request $request, $subject_id)

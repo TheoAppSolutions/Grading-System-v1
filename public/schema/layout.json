@@ -39,6 +39,10 @@
     "choices": "choices for template: (midquarter/quarter/both)"
   },
   "gradelevel.category": {
+    "Pre School": {
+      "11": "Jr. Kindy",
+      "12": "Prep"
+    },
     "Lower School": {
       "1": "1",
       "2": "2",
@@ -52,10 +56,6 @@
       "8": "8",
       "9": "9",
       "10": "10"
-    },
-    "Senior High School": {
-      "11": "11",
-      "12": "12"
     }
   },
   "comments.quarter": {

@@ -62,7 +62,7 @@
                                     <label class="col-md-3 label-control"
                                            for="gradelevel">Grade Level</label>
                                     <div class="col-md-9">
-                                        <select class="select2-placeholder form-control" id="gradelevel"
+                                        <select class="select2-placeholder form-control hide-search" id="gradelevel"
                                                 data-placeholder="Subject Grade Level" name="gradelevel" required
                                                 title="Subject Grade Level">
                                                 <option value=""> </option>
@@ -85,7 +85,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 label-control" for="teacher1">Teacher 1</label>
                                     <div class="col-md-9">
-                                        <select class="form-control" title="Subject Teacher" name="teacher1" id="teacher1" required>
+                                        <select class="select2-placeholder form-control hide-search" title="Subject Teacher" name="teacher1" id="teacher1" required>
                                             <option value=""> </option>
                                             @php($lastID = "")
                                             @foreach($users as $user)
@@ -101,7 +101,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 label-control" for="teacher2">Teacher 2</label>
                                     <div class="col-md-9">
-                                        <select class="form-control" title="Subject Teacher" name="teacher2" id="teacher2">
+                                        <select class="select2-placeholder form-control hide-search" title="Subject Teacher" name="teacher2" id="teacher2">
                                             <option value=""> </option>
                                             @php($lastID = "")
                                             @foreach($users as $user)

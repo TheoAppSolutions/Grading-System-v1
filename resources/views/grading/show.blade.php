@@ -97,7 +97,7 @@
                             @elseif($quarter == 2 or $quarter == 4)
                                 <?php $type = 'AfterQuarter'; ?>
                             @endif
-                            @include('grading._snippets.table', ['quarter'=>$quarter])
+                            @include('grading._snippets.table', compact('$quarter', 'type'))
                         </div>
                     @endfor
                 </div>

@@ -213,7 +213,7 @@
                                     <div class="card border-primary">
                                         <div class="card-content">
                                             <div class="card-body">
-                                                @include('subjects._modal.exclude', ['students'=>$students, 'excluded'=>$excluded, 'id'=>$subject->subject_id])
+                                                @include('subjects._modal.exclude', ['students'=>$students, 'excluded'=>$excluded, 'id'=>$subject->subject_id, 'type'=>'form'])
                                             </div>
                                         </div>
                                     </div>
