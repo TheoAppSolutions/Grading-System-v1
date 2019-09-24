@@ -76,10 +76,8 @@ function getSubjects($id)
     $subjects = Subject::byUserId($id, getSchoolYear());
     $subjects['has_subject'] = false;
 
-    if (count($subjects)):
-        if (isset($subjects['subjects'])):
-            $subjects['has_subject'] = true;
-        endif;
+    if (isset($subjects['subjects'])):
+        $subjects['has_subject'] = true;
     endif;
 
     return $subjects;
@@ -195,69 +193,6 @@ function getClient()
 function checkMark()
 {
     return "<img src='" . url('checkmark.png') . "' style='height:20px;width:20px;'/>";
-}
-
-function returnForReportCard($row)
-{
-    $return = '';
-    switch ($row):
-        case 0:
-            $return = '<td class=blank></td>
-                <td colspan=2 class=blank>A-</td>
-                <td colspan=5 class=blank>96 - 95</td>
-                <td colspan=2 class=blank>C-</td>
-                <td colspan=6 class=blank>82 - 80</td>';
-            break;
-
-        case 1:
-            $return = '<td class=blank></td>
-                <td colspan=2 class=blank>B+</td>
-                <td colspan=5 class=blank>94 - 93</td>
-                <td colspan=2 class=blank>D</td>
-                <td colspan=6 class=blank>79 - 76</td>';
-            break;
-
-        case 2:
-            $return = '<td class=blank></td>
-                <td colspan=2 class=blank>B-</td>
-                <td colspan=5 class=blank>90 - 89</td>
-                <td colspan=2 class=blank>D-</td>
-                <td colspan=6 class=blank>75</td>';
-            break;
-        case 3:
-            $return = '<td class=blank></td>
-                <td colspan=2 class=blank>B</td>
-                <td colspan=5 class=blank>92 - 91</td>
-                <td colspan=2 class=blank>F</td>
-                <td colspan=6 class=blank>74 - below</td>';
-            break;
-        case 4:
-            $return = '<td class=blank></td>
-                <td colspan=14 class=centerlabels>EFFORT GRADE</td>';
-            break;
-        case 5:
-            $return = '<td class=blank></td>
-                <td colspan=14 class=blank>5 - Exerting maximum effort</td>';
-            break;
-        case 6:
-            $return = '<td class=blank></td>
-                <td colspan=14 class=blank>4 - Exerting above satisfactory effort</td>';
-            break;
-        case 7:
-            $return = '<td class=blank></td>
-                <td colspan=14 class=blank>3 - Exerting satisfactory effort</td>';
-            break;
-        case 8:
-            $return = '<td class=blank></td>
-                <td colspan=14 class=blank>2 - Exerting below satisfactory effort</td>';
-            break;
-        case 9:
-            $return = '<td class=blank></td>
-                <td colspan=14 class=blank>1 - Exerting minimum effort</td>';
-            break;
-    endswitch;
-
-    return $return;
 }
 
 function getLastStudentID()
@@ -511,6 +446,6 @@ function notify($message, $type, $option = [])
     session()->flash("notify.type", $type);
 
     foreach ($option as $key => $value):
-        session()->flash("notify.option.".$key, $value);
+        session()->flash("notify.option." . $key, $value);
     endforeach;
 }

@@ -40,11 +40,7 @@ class Subject extends Model
 
         $subjectList = [];
         foreach ($subjects as $subject):
-            if ($subject->gradelevel >= 1 and $subject->gradelevel <= 10):
-                $subjectList['subjects'][$subject->subject_id] = $subject;
-            elseif ($subject->gradelevel >= 11 and $subject->gradelevel <= 12):
-                $subjectList['subjects_seniorhigh'][$subject->semester][$subject->subject_id] = $subject;
-            endif;
+            $subjectList['subjects'][$subject->subject_id] = $subject;
         endforeach;
 
         return $subjectList;
