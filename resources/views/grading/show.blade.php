@@ -8,19 +8,33 @@
     {{ $subject->subjecttitle }}
 @endsection
 
-@php($type = request('type') != "" ? request('type') : "MidQuarter")
 @php($comment_show = false)
-
-@php($schema = schema("comments.midquarter"))
-@foreach($schema as $title => $item)
-    @if($subject->subjectname == $title)
-        @php($comment_show = true)
-    @endif
-@endforeach
 
 @section('content-breadcrumb')
     Grade: {{ $subject->gradelevel }}
 @endsection
+
+@php($type = request('type') != "" ? request('type') : "MidQuarter")
+@php($comment_show = false)
+
+@if ($subject->gradelevel >= 1 and $subject->gradelevel <= 6)
+    @php($schema = schema("comments.mid.lower.school"))
+    @foreach($schema as $title => $item)
+        @if($subject->subjectname == $title)
+            @php($comment_show = true)
+        @endif
+    @endforeach
+@elseif ($subject->gradelevel >= 7 and $subject->gradelevel <= 10)
+    @php($schema = schema("comments.mid.upper.school"))
+    @foreach($schema as $title => $item)
+        @if($subject->subjectname == $title)
+            @php($comment_show = true)
+        @endif
+    @endforeach
+@elseif ($subject->gradelevel >= 11 and $subject->gradelevel <= 12)
+    @php($schema = schema("comments.mid.senior.high"))
+    @php($comment_show = true)
+@endif
 
 @section('content-body')
     <section class="row">
@@ -79,7 +93,7 @@
                                     </div>
                                 @endif
                                 <div class="pull-right">
-                                    <a href="{{ route('report.summary.subject', $subject->subject_id) }}"
+                                    <a href="{{ route('report.summary.subject', $subject->subject_id) . '?type='.$type }}"
                                        class="btn btn-outline-success" target="_blank">
                                         <i class="la la-file"></i>
                                         Summary
@@ -90,16 +104,21 @@
                     </div>
                 </div>
                 <div class="tab-content p-1">
-                    @for($quarter = 1; $quarter <= 4; $quarter++)
-                        <div role="tabpanel" class="tab-pane {{ $quarter == 1 ? 'active' : '' }}" id="{{ $quarter }}">
-                            @if($quarter == 1 or $quarter == 3)
-                                <?php $type = 'MidQuarter'; ?>
-                            @elseif($quarter == 2 or $quarter == 4)
-                                <?php $type = 'AfterQuarter'; ?>
-                            @endif
-                            @include('grading._snippets.table', compact('$quarter', 'type'))
-                        </div>
-                    @endfor
+                    @if (schema('student')->{"senior.high.school"} and $subject->gradelevel >= 11 and $subject->gradelevel >= 12)
+                        @for($quarter = 1; $quarter <= 2; $quarter++)
+                            <div role="tabpanel" class="tab-pane {{ $quarter == 1 ? 'active' : '' }}"
+                                 id="{{ $quarter }}">
+                                @include('grading._snippets.table', ['quarter'=>$quarter, 'type'=>$type, 'comment_show'=>$comment_show, 'comments'=>$comments])
+                            </div>
+                        @endfor
+                    @else
+                        @for($quarter = 1; $quarter <= 4; $quarter++)
+                            <div role="tabpanel" class="tab-pane {{ $quarter == 1 ? 'active' : '' }}"
+                                 id="{{ $quarter }}">
+                                @include('grading._snippets.table', ['quarter'=>$quarter, 'type'=>$type, 'comment_show'=>$comment_show])
+                            </div>
+                        @endfor
+                    @endif
                 </div>
             </div>
         </div>

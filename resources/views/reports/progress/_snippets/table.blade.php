@@ -102,9 +102,9 @@
                         <td class="text-center">
                             <div class="btn-group">
                                 <button data-target='#modal' data-toggle="modal" class="btn btn-danger"
-                                        title="Comments"
+                                        title="Deportment Grade"
                                         onclick="loadModal('Deportment Grade','{{ route('deportment.show', $student->student_id) }}')">
-                                    <i class="la la-user" title="Comments" data-toggle="tooltip"
+                                    <i class="la la-user" title="Deportment Grade" data-toggle="tooltip"
                                        data-placement="bottom"></i>
                                 </button>
                             </div>
