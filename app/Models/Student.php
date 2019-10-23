@@ -138,7 +138,7 @@ class Student extends Model
                 $graduates = Student::getStudents("graduates", "all", true);
                 $inactive = Student::getStudents("inactive", "all", true);
 
-                $enrolled = array_merge($enrolled, $inactive, $graduates);
+                $search = array_merge($enrolled, $inactive, $graduates);
 
                 $where = $gradelevel == "all" ? [['enrollment.schoolyear', '!=', $schoolyear], ['students.active', 1]] : [
                     ['enrollment.schoolyear', '!=', $schoolyear],
@@ -152,7 +152,7 @@ class Student extends Model
                 $students = Student::join('students_info', 'students_info.student_id', 'students.student_id')
                     ->join('enrollment', 'enrollment.student_id', 'students.student_id')
                     ->where($where)
-                    ->whereNotIn('students.student_id', $enrolled)
+                    ->whereNotIn('students.student_id', $search)
                     ->orderBy('gender', 'DESC')
                     ->orderBy('lastname', 'ASC')
                     ->orderBy('schoolyear', 'DESC')

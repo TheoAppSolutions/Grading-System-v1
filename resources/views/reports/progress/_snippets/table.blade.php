@@ -69,7 +69,8 @@
                                  style="height: 50px;width:50px;cursor: pointer;" class="img-rounded center-block"
                                  data-toggle="modal"
                                  data-target="#myModal" onclick="$('#img-responsive').attr('src',this.src);">
-                            {{ $student->lastname . ', ' . $student->firstname }}</td>
+                            {{ $student->lastname . ', ' . $student->firstname }}
+                        </td>
                         <td class="text-center">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
@@ -81,7 +82,8 @@
                                     @foreach($schoolyears as $year)
                                         <a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                            href="{{ route('report.student', ['quarter',$student->student_id,'term=4','schoolyear='.$year->schoolyear]) }}">
-                                            {{ $year->schoolyear }} <span class='fa fa-file-pdf-o pull-right'></span>
+                                            {{ $year->schoolyear }} <span
+                                                    class='fa fa-file-pdf-o pull-right'></span>
                                         </a>
                                     @endforeach
                                 </div>
@@ -98,6 +100,14 @@
                                  data-target="#myModal" onclick="$('#img-responsive').attr('src',this.src);">
                             {{ $student->lastname . ', ' . $student->firstname }}</td>
                         <td class="text-center">
+                            <div class="btn-group">
+                                <button data-target='#modal' data-toggle="modal" class="btn btn-danger"
+                                        title="Comments"
+                                        onclick="loadModal('Deportment Grade','{{ route('deportment.show', $student->student_id) }}')">
+                                    <i class="la la-user" title="Comments" data-toggle="tooltip"
+                                       data-placement="bottom"></i>
+                                </button>
+                            </div>
                             <div class="btn-group">
                                 <button data-target='#modal' data-toggle="modal" class="btn btn-primary"
                                         title="Comments"

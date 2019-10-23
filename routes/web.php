@@ -114,6 +114,11 @@ Route::prefix('attendance')->group(function () {
     Route::post('quarter/{student_id}', 'HomeroomController@store_attendance')->name('attendance.save');
 });
 
+Route::prefix('homeroom')->group(function () {
+    Route::get('deportment/{student_id}', 'HomeroomController@show_deportment')->name('deportment.show');
+    Route::post('deportment/{student_id}', 'HomeroomController@store_deportment')->name('deportment.save');
+});
+
 /*----------LINKS FOR PDF GENERATOR-------------------------------------------------------------------------------*/
 Route::prefix('report')->group(function () {
     Route::get('student/{type}/{student_id}', 'Reports\ReportController@report_by_student')->name('report.student');

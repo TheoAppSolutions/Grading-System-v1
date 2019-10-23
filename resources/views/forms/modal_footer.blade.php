@@ -1,10 +1,10 @@
 <div class="modal-footer">
+    @if($checkbox == 'true')
     <div class="col-1">
-        @if($checkbox == 'true')
             <button type="button" onclick="clearChecked();" class="btn btn-default pull-left">Clear
             </button>
-        @endif
     </div>
+    @endif
     <div class="col-7">
         @if($prev != '')
             <button class='btn btn-danger text-center' type="button"

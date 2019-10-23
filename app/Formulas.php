@@ -243,6 +243,9 @@ class Formula extends Model
         for ($quarter = $startCounter; $quarter <= $endCounter; $quarter++):
             if (isset($gradeset["deportment"][$quarter]) and $gradeset["deportment"][$quarter] > 0) :
                 $gradeset["deportment"][$quarter] = array_sum($gradeset['deportment'][$quarter]) / count($gradeset['deportment'][$quarter]);
+                $deportment = getDeportmentGrades($gradeset["student_id"]);
+                $gradeset["deportment"][$quarter] = $gradeset["deportment"][$quarter] / $deportment[$quarter];
+
                 $gradeset["rawdeportment"][$quarter] = number_format($gradeset["deportment"][$quarter], 3);
                 $gradeset["deportment"][$quarter] = round($gradeset["deportment"][$quarter]);
             endif;

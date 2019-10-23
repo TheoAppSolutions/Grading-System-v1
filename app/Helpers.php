@@ -129,40 +129,40 @@ function getQuarter()
         $month = date('m', strtotime(now()));
 
         switch ($month):
-            case '1' :
-                $quarter = 1;
-                break;
-            case '2' :
-                $quarter = 1;
-                break;
-            case '3' :
-                $quarter = 1;
-                break;
-            case '4' :
-                $quarter = 2;
-                break;
-            case '5' :
-                $quarter = 2;
-                break;
-            case '6' :
-                $quarter = 2;
-                break;
-            case '7' :
-                $quarter = 3;
-                break;
             case '8' :
-                $quarter = 3;
+                $quarter = 1;
                 break;
             case '9' :
-                $quarter = 3;
+                $quarter = 1;
                 break;
             case '10' :
-                $quarter = 4;
+                $quarter = 1;
                 break;
             case '11' :
-                $quarter = 4;
+                $quarter = 2;
                 break;
             case '12' :
+                $quarter = 2;
+                break;
+            case '1' :
+                $quarter = 3;
+                break;
+            case '2' :
+                $quarter = 3;
+                break;
+            case '3' :
+                $quarter = 4;
+                break;
+            case '4' :
+                $quarter = 4;
+                break;
+            case '5' :
+                $quarter = 4;
+                break;
+            case '6' :
+                $quarter = 4;
+                break;
+            case '7' :
                 $quarter = 4;
                 break;
         endswitch;
@@ -520,4 +520,20 @@ function notify($message, $type, $option = [])
     foreach ($option as $key => $value):
         session()->flash("notify.option.".$key, $value);
     endforeach;
+}
+
+function getDeportmentGrades($student_id) {
+    $schoolyear = getSchoolYear();
+
+    $deportment_single = \App\Models\Deportment::where([
+        ['student_id', $student_id],
+        ['schoolyear', $schoolyear]
+    ])->get();
+    $array = [];
+
+    foreach ($deportment_single as $deportment_item):
+        $array[$deportment_item->quarter] = $deportment_item->deportment;
+    endforeach;
+
+    return $array;
 }

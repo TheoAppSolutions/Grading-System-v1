@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Deportment;
 use App\Models\SchoolYear;
 use App\Models\Subject;
 use Illuminate\Http\Request;
@@ -27,9 +28,16 @@ class HomeroomController extends Controller
     public function show($gradelevel)
     {
         $students = Student::getStudents("enrolled", $gradelevel);
+        $schoolyear = getSchoolYear();
 
         if ($students):
-            return view('reports.progress.show', compact('students', 'gradelevel'));
+            $search = Deportment::where('schoolyear', $schoolyear)->get();
+            $deportment = [];
+            foreach ($search as $item):
+                $deportment[$item->student_id] = $item->deportment;
+            endforeach;
+
+            return view('reports.progress.show', compact('students', 'gradelevel', 'deportment'));
         endif;
         return redirect('/');
     }
@@ -96,6 +104,8 @@ class HomeroomController extends Controller
         $comments->save();
     }
 
+    /*----------------------------------------------------------------*/
+
     public function show_attendance($student_id)
     {
         $schoolyear = getSchoolYear();
@@ -145,5 +155,76 @@ class HomeroomController extends Controller
 
         $attendance->attendance = json_encode($json);
         $attendance->save();
+    }
+
+    /*----------------------------------------------------------------*/
+
+    public function show_deportment($student_id)
+    {
+        $schoolyear = getSchoolYear();
+
+        $deportments = Deportment::where([
+            ['student_id', $student_id],
+            ['schoolyear', $schoolyear]
+        ])->get();
+
+        $array = [];
+
+        if ($deportments):
+            foreach ($deportments as $deportment):
+                $array[$deportment->quarter] = $deportment->deportment;
+            endforeach;
+        endif;
+
+        $student = Student::byStudentID($student_id);
+        $prev = $student->prev;
+        $next = $student->next;
+        $deportment = $array;
+        return view('reports.quarter.deportment', compact('deportment', 'student', 'next', 'prev'));
+
+    }
+
+    public function store_deportment(Request $request, $student_id)
+    {
+        $schoolyear = getSchoolYear();
+        $user_id = \Auth::id();
+        $deportment_scores = $request->deportment;
+
+        for ($quarter = 1; $quarter <= 4; $quarter++):
+            if (isset($deportment_scores[$quarter])):
+                $deportment_single = Deportment::where([
+                    ['student_id', $student_id],
+                    ['schoolyear', $schoolyear],
+                    ['quarter', $quarter]
+                ])->first();
+
+                if ($deportment_single):
+                    Deportment::where([
+                        ['student_id', $student_id],
+                        ['schoolyear', $schoolyear],
+                        ['quarter', $quarter]
+                    ])
+                        ->update([
+                            'deportment' => $deportment_scores[$quarter]
+                        ]);
+                else:
+                    Deportment::insert([
+                        'student_id' => $student_id,
+                        'user_id' => $user_id,
+                        'deportment' => $deportment_scores[$quarter],
+                        'quarter' => $quarter,
+                        'schoolyear' => $schoolyear,
+                    ]);
+                endif;
+            else:
+                Deportment::insert([
+                    'student_id' => $student_id,
+                    'user_id' => $user_id,
+                    'deportment' => $deportment_scores[$quarter],
+                    'quarter' => $quarter,
+                    'schoolyear' => $schoolyear,
+                ]);
+            endif;
+        endfor;
     }
 }

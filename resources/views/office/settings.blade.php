@@ -132,7 +132,7 @@
                                                 </td>
                                                 <td class="p-1">
                                                     <input type="number" name="days[{{ $ctr ?? "" }}]"
-                                                           value="" placeholder=""
+                                                           value="{{ $terms->{"term".$ctr} ?? "" }}" placeholder=""
                                                            class="form-control" step="0.5">
                                                 </td>
                                                 @if ($month == 12)
