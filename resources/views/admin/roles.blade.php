@@ -38,7 +38,7 @@
                                             <select class="select2-placeholder form-control hide-search"
                                                     style="width: 100%;" name="role[Registrar]"
                                                     data-placeholder="School Registrar" title="School Registrar">
-                                                <option value=""> </option>
+                                                <option value="0"></option>
                                                     @php($lastID = "")
                                                     @foreach($users as $user)
                                                         @if($user->lastname != 'ADMIN' and $lastID != $user->id)
@@ -57,7 +57,7 @@
                                             <select class="select2-placeholder form-control hide-search"
                                                     style="width: 100%;" name="role[Secretary]"
                                                     data-placeholder="School Secretary" title="School Secretary">
-                                                <option value=""> </option>
+                                                <option value="0"></option>
                                                     @php($lastID = "")
                                                     @foreach($users as $user)
                                                         @if($user->lastname != 'ADMIN' and $lastID != $user->id)
@@ -76,7 +76,7 @@
                                             <select class="select2-placeholder form-control hide-search"
                                                     style="width: 100%;" name="role[Principal]"
                                                     data-placeholder="School Principal" title="School Principal">
-                                                <option value=""> </option>
+                                                <option value="0"></option>
                                                     @php($lastID = "")
                                                     @foreach($users as $user)
                                                         @if($user->lastname != 'ADMIN' and $lastID != $user->id)

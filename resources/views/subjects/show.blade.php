@@ -213,7 +213,7 @@
                                     <div class="card border-primary">
                                         <div class="card-content">
                                             <div class="card-body">
-                                                @include('subjects._modal.exclude', ['students'=>$students, 'excluded'=>$excluded, 'id'=>$subject->subject_id, 'type'=>'form'])
+                                                @include('subjects._snippets.exclude', ['students'=>$students, 'excluded'=>$excluded, 'id'=>$subject->subject_id])
                                             </div>
                                         </div>
                                     </div>
@@ -225,7 +225,7 @@
                         <button type="submit" class="btn btn-success">
                             <i class="la la-check-square-o"></i> Update
                         </button>
-                        <button type="button" class="btn btn-danger" onclick="$('#destroy').click();">
+                        <button type="button" class="btn btn-danger" onclick="delete_subject();">
                             <i class="la la-trash"></i> Delete
                         </button>
                     </div>
@@ -239,3 +239,23 @@
         </div>
     </div>
 @endsection
+
+@push('js')
+    <script>
+        function delete_subject() {
+            swal.fire({
+                title: "Are you sure?",
+                text: "Delete Subject?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirm",
+            }).then((result) => {
+                if (result.value) {
+                    $('#destroy').click();
+                }
+            }).catch(swal.noop);
+        }
+    </script>
+@endpush

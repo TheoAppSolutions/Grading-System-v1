@@ -112,15 +112,15 @@
                     @if ($user_list[$subject->subject_id]["user_id"] != "")
                         <a href="{{ route('report.subject', [$subject->subject_id,'schoolyear='.$schoolyear]) }}"
                            target="_blank" title="Summary" class="btn btn-warning">
-                            <i
-                                    class="ft ft-file-text"></i>
+                            <i class="ft ft-file-text"></i>
                         </a>
 
-                        <a href="#" title="Exclude Student" class="btn btn-danger" data-target='#modal'
+                        <button type="button" title="Exclude Student" class="btn btn-danger" data-target='#modal'
                            data-toggle="modal"
                            onclick="loadModal('Student exclude list for {{ $subject->subjectname }}',
-                                   '{{ route('exclude', $subject->subject_id) }}')"><i class="ft-user-plus"></i>
-                        </a>
+                                   '{{ route('exclude', $subject->subject_id) }}')">
+                            <i class="ft-user-plus"></i>
+                        </button>
                     @endif
                 </td>
             </tr>

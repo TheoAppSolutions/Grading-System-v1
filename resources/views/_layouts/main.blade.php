@@ -90,6 +90,8 @@
     @include('_layouts.footer')
 </footer>
 
+@routes
+
 <!-- BEGIN VENDOR JS-->
 <script src="{{ url('/app-assets/vendors/js/vendors.min.js') }}" type="text/javascript"></script>
 <!-- END VENDOR JS-->
@@ -113,6 +115,7 @@
 <script src="{{ url('/app-assets/vendors/js/forms/repeater/jquery.repeater.min.js') }}"
         type="text/javascript"></script>
 <script src="{{ url('/app-assets/js/scripts/forms/select/form-select2.js') }}" type="text/javascript"></script>
+
 <script src="{{ url('/assets/js/scripts.js?') . time() }}"></script>
 @stack('js')
 @stack('js-page')
