@@ -22,11 +22,11 @@
                                    href="{{ route('report.grade', ['quarter',$gradelevel,'term=2','schoolyear='.$schoolyear, 'type=quarter']) }}">
                                     Quarter <span class='fa fa-file-pdf-o pull-right'></span>
                                 </a>
-                                <div class="dropdown-divider"></div>
-                                <a style="cursor: pointer;" target="_blank" class="dropdown-item"
+                                {{--<div class="dropdown-divider"></div>--}}
+                                {{--<a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                    href="{{ route('report.grade', ['award',$gradelevel,'term=4','schoolyear='.$schoolyear, 'type=award']) }}">
                                     Award Card <span class='fa fa-file-pdf-o pull-right'></span>
-                                </a>
+                                </a>--}}
                             @elseif ($gradelevel >= 11 and $gradelevel <= 12)
                                 <div class="dropdown-header">1st Semester</div>
                                 <a style="cursor: pointer;" target="_blank" class="dropdown-item"
@@ -47,11 +47,11 @@
                                    href="{{ route('report.grade', ['quarter',$gradelevel,'term=2','schoolyear='.$schoolyear, 'semester=2', 'type=quarter']) }}">
                                     Quarter <span class='fa fa-file-pdf-o pull-right'></span>
                                 </a>
-                                <div class="dropdown-divider"></div>
-                                <a style="cursor: pointer;" target="_blank" class="dropdown-item"
+                                {{--<div class="dropdown-divider"></div>--}}
+                                {{--<a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                    href="{{ route('report.grade', ['award',$gradelevel,'term=4','schoolyear='.$schoolyear, 'type=award']) }}">
                                     Award Card <span class='fa fa-file-pdf-o pull-right'></span>
-                                </a>
+                                </a>--}}
                             @endif
                         </div>
                     </div>
@@ -139,11 +139,11 @@
                                            href="{{ route('report.student', ['quarter',$student->student_id,'term=2','schoolyear='.$schoolyear]) }}">
                                             Quarter <span class='fa fa-file-pdf-o pull-right'></span>
                                         </a>
-                                        <div class="dropdown-divider"></div>
-                                        <a style="cursor: pointer;" target="_blank" class="dropdown-item"
+                                        {{--<div class="dropdown-divider"></div>--}}
+                                        {{--<a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                            href="{{ route('report.student', ['award',$student->student_id,'term=3','schoolyear='.$schoolyear]) }}">
                                             Award Card <span class='fa fa-file-pdf-o pull-right'></span>
-                                        </a>
+                                        </a>--}}
                                     @elseif ($student->gradelevel >= 11 and $student->gradelevel <= 12)
                                         <div class="dropdown-header">1st Semester</div>
                                         <a style="cursor: pointer;" target="_blank" class="dropdown-item"
@@ -164,11 +164,11 @@
                                            href="{{ route('report.student', ['quarter',$student->student_id,'term=2','schoolyear='.$schoolyear, 'semester=2']) }}">
                                             Quarter <span class='fa fa-file-pdf-o pull-right'></span>
                                         </a>
-                                        <div class="dropdown-divider"></div>
-                                        <a style="cursor: pointer;" target="_blank" class="dropdown-item"
+                                        {{--<div class="dropdown-divider"></div>--}}
+                                        {{--<a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                            href="{{ route('report.student', ['award',$student->student_id,'term=3','schoolyear='.$schoolyear]) }}">
                                             Award Card <span class='fa fa-file-pdf-o pull-right'></span>
-                                        </a>
+                                        </a>--}}
                                     @endif
                                 </div>
                             </div>
