@@ -251,22 +251,6 @@
     </tr>{{-- ELECTIVE --}}
     <tr style='mso-height-source:userset;height:18.75pt'>
         <td colspan=16 height=25 class=subjects width=210 style='height:18.75pt;
-  width:160pt'>&nbsp;CHINESE
-        </td>
-        <td colspan=3 class=finalgrade width=40>{{ $grades['CHINESE'][1]['final'] ?? '' }}</td>
-        <td colspan=1 class=finaleffort><span class="effort">{{ $grades['CHINESE'][1]['effort'] ?? '' }}</span></td>
-        <td colspan=3 class=finalgrade width=40>{{ $grades['CHINESE'][2]['final'] ?? '' }}</td>
-        <td colspan=1 class=finaleffort><span class="effort">{{ $grades['CHINESE'][2]['effort'] ?? '' }}</span></td>
-        <td colspan=3 class=finalgrade width=40>{{ $grades['CHINESE'][3]['final'] ?? '' }}</td>
-        <td colspan=1 class=finaleffort><span class="effort">{{ $grades['CHINESE'][3]['effort'] ?? '' }}</span></td>
-        <td colspan=3 class=finalgrade width=40>{{ $grades['CHINESE'][4]['final'] ?? '' }}</td>
-        <td colspan=1 class=finaleffort><span class="effort">{{ $grades['CHINESE'][4]['effort'] ?? '' }}</span></td>
-        <td colspan=4 class=finalgrade>{{ $grades['CHINESE'][5]['final'] ?? '' }}</td>
-        <td colspan=2 class=finaleffort><span class="effort">{{ $grades['CHINESE'][5]['effort'] ?? '' }}</span></td>
-        <td colspan=7 class=remarks></td>
-    </tr>{{-- CHINESE --}}
-    <tr style='mso-height-source:userset;height:18.75pt'>
-        <td colspan=16 height=25 class=subjects width=210 style='height:18.75pt;
   width:160pt'>&nbsp;DEPORTMENT
         </td>
         <td colspan=4 class=deportment width=40 style='width:30pt'>{{ $grades['deportment'][1] ?? '' }}</td>
