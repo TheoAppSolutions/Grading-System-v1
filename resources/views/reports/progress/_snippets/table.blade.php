@@ -15,11 +15,11 @@
                         <div class="dropdown-menu arrow">
                             @if ($gradelevel >= 1 and $gradelevel <= 10)
                                 <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                   href="{{ route('report.grade', ['midquarter',$gradelevel,'term=1','schoolyear='.$schoolyear, 'type=midquarter']) }}">
+                                   href="{{ route('report.grade', ['midquarter',$gradelevel,'type=midquarter','schoolyear='.$schoolyear]) }}">
                                     MidQuarter <span class='fa fa-file-pdf-o pull-right'></span>
                                 </a>
                                 <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                   href="{{ route('report.grade', ['quarter',$gradelevel,'term=2','schoolyear='.$schoolyear, 'type=quarter']) }}">
+                                   href="{{ route('report.grade', ['quarter',$gradelevel,'type=quarter','schoolyear='.$schoolyear]) }}">
                                     Quarter <span class='fa fa-file-pdf-o pull-right'></span>
                                 </a>
                                 {{--<div class="dropdown-divider"></div>--}}
@@ -30,21 +30,21 @@
                             @elseif ($gradelevel >= 11 and $gradelevel <= 12)
                                 <div class="dropdown-header">1st Semester</div>
                                 <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                   href="{{ route('report.grade', ['midquarter',$gradelevel,'term=1','schoolyear='.$schoolyear, 'semester=1', 'type=midquarter']) }}">
+                                   href="{{ route('report.grade', ['midquarter',$gradelevel,'type=midquarter','schoolyear='.$schoolyear, 'semester=1']) }}">
                                     MidQuarter <span class='fa fa-file-pdf-o pull-right'></span>
                                 </a>
                                 <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                   href="{{ route('report.grade', ['quarter',$gradelevel,'term=2','schoolyear='.$schoolyear, 'semester=1', 'type=quarter']) }}">
+                                   href="{{ route('report.grade', ['quarter',$gradelevel,'type=quarter','schoolyear='.$schoolyear, 'semester=1']) }}">
                                     Quarter <span class='fa fa-file-pdf-o pull-right'></span>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <div class="dropdown-header">2nd Semester</div>
                                 <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                   href="{{ route('report.grade', ['midquarter',$gradelevel,'term=1','schoolyear='.$schoolyear, 'semester=2', 'type=midquarter']) }}">
+                                   href="{{ route('report.grade', ['midquarter',$gradelevel,'type=midquarter','schoolyear='.$schoolyear, 'semester=2']) }}">
                                     MidQuarter <span class='fa fa-file-pdf-o pull-right'></span>
                                 </a>
                                 <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                   href="{{ route('report.grade', ['quarter',$gradelevel,'term=2','schoolyear='.$schoolyear, 'semester=2', 'type=quarter']) }}">
+                                   href="{{ route('report.grade', ['quarter',$gradelevel,'type=quarter','schoolyear='.$schoolyear, 'semester=2']) }}">
                                     Quarter <span class='fa fa-file-pdf-o pull-right'></span>
                                 </a>
                                 {{--<div class="dropdown-divider"></div>--}}
@@ -82,8 +82,8 @@
                                     @foreach($schoolyears as $year)
                                         <a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                            href="{{ route('report.student', ['quarter',$student->student_id,'term=4','schoolyear='.$year->schoolyear]) }}">
-                                            {{ $year->schoolyear }} <span
-                                                    class='fa fa-file-pdf-o pull-right'></span>
+                                            {{ $year->schoolyear }}
+                                            <span class='fa fa-file-pdf-o pull-right'></span>
                                         </a>
                                     @endforeach
                                 </div>
@@ -132,11 +132,11 @@
                                 <div class="dropdown-menu arrow">
                                     @if ($student->gradelevel >= 1 and $student->gradelevel <= 10)
                                         <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                           href="{{ route('report.student', ['midquarter',$student->student_id,'term=1','schoolyear='.$schoolyear]) }}">
+                                           href="{{ route('report.student', ['midquarter',$student->student_id,'type=midquarter','schoolyear='.$schoolyear]) }}">
                                             MidQuarter <span class='fa fa-file-pdf-o pull-right'></span>
                                         </a>
                                         <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                           href="{{ route('report.student', ['quarter',$student->student_id,'term=2','schoolyear='.$schoolyear]) }}">
+                                           href="{{ route('report.student', ['quarter',$student->student_id,'type=quarter','schoolyear='.$schoolyear]) }}">
                                             Quarter <span class='fa fa-file-pdf-o pull-right'></span>
                                         </a>
                                         {{--<div class="dropdown-divider"></div>--}}
@@ -147,21 +147,21 @@
                                     @elseif ($student->gradelevel >= 11 and $student->gradelevel <= 12)
                                         <div class="dropdown-header">1st Semester</div>
                                         <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                           href="{{ route('report.student', ['midquarter',$student->student_id,'term=1','schoolyear='.$schoolyear, 'semester=1']) }}">
+                                           href="{{ route('report.student', ['midquarter',$student->student_id,'type=midquarter','schoolyear='.$schoolyear, 'semester=1']) }}">
                                             MidQuarter <span class='fa fa-file-pdf-o pull-right'></span>
                                         </a>
                                         <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                           href="{{ route('report.student', ['quarter',$student->student_id,'term=2','schoolyear='.$schoolyear, 'semester=1']) }}">
+                                           href="{{ route('report.student', ['quarter',$student->student_id,'type=quarter','schoolyear='.$schoolyear, 'semester=1']) }}">
                                             Quarter <span class='fa fa-file-pdf-o pull-right'></span>
                                         </a>
                                         <div class="dropdown-divider"></div>
                                         <div class="dropdown-header">2nd Semester</div>
                                         <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                           href="{{ route('report.student', ['midquarter',$student->student_id,'term=1','schoolyear='.$schoolyear, 'semester=2']) }}">
+                                           href="{{ route('report.student', ['midquarter',$student->student_id,'type=midquarter','schoolyear='.$schoolyear, 'semester=2']) }}">
                                             MidQuarter <span class='fa fa-file-pdf-o pull-right'></span>
                                         </a>
                                         <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                           href="{{ route('report.student', ['quarter',$student->student_id,'term=2','schoolyear='.$schoolyear, 'semester=2']) }}">
+                                           href="{{ route('report.student', ['quarter',$student->student_id,'type=quarter','schoolyear='.$schoolyear, 'semester=2']) }}">
                                             Quarter <span class='fa fa-file-pdf-o pull-right'></span>
                                         </a>
                                         {{--<div class="dropdown-divider"></div>--}}
