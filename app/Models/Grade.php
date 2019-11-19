@@ -94,6 +94,7 @@ class Grade extends Model
             ->leftJoin('users', 'users.id', 'subjects_user.user_id')
             ->join($this->table . ' as grades', 'grades.subject_id', 'subjects.subject_id')
             ->join('students', 'students.student_id', 'grades.student_id')
+            ->join('subjects_units', 'subjects_units.subject_id', 'subjects.subject_id')
             ->where([
                 ['grades.student_id', $student_id],
                 ['grades.schoolyear', $schoolyear],
@@ -111,6 +112,7 @@ class Grade extends Model
                 'grades.final',
                 'grades.effort',
                 'grades.deportment',
+                'subjects_units.units as unit',
                 'students.lastname as StudLastname',
                 'students.firstname as StudFirstname',
                 'students.student_id',
@@ -124,6 +126,7 @@ class Grade extends Model
             $gradeset["student_id"] = $record->student_id;
             $gradeset["gender"] = $record->gender;
             if ($record->lastname != '' and $record->firstname != ''):
+                $gradeset["$record->subjectname"]["unit"] = $record->unit;
                 if ($record->deportment > 0) :
                     $gradeset["deportment"][$record->quarter]["$record->subjectname"] = $record->deportment > 0 ? $record->deportment : '';
                 endif;

@@ -15,8 +15,7 @@
         <td colspan=2 class=effort>{{ $grades['CRE'][4]['effort'] ?? '' }}</td>
         <td colspan=4 class=grade>{{ $grades['CRE'][5]['rawfinal'] ?? '' }}</td>
         <td colspan=2 class=effort>{{ $grades['CRE'][5]['effort'] ?? '' }}</td>
-        <td colspan=4 class=grade>{{ $grades['CRE']['unit'] ?? '' }}</td>
-        <td colspan=1 class=effort></td>
+        <td colspan=5 class=grade style="text-align: center;">{{ $grades['CRE']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['CRE']['remarks'] ?? '' }}</td>
         <td class=blank></td>
         <td colspan=2 class=blank>A</td>
@@ -37,8 +36,7 @@
         <td colspan=2 class=effort>{{ $grades['ENGLISH'][4]['effort'] ?? '' }}</td>
         <td colspan=4 class=grade>{{ $grades['ENGLISH'][5]['rawfinal'] ?? '' }}</td>
         <td colspan=2 class=effort>{{ $grades['ENGLISH'][5]['effort'] ?? '' }}</td>
-        <td colspan=4 class=grade>{{ $grades['ENGLISH']['unit'] ?? '' }}</td>
-        <td colspan=1 class=effort></td>
+        <td colspan=5 class=grade style="text-align: center;">{{ $grades['ENGLISH']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['ENGLISH']['remarks'] ?? '' }}</td>
         <td class=blank></td>
         <td colspan=2 class=blank>A-</td>
@@ -59,8 +57,7 @@
         <td colspan=2 class=effort>{{ $grades['HASS'][4]['effort'] ?? '' }}</td>
         <td colspan=4 class=grade>{{ $grades['HASS'][5]['rawfinal'] ?? '' }}</td>
         <td colspan=2 class=effort>{{ $grades['HASS'][5]['effort'] ?? '' }}</td>
-        <td colspan=4 class=grade>{{ $grades['HASS']['unit'] ?? '' }}</td>
-        <td colspan=1 class=effort></td>
+        <td colspan=5 class=grade style="text-align: center;">{{ $grades['HASS']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['HASS']['remarks'] ?? '' }}</td>
         <td class=blank></td>
         <td colspan=2 class=blank>B+</td>
@@ -81,8 +78,7 @@
         <td colspan=2 class=effort>{{ $grades['HEALTH'][4]['effort'] ?? '' }}</td>
         <td colspan=4 class=grade>{{ $grades['HEALTH'][5]['rawfinal'] ?? '' }}</td>
         <td colspan=2 class=effort>{{ $grades['HEALTH'][5]['effort'] ?? '' }}</td>
-        <td colspan=4 class=grade>{{ $grades['HEALTH']['unit'] ?? '' }}</td>
-        <td colspan=1 class=effort></td>
+        <td colspan=5 class=grade style="text-align: center;">{{ $grades['HEALTH']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['HEALTH']['remarks'] ?? '' }}</td>
         <td class=blank></td>
         <td colspan=2 class=blank>B</td>
@@ -103,8 +99,7 @@
         <td colspan=2 class=effort>{{ $grades['ICT/PRACTICAL SKILLS'][4]['effort'] ?? '' }}</td>
         <td colspan=4 class=grade>{{ $grades['ICT/PRACTICAL SKILLS'][5]['rawfinal'] ?? '' }}</td>
         <td colspan=2 class=effort>{{ $grades['ICT/PRACTICAL SKILLS'][5]['effort'] ?? '' }}</td>
-        <td colspan=4 class=grade>{{ $grades['ICT/PRACTICAL SKILLS']['unit'] ?? '' }}</td>
-        <td colspan=1 class=effort></td>
+        <td colspan=5 class=grade style="text-align: center;">{{ $grades['ICT/PRACTICAL SKILLS']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['ICT/PRACTICAL SKILLS']['remarks'] ?? '' }}</td>
         <td class=blank></td>
         <td colspan=2 class=blank>B-</td>
@@ -125,8 +120,7 @@
         <td colspan=2 class=effort>{{ $grades['MAKING A LIVING'][4]['effort'] ?? '' }}</td>
         <td colspan=4 class=grade>{{ $grades['MAKING A LIVING'][5]['rawfinal'] ?? '' }}</td>
         <td colspan=2 class=effort>{{ $grades['MAKING A LIVING'][5]['effort'] ?? '' }}</td>
-        <td colspan=4 class=grade>{{ $grades['MAKING A LIVING']['unit'] ?? '' }}</td>
-        <td colspan=1 class=effort></td>
+        <td colspan=5 class=grade style="text-align: center;">{{ $grades['MAKING A LIVING']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['MAKING A LIVING']['remarks'] ?? '' }}</td>
         <td class=blank></td>
         <td class=blank></td>
@@ -153,8 +147,7 @@
         <td colspan=2 class=effort>{{ $grades['MATHEMATICS'][4]['effort'] ?? '' }}</td>
         <td colspan=4 class=grade>{{ $grades['MATHEMATICS'][5]['rawfinal'] ?? '' }}</td>
         <td colspan=2 class=effort>{{ $grades['MATHEMATICS'][5]['effort'] ?? '' }}</td>
-        <td colspan=4 class=grade>{{ $grades['MATHEMATICS']['unit'] ?? '' }}</td>
-        <td colspan=1 class=effort></td>
+        <td colspan=5 class=grade style="text-align: center;">{{ $grades['MATHEMATICS']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['MATHEMATICS']['remarks'] ?? '' }}</td>
         <td class=blank></td>
         <td class=blank></td>
@@ -187,8 +180,7 @@
         <td colspan=2 class=effort>{{ $grades['P.E.'][4]['effort'] ?? '' }}</td>
         <td colspan=4 class=grade>{{ $grades['P.E.'][5]['rawfinal'] ?? '' }}</td>
         <td colspan=2 class=effort>{{ $grades['P.E.'][5]['effort'] ?? '' }}</td>
-        <td colspan=4 class=grade>{{ $grades['P.E.']['unit'] ?? '' }}</td>
-        <td colspan=1 class=effort></td>
+        <td colspan=5 class=grade style="text-align: center;">{{ $grades['P.E.']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['P.E.']['remarks'] ?? '' }}</td>
         <td class=blank></td>
         <td colspan=16 class=sidenotetitle>EFFORT GRADE</td>
@@ -206,8 +198,7 @@
         <td colspan=2 class=effort>{{ $grades['SCIENCE'][4]['effort'] ?? '' }}</td>
         <td colspan=4 class=grade>{{ $grades['SCIENCE'][5]['rawfinal'] ?? '' }}</td>
         <td colspan=2 class=effort>{{ $grades['SCIENCE'][5]['effort'] ?? '' }}</td>
-        <td colspan=4 class=grade>{{ $grades['SCIENCE']['unit'] ?? '' }}</td>
-        <td colspan=1 class=effort></td>
+        <td colspan=5 class=grade style="text-align: center;">{{ $grades['SCIENCE']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['SCIENCE']['remarks'] ?? '' }}</td>
         <td class=blank></td>
         <td colspan=16 class=sidenote>5 - Exerting maximum effort</td>
@@ -225,8 +216,7 @@
         <td colspan=2 class=effort>{{ $grades['ARTS'][4]['effort'] ?? '' }}</td>
         <td colspan=4 class=grade>{{ $grades['ARTS'][5]['rawfinal'] ?? '' }}</td>
         <td colspan=2 class=effort>{{ $grades['ARTS'][5]['effort'] ?? '' }}</td>
-        <td colspan=4 class=grade>{{ $grades['ARTS']['unit'] ?? '' }}</td>
-        <td colspan=1 class=effort></td>
+        <td colspan=5 class=grade style="text-align: center;">{{ $grades['ARTS']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['ARTS']['remarks'] ?? '' }}</td>
         <td class=blank></td>
         <td colspan=16 class=sidenote>4 - Exerting above satisfactory effort</td>
@@ -244,8 +234,7 @@
         <td colspan=2 rowspan=2 class=effort>{{ $grades['MUSIC'][4]['effort'] ?? '' }}</td>
         <td colspan=4 rowspan=2 class=grade>{{ $grades['MUSIC'][5]['rawfinal'] ?? '' }}</td>
         <td colspan=2 rowspan=2 class=effort>{{ $grades['MUSIC'][5]['effort'] ?? '' }}</td>
-        <td colspan=4 rowspan=2 class=grade>{{ $grades['MUSIC']['unit'] ?? '' }}</td>
-        <td colspan=1 rowspan=2 class=effort></td>
+        <td colspan=5 rowspan=2 c style="text-align: center;" lass=grade>{{ $grades['MUSIC']['unit'] ?? '' }}</td>
         <td colspan=7 rowspan=2 rowspan=2 class=remarks>{{ $grades['MUSIC']['remarks'] ?? '' }}</td>
         <td class=blank></td>
         <td colspan=16 class=sidenote>3 - Exerting satisfactory effort</td>
