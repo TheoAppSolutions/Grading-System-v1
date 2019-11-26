@@ -277,4 +277,268 @@ class GradesController extends Controller
 
         return back();
     }
+
+    public function sea_show($subject_id)
+    {
+        $schoolyear = getSchoolYear();
+
+        $subject = Subject::bySubjectID($subject_id);
+        $gradesModel = new Grade;
+        $gradesModel->setTableName($subject->gradelevel);
+        $grades = $gradesModel->bySubjectID($subject_id, $schoolyear);
+        $students = Student::bySubjectID($subject_id);
+        $studentGrades = [];
+        $section = $subject->section;
+
+        foreach ($students as $student):
+            $studentGrades[$student->student_id] = $grades[$student->student_id][5]['final'];
+        endforeach;
+        arsort($studentGrades);
+
+        $studentGrades = array_slice($studentGrades, 0, 10, true);
+
+        if ($subject->subjectname != 'PE'):
+
+            $awards = Award::where([
+                ['subject_id', $subject_id],
+                ['schoolyear', $schoolyear]
+            ])->first(); //Select
+
+            $sectionAward = [];
+            if ($subject->section != ''):
+                $students = Student::bySubjectID($subject_id);
+                foreach ($students as $student) :
+                    if (isset($studentGrades[$student->student_id])):
+                        $sectionAward[$student->student_id] = $studentGrades[$student->student_id];
+                    endif;
+                endforeach;
+                arsort($sectionAward);
+                $studentGrades = $sectionAward;
+            endif;
+
+            if ($awards): //if not blank
+                $awards->student_id = key($studentGrades);
+                $awards->save();
+            else:
+                $insert = $subject->section != '' ? [
+                    'student_id' => key($studentGrades),
+                    'subject_id' => $subject_id,
+                    'schoolyear' => $schoolyear,
+                    'gender' => '',
+                    'section' => $section
+                ] : [
+                    'student_id' => key($studentGrades),
+                    'subject_id' => $subject_id,
+                    'schoolyear' => $schoolyear,
+                    'gender' => '',
+                    'section' => ''
+                ];
+
+                Award::create($insert);
+            endif;
+
+            $studentGrades["SEA"] = key($studentGrades);
+
+        elseif ($subject->subjectname == 'PE'):
+            $students = Student::bySubjectID($subject_id);
+
+            foreach ($students as $student) :
+                if (isset($studentGrades[$student->student_id])):
+                    if ($student->gender == 'M'):
+                        $seaMale[$student->student_id] = $studentGrades[$student->student_id];
+                    elseif ($student->gender == 'F'):
+                        $seaFemale[$student->student_id] = $studentGrades[$student->student_id];
+                    endif;
+                endif;
+            endforeach;
+
+            arsort($seaMale);
+            arsort($seaFemale);
+
+            $Male = Award::where([
+                ['subject_id', $subject_id],
+                ['schoolyear', $schoolyear],
+                ['gender', "M"]
+            ])->first();
+
+            if ($Male):
+                $Male->student_id = key($seaMale);
+                $Male->save();
+                $studentGrades["SEA"] = key($seaMale);
+            else:
+                Award::create([
+                    'student_id' => key($seaMale),
+                    'subject_id' => $subject_id,
+                    'schoolyear' => $schoolyear,
+                    'gender' => 'M',
+                ]);
+                $studentGrades["SEA"] = key($seaMale);
+            endif;
+
+            $Female = Award::where([
+                ['subject_id', $subject_id],
+                ['schoolyear', $schoolyear],
+                ['gender', "F"]
+            ])->first();
+
+            if ($Female):
+                $Female->student_id = key($seaFemale);
+                $Female->save();
+                $studentGrades["SEA2"] = key($seaFemale);
+            else:
+                Award::create([
+                    'student_id' => key($seaFemale),
+                    'subject_id' => $subject_id,
+                    'schoolyear' => $schoolyear,
+                    'gender' => 'F'
+                ]);
+                $studentGrades["SEA2"] = key($seaFemale);
+            endif;
+        endif;
+
+        $grades = $studentGrades;
+        $studentNames = [];
+
+        foreach ($students as $student):
+             $studentNames[$student->student_id] = $student;
+        endforeach;
+
+        return view('grading._snippets.sea', compact('grades', 'studentNames'));
+    }
+
+    public function sea_save(Request $request, $subject_id)
+    {
+        $subject_id = $request->subject_id;
+        $student_id = $request->student_id;
+        $student_id2 = $request->student_id2;
+        $schoolyear = getSchoolYear();
+        $subject = Subject::bySubjectID($subject_id);
+
+        if ($subject->subjectname == 'PE' or $subject->subject_id == 'LIVE07' or $subject->subject_id == 'LIVE08'):
+            if ($student_id != ''):
+                $where = [
+                    ['subject_id', $subject_id],
+                    ['schoolyear', $schoolyear],
+                    ['gender', "M"]
+                ];
+                $award = Award::where($where)->first();
+                $student = Student::byStudentID($student_id);
+
+                if (!$award):
+                    $award = new Award;
+                    $award->student_id = $student->student_id;
+                    $award->subject_id = $subject_id;
+                    $award->schoolyear = $schoolyear;
+                    $award->gender = $student->gender;
+                    $award->section = $student->section;
+                    $award->save();
+                else:
+                    $award->student_id = $student->student_id;
+                    $award->save();
+                endif;
+            endif;
+            if ($student_id2 != ''):
+                $where = [
+                    ['subject_id', $subject_id],
+                    ['schoolyear', $schoolyear],
+                    ['gender', "F"]
+                ];
+                $award2 = Award::where($where)->first();
+                $student2 = Student::byStudentID($student_id2);
+
+                if (!$award2):
+                    $award2 = new Award;
+                    $award2->student_id = $student2->student_id;
+                    $award2->subject_id = $subject_id;
+                    $award2->schoolyear = $schoolyear;
+                    $award2->gender = $student2->gender;
+                    $award2->section = $student2->section;
+                    $award2->save();
+                else:
+                    $award2->student_id = $student2->student_id;
+                    $award2->save();
+                endif;
+            endif;
+        else:
+            $where = [
+                ['subject_id', $subject_id],
+                ['schoolyear', $schoolyear]
+            ];
+
+            $award = Award::where($where)->first();
+            $student = Student::byStudentID($student_id);
+
+            if (!$award):
+                $award = new Award;
+                $award->student_id = $student->student_id;
+                $award->subject_id = $subject_id;
+                $award->schoolyear = $schoolyear;
+                $award->gender = $student->gender;
+                $award->section = $student->section;
+                $award->save();
+            else:
+                $award->student_id = $student->student_id;
+                $award->save();
+            endif;
+        endif;
+    }
+
+    public function setSEA(Request $request)
+    {
+        $subject_id = $request->subject_id;
+        $student_id = $request->student_id;
+        $schoolyear = getSchoolYear();
+
+        $student = Student::byStudentID($student_id);
+        $subject = Subject::bySubjectID($subject_id);
+
+        $where = $subject->subjectname == 'PE' ? [
+            ['subject_id', $subject_id],
+            ['schoolyear', $schoolyear],
+            ['gender', "M"]
+        ] : [
+            ['subject_id', $subject_id],
+            ['schoolyear', $schoolyear]
+        ];
+
+        $award = Award::where($where)->first();
+
+        if (!$award):
+            $award = new Award;
+            $award->student_id = $student->student_id;
+            $award->subject_id = $subject_id;
+            $award->schoolyear = $schoolyear;
+            $award->gender = $student->gender;
+            $award->section = $student->section;
+            $award->save();
+        else:
+            $award->student_id = $student->student_id;
+            $award->save();
+        endif;
+
+        if ($subject->subjectname == 'PE'):
+            $student_id2 = $request->student_id2;
+            $where = [
+                ['subject_id', $subject_id],
+                ['schoolyear', $schoolyear],
+                ['gender', "F"]
+            ];
+            $award2 = Award::where($where)->first();
+            $student2 = Student::byStudentID($student_id2);
+
+            if (!$award2):
+                $award2 = new Award;
+                $award2->student_id = $student2->student_id;
+                $award2->subject_id = $subject_id;
+                $award2->schoolyear = $schoolyear;
+                $award2->gender = $student2->gender;
+                $award2->section = $student2->section;
+                $award2->save();
+            else:
+                $award2->student_id = $student2->student_id;
+                $award2->save();
+            endif;
+        endif;
+    }
+
 }

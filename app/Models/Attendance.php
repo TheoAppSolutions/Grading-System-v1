@@ -50,9 +50,14 @@ class Attendance extends Model
             $attendance->{$A} = $attendance->{$N} != -1 ? $attendance->{$A} : '';
             $attendance->{$T} = $attendance->{$N} != -1 ? $attendance->{$T} : '';
 
+            $attendance->TotalDays += intval($attendance->{$P});
             $attendance->TotalAbsent += intval($attendance->{$A});
             $attendance->TotalTardy += intval($attendance->{$T});
         endfor;
+
+        $attendance['perfect_attendance'] = $attendance->TotalAbsent == 0 ?
+            checkMark(). ' ' . $attendance->TotalAbsent . ' / ' . $attendance->TotalDays:
+            $attendance->TotalAbsent . ' / ' . $attendance->TotalDays;
 
         return $attendance;
     }

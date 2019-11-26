@@ -171,3 +171,6 @@ Route::get('image.editor', 'FilesController@image_editor')->name('image.editor')
 Route::get('test', 'HomeController@test');
 
 Route::patch('section/students', 'SectionsController@update')->name('student.sections.update');
+
+Route::patch('grades/sea/{subject_id}', 'GradesController@sea')->name('sea.save');
+Route::get('grades/sea/{subject_id}', 'GradesController@sea_show')->name('sea.show');

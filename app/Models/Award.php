@@ -6,16 +6,14 @@ class Award extends Model
 {
     protected $table = 'awards';
 
-    public static function getAwardsForReportCard($gradeset, $schoolyear = '')
+    public static function getAwardsForReportCard($student, $gradeset, $schoolyear = '')
     {
-        if (!isset($gradeset['student_id'])):
+        if (!isset($student->student_id)):
             return false;
         endif;
 
-        $schoolyear = $schoolyear != '' ? $schoolyear : getSchoolYear();
-
         $awardRec = Award::where([
-            ['student_id', $gradeset['student_id']],
+            ['student_id', $student->student_id],
             ['schoolyear', $schoolyear]
         ])
             ->join('subjects', 'subjects.subject_id', 'awards.subject_id')
@@ -36,28 +34,33 @@ class Award extends Model
 
         $award["DEPORTMENT"] = isset($gradeset['deportment'][5]) ? $gradeset['deportment'][5] >= 90 ? checkMark() : '' : '';
 
-        $award["EFFORT"] = $gradeset["disqualifyForEffort"] == false ? checkMark() : '';
+        if (isset($gradeset["disqualifyForEffort"])):
+            $award["EFFORT"] = $gradeset["disqualifyForEffort"] == false ? checkMark() : '';
+        endif;
 
         return $award;
     }
 
     public static function getSEA($subject_id, $schoolyear, $grades)
     {
-        $studentGrades = [];
-
-        if (isset($grades["academicAward"])):
-            foreach ($grades["academicAward"] as $student_id => $grade) :
-                $studentGrades[$student_id] = $grade;
-            endforeach;
-            arsort($studentGrades);
-        else:
-            return $studentGrades;
-        endif;
-
-        $studentGrades = array_slice($studentGrades, 0, 10, true);
+        $schoolyear = getSchoolYear();
 
         $subject = Subject::bySubjectID($subject_id);
+        $gradesModel = new Grade;
+        $gradesModel->setTableName($subject->gradelevel);
+        $grades = $gradesModel->bySubjectID($subject_id, $schoolyear);
+        $students = Student::bySubjectID($subject_id);
+        $studentGrades = [];
+        $section = $subject->section;
 
+        foreach ($students as $student):
+            if (isset($grades[$student->student_id])):
+                $studentGrades[$student->student_id] = $grades[$student->student_id][5]['final'];
+            endif;
+        endforeach;
+        arsort($studentGrades);
+
+        $studentGrades = array_slice($studentGrades, 0, 10, true);
         if ($subject->subjectname != 'PE'):
 
             $awards = Award::where([
@@ -78,8 +81,8 @@ class Award extends Model
             endif;
 
             if ($awards): //if not blank
-                /*$awards->student_id = key($studentGrades);
-                $awards->save();*/
+                $awards->student_id = key($studentGrades);
+                $awards->save();
             else:
                 $insert = $subject->section != '' ? [
                     'student_id' => key($studentGrades),
@@ -156,7 +159,10 @@ class Award extends Model
                 $studentGrades["SEA2"] = key($seaFemale);
             endif;
         endif;
-        return $studentGrades;
+
+        $grades = $studentGrades;
+
+        return $grades;
     }
 
     public static function byGradelevel($gradelevel, $schoolyear = '')
@@ -172,12 +178,12 @@ class Award extends Model
 
         $awardSet = [];
         foreach ($awards as $award):
-                if ($award->subjectname == 'PE'):
-                    $gender = $award->gender == 'M' ? 'BOYS' : 'GIRLS';
-                    $awardSet[$award->student_id]["SEA"][] = preg_replace('/\s+/', ' ', $award->subjecttitle) . ' ' . $gender;
-                else:
-                    $awardSet[$award->student_id]["SEA"][] = preg_replace('/\s+/', ' ', $award->subjecttitle);
-                endif;
+            if ($award->subjectname == 'PE'):
+                $gender = $award->gender == 'M' ? 'BOYS' : 'GIRLS';
+                $awardSet[$award->student_id]["SEA"][] = preg_replace('/\s+/', ' ', $award->subjecttitle) . ' ' . $gender;
+            else:
+                $awardSet[$award->student_id]["SEA"][] = preg_replace('/\s+/', ' ', $award->subjecttitle);
+            endif;
         endforeach;
         return $awardSet;
     }

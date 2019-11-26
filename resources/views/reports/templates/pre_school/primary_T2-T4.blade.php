@@ -18,11 +18,6 @@
         <td colspan=5 class=grade style="text-align: center;">{{ $grades['CRE']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['CRE']['remarks'] ?? '' }}</td>
         <td class=blank></td>
-        <td colspan=2 class=blank>A</td>
-        <td colspan=6 class=sidenote>93 - 96.99</td>
-        <td class=blank></td>
-        <td colspan=2 class=blank>C</td>
-        <td colspan=5 class=sidenote>73 - 76.99</td>
     </tr>
     <tr style='mso-height-source:userset;{!! $height !!}'>
         <td colspan=12 class=subjecttitle width=180>English</td>
@@ -39,11 +34,6 @@
         <td colspan=5 class=grade style="text-align: center;">{{ $grades['ENGLISH']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['ENGLISH']['remarks'] ?? '' }}</td>
         <td class=blank></td>
-        <td colspan=2 class=blank>A-</td>
-        <td colspan=6 class=sidenote>90 - 92.99</td>
-        <td class=blank></td>
-        <td colspan=2 class=blank>C-</td>
-        <td colspan=5 class=sidenote>70 - 72.99</td>
     </tr>
     <tr style='mso-height-source:userset;{!! $height !!}'>
         <td colspan=12 class=subjecttitle width=180>HASS</td>
@@ -60,11 +50,6 @@
         <td colspan=5 class=grade style="text-align: center;">{{ $grades['HASS']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['HASS']['remarks'] ?? '' }}</td>
         <td class=blank></td>
-        <td colspan=2 class=blank>B+</td>
-        <td colspan=6 class=sidenote>87 - 89.99</td>
-        <td class=blank></td>
-        <td colspan=2 class=blank>D+</td>
-        <td colspan=5 class=sidenote>67 - 69.99</td>
     </tr>
     <tr style='mso-height-source:userset;{!! $height !!}'>
         <td colspan=12 class=subjecttitle width=180>Health</td>
@@ -81,11 +66,6 @@
         <td colspan=5 class=grade style="text-align: center;">{{ $grades['HEALTH']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['HEALTH']['remarks'] ?? '' }}</td>
         <td class=blank></td>
-        <td colspan=2 class=blank>B</td>
-        <td colspan=6 class=sidenote>83 - 86.99</td>
-        <td class=blank></td>
-        <td colspan=2 class=blank>D</td>
-        <td colspan=5 class=sidenote>63 - 66.99</td>
     </tr>
     <tr style='mso-height-source:userset;{!! $height !!}'>
         <td colspan=12 class=subjecttitle width=180>ICT/Practical Skills</td>
@@ -102,11 +82,6 @@
         <td colspan=5 class=grade style="text-align: center;">{{ $grades['ICT/PRACTICAL SKILLS']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['ICT/PRACTICAL SKILLS']['remarks'] ?? '' }}</td>
         <td class=blank></td>
-        <td colspan=2 class=blank>B-</td>
-        <td colspan=6 class=sidenote>80 - 82.99</td>
-        <td class=blank></td>
-        <td colspan=2 class=blank>D-</td>
-        <td colspan=5 class=sidenote>60 - 62.99</td>
     </tr>
     <tr style='mso-height-source:userset;{!! $height !!}'>
         <td colspan=12 class=subjecttitle width=180>Making a Living</td>
@@ -132,8 +107,6 @@
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
-        <td colspan=2 class=blank>F</td>
-        <td colspan=5 class=sidenote>Below 60</td>
     </tr>
     <tr style='mso-height-source:userset;{!! $height !!}'>
         <td colspan=12 class=subjecttitle width=180>Mathematics</td>
@@ -183,7 +156,6 @@
         <td colspan=5 class=grade style="text-align: center;">{{ $grades['P.E.']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['P.E.']['remarks'] ?? '' }}</td>
         <td class=blank></td>
-        <td colspan=16 class=sidenotetitle>EFFORT GRADE</td>
     </tr>
     <tr style='mso-height-source:userset;{!! $height !!}'>
         <td colspan=12 class=subjecttitle width=180>Science
@@ -201,7 +173,6 @@
         <td colspan=5 class=grade style="text-align: center;">{{ $grades['SCIENCE']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['SCIENCE']['remarks'] ?? '' }}</td>
         <td class=blank></td>
-        <td colspan=16 class=sidenote>5 - Exerting maximum effort</td>
     </tr>
     <tr style='mso-height-source:userset;{!! $height !!}'>
         <td colspan=12 class=subjecttitle width=180>The Arts
@@ -219,7 +190,6 @@
         <td colspan=5 class=grade style="text-align: center;">{{ $grades['ARTS']['unit'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['ARTS']['remarks'] ?? '' }}</td>
         <td class=blank></td>
-        <td colspan=16 class=sidenote>4 - Exerting above satisfactory effort</td>
     </tr>
     <tr style='mso-height-source:userset;{!! $height !!}'>
         <td colspan=12 rowspan=2 class=subjecttitle width=180>Elective (Music Private Lessons)
@@ -237,11 +207,9 @@
         <td colspan=5 rowspan=2 c style="text-align: center;" lass=grade>{{ $grades['MUSIC']['unit'] ?? '' }}</td>
         <td colspan=7 rowspan=2 rowspan=2 class=remarks>{{ $grades['MUSIC']['remarks'] ?? '' }}</td>
         <td class=blank></td>
-        <td colspan=16 class=sidenote>3 - Exerting satisfactory effort</td>
     </tr>
     <tr style='mso-height-source:userset;{!! $height !!}'>
         <td class=blank></td>
-        <td colspan=16 class=sidenote>2 - Exerting below satisfactory effort</td>
     </tr>
     <tr style='mso-height-source:userset;{!! $height !!}'>
         <td colspan=12 class=subjecttitle width=180>DEPORTMENT</td>
@@ -253,7 +221,6 @@
         <td colspan=5 class=grade></td>
         <td colspan=7 class=remarks></td>
         <td class=blank></td>
-        <td colspan=16 class=sidenote>1 - Exerting minimum effort</td>
     </tr>
     <tr style='mso-height-source:userset;{!! $height !!}'>
         <td colspan=32 class=cardlabel width=480 style="text-align: right;">GENERAL AVERAGE

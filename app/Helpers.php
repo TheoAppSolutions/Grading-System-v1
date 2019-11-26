@@ -91,15 +91,10 @@ function getSchoolYears()
 
 function getSchoolYear($schoolyear = "")
 {
-    if ($schoolyear == ""):
-        if (!session()->has('schoolyear')):
-            $schoolyear = SchoolYear::getSchoolYear();
-            session()->put('schoolyear', $schoolyear);
-        else:
-            $schoolyear = session('schoolyear');
-        endif;
-    elseif ($schoolyear != ""):
-        $schoolyear = SchoolYear::where('schoolyear', $schoolyear)->first();
+    if (request('schoolyear')):
+        $schoolyear = request('schoolyear');
+    else:
+        $schoolyear = SchoolYear::where('active', 1)->first()->schoolyear;
     endif;
 
     return $schoolyear;
