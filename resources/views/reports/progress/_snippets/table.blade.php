@@ -36,6 +36,10 @@
                                href="{{ route('report.grade', ['award',$gradelevel,'term=award','schoolyear='.$schoolyear]) }}">
                                 Awards Card <span class='fa fa-file-pdf-o pull-right'></span>
                             </a>
+                            <a style="cursor: pointer;" target="_blank" class="dropdown-item"
+                               href="{{ route('report.award.summary', [$gradelevel,'schoolyear='.$schoolyear]) }}">
+                                Awards Summary <span class='fa fa-file-pdf-o pull-right'></span>
+                            </a>
                         </div>
                     </div>
                 </th>
@@ -123,7 +127,7 @@
                                     <div class="dropdown-divider"></div>
                                     <h6 class="dropdown-header">Awards Report</h6>
                                     <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                       href="{{ route('report.student', ['award',$student->student_id,'term=award','schoolyear='.$schoolyear]) }}">
+                                       href="{{ route('report.award', [$student->student_id,'term=award','schoolyear='.$schoolyear]) }}">
                                         Awards Card <span class='fa fa-file-pdf-o pull-right'></span>
                                     </a>
                                     {{--<div class="dropdown-divider"></div>

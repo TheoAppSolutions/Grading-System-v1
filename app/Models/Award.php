@@ -12,6 +12,8 @@ class Award extends Model
             return false;
         endif;
 
+        $schoolyear == '' ? getSchoolYear() : $schoolyear;
+
         $awardRec = Award::where([
             ['student_id', $student->student_id],
             ['schoolyear', $schoolyear]
@@ -62,7 +64,6 @@ class Award extends Model
 
         $studentGrades = array_slice($studentGrades, 0, 10, true);
         if ($subject->subjectname != 'PE'):
-
             $awards = Award::where([
                 ['subject_id', $subject_id],
                 ['schoolyear', $schoolyear]
@@ -70,7 +71,6 @@ class Award extends Model
 
             $sectionAward = [];
             if ($subject->section != ''):
-                $students = Student::bySubjectID($subject_id);
                 foreach ($students as $student) :
                     if (isset($studentGrades[$student->student_id])):
                         $sectionAward[$student->student_id] = $studentGrades[$student->student_id];
@@ -104,8 +104,6 @@ class Award extends Model
             $studentGrades["SEA"] = key($studentGrades);
 
         elseif ($subject->subjectname == 'PE'):
-            $students = Student::bySubjectID($subject_id);
-
             foreach ($students as $student) :
                 if (isset($studentGrades[$student->student_id])):
                     if ($student->gender == 'M'):

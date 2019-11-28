@@ -87,7 +87,6 @@ class Grade extends Model
     {
         $schoolyear = $schoolyear == "" ? getSchoolYear() : $schoolyear;
         $gradeset = [];
-        $student = Student::byStudentID($student_id);
 
         $records = Subject::
         leftJoin('subjects_user', 'subjects_user.subject_id', 'subjects.subject_id')
@@ -145,15 +144,15 @@ class Grade extends Model
         endforeach;
 
         if (isset($gradeset["student_id"])): //If no records in the grades database then do not execute computations
-            $subjectList = Subject::byLevel($student->gradelevel);
+            $subjectList = Subject::byLevel($gradeset["gradelevel"]);
 
             $startCounter = 1;
             $endCounter = 4;
             $semester = request('semester') == null ? 1 : request('semester');
-            if ($student->gradelevel >= 11 and $semester == 1):
+            if ($gradeset["gradelevel"] >= 11 and $semester == 1):
                 $startCounter = 1;
                 $endCounter = 2;
-            elseif ($student->gradelevel >= 11 and $semester == 2):
+            elseif ($gradeset["gradelevel"] >= 11 and $semester == 2):
                 $startCounter = 3;
                 $endCounter = 4;
             endif;

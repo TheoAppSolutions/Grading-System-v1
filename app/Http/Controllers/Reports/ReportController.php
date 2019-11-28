@@ -38,10 +38,11 @@ class ReportController extends Controller
         $schoolyear = getSchoolYear();
         $student = Student::byStudentID($student_id);
         $homeroom = Homeroom::byGradeLevel($student->gradelevel);
+
         $gradesModel = new Grade;
         $gradesModel->setTableName($student->gradelevel);
+        $grades = $gradesModel->byStudentID($student_id, '', $schoolyear);
 
-        $grades = $gradesModel->byStudentID($student_id,'',$schoolyear);
         $subjects = new Subject;
         $subjects = $subjects->byGradeLevelAndSection($student->gradelevel);
 
@@ -197,6 +198,7 @@ class ReportController extends Controller
             $studentNames[$student->student_id]['name'] = $student->lastname . ', ' . $student->firstname;
             $studentNames[$student->student_id]['gender'] = $student->gender;
         endforeach;
+
         return view('reports.templates.summary.subject_summary', compact('studentNames', 'quarter', 'schoolyear', 'subject', 'grade', 'students', 'teacher'));
     }
 
@@ -236,6 +238,28 @@ class ReportController extends Controller
 
         $pdf->send();
         return false;
+    }
+
+    public function summary_award($gradelevel)
+    {
+        $studentsList = Student::getStudents('enrolled', $gradelevel, true);
+
+        $gradesModel = new Grade;
+        $gradesModel->setTableName($gradelevel);
+        $grades = [];
+
+        foreach ($studentsList as $student_id):
+            $grades[] = $gradesModel->byStudentID($student_id);
+        endforeach;
+
+        dd($grades);
+
+        //$awards = $comments->getAwardsForReportCard($student, $grades);
+
+        return view('reports.templates.summary.award_summary', compact('studentsList'));
+
+        //$pdf->send();
+        //return false;
     }
 
     /*----------------------------------------------------------*/

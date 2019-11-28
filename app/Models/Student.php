@@ -12,9 +12,9 @@ class Student extends Model
 
     public static function byStudentID($student_id)
     {
-        $where = request('schoolyear') != "" ? [
+        $where = getSchoolYear() != "" ? [
             ['students.student_id', $student_id],
-            ['enrollment.schoolyear', request('schoolyear')]
+            ['enrollment.schoolyear', getSchoolYear()]
         ]
             : [['students.student_id', $student_id]];
 

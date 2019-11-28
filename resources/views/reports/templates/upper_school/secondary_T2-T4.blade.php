@@ -153,7 +153,7 @@
         <td colspan=2 rowspan=2 class=effort>{{ $grades['MAKING A LIVING'][4]['effort'] ?? '' }}</td>
         <td colspan=4 rowspan=2 class=grade>{{ $grades['MAKING A LIVING'][5]['rawfinal'] ?? '' }}</td>
         <td colspan=2 rowspan=2 class=effort>{{ $grades['MAKING A LIVING'][5]['effort'] ?? '' }}</td>
-        <td colspan=5 rowspan=2 c style="text-align: center !important;" lass=grade>{{ $grades['MAKING A LIVING']['unit'] ?? '' }}</td>
+        <td colspan=5 rowspan=2 class=grade style="text-align: center !important;" lass=grade>{{ $grades['MAKING A LIVING']['unit'] ?? '' }}</td>
         <td colspan=7 rowspan=2 class=remarks>{{ $grades['MAKING A LIVING']['remarks'] ?? '' }}</td>
         <td class=blank rowspan=2></td>
     </tr>

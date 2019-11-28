@@ -126,11 +126,11 @@ Route::prefix('report')->group(function () {
 
     Route::get('midquarter/{student_id}', 'Reports\ReportController@report')->name('report.midquarter');
     Route::get('quarter/{student_id}', 'Reports\ReportController@report')->name('report.quarter');
-    Route::get('award/{student_id}', 'Reports\ReportController@report')->name('report.award');
+    Route::get('award/student/{student_id}', 'Reports\ReportController@report')->name('report.award');
     Route::get('summary/{subject_id}', 'Reports\ReportController@summary')->name('report.subject');
 
     Route::get('master/{gradelevel}', 'Reports\ReportController@masterSummary')->name('report.master');
-    Route::get('award/summary/{gradelevel}', 'Reports\ReportController@awardSummary')->name('report.award.summary');
+    Route::get('award/summary/{gradelevel}', 'Reports\ReportController@summary_award')->name('report.award.summary');
 });
 
 /*----------FOR SORTING------------------------------------------------------------------------------------------*/

@@ -185,26 +185,26 @@
             </td>
         </tr>
 
-        @foreach($studentsList as $student => $value)
+        @foreach($studentsList as $student_id => $value)
             <tr style='height:15.0pt'>
                 <td colspan=1 height=40 class=label width=135
                     style='border-bottom:1pt solid black; height:30.0pt;width:101pt; vertical-align: middle;'>
                     {{ $loop->iteration }}
                 </td>
                 <td colspan=1 height=40 class=label width=135
-                    style='border-bottom:1pt solid black; height:30.0pt;width:101pt; text-align:left; vertical-align: middle;'>{{ $awards[$student]['propername'] }}
+                    style='border-bottom:1pt solid black; height:30.0pt;width:101pt; text-align:left; vertical-align: middle;'>{{ $awards[$student_id]['propername'] }}
                 </td>
                 <td colspan=4 class=label width=181
-                    style='border-bottom:1pt solid black;width:34pt; vertical-align: middle;'>{{ $awards[$student]['honors'] ?? '' }}{!! isset($awards[$student]['honors']) ? '<br/>' . $awards[$student]['generalaverage'] : ''  !!}</td>
+                    style='border-bottom:1pt solid black;width:34pt; vertical-align: middle;'>{{ $awards[$student_id]['honors'] ?? '' }}{!! isset($awards[$student_id]['honors']) ? '<br/>' . $awards[$student_id]['generalaverage'] : ''  !!}</td>
                 <td colspan=6 class=label width=45
-                    style='border-right:1pt solid black; border-bottom:1pt solid black;width:34pt; vertical-align: middle;'>{{ $awards[$student]['deportment'] ?? '' }}
-                    {!! isset($awards[$student]['deportment']) ? '<br/>' . $awards[$student]['deportmentgrade'] : ''  !!}
-                    <br/>{{ $awards[$student]['effort'] ?? '' }}
+                    style='border-right:1pt solid black; border-bottom:1pt solid black;width:34pt; vertical-align: middle;'>{{ $awards[$student_id]['deportment'] ?? '' }}
+                    {!! isset($awards[$student_id]['deportment']) ? '<br/>' . $awards[$student_id]['deportmentgrade'] : ''  !!}
+                    <br/>{{ $awards[$student_id]['effort'] ?? '' }}
                 </td>
                 <td colspan=1 class=label width=45
                     style='border-right:1pt solid black; border-bottom:1pt solid black;width:34pt; vertical-align: middle;'>
-                    @if(isset($awards[$student]["SEA"]))
-                        @foreach($awards[$student]["SEA"] as $SEA)
+                    @if(isset($awards[$student_id]["SEA"]))
+                        @foreach($awards[$student_id]["SEA"] as $SEA)
                             {{ $SEA }}
                             <br/>
                         @endforeach
