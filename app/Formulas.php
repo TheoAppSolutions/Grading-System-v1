@@ -57,7 +57,10 @@ class Formula extends Model
                         $gradeset[$subject->subjectname][5]["rawfinal"] = number_format($gradeset[$subject->subjectname][5]["rawfinal"], 2);
                         $gradeset[$subject->subjectname][5]["final"] = $gradeset[$subject->subjectname][5]["rawfinal"];
 
-                        $gradeset[$subject->subjectname][5]["effort"] = Formula::getFinalEffort(array_sum($subAverage['raweffort']));
+                        if (count($subAverage['raweffort']) == 4):
+                            $gradeset[$subject->subjectname][5]["effort"] = Formula::getFinalEffort(array_sum($subAverage['raweffort']));
+                        endif;
+
                         $gradeset[$subject->subjectname]["remarks"] = $gradeset[$subject->subjectname][5]["final"] >= 60 ? 'PASSED' : 'FAILED';
 
                         if (!$gradeset["disqualifyForHonors"]):
@@ -98,11 +101,14 @@ class Formula extends Model
 
     public static function getGeneralAverage($gradeset, $totalunits)
     {
+        /*
+         * Compute General Average
+         * */
         $gradeset["totalunits"] = number_format($totalunits, 2);
         $gradeset["generalaverage"] = array_sum($gradeset["finalave"]) / $totalunits;
         $gradeset["generalaverage"] = number_format($gradeset["generalaverage"], 3);
         $gradeset["generalremarks"] = $gradeset["generalaverage"] >= 60 ? 'PASSED' : 'FAILED';
-        $gradeset["disqualifyForHonors"] = $gradeset["generalaverage"] < 92 ? true : false;
+        $gradeset["disqualifyForHonors"] = $gradeset["generalaverage"] < 90 ? true : false;
 
         return $gradeset;
     }

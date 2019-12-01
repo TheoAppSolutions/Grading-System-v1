@@ -1,0 +1,644 @@
+.blank {
+    padding: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    vertical-align: bottom;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.bold {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    vertical-align: bottom;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.nametitles {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: bottom;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.undertitle {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: bottom;
+    border-top: 1.0pt solid windowtext;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.labels {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: windowtext;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: right;
+    vertical-align: bottom;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.centerlabels {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: windowtext;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: bottom;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.quarter {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: bottom;
+    border-top: 1pt solid windowtext;
+    border-right: 1pt solid windowtext;
+    border-bottom: 1pt solid windowtext;
+    border-left: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.subjects {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 5px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    vertical-align: middle;
+    border: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.titles {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: bottom;
+    border: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.lightlabel {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: windowtext;
+    font-size: 12.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: bottom;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.heavylabel {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: windowtext;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: bottom;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.info {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: bottom;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1pt solid windowtext;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.remarks {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.attendance {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.attendancelabels {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.attendancebold {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    vertical-align: middle;
+    border: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.attendancelight {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: italic;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    vertical-align: middle;
+    border: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.finalattendance {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.finalgrade {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: right;
+    vertical-align: middle;
+    border-top: 1pt solid windowtext;
+    border-right: none;
+    border-bottom: 1pt solid windowtext;
+    border-left: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.effort {
+    font-size: 10px;
+}
+
+.finaleffort {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: left;
+    vertical-align: bottom;
+    border-top: 1pt solid windowtext;
+    border-right: 1pt solid windowtext;
+    border-bottom: 1pt solid windowtext;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.deportment {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: middle;
+    border-top: 1pt solid windowtext;
+    border-right: none;
+    border-bottom: 1pt solid windowtext;
+    border-left: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.generalaverage {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 12.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: right;
+    vertical-align: middle;
+    border: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: normal;
+}
+
+.underline {
+    border-bottom: 1.0pt solid windowtext;
+    text-align: center;
+    font-weight: bold;
+}
+
+.comments {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: bottom;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1pt solid windowtext;
+    border-left: none;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.commentslabels {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: black;
+    font-size: 11.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: left;
+    vertical-align: bottom;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.midquarterminor {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 5px;
+    mso-ignore: padding;
+    color: windowtext;
+    font-size: 10.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: left;
+    vertical-align: bottom;
+    border: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.midquartercomments {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 5px;
+    mso-ignore: padding;
+    color: windowtext;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: left;
+    vertical-align: bottom;
+    border: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.midquartersubjects {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 5px;
+    mso-ignore: padding;
+    color: white;
+    font-size: 10.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: left;
+    vertical-align: bottom;
+    border: 1pt solid windowtext;
+    background: black;
+    mso-pattern: black none;
+    white-space: nowrap;
+}
+
+.midquarterteachers {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: windowtext;
+    font-size: 10.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: bottom;
+    border: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.midquarterblock {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: windowtext;
+    font-size: 10.0pt;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: bottom;
+    border: 1pt solid windowtext;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}
+
+.midquarterlabels {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    mso-ignore: padding;
+    color: windowtext;
+    font-size: 10.0pt;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    mso-font-charset: 0;
+    mso-number-format: General;
+    text-align: center;
+    vertical-align: bottom;
+    mso-background-source: auto;
+    mso-pattern: auto;
+    white-space: nowrap;
+}

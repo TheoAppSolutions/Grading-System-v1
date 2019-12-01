@@ -88,6 +88,33 @@
         @include('reports.templates._snippets.award_subject')
         @php($ctr++)
     @endif
+</tr><tr style='mso-height-source:userset;height:15.0pt'>
+    <td colspan=8 height=20 class=blank style='height:15.0pt'></td>
+    <td colspan=9 class=blank></td>
+    <td colspan=3 class=blank></td>
+
+    @if(isset($subjects[$ctr]))
+        @include('reports.templates._snippets.award_subject')
+        @php($ctr++)
+    @endif
+    @if(isset($subjects[$ctr]))
+        @include('reports.templates._snippets.award_subject')
+        @php($ctr++)
+    @endif
+</tr>
+</tr><tr style='mso-height-source:userset;height:15.0pt'>
+    <td colspan=8 height=20 class=blank style='height:15.0pt'></td>
+    <td colspan=9 class=blank></td>
+    <td colspan=3 class=blank></td>
+
+    @if(isset($subjects[$ctr]))
+        @include('reports.templates._snippets.award_subject')
+        @php($ctr++)
+    @endif
+    @if(isset($subjects[$ctr]))
+        @include('reports.templates._snippets.award_subject')
+        @php($ctr++)
+    @endif
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td height=20 class=blank style='height:15.0pt'></td>
@@ -228,7 +255,7 @@
     <td class=blank></td>
     <td class=blank></td>
     <td class=blank></td>
-    <td colspan=24 class=comments>With Honors: 90-92.99%</td>
+    <td colspan=24 class=comments>With Honors: 90 - 92.99%</td>
     <td colspan=28 class=blank></td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
@@ -261,8 +288,8 @@
     <td class=blank></td>
     <td class=blank></td>
     <td class=blank></td>
-    <td colspan=47 class=comments>All 5's in final average of All Major Subjects subjects
-        (All Major Subjects academic subjects and sub-average for the non-academic subjects).
+    <td colspan=36 class=comments>All 5's in final average of All Major Subjects<br>
+        (All Major Subjects and sub-average for the non-academic subjects).
     </td>
     <td colspan=5 class=blank></td>
 </tr>

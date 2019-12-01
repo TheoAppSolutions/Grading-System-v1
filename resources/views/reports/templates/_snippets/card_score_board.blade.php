@@ -1,6 +1,6 @@
 <table border=0 class=blank style='border-collapse:collapse;table-layout:fixed;'>
-    <col class=blank width=15 span=2 style='width:11pt'>
-    <col class=blank width=15 span=8 style='width:11pt'>
+    <col class=blank width=15 span=2 style='width:20pt'>
+    <col class=blank width=15 span=8 style='width:20pt'>
 
     <tr style='mso-height-source:userset;height:18.75pt'>
         <td colspan=12 class=sidenotetitle>LETTER GRADE POINTS</td>
@@ -53,22 +53,22 @@
     </tr>
 
     <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-        <td colspan=11 class=sidenotetitle>EFFORT GRADE</td>
+        <td colspan=15 class=sidenotetitle>EFFORT GRADE</td>
     </tr>
     <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-        <td colspan=11 class=blank>5 - Exerting maximum effort</td>
+        <td colspan=15 class=blank>5 - Exerting maximum effort</td>
     </tr>
     <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-        <td colspan=11 class=blank>4 - Exerting above satisfactory effort</td>
+        <td colspan=15 class=blank>4 - Exerting above satisfactory effort</td>
     </tr>
     <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-        <td colspan=11 class=blank>3 - Exerting satisfactory effort</td>
+        <td colspan=15 class=blank>3 - Exerting satisfactory effort</td>
     </tr>
     <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-        <td colspan=11 class=blank>2 - Exerting below satisfactory effort</td>
+        <td colspan=15 class=blank>2 - Exerting below satisfactory effort</td>
     </tr>
     <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-        <td colspan=11 class=blank>1 - Exerting minimum effort</td>
+        <td colspan=15 class=blank>1 - Exerting minimum effort</td>
     </tr>
 
 </table>

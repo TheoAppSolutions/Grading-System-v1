@@ -161,55 +161,57 @@
         <col class=blank width=30 style='mso-width-source:userset;mso-width-alt: 1097;width:23pt'>
         <col class=blank width=20 style='mso-width-source:userset;mso-width-alt: 548;width:23pt'>
         <col class=blank width=15 style='mso-width-source:userset;mso-width-alt: 548;width:300pt'>
+
         <tr style='height:15.0pt'>
             <td colspan=12 height=40 class=width=135><b>Gradelevel:</b> <u>{{ $gradelevel ?? '' }}</u></td>
             <td colspan=1><b>SchoolYear:</b> <u>{{ $schoolyear ?? '' }}</u></td>
         </tr>
         <tr style='height:15.0pt'>
             <td colspan=12 height=40 class=width=135><b>Homeroom Adviser:</b> <u>{{ $homeroom ?? '' }}</u></td>
-            <td colspan=1><b>Date:</b> <u>{{ $date ?? '' }}</u></td>
+            <td colspan=1><b>Date:</b> <u>{{ date('F / d / Y', strtotime(now())) ?? '' }}</u></td>
         </tr>
         <tr style='height:15.0pt'>
-            <td colspan=1 height=40 class=label width=135
-                style='border-bottom:1pt solid black; height:30.0pt;width:101pt'>
+            <td colspan=1 height=40 class=label style='border-bottom:1pt solid black; height:30.0pt;width:101pt'>
             </td>
-            <td colspan=1 height=40 class=label width=135
-                style='border-bottom:1pt solid black; height:30.0pt;width:101pt'>Name
+            <td colspan=1 height=40 class=label style='border-bottom:1pt solid black; height:30.0pt;width:101pt'>Name
             </td>
-            <td colspan=4 class=label width=181 style='border-bottom:1pt solid black;width:34pt'>Honor</td>
-            <td colspan=6 class=label width=45
-                style='border-right:1pt solid black; border-bottom:1pt solid black;width:34pt'>Deportment/Effort
+            <td colspan=4 class=label style='border-bottom:1pt solid black;width:34pt'>Honor</td>
+            <td colspan=6 class=label style='border-right:1pt solid black; border-bottom:1pt solid black;width:34pt'>Deportment/Effort
             </td>
-            <td colspan=1 class=label width=45
-                style='border-right:1pt solid black; border-bottom:1pt solid black;width:34pt'>Subject Excellence Award
+            <td colspan=1 class=label style='border-right:1pt solid black; border-bottom:1pt solid black;width:34pt'>Subject Excellence Award
             </td>
         </tr>
 
-        @foreach($studentsList as $student_id => $value)
+        @foreach($students as $student)
             <tr style='height:15.0pt'>
-                <td colspan=1 height=40 class=label width=135
-                    style='border-bottom:1pt solid black; height:30.0pt;width:101pt; vertical-align: middle;'>
+                <td colspan=1 height=40 class=label style='border-bottom:1pt solid black; height:30.0pt;width:101pt; vertical-align: middle;'>
                     {{ $loop->iteration }}
                 </td>
-                <td colspan=1 height=40 class=label width=135
-                    style='border-bottom:1pt solid black; height:30.0pt;width:101pt; text-align:left; vertical-align: middle;'>{{ $awards[$student_id]['propername'] }}
+                <td colspan=1 height=40 class=label style='border-bottom:1pt solid black; height:30.0pt;width:101pt; text-align:left; vertical-align: middle;'>
+                    {{ $student->lastname . ', ' . $student->firstname ?? '' }}
                 </td>
-                <td colspan=4 class=label width=181
-                    style='border-bottom:1pt solid black;width:34pt; vertical-align: middle;'>{{ $awards[$student_id]['honors'] ?? '' }}{!! isset($awards[$student_id]['honors']) ? '<br/>' . $awards[$student_id]['generalaverage'] : ''  !!}</td>
-                <td colspan=6 class=label width=45
-                    style='border-right:1pt solid black; border-bottom:1pt solid black;width:34pt; vertical-align: middle;'>{{ $awards[$student_id]['deportment'] ?? '' }}
-                    {!! isset($awards[$student_id]['deportment']) ? '<br/>' . $awards[$student_id]['deportmentgrade'] : ''  !!}
-                    <br/>{{ $awards[$student_id]['effort'] ?? '' }}
+                <td colspan=4 class=label style='border-bottom:1pt solid black;width:34pt; vertical-align: middle;'>
+                    {!! $awards[$student->student_id]["HIGHESTHONORS"] ? "Highest Honors<br/>" : '' !!}
+                    {!! $awards[$student->student_id]["HIGHHONORS"] ? "High Honors<br/>" : '' !!}
+                    {!! $awards[$student->student_id]["HONORS"] ? "Honors<br/>" : '' !!}
+                    {!! '(' . $awards[$student->student_id]['generalaverage'] . ')'  !!}
                 </td>
-                <td colspan=1 class=label width=45
+
+                <td colspan=6 class=label style='border-right:1pt solid black; border-bottom:1pt solid black;width:34pt; vertical-align: middle;'>
+                    {{ $awards[$student->student_id]["DEPORTMENT"] ? "Deportment" : '' }}
+                    {{ isset($awards[$student->student_id]['DEPORTMENT']) ? '(' . $awards[$student->student_id]['DEPORTMENT_grade'] . ')' : ''  }}
+                    <br/>
+                    {{ $awards[$student->student_id]['EFFORT'] ? "Effort" : '' }}
+                </td>
+                <td colspan=1 class=label
                     style='border-right:1pt solid black; border-bottom:1pt solid black;width:34pt; vertical-align: middle;'>
-                    @if(isset($awards[$student_id]["SEA"]))
-                        @foreach($awards[$student_id]["SEA"] as $SEA)
-                            {{ $SEA }}
-                            <br/>
+                    @if(isset($awards[$student->student_id]["SEA"]))
+                        @foreach($awards[$student->student_id]["SEA"] as $SEA)
+                            {{ $SEA }},
                         @endforeach
                     @endif
                 </td>
+
             </tr>
         @endforeach
 

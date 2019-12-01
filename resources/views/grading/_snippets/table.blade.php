@@ -131,9 +131,9 @@ $fields = ['final', 'effort', 'deportment'];
 
         @if($quarter == 4)
             <button type="button"
-                    onclick="loadModal('Subject Excellence Awardee','{{ route('sea.show', $subject->subject_id) }}');"
+                    onclick="loadModal('Subject Excellence Ranking','{{ route('sea.show', $subject->subject_id) }}');"
                     class="btn btn-success ml-1" data-target='#modal' data-toggle="modal">
-                Subject Excellence Awardee
+                Ranking
             </button>
         @endif
     @endif

@@ -506,8 +506,8 @@
         <col class=blank width=15 span=5 style='width:11pt'>
         <col class=blank width=15 style='width:11pt'>
         <col class=blank width=15 span=5 style='width:11pt'>
-        <col class=blank width=15 span=2 style='width:11pt'>
-        <col class=blank width=15 span=8 style='width:11pt'>
+        <col class=blank width=15 span=2 style='width:18pt'>
+        <col class=blank width=15 span=8 style='width:18pt'>
 
         <tr style='mso-height-source:userset;{{ $height }}'>
             <td colspan=62 class=cardheader width=930>{{ schema('report_card')->{'school.name'} }}
@@ -564,7 +564,7 @@
 
             <td class=blank></td>
             <td colspan=7 class=studentlabel>Year Level:</td>
-            <td colspan=6 class=studentinfo>{{ $student->gradelevel }}</td>
+            <td colspan=4 class=studentinfo>{{ $student->gradelevel }}</td>
         </tr>
         <tr style='mso-height-source:userset;{{ $height }}'>
             <td class=blank></td>
@@ -641,7 +641,7 @@
 
             <td colspan=7 rowspan=2 class=cardlabel>REMARKS</td>
             <td class=blank></td>
-            <td colspan=16 rowspan="14">
+            <td colspan=20 rowspan="14">
                 @include('reports.templates._snippets.card_score_board')
             </td>
         </tr>

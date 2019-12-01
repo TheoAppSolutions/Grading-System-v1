@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Reports;
 
 use App\Http\Controllers\Controller;
-use App\Formula;
 use App\Models\Award;
 use App\Models\SchoolYear;
 use App\User;
-use DebugBar\DebugBar;
 use Illuminate\Support\Facades\Input;
 use mikehaertl\wkhtmlto\Pdf as PDF;
 use App\Models\Subject;
@@ -15,7 +13,6 @@ use App\Models\Attendance;
 use App\Models\Comments_Quarter as Comments;
 use App\Models\Comments_Midquarter as MidComments;
 use App\Models\Homeroom;
-use App\Models\Month;
 use App\Models\Student;
 use App\Models\Grade;
 
@@ -29,7 +26,6 @@ class ReportController extends Controller
 
         $type = request('type');
         $quarter = request('term');
-        $semester = request('semester');
 
         $principal = Homeroom::getPrincipal();
         $attendance = new Attendance;
@@ -52,11 +48,14 @@ class ReportController extends Controller
             else:
                 $grades[$subject->subjectname]['teacher'] = $subject->title . " " . $subject->firstname . " " . $subject->middlename . " " . $subject->lastname . " " . $subject->suffix;
             endif;
+
+            if ($quarter == "award"):
+                Award::getSEA($subject->subject_id, $schoolyear, $grades[$subject->subjectname]);
+            endif;
         endforeach;
 
         if ($quarter == "award"):
-            $comments = new Award;
-            $comments = $comments->getAwardsForReportCard($student, $grades, $schoolyear);
+            $award = Award::getAwardsForReportCard($student, $grades, $schoolyear);
         elseif ($quarter == 1 or $quarter == 3):
             $comments = new MidComments;
             $comments = $comments->byStudentID($student_id);
@@ -67,31 +66,29 @@ class ReportController extends Controller
 
         $schoolyear_start = SchoolYear::where("active", 1)->first()->schoolyear_start;
 
-        $award = Award::getAwardsForReportCard($student, $grades, $schoolyear);
-
         if ($student->gradelevel == "Prep" or $student->gradelevel == "Jr. Kindy"): //Pre School
             if ($quarter == "award"):
-                return view('reports.templates.pre_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.pre_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
             elseif ($quarter == 1 or $quarter == 3):
-                return view('reports.templates.pre_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.pre_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             elseif ($quarter == 2 or $quarter == 4):
-                return view('reports.templates.pre_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.pre_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             endif;
         elseif ($student->gradelevel >= 1 and $student->gradelevel <= 6): //Lower School
             if ($quarter == "award"):
-                return view('reports.templates.lower_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.lower_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
             elseif ($quarter == 1 or $quarter == 3):
-                return view('reports.templates.lower_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.lower_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             elseif ($quarter == 2 or $quarter == 4):
-                return view('reports.templates.lower_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.lower_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             endif;
         elseif ($student->gradelevel >= 7 and $student->gradelevel <= 10): //Upper School
             if ($quarter == "award"):
-                return view('reports.templates.upper_school.secondary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.upper_school.secondary_T2-T4', compact('student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
             elseif ($quarter == 1 or $quarter == 3):
-                return view('reports.templates.upper_school.secondary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.upper_school.secondary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             elseif ($quarter == 2 or $quarter == 4):
-                return view('reports.templates.upper_school.secondary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.upper_school.secondary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             endif;
         endif;
 
@@ -242,24 +239,55 @@ class ReportController extends Controller
 
     public function summary_award($gradelevel)
     {
-        $studentsList = Student::getStudents('enrolled', $gradelevel, true);
+        app('debugbar')->disable();
 
-        $gradesModel = new Grade;
-        $gradesModel->setTableName($gradelevel);
-        $grades = [];
+        $schoolyear = getSchoolYear();
 
-        foreach ($studentsList as $student_id):
-            $grades[] = $gradesModel->byStudentID($student_id);
+        $principal = Homeroom::getPrincipal();
+        $homeroom = Homeroom::byGradeLevel($gradelevel);
+        $days = SchoolYear::getSchoolDays();
+
+        $students = Student::getStudents("enrolled", $gradelevel);
+
+        $subjects = new Subject;
+        $subjects = $subjects->byGradeLevelAndSection($gradelevel);
+
+        foreach ($subjects as $subject):
+            Award::getSEA($subject->subject_id);
         endforeach;
 
-        dd($grades);
+        $awards = Award::byGradelevel($gradelevel, $schoolyear);
+        $gradesModel = new Grade;
+        $gradesModel->setTableName($gradelevel);
 
-        //$awards = $comments->getAwardsForReportCard($student, $grades);
+        foreach ($students as $student):
+            $grades = $gradesModel->byStudentID($student->student_id, '', $schoolyear);
+            $award[$student->student_id] = Award::getAwardsForReportCard($student, $grades);
 
-        return view('reports.templates.summary.award_summary', compact('studentsList'));
+            $awards[$student->student_id]["generalaverage"] = isset($grades["generalaverage"]) ? $grades["generalaverage"] : '';
+            $awards[$student->student_id]["HIGHESTHONORS"] = isset($award[$student->student_id]["HIGHESTHONORS"]) ? true : false;
+            $awards[$student->student_id]["HIGHHONORS"] = isset($award[$student->student_id]["HIGHHONORS"]) ? true : false;
+            $awards[$student->student_id]["HONORS"] = isset($award[$student->student_id]["HONORS"]) ? true : false;
+            $awards[$student->student_id]["DEPORTMENT"] = $award[$student->student_id]["DEPORTMENT"] ? true : false;
+            $awards[$student->student_id]["DEPORTMENT_grade"] =  isset($grades['deportment'][5]) ? $grades['deportment'][5] : '';
+            $awards[$student->student_id]["EFFORT"] = $award[$student->student_id]["EFFORT"] ? true : false;
+        endforeach;
 
-        //$pdf->send();
-        //return false;
+        return view('reports.templates.summary.award_summary', compact('gradelevel','students', 'grades', 'schoolyear', 'homeroom', 'principal', 'days', 'awards'));
+    }
+
+    public function summary_award_by_gradelevel($gradelevel)
+    {
+        $pdf = new PDF(array(
+            'no-outline',
+            'page-size' => 'A4', //'Letter'
+            'orientation' => 'Landscape', //'Landscape'
+        ));
+
+        $pdf->addPage(route('report.award.summary.print', $gradelevel));
+
+        $pdf->send();
+        return false;
     }
 
     /*----------------------------------------------------------*/

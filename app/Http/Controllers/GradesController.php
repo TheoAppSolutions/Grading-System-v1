@@ -64,7 +64,7 @@ class GradesController extends Controller
         $gradesModel->setTableName($subject->gradelevel);
         $grades = $gradesModel->bySubjectID($subject_id, $schoolyear);
 
-        $candidateForSEA = Award::getSEA($subject_id, $schoolyear, $grades);
+        //$candidateForSEA = Award::getSEA($subject_id, $schoolyear, $grades);
         $students = Student::bySubjectID($subject_id);
 
         $excluded = Excluded::where([
@@ -85,7 +85,7 @@ class GradesController extends Controller
             $studentNames[$student->student_id]["gender"] = $student->gender;
         endforeach;
 
-        return view('grading.show', compact('grades', 'exclude_list', 'subject', 'students', 'currentQuarter', 'studentNames', 'candidateForSEA'));
+        return view('grading.show', compact('grades', 'exclude_list', 'subject', 'students', 'studentNames', 'candidateForSEA'));
     }
 
     public function store_grade(Request $request)

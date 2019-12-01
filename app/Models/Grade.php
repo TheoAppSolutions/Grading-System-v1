@@ -67,7 +67,9 @@ class Grade extends Model
                     $temp['effort'][$quarter] = $gradeset["$record->student_id"][$quarter]["effort"];
                 endif;
             endfor;
+
             if (isset($temp['final']) and isset($temp['effort'])):
+            if (count($temp['final']) == 4 and count($temp['effort']) == 4):
                 $gradeset["$record->student_id"][5]["final"] = array_sum($temp['final']) / count($temp['final']);
                 $gradeset["$record->student_id"][5]["final"] = number_format($gradeset["$record->student_id"][5]["final"], 3);
                 $gradeset["$record->student_id"][5]["effort"] = array_sum($temp['effort']) / count($temp['effort']);
@@ -77,6 +79,7 @@ class Grade extends Model
                 if ($gradeset["$record->student_id"][5]["final"] >= 92 and $disqualifyForSEA != true):
                     $gradeset["academicAward"]["$record->student_id"] = $gradeset["$record->student_id"][5]["final"];
                 endif;
+            endif;
             endif;
         endforeach;
 

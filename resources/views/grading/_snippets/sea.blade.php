@@ -1,7 +1,3 @@
-<div class="modal-header">
-    <h4>Subject Excellence Awardee</h4>
-</div>
-
 <div class="modal-body">
     <form role="form" class="ajax">
         <div style="overflow: auto; max-height: 300px;">
