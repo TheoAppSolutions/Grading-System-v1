@@ -16,7 +16,7 @@ class Formula extends Model
          * Disqualification Indicators
          * */
         $gradeset["disqualifyForHonors"] = false;
-        $gradeset["disqualifyForEffort"] = false;
+        $gradeset["disqualifyForEffort"] = true;
         $gradeset["disqualifyForDeportment"] = false;
         $gradeset["isEligibleForNextGrade"] = true;
 
@@ -52,13 +52,22 @@ class Formula extends Model
                 endfor;
 
                 if (isset($subAverage['final']) and isset($subAverage['raweffort'])):
-                    if (count($subAverage['final']) == 4 and count($subAverage['raweffort']) == 4):
+                    if (count($subAverage['final']) == 4):
                         $gradeset[$subject->subjectname][5]["rawfinal"] = array_sum($subAverage['final']) / count($subAverage['final']);
                         $gradeset[$subject->subjectname][5]["rawfinal"] = number_format($gradeset[$subject->subjectname][5]["rawfinal"], 2);
                         $gradeset[$subject->subjectname][5]["final"] = $gradeset[$subject->subjectname][5]["rawfinal"];
 
                         if (count($subAverage['raweffort']) == 4):
                             $gradeset[$subject->subjectname][5]["effort"] = Formula::getFinalEffort(array_sum($subAverage['raweffort']));
+
+                            if (!$gradeset["disqualifyForEffort"]):
+                                if ($subject->deportable == 1):
+                                    $gradeset["finaleffort"][$subject->subjectname] = $gradeset[$subject->subjectname][5]["effort"];
+                                    $gradeset["disqualifyForEffort"] = $gradeset[$subject->subjectname][5]["effort"] < 4 ? false : true; //Major Subject
+                                endif;
+                            else:
+                                $gradeset["disqualifyForEffort"] = true;
+                            endif;
                         endif;
 
                         $gradeset[$subject->subjectname]["remarks"] = $gradeset[$subject->subjectname][5]["final"] >= 60 ? 'PASSED' : 'FAILED';
@@ -78,13 +87,6 @@ class Formula extends Model
                                 $gradeset[$subject->subjectname]['unit'] = number_format($units[$subject->subject_id]['unit'], 2);
                             else:
                                 $gradeset[$subject->subjectname]['unit'] = '';
-                            endif;
-
-                            if (!$gradeset["disqualifyForEffort"]):
-                                if ($subject->deportable == 1):
-                                    $gradeset["finaleffort"][$subject->subjectname] = $gradeset[$subject->subjectname][5]["effort"];
-                                    $gradeset["disqualifyForEffort"] = $gradeset[$subject->subjectname][5]["effort"] < 4 ? false : true; //Major Subject
-                                endif;
                             endif;
                         endif;
                     endif;
@@ -129,8 +131,10 @@ class Formula extends Model
         endfor;
 
         if (isset($gradeset["deportment"][$endCounter]) and $gradeset["deportment"][$endCounter] > 0) :
-            $gradeset["deportment"][5] = array_sum($gradeset["rawdeportment"]) / count($gradeset["rawdeportment"]);
-            $gradeset["deportment"][5] = number_format($gradeset["deportment"][5], 3);
+            if (count($gradeset["deportment"]) == 4):
+                $gradeset["deportment"][5] = array_sum($gradeset["rawdeportment"]) / count($gradeset["rawdeportment"]);
+                $gradeset["deportment"][5] = number_format($gradeset["deportment"][5], 3);
+            endif;
         endif;
 
         return $gradeset;

@@ -27,10 +27,11 @@ class SchoolYear extends Model
 
     public static function getSchoolDays()
     {
-        $days = self::getSchoolYear("school_days");
+        $days = SchoolYear::getSchoolYear("school_days");
         $days = json_decode($days);
         $array = [];
         $array["total"] = 0;
+
         if ($days):
             $ctr = 0;
             foreach ($days as $day):

@@ -286,16 +286,16 @@ function checkAdmin($user_id)
 
 function schema($value = "")
 {
-    /*if (!session()->has('schema')):
+    if (!session()->has('schema')):
         $schema = "schema/" . env("SCHEMA_NAME") . ".json";
         $schema = json_decode(file_get_contents($schema));
         session()->put('schema', $schema);
     endif;
 
-    $schema = session('schema');*/
+    $schema = session('schema');
 
-    $schema = "schema/" . env("SCHEMA_NAME") . ".json";
-    $schema = json_decode(file_get_contents($schema));
+    /*$schema = "schema/" . env("SCHEMA_NAME") . ".json";
+    $schema = json_decode(file_get_contents($schema));*/
 
     if ($value != ""):
         $value = str_replace('_', '.', $value);

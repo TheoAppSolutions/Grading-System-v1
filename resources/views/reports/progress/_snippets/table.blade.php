@@ -1,6 +1,6 @@
 @php($schoolyear = getSchoolYear())
 @if(isset($students) and count($students) > 0)
-    <div class="table-responsive">
+    <div class="">
         <table class='table table-striped table-bordered table-hover'>
             <thead>
             <tr>
@@ -37,7 +37,7 @@
                                 Awards Card <span class='fa fa-file-pdf-o pull-right'></span>
                             </a>
                             <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                               href="{{ route('report.award.summary', [$gradelevel,'schoolyear='.$schoolyear]) }}">
+                               href="{{ route('report.award.summary.print', [$gradelevel,'schoolyear='.$schoolyear]) }}">
                                 Awards Summary <span class='fa fa-file-pdf-o pull-right'></span>
                             </a>
                         </div>

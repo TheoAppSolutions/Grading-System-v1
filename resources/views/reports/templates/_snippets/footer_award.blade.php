@@ -76,7 +76,7 @@
     @endif
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
-    <td colspan=8 height=20 class=checkmark style='height:15.0pt'>{!! $attendance['perfect_attendance'] ?? '' !!}</td>
+    <td colspan=8 height=20 class=checkmark style='height:15.0pt'>{!! $attendance->PerfectAttendance ?? '' !!}</td>
     <td colspan=9 class=comments>Perfect Attendance</td>
     <td colspan=3 class=blank></td>
 

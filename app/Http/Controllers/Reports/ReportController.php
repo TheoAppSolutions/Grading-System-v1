@@ -49,9 +49,9 @@ class ReportController extends Controller
                 $grades[$subject->subjectname]['teacher'] = $subject->title . " " . $subject->firstname . " " . $subject->middlename . " " . $subject->lastname . " " . $subject->suffix;
             endif;
 
-            if ($quarter == "award"):
+            /*if ($quarter == "award"):
                 Award::getSEA($subject->subject_id, $schoolyear, $grades[$subject->subjectname]);
-            endif;
+            endif;*/
         endforeach;
 
         if ($quarter == "award"):
@@ -68,7 +68,7 @@ class ReportController extends Controller
 
         if ($student->gradelevel == "Prep" or $student->gradelevel == "Jr. Kindy"): //Pre School
             if ($quarter == "award"):
-                return view('reports.templates.pre_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.pre_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'attendance', 'days'));
             elseif ($quarter == 1 or $quarter == 3):
                 return view('reports.templates.pre_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             elseif ($quarter == 2 or $quarter == 4):
@@ -76,7 +76,7 @@ class ReportController extends Controller
             endif;
         elseif ($student->gradelevel >= 1 and $student->gradelevel <= 6): //Lower School
             if ($quarter == "award"):
-                return view('reports.templates.lower_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.lower_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'attendance', 'days'));
             elseif ($quarter == 1 or $quarter == 3):
                 return view('reports.templates.lower_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             elseif ($quarter == 2 or $quarter == 4):
@@ -84,11 +84,11 @@ class ReportController extends Controller
             endif;
         elseif ($student->gradelevel >= 7 and $student->gradelevel <= 10): //Upper School
             if ($quarter == "award"):
-                return view('reports.templates.upper_school.secondary_T2-T4', compact('student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.upper_school.secondary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'attendance', 'days'));
             elseif ($quarter == 1 or $quarter == 3):
                 return view('reports.templates.upper_school.secondary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             elseif ($quarter == 2 or $quarter == 4):
-                return view('reports.templates.upper_school.secondary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
+                return view('reports.templates.upper_school.secondary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             endif;
         endif;
 
@@ -259,6 +259,8 @@ class ReportController extends Controller
         $awards = Award::byGradelevel($gradelevel, $schoolyear);
         $gradesModel = new Grade;
         $gradesModel->setTableName($gradelevel);
+        $attendanceModel = new Attendance;
+        $attendance = [];
 
         foreach ($students as $student):
             $grades = $gradesModel->byStudentID($student->student_id, '', $schoolyear);
@@ -269,11 +271,13 @@ class ReportController extends Controller
             $awards[$student->student_id]["HIGHHONORS"] = isset($award[$student->student_id]["HIGHHONORS"]) ? true : false;
             $awards[$student->student_id]["HONORS"] = isset($award[$student->student_id]["HONORS"]) ? true : false;
             $awards[$student->student_id]["DEPORTMENT"] = $award[$student->student_id]["DEPORTMENT"] ? true : false;
-            $awards[$student->student_id]["DEPORTMENT_grade"] =  isset($grades['deportment'][5]) ? $grades['deportment'][5] : '';
+            $awards[$student->student_id]["DEPORTMENT_grade"] = isset($grades['deportment'][5]) ? $grades['deportment'][5] : '';
             $awards[$student->student_id]["EFFORT"] = $award[$student->student_id]["EFFORT"] ? true : false;
+
+            $attendance[$student->student_id] = $attendanceModel->byStudentID($student->student_id)['PerfectAttendance'];
         endforeach;
 
-        return view('reports.templates.summary.award_summary', compact('gradelevel','students', 'grades', 'schoolyear', 'homeroom', 'principal', 'days', 'awards'));
+        return view('reports.templates.summary.award_summary', compact('gradelevel', 'attendance', 'students', 'grades', 'schoolyear', 'homeroom', 'principal', 'days', 'awards'));
     }
 
     public function summary_award_by_gradelevel($gradelevel)

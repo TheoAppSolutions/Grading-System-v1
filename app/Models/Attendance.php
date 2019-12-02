@@ -12,8 +12,6 @@ class Attendance extends Model
     {
         $schoolyear = getSchoolYear();
 
-        $term = SchoolYear::getSchoolDays();
-
         $attendance = Attendance::where([
             ['student_id', $student_id],
             ['schoolyear', $schoolyear]
@@ -38,6 +36,7 @@ class Attendance extends Model
 
         $attendance->TotalAbsent = 0;
         $attendance->TotalTardy = 0;
+        $term = SchoolYear::getSchoolDays();
 
         for ($ctr = 1; $ctr <= schema("attendance.count"); $ctr++):
             $P = "P" . $ctr;
@@ -55,9 +54,11 @@ class Attendance extends Model
             $attendance->TotalTardy += intval($attendance->{$T});
         endfor;
 
-        $attendance['perfect_attendance'] = $attendance->TotalAbsent == 0 ?
-            checkMark(). ' ' . $attendance->TotalAbsent . ' / ' . $attendance->TotalDays:
-            $attendance->TotalAbsent . ' / ' . $attendance->TotalDays;
+        if ($attendance->TotalAbsent == 0):
+            $attendance['PerfectAttendance'] = checkMark() . ' ' . $attendance->TotalDays . ' / ' . $term['total'];
+        else:
+            $attendance['PerfectAttendance'] = $attendance->TotalDays . ' / ' . $term['total'];
+        endif;
 
         return $attendance;
     }

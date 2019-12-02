@@ -1,6 +1,6 @@
 <tr style='mso-height-source:userset;{{ $height }}'>
     <td colspan=28 class=commentstitle>ACADEMIC
-        PERFORMANCE {{ $type }}
+        PERFORMANCE
     </td>
     <td class=xl12017275></td>
     <td colspan=33 class=commentstitle>CONDUCT</td>

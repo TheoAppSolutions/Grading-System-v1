@@ -130,8 +130,8 @@ Route::prefix('report')->group(function () {
     Route::get('summary/{subject_id}', 'Reports\ReportController@summary')->name('report.subject');
 
     Route::get('master/{gradelevel}', 'Reports\ReportController@masterSummary')->name('report.master');
-    Route::get('award/summary/{gradelevel}', 'Reports\ReportController@summary_award_by_gradelevel')->name('report.award.summary');
-    Route::get('award/summary/{gradelevel}/print', 'Reports\ReportController@summary_award')->name('report.award.summary.print');
+    Route::get('award/summary/{gradelevel}/print', 'Reports\ReportController@summary_award_by_gradelevel')->name('report.award.summary');
+    Route::get('award/summary/{gradelevel}', 'Reports\ReportController@summary_award')->name('report.award.summary.print');
 });
 
 /*----------FOR SORTING------------------------------------------------------------------------------------------*/
