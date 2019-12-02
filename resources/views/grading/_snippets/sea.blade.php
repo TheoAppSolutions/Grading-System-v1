@@ -15,7 +15,7 @@
                     <tr>
                         @if ($key != "SEA")
                             <td class="text-center">{{ $loop->iteration }}</td>
-                            <td class="text-center">{{ $studentNames[$key]->lastname . ', ' . $studentNames[$key]->firstname }}</td>
+                            <td class="text-center">{{ $studentNames[$key]->lastname . ', ' . $studentNames[$key]->firstname . ' (' . $studentNames[$key]->gender . ')' }}</td>
                             <td class="text-center">{{ $grade }}</td>
                             {{--<td class="text-center">
                                 @if ($grades['SEA'] != $key)

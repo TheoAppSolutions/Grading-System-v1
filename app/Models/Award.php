@@ -69,45 +69,53 @@ class Award extends Model
             if ($subject->subjectname != 'P.E.'):
                 $highest = 0;
                 $collection = [];
+
                 foreach ($studentGrades as $student_id => $score) :
                     if ($score > $highest):
                         $highest = $score;
-                        $collection[0] = $student_id;
+                        $collection = [];
+                        $collection[] = $student_id;
                     elseif ($score == $highest):
                         $collection[] = $student_id;
                     endif;
                 endforeach;
+
 
                 $awards = Award::where([
                     ['subject_id', $subject_id],
                     ['schoolyear', $schoolyear]
                 ])->get();
 
-                foreach ($collection as $student_id):
-                    if ($awards): //if not blank
+                if (count($awards)):
+                    foreach ($awards as $award):
                         /*
-                         * Remove all SEA of the subject_id
+                         * Check if database record contains in the collection
                          * */
-                        $awards = Award::where([
-                            ['subject_id', $subject_id],
-                            ['schoolyear', $schoolyear]
-                        ])->delete();
-                    endif;
-
-                    $insert = [
-                        'student_id' => $student_id,
-                        'subject_id' => $subject_id,
-                        'schoolyear' => $schoolyear,
-                        'gender' => '',
-                        'section' => ''
-                    ];
-
-                    Award::create($insert);
-                endforeach;
+                        if (array_search($award->student_id, $collection) === false):
+                            Award::where([
+                                ['student_id', $award->student_id],
+                                ['subject_id', $subject_id],
+                                ['schoolyear', $schoolyear]
+                            ])->delete();
+                        endif;
+                    endforeach;
+                else:
+                    foreach ($collection as $student_id):
+                        Award::create([
+                            'student_id' => $student_id,
+                            'subject_id' => $subject_id,
+                            'schoolyear' => $schoolyear,
+                            'gender' => '',
+                            'section' => ''
+                        ]);
+                    endforeach;
+                endif;
 
             elseif ($subject->subjectname == 'P.E.'):
                 $seaMale = [];
                 $seaFemale = [];
+                $highest = 0;
+                $collection = [];
 
                 foreach ($students as $student) :
                     if (isset($studentGrades[$student->student_id])):
@@ -122,48 +130,93 @@ class Award extends Model
                 if ($seaMale):
                     arsort($seaMale);
 
-                    $Male = Award::where([
+                    foreach ($seaMale as $student_id => $score) :
+                        $score = $studentGrades[$student_id];
+                        if ($score > $highest):
+                            $highest = $score;
+                            $collection = [];
+                            $collection[] = $student_id;
+                        elseif ($score == $highest):
+                            $collection[] = $student_id;
+                        endif;
+                    endforeach;
+
+                    $awards = Award::where([
                         ['subject_id', $subject_id],
                         ['schoolyear', $schoolyear],
                         ['gender', "M"]
-                    ])->first();
+                    ])->get();
 
-                    if ($Male):
-                        $Male->student_id = key($seaMale);
-                        $Male->save();
-                        $studentGrades["SEA"] = key($seaMale);
+                    if (count($awards)):
+                        foreach ($awards as $award):
+                            /*
+                             * Check if database record contains in the collection
+                             * */
+                            if (array_search($award->student_id, $collection) === false):
+                                Award::where([
+                                    ['student_id', $award->student_id],
+                                    ['subject_id', $subject_id],
+                                    ['schoolyear', $schoolyear]
+                                ])->delete();
+                            endif;
+                        endforeach;
                     else:
-                        Award::create([
-                            'student_id' => key($seaMale),
-                            'subject_id' => $subject_id,
-                            'schoolyear' => $schoolyear,
-                            'gender' => 'M',
-                        ]);
-                        $studentGrades["SEA"] = key($seaMale);
+                        foreach ($collection as $student_id):
+                            Award::create([
+                                'student_id' => $student_id,
+                                'subject_id' => $subject_id,
+                                'schoolyear' => $schoolyear,
+                                'gender' => 'M',
+                                'section' => ''
+                            ]);
+                        endforeach;
                     endif;
+
                 endif;
 
                 if ($seaFemale):
                     arsort($seaFemale);
 
-                    $Female = Award::where([
+                    foreach ($seaFemale as $student_id => $score) :
+                        $score = $studentGrades[$student_id];
+                        if ($score > $highest):
+                            $highest = $score;
+                            $collection = [];
+                            $collection[] = $student_id;
+                        elseif ($score == $highest):
+                            $collection[] = $student_id;
+                        endif;
+                    endforeach;
+
+                    $awards = Award::where([
                         ['subject_id', $subject_id],
                         ['schoolyear', $schoolyear],
-                        ['gender', "F"]
-                    ])->first();
+                        ['gender', "M"]
+                    ])->get();
 
-                    if ($Female):
-                        $Female->student_id = key($seaFemale);
-                        $Female->save();
-                        $studentGrades["SEA2"] = key($seaFemale);
+                    if (count($awards)):
+                        foreach ($awards as $award):
+                            /*
+                             * Check if database record contains in the collection
+                             * */
+                            if (array_search($award->student_id, $collection) === false):
+                                Award::where([
+                                    ['student_id', $award->student_id],
+                                    ['subject_id', $subject_id],
+                                    ['schoolyear', $schoolyear]
+                                ])->delete();
+                            endif;
+                        endforeach;
                     else:
-                        Award::create([
-                            'student_id' => key($seaFemale),
-                            'subject_id' => $subject_id,
-                            'schoolyear' => $schoolyear,
-                            'gender' => 'F'
-                        ]);
-                        $studentGrades["SEA2"] = key($seaFemale);
+                        foreach ($collection as $student_id):
+                            Award::create([
+                                'student_id' => $student_id,
+                                'subject_id' => $subject_id,
+                                'schoolyear' => $schoolyear,
+                                'gender' => 'M',
+                                'section' => ''
+                            ]);
+                        endforeach;
                     endif;
                 endif;
             endif;
