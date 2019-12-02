@@ -8,44 +8,51 @@
 
     <tr style='mso-height-source:userset;height:19.5pt;'>
         <td colspan=2 class=blank>A+</td>
-        <td colspan=5 class=blank>100 - 99</td>
+        <td colspan=5 class=blank>97 - 100</td>
         <td colspan=2 class=blank>C+</td>
-        <td colspan=6 class=blank>88 - 86</td>
+        <td colspan=6 class=blank>77 - 79.99</td>
     </tr>
 
     <tr class=blank style='mso-height-source:userset;height:19.5pt'>
         <td colspan=2 class=blank>A</td>
-        <td colspan=5 class=blank>98 - 97</td>
+        <td colspan=5 class=blank>93 - 96.99</td>
         <td colspan=2 class=blank>C</td>
-        <td colspan=6 class=blank>85 - 83</td>
+        <td colspan=6 class=blank>73 - 76.99</td>
     </tr>
 
     <tr class=blank style='mso-height-source:userset;height:19.5pt'>
         <td colspan=2 class=blank>A-</td>
-        <td colspan=5 class=blank>96 - 95</td>
+        <td colspan=5 class=blank>90 - 92.99</td>
         <td colspan=2 class=blank>C-</td>
-        <td colspan=6 class=blank>82 - 80</td>
+        <td colspan=6 class=blank>70 - 72.99</td>
     </tr>
 
     <tr class=blank style='mso-height-source:userset;height:19.5pt'>
         <td colspan=2 class=blank>B+</td>
-        <td colspan=5 class=blank>94 - 93</td>
-        <td colspan=2 class=blank>D</td>
-        <td colspan=6 class=blank>79 - 76</td>
-    </tr>
-
-    <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-        <td colspan=2 class=blank>B-</td>
-        <td colspan=5 class=blank>90 - 89</td>
-        <td colspan=2 class=blank>D-</td>
-        <td colspan=6 class=blank>75</td>
+        <td colspan=5 class=blank>87 - 89.99</td>
+        <td colspan=2 class=blank>D+</td>
+        <td colspan=6 class=blank>67 - 69.99</td>
     </tr>
 
     <tr class=blank style='mso-height-source:userset;height:19.5pt'>
         <td colspan=2 class=blank>B</td>
-        <td colspan=5 class=blank>92 - 91</td>
+        <td colspan=5 class=blank>83 - 86.99</td>
+        <td colspan=2 class=blank>D</td>
+        <td colspan=6 class=blank>63 - 66.99</td>
+    </tr>
+
+    <tr class=blank style='mso-height-source:userset;height:19.5pt'>
+        <td colspan=2 class=blank>B-</td>
+        <td colspan=5 class=blank>80 - 82.99</td>
+        <td colspan=2 class=blank>D-</td>
+        <td colspan=6 class=blank>60 - 62.99</td>
+    </tr>
+
+    <tr class=blank style='mso-height-source:userset;height:19.5pt'>
+        <td colspan=2 class=blank></td>
+        <td colspan=5 class=blank></td>
         <td colspan=2 class=blank>F</td>
-        <td colspan=6 class=blank>74 - below</td>
+        <td colspan=6 class=blank>Below 60</td>
     </tr>
 
     <tr class=blank style='mso-height-source:userset;height:19.5pt'>
