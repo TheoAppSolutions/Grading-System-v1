@@ -527,13 +527,9 @@
         </tr>
 
         <tr style='mso-height-source:userset;'>
-            <td colspan=8 class=studentlabel>Date Generated:</td>
+            <td colspan=8 class=studentlabel>Time Generated:</td>
             <td colspan=2 class=blank></td>
-            <td colspan=14 class=studentinfo>{{ date('F  d, Y h:m', strtotime(now())) ?? '' }}</td>
-            <td colspan=9 class=blank></td>
-            <td colspan=1 class=blank></td>
-            <td colspan=14 class=blank></td>
-            <td colspan=8 class=blank></td>
+            <td colspan=16 class=studentinfo>{{ date('F  d, Y [h:ia]', strtotime(now())) ?? '' }}</td>
         </tr>
 
         <tr>
@@ -566,22 +562,23 @@
                 </td>
 
                 <td colspan=10 class=cardlabel style='vertical-align: middle;'>
-                    {!! $awards[$student->student_id]["HIGHESTHONORS"] ? "Highest Honors<br/>" : '' !!}
-                    {!! $awards[$student->student_id]["HIGHHONORS"] ? "High Honors<br/>" : '' !!}
-                    {!! $awards[$student->student_id]["HONORS"] ? "Honors<br/>" : '' !!}
+                    {!! $awards[$student->student_id]["HIGHESTHONORS"] ? checkMark() ."Highest Honors<br/>" : '' !!}
+                    {!! $awards[$student->student_id]["HIGHHONORS"] ? checkMark() ."High Honors<br/>" : '' !!}
+                    {!! $awards[$student->student_id]["HONORS"] ? checkMark() ."Honors<br/>" : '' !!}
                     @if ($awards[$student->student_id]['generalaverage'])
                         {!! '(' . $awards[$student->student_id]['generalaverage'] . ')'  !!}
                     @endif
                 </td>
 
                 <td colspan=10 class=cardlabel style='vertical-align: middle;'>
-                    {{ $awards[$student->student_id]["DEPORTMENT"] ? "Deportment" : '' }}
                     @if ($awards[$student->student_id]['DEPORTMENT'])
-                        {{ '(' . $awards[$student->student_id]['DEPORTMENT_grade'] . ')' }}
+                        {!! checkMark() . "Deportment" . ' (' . $awards[$student->student_id]['DEPORTMENT_grade'] . ')' !!}
                     @endif
                     @if ($awards[$student->student_id]['EFFORT'])
-                        <br/>
-                        {{ "Effort" }}
+                        @if ($awards[$student->student_id]['DEPORTMENT'])
+                            <br/>
+                        @endif
+                        {!! checkMark() . "Effort" !!}
                     @endif
                 </td>
 
@@ -594,9 +591,9 @@
                         @foreach($awards[$student->student_id]["SEA"] as $SEA)
 
                             @if ($SEA == "PHYSICAL EDUCATION")
-                                P.E. ({{ $student->gender == "M" ? "BOYS" : "GIRLS" }})
+                                {!! checkMark() !!}P.E. ({!! $student->gender == "M" ? "BOYS" : "GIRLS" !!})
                             @else
-                                {{ $SEA }}
+                                {!! checkMark() . $SEA  !!}
                             @endif
                             <br/>
                         @endforeach
@@ -718,8 +715,7 @@
         <tr style='mso-height-source:userset;height:15.0pt'>
             <td height=20 class=blank style='height:15.0pt'></td>
             <td class=blank></td>
-            <td class=commentstitle>A.&nbsp;</td>
-            <td colspan=13 class=commentstitle>Academic Excellence Award:</td>
+            <td colspan=14 class=commentstitle>A. Academic Excellence Award:</td>
             <td colspan=41 class=blank></td>
         </tr>
         <tr style='mso-height-source:userset;height:15.0pt'>
@@ -752,8 +748,7 @@
         <tr style='mso-height-source:userset;height:15.0pt'>
             <td height=20 class=blank style='height:15.0pt'></td>
             <td class=blank></td>
-            <td class=commentstitle>B.&nbsp;</td>
-            <td colspan=12 class=commentstitle>Subject Excellence Award:</td>
+            <td colspan=13 class=commentstitle>B. Subject Excellence Award:</td>
             <td colspan=42 class=blank></td>
         </tr>
         <tr style='mso-height-source:userset;height:15.0pt'>
@@ -769,8 +764,7 @@
         <tr style='mso-height-source:userset;height:15.0pt'>
             <td height=20 class=blank style='height:15.0pt'></td>
             <td class=blank></td>
-            <td class=commentstitle>C.&nbsp;</td>
-            <td colspan=11 class=commentstitle>Effort Excellence Award:</td>
+            <td colspan=12 class=commentstitle>C. Effort Excellence Award:</td>
             <td colspan=43 class=blank></td>
         </tr>
         <tr style='mso-height-source:userset;height:15.0pt'>
@@ -787,8 +781,7 @@
         <tr style='mso-height-source:userset;height:15.0pt'>
             <td height=20 class=blank style='height:15.0pt'></td>
             <td class=blank></td>
-            <td class=commentstitle>D.&nbsp;</td>
-            <td colspan=14 class=commentstitle>Deportment Excellence Award:</td>
+            <td colspan=15 class=commentstitle>D. Deportment Excellence Award:</td>
             <td colspan=40 class=blank></td>
         </tr>
         <tr style='mso-height-source:userset;height:15.0pt'>

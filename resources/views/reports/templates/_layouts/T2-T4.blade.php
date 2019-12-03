@@ -641,7 +641,7 @@
 
             <td colspan=7 rowspan=2 class=cardlabel>REMARKS</td>
             <td class=blank></td>
-            <td colspan=20 rowspan="14">
+            <td colspan=20 rowspan="16">
                 @include('reports.templates._snippets.card_score_board')
             </td>
         </tr>

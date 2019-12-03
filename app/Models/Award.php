@@ -114,8 +114,6 @@ class Award extends Model
             elseif ($subject->subjectname == 'P.E.'):
                 $seaMale = [];
                 $seaFemale = [];
-                $highest = 0;
-                $collection = [];
 
                 foreach ($students as $student) :
                     if (isset($studentGrades[$student->student_id])):
@@ -129,6 +127,8 @@ class Award extends Model
 
                 if ($seaMale):
                     arsort($seaMale);
+                    $highest = 0;
+                    $collection = [];
 
                     foreach ($seaMale as $student_id => $score) :
                         $score = $studentGrades[$student_id];
@@ -176,6 +176,8 @@ class Award extends Model
 
                 if ($seaFemale):
                     arsort($seaFemale);
+                    $highest = 0;
+                    $collection = [];
 
                     foreach ($seaFemale as $student_id => $score) :
                         $score = $studentGrades[$student_id];
@@ -191,7 +193,7 @@ class Award extends Model
                     $awards = Award::where([
                         ['subject_id', $subject_id],
                         ['schoolyear', $schoolyear],
-                        ['gender', "M"]
+                        ['gender', "F"]
                     ])->get();
 
                     if (count($awards)):
@@ -213,7 +215,7 @@ class Award extends Model
                                 'student_id' => $student_id,
                                 'subject_id' => $subject_id,
                                 'schoolyear' => $schoolyear,
-                                'gender' => 'M',
+                                'gender' => 'F',
                                 'section' => ''
                             ]);
                         endforeach;

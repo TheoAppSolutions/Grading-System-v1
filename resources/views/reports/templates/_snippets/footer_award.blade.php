@@ -227,8 +227,7 @@
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td height=20 class=blank style='height:15.0pt'></td>
     <td class=blank></td>
-    <td class=commentstitle>A.&nbsp;</td>
-    <td colspan=13 class=commentstitle>Academic Excellence Award:</td>
+    <td colspan=14 class=commentstitle>A. Academic Excellence Award:</td>
     <td colspan=41 class=blank></td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
@@ -261,8 +260,7 @@
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td height=20 class=blank style='height:15.0pt'></td>
     <td class=blank></td>
-    <td class=commentstitle>B.&nbsp;</td>
-    <td colspan=12 class=commentstitle>Subject Excellence Award:</td>
+    <td colspan=13 class=commentstitle>B. Subject Excellence Award:</td>
     <td colspan=42 class=blank></td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
@@ -278,8 +276,7 @@
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td height=20 class=blank style='height:15.0pt'></td>
     <td class=blank></td>
-    <td class=commentstitle>C.&nbsp;</td>
-    <td colspan=11 class=commentstitle>Effort Excellence Award:</td>
+    <td colspan=12 class=commentstitle>C. Effort Excellence Award:</td>
     <td colspan=43 class=blank></td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
@@ -296,8 +293,7 @@
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td height=20 class=blank style='height:15.0pt'></td>
     <td class=blank></td>
-    <td class=commentstitle>D.&nbsp;</td>
-    <td colspan=14 class=commentstitle>Deportment Excellence Award:</td>
+    <td colspan=15 class=commentstitle>D. Deportment Excellence Award:</td>
     <td colspan=40 class=blank></td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>

@@ -56,10 +56,6 @@
     </tr>
 
     <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-        <td class=blank></td>
-    </tr>
-
-    <tr class=blank style='mso-height-source:userset;height:19.5pt'>
         <td colspan=15 class=sidenotetitle>EFFORT GRADE</td>
     </tr>
     <tr class=blank style='mso-height-source:userset;height:19.5pt'>

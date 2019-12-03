@@ -16,9 +16,9 @@ class Formula extends Model
          * Disqualification Indicators
          * */
         $gradeset["disqualifyForHonors"] = false;
-        $gradeset["disqualifyForEffort"] = true;
+        $gradeset["disqualifyForEffort"] = false;
         $gradeset["disqualifyForDeportment"] = false;
-        $gradeset["isEligibleForNextGrade"] = true;
+        $gradeset["isEligibleForNextGrade"] = false;
 
         foreach ($subjects as $subject) :
             /*
@@ -46,7 +46,7 @@ class Formula extends Model
                             /*
                              * Check if effort grade is still valid for award
                              * */
-                            $gradeset["disqualifyForEffort"] = $subAverage['raweffort'][$quarter] < 4 ? false : true; //Major Subject
+                            $gradeset["disqualifyForEffort"] = $subAverage['raweffort'][$quarter] < 4 ? true : false; //Major Subject
                         endif;
                     endif;
                 endfor;
@@ -60,11 +60,9 @@ class Formula extends Model
                         if (count($subAverage['raweffort']) == 4):
                             $gradeset[$subject->subjectname][5]["effort"] = Formula::getFinalEffort(array_sum($subAverage['raweffort']));
 
-                            if (!$gradeset["disqualifyForEffort"]):
-                                if ($subject->deportable == 1):
-                                    $gradeset["finaleffort"][$subject->subjectname] = $gradeset[$subject->subjectname][5]["effort"];
-                                    $gradeset["disqualifyForEffort"] = $gradeset[$subject->subjectname][5]["effort"] < 4 ? false : true; //Major Subject
-                                endif;
+                            if ($gradeset["disqualifyForEffort"]):
+                                $gradeset["finaleffort"][$subject->subjectname] = $gradeset[$subject->subjectname][5]["effort"];
+                                $gradeset["disqualifyForEffort"] = $gradeset[$subject->subjectname][5]["effort"] < 4 ? true : false; //Major Subject
                             else:
                                 $gradeset["disqualifyForEffort"] = true;
                             endif;
