@@ -82,13 +82,22 @@ class ReportController extends Controller
             endif;
         elseif ($student->gradelevel >= 11 and $student->gradelevel <= 12): //Senior High
             $quarters[1] = $semester == 1 ? 1 : 3;
-            $quarters[2] = $semester == 2 ? 2 : 4;
+            $quarters[2] = $semester == 1 ? 2 : 4;
 
             $subjects = new Subject;
             $minor = $subjects->byGradeLevelAndSection($student->gradelevel, '', $semester);
             $core = $subjects->byGradeLevelAndSection($student->gradelevel, $student->section, $semester);
 
             if ($type == "midquarter"):
+                switch ($quarter):
+                    case 3 :
+                        $quarter = 1;
+                        break;
+                    case 4 :
+                        $quarter = 2;
+                        break;
+                endswitch;
+
                 return view('reports.templates.senior_high.seniorhigh_T1-T3', compact('student', 'grades', 'quarter', 'comments', 'homeroom', 'principal', 'minor', 'core', 'teachers', 'type'));
             elseif ($type == "quarter"):
                 return view('reports.templates.senior_high.seniorhigh_T2-T4', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'month', 'comments', 'days', 'homeroom', 'principal', 'minor', 'core', 'semester', 'quarters', 'final', 'effort', 'deportment', 'type'));

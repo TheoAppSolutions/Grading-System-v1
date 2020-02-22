@@ -499,24 +499,8 @@
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=38 height=20 class=commentslabels style='height:15.0pt'>OVERALL REQUEST</td>
     <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
+    <td colspan=18 rowspan=2 class=nametitles>{!! signatureMiss() !!}
+    </td>
     <td class=blank></td>
     <td class=blank></td>
     <td class=blank></td>
@@ -529,17 +513,18 @@
         style='height:15.0pt'>{!! $comments['F1'] >0 ? checkMark() :'' !!}</td>
     <td colspan=36 class=blank>A Parent-Teacher Conference is requested ASAP.</td>
     <td class=blank></td>
-    <td colspan=18 rowspan=2 class=nametitles>{{ $principal ?? '' }}
+</tr>
+<tr style='mso-height-source:userset;height:15.0pt'>
+    <td colspan=2 height=20 style='height:15.0pt'></td>
+    <td colspan=36 class=blank></td>
+    <td class=blank></td>
+    <td colspan=18 rowspan=1 class=nametitles>{{ $principal ?? '' }}
     </td>
     <td class=blank></td>
     <td class=blank></td>
     <td class=blank></td>
     <td class=blank></td>
     <td class=blank></td>
-    <td class=blank></td>
-</tr>
-<tr style='mso-height-source:userset;height:15.0pt'>
-    <td height=20 class=blank style='height:15.0pt'></td>
     <td class=blank></td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>

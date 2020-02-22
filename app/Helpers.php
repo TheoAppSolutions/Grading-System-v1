@@ -204,6 +204,11 @@ function checkMark()
     return "<img src='" . url('checkmark.png') . "' style='height:20px;width:20px;'/>";
 }
 
+function signatureMiss()
+{
+    return "<img src='" . url('signature.png') . "' style='height:50px;width:150px;'/>";
+}
+
 function getLastStudentID()
 {
     $id = DB::table('students')->orderBy('student_id', 'desc')->first();

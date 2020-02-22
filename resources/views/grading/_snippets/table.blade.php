@@ -39,7 +39,6 @@ $fields = ['final', 'effort', 'deportment', 'midquarter'];
 
                 if (session()->has('import')):
                     $import = session('import');
-                    session()->forget('import');
                 endif;
 
                 foreach ($fields as $field):

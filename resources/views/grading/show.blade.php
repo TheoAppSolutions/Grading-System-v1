@@ -35,6 +35,11 @@
     @php($schema = schema("comments.mid.senior.high"))
     @php($comment_show = true)
 @endif
+@if (session()->has('currentQuarter'))
+    @php($currentQuarter = session('currentQuarter'))
+@else
+    @php($currentQuarter = 1)
+@endif
 
 @section('content-body')
     <section class="row">
@@ -56,22 +61,26 @@
                                 </li>
                             @else
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="baseLable-tab1" data-toggle="tab"
+                                    <a class="nav-link {{ $currentQuarter == 1 ? 'active' : '' }}" id="baseLable-tab1"
+                                       data-toggle="tab"
                                        aria-controls="tabLable1" href="#1" aria-expanded="true">
                                         {{ schema("quarter.term") }} 1</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="baseLable-tab2" data-toggle="tab" aria-controls="tabLable2"
+                                    <a class="nav-link {{ $currentQuarter == 2 ? 'active' : '' }}" id="baseLable-tab2"
+                                       data-toggle="tab" aria-controls="tabLable2"
                                        href="#2" aria-expanded="false">
                                         {{ schema("quarter.term") }} 2</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="baseLable-tab3" data-toggle="tab" aria-controls="tabLable3"
+                                    <a class="nav-link {{ $currentQuarter == 3 ? 'active' : '' }}" id="baseLable-tab3"
+                                       data-toggle="tab" aria-controls="tabLable3"
                                        href="#3" aria-expanded="false">
                                         {{ schema("quarter.term") }} 3</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="baseLable-tab3" data-toggle="tab" aria-controls="tabLable3"
+                                    <a class="nav-link {{ $currentQuarter == 4 ? 'active' : '' }}" id="baseLable-tab3"
+                                       data-toggle="tab" aria-controls="tabLable3"
                                        href="#4" aria-expanded="false">
                                         {{ schema("quarter.term") }} 4</a>
                                 </li>
@@ -106,19 +115,20 @@
                 <div class="tab-content p-1">
                     @if (schema('student')->{"senior.high.school"} and $subject->gradelevel >= 11 and $subject->gradelevel >= 12)
                         @for($quarter = 1; $quarter <= 2; $quarter++)
-                            <div role="tabpanel" class="tab-pane {{ $quarter == 1 ? 'active' : '' }}"
+                            <div role="tabpanel" class="tab-pane {{ $quarter == $currentQuarter ? 'active' : '' }}"
                                  id="{{ $quarter }}">
                                 @include('grading._snippets.table', ['quarter'=>$quarter, 'type'=>$type, 'comment_show'=>$comment_show, 'comments'=>$comments])
                             </div>
                         @endfor
                     @else
                         @for($quarter = 1; $quarter <= 4; $quarter++)
-                            <div role="tabpanel" class="tab-pane {{ $quarter == 1 ? 'active' : '' }}"
+                            <div role="tabpanel" class="tab-pane {{ $quarter == $currentQuarter ? 'active' : '' }}"
                                  id="{{ $quarter }}">
                                 @include('grading._snippets.table', ['quarter'=>$quarter, 'type'=>$type, 'comment_show'=>$comment_show])
                             </div>
                         @endfor
                     @endif
+                    @php(session()->forget('import'))
                 </div>
             </div>
         </div>
