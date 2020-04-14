@@ -294,7 +294,7 @@ class SubjectsController extends Controller
 
         $records = DB::table('subjects_user')
             ->join('subjects_units', 'subjects_units.subject_id', 'subjects_user.subject_id')
-            ->where([["subjects_user.schoolyear", $request->schoolyear], ["subjects_units.schoolyear", $request->schoolyear]])
+            ->where([["subjects_user.schoolyear", $request->preload_schoolyear], ["subjects_units.schoolyear", $request->preload_schoolyear]])
             ->get();
 
         $users = User::where('active', 1)->get();
@@ -305,6 +305,9 @@ class SubjectsController extends Controller
         endforeach;
 
         foreach ($records as $subject):
+            /*
+             * Check if the Subject is in the database already.
+             * */
             $result = DB::table('subjects_user')
                 ->where([
                     ['subject_id', $subject->subject_id],
@@ -312,6 +315,9 @@ class SubjectsController extends Controller
                 ])->first();
 
             if (!$result):
+                /*
+                 * If the Subject is not in ['subjects_user'] table then insert
+                 * */
                 DB::table('subjects_user')->insert([
                     'subject_id' => $subject->subject_id,
                     'schoolyear' => $schoolyear,
@@ -319,6 +325,9 @@ class SubjectsController extends Controller
                     'user2_id' => isset($user_data[$subject->user2_id]) ? $subject->user2_id : null
                 ]);
             else:
+                /*
+                 * If the Subject is already in ['subejcts_user'] table then update
+                 * */
                 DB::table('subjects_user')->where([
                     ['subject_id', $subject->subject_id],
                     ['schoolyear', $schoolyear]
