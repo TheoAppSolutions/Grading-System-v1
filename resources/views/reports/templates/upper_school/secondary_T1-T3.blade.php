@@ -222,9 +222,48 @@
         <td colspan=2 class=subjectGrade width=48>{{ $grades['ICT/PRACTICAL SKILLS'][$quarter]['rawfinal'] ?? '' }}</td>
     </tr><!-- ICT -->
     <tr style='mso-height-source:userset;{!! $height !!}'>
-        <td colspan=9 class=subjectLabel>Agriculture</td>
-        <td colspan=8 class=teacherName>{{ $grades['AGRICULTURE']['teacher'] ?? 'N/A' }}</td>
-        <td colspan=2 class=subjectGrade>{{ $grades['AGRICULTURE'][$quarter]['rawfinal'] ?? '' }}</td>
+        <td colspan="19" rowspan="6">
+            <table border=0 cellpadding=0 cellspacing=0 style='border-collapse:collapse;table-layout:fixed;'>
+                @foreach($subjects as $subject)
+                    @if(!isset($comments[$subject->subjectname]))
+                        @switch($subject->subjectname)
+                            @case("ENGLISH")
+                            @case("HEALTH")
+                            @case("MATHEMATICS")
+                            @case("SCIENCE")
+                            @case("P.E.")
+                            @case("ICT/PRACTICAL SKILLS")
+                            @case("ARTS")
+                            @break
+
+                            @case("CIVICS/GEOGRAPHY")
+                            @case("HISTORY")
+                            @if(!isset($grades["SOCIAL SCIENCE"]['teacher']))
+                                <tr>
+                                    <td style="width: 240px;" class=subjectLabel>{{ $subject->subjectname }}</td>
+                                    <td style="width: 250px;"
+                                        class=teacherName>{{ $grades[$subject->subjectname]['teacher'] ?? 'N/A' }}</td>
+                                    <td style="width: 60px;"
+                                        class=subjectGrade>{{ $grades[$subject->subjectname][$quarter]['rawfinal'] ?? '' }}</td>
+                                </tr>
+                            @endif
+                            @break
+
+                            @default
+                            <tr>
+                                <td style="width: 240px;" class=subjectLabel>{{ $subject->subjectname }}</td>
+                                <td style="width: 250px;"
+                                    class=teacherName>{{ $grades[$subject->subjectname]['teacher'] ?? 'N/A' }}</td>
+                                <td style="width: 60px;"
+                                    class=subjectGrade>{{ $grades[$subject->subjectname][$quarter]['rawfinal'] ?? '' }}</td>
+                            </tr>
+                            @break
+                        @endswitch
+                    @endif
+                @endforeach
+            </table>
+        </td>
+
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
@@ -233,9 +272,6 @@
         <td colspan=2 class=commentValue width=48>{{ $comments['ICT/PRACTICAL SKILLS']['S1'] ?? '' }}</td>
     </tr><!-- Agriculture -->
     <tr style='mso-height-source:userset;{!! $height !!}'>
-        <td colspan=9 class=subjectLabel>Business Studies</td>
-        <td colspan=8 class=teacherName>{{ $grades['BUSINESS STUDIES']['teacher'] ?? 'N/A' }}</td>
-        <td colspan=2 class=subjectGrade>{{ $grades['BUSINESS STUDIES'][$quarter]['rawfinal'] ?? '' }}</td>
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
@@ -244,9 +280,6 @@
         <td colspan=2 class=commentValue width=48>{{ $comments['ICT/PRACTICAL SKILLS']['S2'] ?? '' }}</td>
     </tr><!-- Business Studies -->
     <tr style='mso-height-source:userset;{!! $height !!}'>
-        <td colspan=9 class=subjectLabel>Civics/Geography</td>
-        <td colspan=8 class=teacherName>{{ $grades['CIVICS/GEOGRAPHY']['teacher'] ?? 'N/A' }}</td>
-        <td colspan=2 class=subjectGrade>{{ $grades['CIVICS/GEOGRAPHY'][$quarter]['rawfinal'] ?? '' }}</td>
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
@@ -255,9 +288,6 @@
         <td colspan=2 class=commentValue width=48>{{ $comments['ICT/PRACTICAL SKILLS']['S3'] ?? '' }}</td>
     </tr><!-- Civics -->
     <tr style='mso-height-source:userset;{!! $height !!}'>
-        <td colspan=9 class=subjectLabel>CRE</td>
-        <td colspan=8 class=teacherName>{{ $grades['CRE']['teacher'] ?? 'N/A' }}</td>
-        <td colspan=2 class=subjectGrade>{{ $grades['CRE'][$quarter]['rawfinal'] ?? '' }}</td>
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
@@ -282,9 +312,6 @@
         <td class=blank></td>
     </tr><!-- CRE -->
     <tr style='mso-height-source:userset;{!! $height !!}'>
-        <td colspan=9 class=subjectLabel>History</td>
-        <td colspan=8 class=teacherName>{{ $grades['HISTORY']['teacher'] ?? 'N/A' }}</td>
-        <td colspan=2 class=subjectGrade>{{ $grades['HISTORY'][$quarter]['rawfinal'] ?? '' }}</td>
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
@@ -293,21 +320,15 @@
         <td colspan=2 class=subjectGrade>{{ $grades['ARTS'][$quarter]['rawfinal'] ?? '' }}</td>
     </tr><!-- History/Arts -->
     <tr style='mso-height-source:userset;{!! $height !!}'>
-        <td colspan=9 class=subjectLabel>Making a Living/Home Economics</td>
-        <td colspan=8 class=teacherName>{{ $grades['MAKING A LIVING']['teacher'] ?? 'N/A' }}</td>
-        <td colspan=2 class=subjectGrade>{{ $grades['MAKING A LIVING'][$quarter]['rawfinal'] ?? '' }}</td>
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
         <td colspan=17 rowspan=2 class=commentLabel width=408>
             <b>Dance: </b><span>Communicates and
-                    expresses meaning through purposeful movement</span></td>
+expresses meaning through purposeful movement</span></td>
         <td colspan=2 rowspan=2 class=commentValue width=48>{{ $comments['ARTS']['S1'] ?? '' }}</td>
     </tr><!-- Making A Living -->
     <tr style='mso-height-source:userset;{!! $height !!}'>
-        <td colspan=9 class=subjectLabel>Elective (Music Private Lessons)</td>
-        <td colspan=8 class=teacherName>{{ $grades['MUSIC']['teacher'] ?? 'N/A' }}</td>
-        <td colspan=2 class=subjectGrade>{{ $grades['MUSIC'][$quarter]['rawfinal'] ?? '' }}</td>
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
