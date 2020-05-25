@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enrollment;
+use App\Models\Grade;
+use App\Models\Homeroom;
 use App\Models\SchoolYear;
+use App\Models\Student;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -54,7 +58,20 @@ class HomeController extends Controller
 
     public function test()
     {
-        session()->flush();
+        $student_id = 1425;
+        $schoolyear = 2020;
+        $student = Student::byStudentID($student_id);
+
+        $gradelevels = Enrollment::where('student_id', $student_id)->get();
+        $schoolyears = [];
+        foreach ($gradelevels as $levels):
+            $studenttemp = Student::byStudentID($student_id, $levels->schoolyear);
+            $gradesModel = new Grade;
+            $gradesModel->setTableName($studenttemp->gradelevel);
+            $schoolyears[$levels->schoolyear] = $gradesModel->byStudentID($student_id, '', $levels->schoolyear);
+        endforeach;
+        dd($schoolyears);
+        return view('reports.transcript.tor', compact('student', 'schoolyears'));
     }
 
     public function databaseIntegrate($schoolyear)

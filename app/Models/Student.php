@@ -10,11 +10,11 @@ class Student extends Model
     protected $primaryKey = 'student_id';
     public $timestamps = false;
 
-    public static function byStudentID($student_id)
+    public static function byStudentID($student_id, $schoolyear="")
     {
-        $where = getSchoolYear() != "" ? [
+        $where = $schoolyear != "" ? [
             ['students.student_id', $student_id],
-            ['enrollment.schoolyear', getSchoolYear()]
+            ['enrollment.schoolyear', $schoolyear]
         ]
             : [['students.student_id', $student_id]];
 

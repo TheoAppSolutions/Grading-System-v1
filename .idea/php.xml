@@ -116,8 +116,8 @@
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-web-tinker" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition-code-editor" />
       <path value="$PROJECT_DIR$/vendor/tightenco/ziggy" />
-      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
