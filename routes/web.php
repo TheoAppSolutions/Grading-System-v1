@@ -174,5 +174,6 @@ Route::get('admin/grades', 'GradesController@index')->name('grading.index');
 Route::get('image.editor', 'FilesController@image_editor')->name('image.editor');
 
 Route::get('test', 'HomeController@test');
+Route::get('fix', 'HomeController@fix');
 
 Route::patch('section/students', 'SectionsController@update')->name('student.sections.update');

@@ -5,7 +5,7 @@ namespace App;
 use App\Models\Units;
 use Illuminate\Database\Eloquent\Model;
 
-class Formula extends Model
+class Formulas extends Model
 {
     public static function getFinalAveragePerSubject($gradeset, $subjects, $startCounter, $endCounter, $isAwardReport)
     {
@@ -35,8 +35,13 @@ class Formula extends Model
 
                 if (isset($subAverage['final']) and isset($subAverage['raweffort'])):
                     $gradeset[$subject->subjectname][5]["rawfinal"] = array_sum($subAverage['final']) / count($subAverage['final']);
-                    $gradeset[$subject->subjectname][5]["final"] = number_format($gradeset[$subject->subjectname][5]["rawfinal"], 3);
-                    $gradeset[$subject->subjectname][5]["effort"] = Formula::getFinalEffort(array_sum($subAverage['raweffort']), $gradeset['gradelevel']);
+                    if (getSchoolYear() == "2019-2020"):
+                        $gradeset[$subject->subjectname][5]["final"] = number_format($gradeset[$subject->subjectname][5]["rawfinal"], 0);
+                    else:
+                        $gradeset[$subject->subjectname][5]["final"] = number_format($gradeset[$subject->subjectname][5]["rawfinal"], 3);
+                    endif;
+
+                    $gradeset[$subject->subjectname][5]["effort"] = Formulas::getFinalEffort(array_sum($subAverage['raweffort']), $gradeset['gradelevel']);
                     $gradeset[$subject->subjectname]["remarks"] = $gradeset[$subject->subjectname][5]["final"] >= 75 ? 'PASSED' : 'FAILED';
 
                     if (!$gradeset["disqualifyForHonors"]):
@@ -81,12 +86,12 @@ class Formula extends Model
 
         if (getSchoolYear() != '2015-2016' and getSchoolYear() != '2016-2017' and $gradeset['gradelevel'] <= 10):
             unset($gradeset["finalave"]["CHINESE"]);
-            $gradeset = Formula::getMAPEH_TLE($gradeset);
+            $gradeset = Formulas::getMAPEH_TLE($gradeset);
         endif;
 
         if (isset($gradeset['finalave'])):
             if ($totalunits >= 10):
-                $gradeset = Formula::getGeneralAverage($gradeset, $totalunits);
+                $gradeset = Formulas::getGeneralAverage($gradeset, $totalunits);
             endif;
         endif;
 
@@ -254,9 +259,14 @@ class Formula extends Model
             endif;
         endfor;
 
-        if (isset($gradeset["deportment"][$endCounter]) and $gradeset["deportment"][$endCounter] > 0) :
+        if (getSchoolYear() == "2019-2020"):
             $gradeset["deportment"][5] = array_sum($gradeset["rawdeportment"]) / count($gradeset["rawdeportment"]);
             $gradeset["deportment"][5] = number_format($gradeset["deportment"][5], 3);
+        else:
+            if (isset($gradeset["deportment"][$endCounter]) and $gradeset["deportment"][$endCounter] > 0) :
+                $gradeset["deportment"][5] = array_sum($gradeset["rawdeportment"]) / count($gradeset["rawdeportment"]);
+                $gradeset["deportment"][5] = number_format($gradeset["deportment"][5], 3);
+            endif;
         endif;
 
         return $gradeset;

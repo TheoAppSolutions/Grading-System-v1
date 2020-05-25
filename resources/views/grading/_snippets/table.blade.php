@@ -7,7 +7,7 @@ $fields = ['final', 'effort', 'deportment', 'midquarter'];
 <form action="{{ route('grades.save', [$schoolyear, $subject->subject_id]) }}" method="post">
     @csrf
     <input type="hidden" value="{{ $type }}" name="type">
-    <input type="hidden" value="{{ $quarter }}" name="quarter">
+    <input type="number" value="{{ $quarter }}" name="quarter" hidden>
     <input type="hidden" value="{{ $subject->subject_id }}" name="subject_id">
 
     <div style="overflow: auto; max-height: 500px;">

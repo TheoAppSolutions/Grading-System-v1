@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Reports;
 
 use App\Http\Controllers\Controller;
-use App\Formula;
+use App\Formulas;
 use App\Models\Award;
 use App\Models\SchoolYear;
 use App\User;
@@ -40,8 +40,11 @@ class ReportController extends Controller
         $homeroom = Homeroom::byGradeLevel($student->gradelevel);
         $gradesModel = new Grade;
         $gradesModel->setTableName($student->gradelevel);
-        $grades = $gradesModel->byStudentID($student_id, '', $schoolyear);
-
+        if ($schoolyear == '2019-2020'):
+            $grades = $gradesModel->byStudentID($student_id, true, $schoolyear);
+        else:
+            $grades = $gradesModel->byStudentID($student_id, '', $schoolyear);
+        endif;
         if ($student->gradelevel >= 1 and $student->gradelevel <= 10):
             $subjects = new Subject;
             $subjects = $subjects->byGradeLevelAndSection($student->gradelevel, $student->section, $semester);
@@ -65,20 +68,29 @@ class ReportController extends Controller
             $comments = $comments->byStudentID($student_id);
         endif;
 
-        $schoolyear_start = SchoolYear::where("active", 1)->first()->schoolyear_start;
+        //$schoolyear_start = SchoolYear::where("active", 1)->first()->schoolyear_start;
 
         $award = Award::getAwardsForReportCard($grades, $schoolyear);
+
         if ($student->gradelevel >= 1 and $student->gradelevel <= 6): //Lower School
             if ($type == "midquarter"):
                 return view('reports.templates.lower_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
             elseif ($type == "quarter"):
-                return view('reports.templates.lower_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                if ($schoolyear == '2019-2020'):
+                    return view('reports.templates.lower_school.primary_T2-T4(2020)', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'minor', 'core', 'semester', 'quarters', 'type'));
+                else:
+                    return view('reports.templates.lower_school.primary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                endif;
             endif;
         elseif ($student->gradelevel >= 7 and $student->gradelevel <= 10): //Upper School
             if ($type == "midquarter"):
                 return view('reports.templates.upper_school.secondary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
             elseif ($type == "quarter"):
-                return view('reports.templates.upper_school.secondary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                if ($schoolyear == '2019-2020'):
+                    return view('reports.templates.upper_school.secondary_T2-T4(2020)', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'minor', 'core', 'semester', 'quarters', 'type'));
+                else:
+                    return view('reports.templates.upper_school.secondary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                endif;
             endif;
         elseif ($student->gradelevel >= 11 and $student->gradelevel <= 12): //Senior High
             $quarters[1] = $semester == 1 ? 1 : 3;
@@ -89,18 +101,13 @@ class ReportController extends Controller
             $core = $subjects->byGradeLevelAndSection($student->gradelevel, $student->section, $semester);
 
             if ($type == "midquarter"):
-                switch ($quarter):
-                    case 3 :
-                        $quarter = 1;
-                        break;
-                    case 4 :
-                        $quarter = 2;
-                        break;
-                endswitch;
-
-                return view('reports.templates.senior_high.seniorhigh_T1-T3', compact('student', 'grades', 'quarter', 'comments', 'homeroom', 'principal', 'minor', 'core', 'teachers', 'type'));
+                return view('reports.templates.senior_high.seniorhigh_T1-T3', compact('student', 'grades', 'quarter', 'comments', 'homeroom', 'principal', 'minor', 'core', 'type'));
             elseif ($type == "quarter"):
-                return view('reports.templates.senior_high.seniorhigh_T2-T4', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'month', 'comments', 'days', 'homeroom', 'principal', 'minor', 'core', 'semester', 'quarters', 'final', 'effort', 'deportment', 'type'));
+                if ($schoolyear == '2019-2020'):
+                    return view('reports.templates.senior_high.seniorhigh_T2-T4(2020)', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'minor', 'core', 'semester', 'quarters', 'type'));
+                else:
+                    return view('reports.templates.senior_high.seniorhigh_T2-T4', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'minor', 'core', 'semester', 'quarters', 'type'));
+                endif;
             endif;
         endif;
 

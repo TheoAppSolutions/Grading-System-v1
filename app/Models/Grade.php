@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Formula;
+use App\Formulas;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\Input;
 
@@ -130,7 +130,7 @@ class Grade extends Model
                 $gradeset["$record->subjectname"]["teacher"] = $record->title . $record->firstname . ' ' . $record->lastname;
                 $gradeset["$record->subjectname"][$record->quarter]["midquarter"] = $record->midquarter > 0 ? $record->midquarter : '';
                 $gradeset["$record->subjectname"][$record->quarter]["final"] = $record->final > 0 ? round($record->final) : '';
-                $gradeset["$record->subjectname"][$record->quarter]["rawfinal"] = $record->final > 0 ? $record->final : '';
+                $gradeset["$record->subjectname"][$record->quarter]["rawfinal"] = $record->final > 0 ? number_format($record->final, 2) : '';
                 if ($record->final != '' or $isAwardReport == true) :
                     $gradeset["$record->subjectname"][$record->quarter]["effort"] = $record->effort > 0 ? round($record->effort) : '';
                     $gradeset["$record->subjectname"][$record->quarter]["raweffort"] = $record->effort > 0 ? $record->effort : '';
@@ -155,8 +155,8 @@ class Grade extends Model
                 $endCounter = 4;
             endif;
 
-            $gradeset = Formula::getFinalAveragePerSubject($gradeset, $subjectList, $startCounter, $endCounter, $isAwardReport);
-            $gradeset = Formula::getDeportmentAverage($gradeset, $startCounter, $endCounter);
+            $gradeset = Formulas::getFinalAveragePerSubject($gradeset, $subjectList, $startCounter, $endCounter, $isAwardReport);
+            $gradeset = Formulas::getDeportmentAverage($gradeset, $startCounter, $endCounter);
             $gradeset = Subject::getExcludedSubjects($gradeset);
         endif;
 

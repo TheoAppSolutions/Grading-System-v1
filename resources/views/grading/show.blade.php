@@ -38,7 +38,13 @@
 @if (session()->has('currentQuarter'))
     @php($currentQuarter = session('currentQuarter'))
 @else
-    @php($currentQuarter = 1)
+    @if($subject->semester == 1)
+        @php($currentQuarter = 1)
+    @elseif($subject->semester == 2)
+        @php($currentQuarter = 3)
+    @else
+        @php($currentQuarter = 1)
+    @endif
 @endif
 
 @section('content-body')
@@ -50,13 +56,15 @@
                         <ul class="nav nav-tabs nav-top-border no-hover-bg">
                             @if (schema('student')->{"senior.high.school"} and $subject->gradelevel >= 11 and $subject->gradelevel <= 12)
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="baseLable-tab1" data-toggle="tab"
-                                       aria-controls="tabLable1" href="#1" aria-expanded="true">
+                                    <a class="nav-link active"
+                                       id="baseLable-tab1" data-toggle="tab"
+                                       aria-controls="tabLable1" href="#{{ $subject->semester == 1 ? 1 : 3 }}" aria-expanded="true">
                                         {{ schema("quarter.term") }} 1</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="baseLable-tab2" data-toggle="tab" aria-controls="tabLable2"
-                                       href="#2" aria-expanded="false">
+                                    <a class="nav-link"
+                                       id="baseLable-tab1" data-toggle="tab"
+                                       aria-controls="tabLable1" href="#{{ $subject->semester == 1 ? 2 : 4 }}" aria-expanded="true">
                                         {{ schema("quarter.term") }} 2</a>
                                 </li>
                             @else
@@ -85,6 +93,7 @@
                                         {{ schema("quarter.term") }} 4</a>
                                 </li>
                             @endif
+
                             <li class="nav-item heading-elements">
                                 @if (schema('function')->type)
                                     <div class="pull-left mr-1">
@@ -114,11 +123,18 @@
                 </div>
                 <div class="tab-content p-1">
                     @if (schema('student')->{"senior.high.school"} and $subject->gradelevel >= 11 and $subject->gradelevel >= 12)
-                        @for($quarter = 1; $quarter <= 2; $quarter++)
-                            <div role="tabpanel" class="tab-pane {{ $quarter == $currentQuarter ? 'active' : '' }}"
-                                 id="{{ $quarter }}">
-                                @include('grading._snippets.table', ['quarter'=>$quarter, 'type'=>$type, 'comment_show'=>$comment_show, 'comments'=>$comments])
-                            </div>
+                        @for($quarter = 1; $quarter <= 4; $quarter++)
+                            @if($subject->semester == 1 and $quarter >= 1 and $quarter <= 2)
+                                <div role="tabpanel" class="tab-pane {{ $quarter == $currentQuarter ? 'active' : '' }}"
+                                     id="{{ $quarter }}">
+                                    @include('grading._snippets.table', ['quarter'=>$quarter, 'type'=>$type, 'comment_show'=>$comment_show, 'comments'=>$comments])
+                                </div>
+                            @elseif($subject->semester == 2 and $quarter >= 3 and $quarter <= 4)
+                                <div role="tabpanel" class="tab-pane {{ $quarter == $currentQuarter ? 'active' : '' }}"
+                                     id="{{ $quarter }}">
+                                    @include('grading._snippets.table', ['quarter'=>$quarter, 'type'=>$type, 'comment_show'=>$comment_show, 'comments'=>$comments])
+                                </div>
+                            @endif
                         @endfor
                     @else
                         @for($quarter = 1; $quarter <= 4; $quarter++)

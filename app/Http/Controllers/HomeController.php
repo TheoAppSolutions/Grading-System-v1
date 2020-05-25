@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grade;
 use App\Models\SchoolYear;
 use App\Models\Student;
 use App\User;
@@ -53,9 +54,36 @@ class HomeController extends Controller
         return view('dashboard', compact('notifications'));
     }
 
+    public function fix()
+    {
+        for ($gradelevel = 11; $gradelevel <= 12; $gradelevel++):
+            $gradesModel = new Grade;
+            $gradesModel->setTableName($gradelevel);
+            $grades = DB::table('grades_' . $gradelevel . ' as grades')->join('subjects_user', 'subjects_user.subject_id', 'grades.subject_id')
+                ->where(['grades.schoolyear' => '2019-2020', 'subjects_user.schoolyear' => '2019-2020', 'subjects_user.semester' => 2])
+                ->select('entry_id', 'quarter', 'semester', 'grades.subject_id', 'student_id')
+                ->orderBy('subject_id')
+                ->get();
+
+            foreach ($grades as $grade):
+                if ($grade->quarter == 1):
+                    DB::table('grades_' . $gradelevel)
+                        ->where('entry_id', $grade->entry_id)
+                        ->update(['quarter' => 3]);
+                elseif ($grade->quarter == 2):
+                    DB::table('grades_' . $gradelevel)
+                        ->where('entry_id', $grade->entry_id)
+                        ->update(['quarter' => 4]);
+                endif;
+            endforeach;
+        endfor;
+
+        return redirect('/');
+    }
+
     public function test()
     {
-        $students = Student::where('section', '!=', "")->get();
+        /*$students = Student::where('section', '!=', "")->get();
         $schoolyear = getSchoolYear();
 
         foreach ($students as $student):
@@ -64,8 +92,7 @@ class HomeController extends Controller
                 "section" => $student->section,
                 "schoolyear" => $schoolyear
             ]);
-        endforeach;
-
+        endforeach;*/
     }
 
     public function databaseIntegrate($schoolyear)
