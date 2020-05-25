@@ -33,19 +33,34 @@
                     style='height:19.5pt;width:171pt;padding-left: 10px;'>
                     {{ $minor[$ctr]->subjecttitle }}</td>
                 <td colspan=3 class=finalGrade>
-                    {{ $grades[$minor[$ctr]->subjectname][$quarters[1]]['rawfinal'] ?? '' }}</td>
-                <td colspan=2 class=finaleffort><sub class="effort">
-                        {{ $grades[$minor[$ctr]->subjectname][$quarters[1]]['effort'] ?? '' }}</sub>
+                    {{ $grades[$minor[$ctr]->subjectname][$quarters[1]]['rawfinal'] ?? '' }}
                 </td>
-                <td colspan=3 class=finalGrade>
-                    {{ $grades[$minor[$ctr]->subjectname][$quarters[2]]['rawfinal'] ?? '' }}</td>
-                <td colspan=2 class=finaleffort><sub class="effort">
-                        {{ $grades[$minor[$ctr]->subjectname][$quarters[2]]['effort'] ?? '' }}</sub>
+                <td colspan=2 class=finaleffort>
+                    <sub class="effort">
+                        {{ $grades[$minor[$ctr]->subjectname][$quarters[1]]['effort'] ?? '' }}
+                    </sub>
                 </td>
+                @if($quarters[2] == 4 and getSchoolYear() == "2019-2020")
+                    <td colspan=5 class=finalGrade
+                        style="font-size: 13px; text-align: center">
+                        {{ $grades[$minor[$ctr]->subjectname][4]['remarks'] ?? 'PASSED' }}
+                    </td>
+                @else
+                    <td colspan=3 class=finalGrade>
+                        {{ $grades[$minor[$ctr]->subjectname][$quarters[2]]['rawfinal'] ?? '' }}
+                    </td>
+                    <td colspan=2 class=finaleffort>
+                        <sub class="effort">
+                            {{ $grades[$minor[$ctr]->subjectname][$quarters[2]]['effort'] ?? '' }}
+                        </sub>
+                    </td>
+                @endif
                 <td colspan=6 class=finalGrade style="text-align: center;">
-                    {{ $grades[$minor[$ctr]->subjectname][5]['rawfinal'] ?? '' }}</td>
+                    {{ $grades[$minor[$ctr]->subjectname][5]['rawfinal'] ?? '' }}
+                </td>
                 <td colspan=7 class=remarks>
-                    {{ $grades[$minor[$ctr]->subjectname]['remarks'] ?? '' }}</td>
+                    {{ $grades[$minor[$ctr]->subjectname]['remarks'] ?? '' }}
+                </td>
             </tr>
         @endif
     @endfor
@@ -68,11 +83,19 @@
                 <td colspan=2 class=finaleffort><sub class="effort">
                         {{ $grades[$core[$ctr]->subjectname][$quarters[1]]['effort'] ?? '' }}</sub>
                 </td>
-                <td colspan=3 class=finalGrade>
-                    {{ $grades[$core[$ctr]->subjectname][$quarters[2]]['rawfinal'] ?? '' }}</td>
-                <td colspan=2 class=finaleffort><sub class="effort">
-                        {{ $grades[$core[$ctr]->subjectname][$quarters[2]]['effort'] ?? '' }}</sub>
-                </td>
+                @if($quarters[2] == 4 and getSchoolYear() == "2019-2020")
+                    <td colspan=5 class=finalGrade
+                        style="font-size: 13px; text-align: center">
+                        {{ $grades[$core[$ctr]->subjectname][4]['remarks'] ?? 'PASSED' }}
+                    </td>
+                @else
+                    <td colspan=3 class=finalGrade>
+                        {{ $grades[$core[$ctr]->subjectname][$quarters[2]]['rawfinal'] ?? '' }}
+                    </td>
+                    <td colspan=2 class=finaleffort><sub class="effort">
+                            {{ $grades[$core[$ctr]->subjectname][$quarters[2]]['effort'] ?? '' }}</sub>
+                    </td>
+                @endif
                 <td colspan=6 class=finalGrade style="text-align: center;">
                     {{ $grades[$core[$ctr]->subjectname][5]['rawfinal'] ?? '' }}</td>
                 <td colspan=7 class=remarks>

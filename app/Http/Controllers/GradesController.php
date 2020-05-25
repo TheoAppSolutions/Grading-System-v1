@@ -122,13 +122,13 @@ class GradesController extends Controller
         $subject = Subject::bySubjectID($subject_id);
         $gradeModel->setTableName($subject->gradelevel);
 
-        $json = [];
+        /*$json = [];
         $json["schoolyear"] = $schoolyear;
         $json["quarter"] = $quarter;
         $json["subjectname"] = $subject->subjectname;
         $json["gradelevel"] = $subject->gradelevel;
         $json["created_at"] = Carbon::now()->addHour(2);
-        $logCount = 1;
+        $logCount = 1;*/
 
         foreach ($grades as $ctr => $grade):
             //Search the database for the student record
@@ -142,9 +142,13 @@ class GradesController extends Controller
             if ($type == "MidQuarter"):
                 $new['midquarter'] = $grades[$ctr]['midquarter'] > 0 ? $grades[$ctr]['midquarter'] : 0;
             elseif ($type == "Quarter"):
-                $new['final'] = $grades[$ctr]['final'] > 0 ? $grades[$ctr]['final'] : 0;
-                $new['effort'] = $grades[$ctr]['effort'] > 0 ? $grades[$ctr]['effort'] : 0;
-                $new['deportment'] = isset($grades[$ctr]['deportment']) ? $grades[$ctr]['deportment'] > 0 ? $grades[$ctr]['deportment'] : 0 : 0;
+                if ($schoolyear == "2019-2020" and $quarter == 4):
+                    $new['remarks'] = $grades[$ctr]['remarks'];
+                else:
+                    $new['final'] = $grades[$ctr]['final'] > 0 ? $grades[$ctr]['final'] : 0;
+                    $new['effort'] = $grades[$ctr]['effort'] > 0 ? $grades[$ctr]['effort'] : 0;
+                    $new['deportment'] = isset($grades[$ctr]['deportment']) ? $grades[$ctr]['deportment'] > 0 ? $grades[$ctr]['deportment'] : 0 : 0;
+                endif;
             endif;
 
             if ($database): //If a record is found then update
@@ -152,16 +156,21 @@ class GradesController extends Controller
                     $original['midquarter'] = $database->midquarter;
                     $database->midquarter = $new['midquarter'];
                 elseif ($type == "Quarter"):
-                    $original['final'] = $database->final;
-                    $original['effort'] = $database->effort;
-                    $original['deportment'] = $database->deportment;
-                    $database->final = $new['final'];
-                    $database->effort = $new['effort'];
-                    $database->deportment = $new['deportment'];
+                    if ($schoolyear == "2019-2020" and $quarter == 4):
+                        $original['remarks'] = $database->remarks;
+                        $database->remarks = $new['remarks'];
+                    else:
+                        $original['final'] = $database->final;
+                        $original['effort'] = $database->effort;
+                        $original['deportment'] = $database->deportment;
+                        $database->final = $new['final'];
+                        $database->effort = $new['effort'];
+                        $database->deportment = $new['deportment'];
+                    endif;
                 endif;
 
                 if ($database->isDirty()):
-                    $logTrue = true;
+                    /*$logTrue = true;
                     $json["grades"][$logCount]["name"] = getStudentFullname($grades[$ctr]['student_id']);
                     if ($type == "MidQuarter"):
                         $json["grades"][$logCount]["midquarter"] = $new["midquarter"];
@@ -169,35 +178,40 @@ class GradesController extends Controller
                         $json["grades"][$logCount]["final"] = $new["final"];
                         $json["grades"][$logCount]["effort"] = $new['effort'];
                         $json["grades"][$logCount]["deportment"] = $new['deportment'];
-                    endif;
+                    endif;*/
 
                     if ($type == "MidQuarter"):
                         if ($original['midquarter'] != $new['midquarter']):
                             $gradeModel->where('entry_id', $database->entry_id)
                                 ->update(['midquarter' => $new['midquarter']]);
-                            $json["grades"][$logCount]["midquarter"] = $original['midquarter'] . " => " . $new["midquarter"];
+                            //$json["grades"][$logCount]["midquarter"] = $original['midquarter'] . " => " . $new["midquarter"];
                         endif;
 
                     elseif ($type == "Quarter"):
-                        if ($original['final'] != $new['final']):
+                        if ($schoolyear == "2019-2020" and $quarter == 4):
                             $gradeModel->where('entry_id', $database->entry_id)
-                                ->update(['final' => $new['final']]);
-                            $json["grades"][$logCount]["final"] = $original['final'] . " => " . $new["final"];
-                        endif;
+                                ->update(['remarks' => $new['remarks']]);
+                        else:
+                            if ($original['final'] != $new['final']):
+                                $gradeModel->where('entry_id', $database->entry_id)
+                                    ->update(['final' => $new['final']]);
+                                //$json["grades"][$logCount]["final"] = $original['final'] . " => " . $new["final"];
+                            endif;
 
-                        if ($original['effort'] != $new['effort']):
-                            $gradeModel->where('entry_id', $database->entry_id)
-                                ->update(['effort' => $new['effort']]);
-                            $json["grades"][$logCount]["effort"] = $original['effort'] . " => " . $new['effort'];
-                        endif;
+                            if ($original['effort'] != $new['effort']):
+                                $gradeModel->where('entry_id', $database->entry_id)
+                                    ->update(['effort' => $new['effort']]);
+                                //$json["grades"][$logCount]["effort"] = $original['effort'] . " => " . $new['effort'];
+                            endif;
 
-                        if ($original['deportment'] != $new['deportment']):
-                            $gradeModel->where('entry_id', $database->entry_id)
-                                ->update(['deportment' => $new['deportment']]);
-                            $json["grades"][$logCount]["deportment"] = $original['deportment'] . " => " . $new['deportment'];
+                            if ($original['deportment'] != $new['deportment']):
+                                $gradeModel->where('entry_id', $database->entry_id)
+                                    ->update(['deportment' => $new['deportment']]);
+                                //$json["grades"][$logCount]["deportment"] = $original['deportment'] . " => " . $new['deportment'];
+                            endif;
                         endif;
                     endif;
-                    $logCount++;
+                    //$logCount++;
                 endif;
 
             else: //If the record is not found then create
@@ -212,36 +226,46 @@ class GradesController extends Controller
                             'midquarter' => $new['midquarter']
                         ]);
 
-                        $logTrue = true;
+                        /*$logTrue = true;
                         $json["grades"][$logCount]["name"] = getStudentFullname($grades[$ctr]['student_id']);
                         $json["grades"][$logCount]["midquarter"] = $new["midquarter"];
-                        $logCount++;
+                        $logCount++;*/
                     endif;
                 elseif ($type == "Quarter"):
-                    if ($new['final'] > 0 or $new['effort'] > 0 or $new['deportment'] > 0):
+                    if ($schoolyear == "2019-2020" and $quarter == 4):
                         $gradeModel->insert([
                             'student_id' => $grades[$ctr]['student_id'],
                             'user_id' => $user_id,
                             'subject_id' => $subject_id,
                             'quarter' => $quarter,
                             'schoolyear' => $schoolyear,
-                            'final' => $new['final'],
-                            'effort' => $new['effort'],
-                            'deportment' => $new['deportment']
+                            'remarks' => $new['remarks']
                         ]);
+                    else:
+                        if ($new['final'] > 0 or $new['effort'] > 0 or $new['deportment'] > 0):
+                            $gradeModel->insert([
+                                'student_id' => $grades[$ctr]['student_id'],
+                                'user_id' => $user_id,
+                                'subject_id' => $subject_id,
+                                'quarter' => $quarter,
+                                'schoolyear' => $schoolyear,
+                                'final' => $new['final'],
+                                'effort' => $new['effort'],
+                                'deportment' => $new['deportment']
+                            ]);
 
-                        $logTrue = true;
-                        $json["grades"][$logCount]["name"] = getStudentFullname($grades[$ctr]['student_id']);
-                        $json["grades"][$logCount]["final"] = $new["final"];
-                        $json["grades"][$logCount]["effort"] = $new['effort'];
-                        $json["grades"][$logCount]["deportment"] = $new['deportment'];
-                        $logCount++;
+                            /*$logTrue = true;
+                            $json["grades"][$logCount]["name"] = getStudentFullname($grades[$ctr]['student_id']);
+                            $json["grades"][$logCount]["final"] = $new["final"];
+                            $json["grades"][$logCount]["effort"] = $new['effort'];
+                            $json["grades"][$logCount]["deportment"] = $new['deportment'];
+                            $logCount++;*/
+                        endif;
                     endif;
                 endif;
             endif;
 
             /* If Senior High Update Comments MidQuarter */
-
             if (schema('student')->{"senior.high.school"} and $subject->gradelevel >= 11 and $subject->gradelevel <= 12):
                 if ($type == "MidQuarter"):
                     $comments = Comments::where([
@@ -251,19 +275,19 @@ class GradesController extends Controller
                     ])->first();
 
                     if (!$comments): //If MidQuarter Comments Does Not Exists then create new Instance
-                        $comments = New Comments;
+                        $comments = new Comments;
                         $comments->student_id = $grades[$ctr]['student_id'];
                         $comments->schoolyear = $schoolyear;
                         $comments->quarter = 1;
-                        $json = [];
+                        $encode = [];
                     else:
-                        $json = json_decode($comments->comments, true);
+                        $encode = json_decode($comments->comments, true);
                     endif;
 
-                    $json[$request->subject_id]["performance"] = $grades[$ctr]['performance'];
-                    $json[$request->subject_id]["behavior"] = $grades[$ctr]['behavior'];
+                    $encode[$request->subject_id]["performance"] = $grades[$ctr]['performance'];
+                    $encode[$request->subject_id]["behavior"] = $grades[$ctr]['behavior'];
 
-                    $comments->comments = json_encode($json);
+                    $comments->comments = json_encode($encode);
                     $comments->save();
                 endif;
             endif;
@@ -333,7 +357,7 @@ class GradesController extends Controller
             elseif ($ctr == 3) : //final grade
                 if ($data == 16.67):
                     $temp = '';
-                elseif ($data < 70 AND $data > 0):
+                elseif ($data < 70 and $data > 0):
                     $temp = '';
                 elseif ($data >= 100.):
                     $temp = 100;

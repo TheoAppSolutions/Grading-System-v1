@@ -16,18 +16,22 @@ $fields = ['final', 'effort', 'deportment', 'midquarter'];
             <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>{{ $type }} Grade</th>
-                @if($type == 'MidQuarter')
-                    @if ($comment_show)
-                        @if (schema('student')->{"senior.high.school"} and $subject->gradelevel >= 11 and $subject->gradelevel <= 12)
-                            <th>Performance</th>
-                            <th>Behavior</th>
+                @if($schoolyear == "2019-2020" and $quarter == 4)
+                    <th>Remarks</th>
+                @else
+                    <th>{{ $type }} Grade</th>
+                    @if($type == 'MidQuarter')
+                        @if ($comment_show)
+                            @if (schema('student')->{"senior.high.school"} and $subject->gradelevel >= 11 and $subject->gradelevel <= 12)
+                                <th>Performance</th>
+                                <th>Behavior</th>
+                            @endif
+                            <th>Card Comments</th>
                         @endif
-                        <th>Card Comments</th>
+                    @elseif($type == 'Quarter')
+                        <th>Effort Grade</th>
+                        <th>Deportment</th>
                     @endif
-                @elseif($type == 'Quarter')
-                    <th>Effort Grade</th>
-                    <th>Deportment</th>
                 @endif
             </tr>
             </thead>
@@ -35,7 +39,7 @@ $fields = ['final', 'effort', 'deportment', 'midquarter'];
             <?php $lockOff = 0; ?>
             @foreach($students as $student)
                 <?php
-                $final = ''; $effort = ''; $deportment = ''; $importStatus = ''; $midquarter = '';
+                $final = ''; $effort = ''; $deportment = ''; $importStatus = ''; $midquarter = ''; $remarks = '';
 
                 if (session()->has('import')):
                     $import = session('import');
@@ -80,17 +84,18 @@ $fields = ['final', 'effort', 'deportment', 'midquarter'];
                                    class='form-control grades' title="MidQuarter Grade"
                                    name='grades[{{$loop->index}}][midquarter]'
                                    value="{{ $midquarter>0?$midquarter:'' }}"
-                                    {{ $midquarterLock=='Lock'?'readonly':'' }}>
+                                {{ $midquarterLock=='Lock'?'readonly':'' }}>
                         </td>
                         @if (schema('student')->{"senior.high.school"} and $subject->gradelevel >= 11 and $subject->gradelevel <= 12)
                             <td>
-                                <select class="select2-placeholder form-control hide-search"
+                                <select class="select2-placeholder form-control hide-search" title="Performance"
                                         name="grades[{{$loop->index}}][performance]">
                                     @php($comments = schema("comments.mid.senior.high")->{"Performance"})
                                     <option value=""> </option>
                                     <optgroup label="Performance">
                                         @foreach($comments as $key => $comment)
-                                            <option value="{{ $key }}" {{ $key == $studentNames[$student->student_id]["performance"] ? "selected" : "" }}>
+                                            <option
+                                                value="{{ $key }}" {{ $key == $studentNames[$student->student_id]["performance"] ? "selected" : "" }}>
                                                 {{ $comment }}
                                             </option>
                                         @endforeach
@@ -99,13 +104,14 @@ $fields = ['final', 'effort', 'deportment', 'midquarter'];
                             </td>
 
                             <td>
-                                <select class="select2-placeholder form-control hide-search"
+                                <select class="select2-placeholder form-control hide-search" title="Behavior"
                                         name="grades[{{$loop->index}}][behavior]">
                                     @php($comments = schema("comments.mid.senior.high")->{"Behavior"})
                                     <option value=""> </option>
                                     <optgroup label="Behavior">
                                         @foreach($comments as $key => $comment)
-                                            <option value="{{ $key }}" {{ $key == $studentNames[$student->student_id]["behavior"] ? "selected" : "" }}>
+                                            <option
+                                                value="{{ $key }}" {{ $key == $studentNames[$student->student_id]["behavior"] ? "selected" : "" }}>
                                                 {{ $comment }}
                                             </option>
                                         @endforeach
@@ -118,35 +124,44 @@ $fields = ['final', 'effort', 'deportment', 'midquarter'];
                                 <button data-target='#modal' data-toggle="modal" class='btn btn-default'
                                         type="button"
                                         onclick="loadModal('View MiqQuarter Comments',
-                                                '{{ route('comments.midquarter.show', [$subject->subject_id, $student->student_id]) }}')">
+                                            '{{ route('comments.midquarter.show', [$subject->subject_id, $student->student_id]) }}')">
                                     <i class="la la-edit"></i>
                                 </button>
                             </td>
                         @endif
                     @elseif($type == 'Quarter')
-                        <td>
-                            <input type='number' step='0.01' min='0' max='100'
-                                   class='form-control grades' title="Term Grade"
-                                   name='grades[{{$loop->index}}][final]'
-                                   value="{{ $final>0?$final:'' }}"
+                        @if($schoolyear == "2019-2020" and $quarter == 4)
+                            @php($remarks = $grades[$student->student_id][4]["remarks"])
+                            <td>
+                                <select class="form-control" name="grades[{{$loop->index}}][remarks]" title="Remarks">
+                                    <option value="PASSED" {{ $remarks == "PASSED" ? "selected" : "" }}>Passed</option>
+                                    <option value="FAILED" {{ $remarks == "FAILED" ? "selected" : "" }}>Failed</option>
+                                </select>
+                            </td>
+                        @else
+                            <td>
+                                <input type='number' step='0.01' min='0' max='100'
+                                       class='form-control grades' title="Term Grade"
+                                       name='grades[{{$loop->index}}][final]'
+                                       value="{{ $final>0?$final:'' }}"
                                     {{ $finalLock=='Lock'?'readonly':'' }}>
-                        </td>
-                        <td>
-                            <input type='number' step='1' min='1' max='5'
-                                   class='form-control grades' title="Effort Grade"
-                                   data-toggle='tooltip' data-placement='bottom' title='1, 2, 3, 4, 5'
-                                   name='grades[{{$loop->index}}][effort]'
-                                   value="{{ $effort>0?$effort:'' }}"
+                            </td>
+                            <td>
+                                <input type='number' step='1' min='1' max='5'
+                                       class='form-control grades' title="Effort Grade"
+                                       data-toggle='tooltip' data-placement='bottom' title='1, 2, 3, 4, 5'
+                                       name='grades[{{$loop->index}}][effort]'
+                                       value="{{ $effort>0?$effort:'' }}"
                                     {{ $effortLock=='Lock'?'readonly':'' }}>
-                        </td>
-
-                        <td>
-                            <input type='number' step='0.01' min='0' max='100'
-                                   class='form-control grades' title="Deportment Grade"
-                                   name='grades[{{$loop->index}}][deportment]'
-                                   value="{{ $deportment>0?$deportment:'' }}"
+                            </td>
+                            <td>
+                                <input type='number' step='0.01' min='0' max='100'
+                                       class='form-control grades' title="Deportment Grade"
+                                       name='grades[{{$loop->index}}][deportment]'
+                                       value="{{ $deportment>0?$deportment:'' }}"
                                     {{ $deportmentLock=='Lock'?'readonly':'' }}>
-                        </td>
+                            </td>
+                        @endif
                     @endif
                 </tr>
             @endforeach
@@ -154,18 +169,22 @@ $fields = ['final', 'effort', 'deportment', 'midquarter'];
             <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>{{ $type }} Grade</th>
-                @if($type == 'MidQuarter')
-                    @if ($comment_show)
-                        @if (schema('student')->{"senior.high.school"} and $subject->gradelevel >= 11 and $subject->gradelevel <= 12)
-                            <th>Performance</th>
-                            <th>Behavior</th>
+                @if($schoolyear == "2019-2020" and $quarter == 4)
+                    <th>Remarks</th>
+                @else
+                    <th>{{ $type }} Grade</th>
+                    @if($type == 'MidQuarter')
+                        @if ($comment_show)
+                            @if (schema('student')->{"senior.high.school"} and $subject->gradelevel >= 11 and $subject->gradelevel <= 12)
+                                <th>Performance</th>
+                                <th>Behavior</th>
+                            @endif
+                            <th>Card Comments</th>
                         @endif
-                        <th>Card Comments</th>
+                    @elseif($type == 'Quarter')
+                        <th>Effort Grade</th>
+                        <th>Deportment</th>
                     @endif
-                @elseif($type == 'Quarter')
-                    <th>Effort Grade</th>
-                    <th>Deportment</th>
                 @endif
             </tr>
             </tfoot>

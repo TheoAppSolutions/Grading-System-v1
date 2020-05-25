@@ -18,7 +18,6 @@ class Grade extends Model
     {
         $this->table = 'grades_' . cleanString($gradelevel);
         $this->gradelevel = $gradelevel;
-
     }
 
     public function bySubjectID($subject_id, $schoolyear)
@@ -42,6 +41,7 @@ class Grade extends Model
                 'grades.student_id',
                 'grades.schoolyear',
                 'grades.quarter',
+                'grades.remarks',
                 'grades.midquarter',
                 'grades.final',
                 'grades.effort',
@@ -57,8 +57,10 @@ class Grade extends Model
             $gradeset["$record->student_id"][$record->quarter]["final"] = $record->final > 0 ? $record->final : '';
             $gradeset["$record->student_id"][$record->quarter]["effort"] = $record->effort > 0 ? $record->effort : '';
             $gradeset["$record->student_id"][$record->quarter]["deportment"] = $record->deportment > 0 ? $record->deportment : '';
+            $gradeset["$record->student_id"][$record->quarter]["remarks"] = $record->remarks;
         endforeach;
 
+        // Getting the final average score per subject
         foreach ($records as $record) :
             $temp = [];
             for ($quarter = 1; $quarter <= 4; $quarter++):
@@ -111,6 +113,7 @@ class Grade extends Model
                 'grades.final',
                 'grades.effort',
                 'grades.deportment',
+                'grades.remarks',
                 'students.lastname as StudLastname',
                 'students.firstname as StudFirstname',
                 'students.student_id',
@@ -128,6 +131,7 @@ class Grade extends Model
                     $gradeset["deportment"][$record->quarter]["$record->subjectname"] = $record->deportment > 0 ? $record->deportment : '';
                 endif;
                 $gradeset["$record->subjectname"]["teacher"] = $record->title . $record->firstname . ' ' . $record->lastname;
+                $gradeset["$record->subjectname"][$record->quarter]["remarks"] = $record->remarks;
                 $gradeset["$record->subjectname"][$record->quarter]["midquarter"] = $record->midquarter > 0 ? $record->midquarter : '';
                 $gradeset["$record->subjectname"][$record->quarter]["final"] = $record->final > 0 ? round($record->final) : '';
                 $gradeset["$record->subjectname"][$record->quarter]["rawfinal"] = $record->final > 0 ? number_format($record->final, 2) : '';

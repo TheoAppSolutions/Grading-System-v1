@@ -34,7 +34,8 @@
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['LANGUAGE'][2]['effort'] ?? '' }}</span></td>
         <td colspan=3 class=finalgrade width=40>{{ $grades['LANGUAGE'][3]['final'] ?? '' }}</td>
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['LANGUAGE'][3]['effort'] ?? '' }}</span></td>
-        <td colspan=4 class=finalgrade width=40>{{ $grades['LANGUAGE'][4]['final'] ?? '' }}</td>
+        <td colspan=4 class=finalgrade style="font-size: 13px; text-align: center;"
+            width=40>{{ $grades['LANGUAGE'][4]['remarks'] ?? 'PASSED' }}</td>
         <td colspan=4 class=finalgrade>{{ $grades['LANGUAGE'][5]['final'] ?? '' }}</td>
         <td colspan=2 class=finaleffort><span class="effort">{{ $grades['LANGUAGE'][5]['effort'] ?? '' }}</span></td>
         <td colspan=7 class=remarks>{{ $grades['LANGUAGE']['remarks'] ?? '' }}</td>
@@ -48,7 +49,8 @@
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['READING'][2]['effort'] ?? '' }}</span></td>
         <td colspan=3 class=finalgrade width=40>{{ $grades['READING'][3]['final'] ?? '' }}</td>
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['READING'][3]['effort'] ?? '' }}</span></td>
-        <td colspan=4 class=finalgrade width=40>{{ $grades['READING'][4]['final'] ?? '' }}</td>
+        <td colspan=4 class=finalgrade style="font-size: 13px; text-align: center;"
+            width=40>{{ $grades['READING'][4]['remarks'] ?? 'PASSED' }}</td>
         <td colspan=4 class=finalgrade>{{ $grades['READING'][5]['final'] ?? '' }}</td>
         <td colspan=2 class=finaleffort><span class="effort">{{ $grades['READING'][5]['effort'] ?? '' }}</span></td>
         <td colspan=7 class=remarks>{{ $grades['READING']['remarks'] ?? '' }}</td>
@@ -62,7 +64,8 @@
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['FILIPINO'][2]['effort'] ?? '' }}</span></td>
         <td colspan=3 class=finalgrade width=40>{{ $grades['FILIPINO'][3]['final'] ?? '' }}</td>
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['FILIPINO'][3]['effort'] ?? '' }}</span></td>
-        <td colspan=4 class=finalgrade width=40>{{ $grades['FILIPINO'][4]['final'] ?? '' }}</td>
+        <td colspan=4 class=finalgrade style="font-size: 13px; text-align: center;"
+            width=40>{{ $grades['FILIPINO'][4]['remarks'] ?? 'PASSED' }}</td>
         <td colspan=4 class=finalgrade>{{ $grades['FILIPINO'][5]['final'] ?? '' }}</td>
         <td colspan=2 class=finaleffort><span class="effort">{{ $grades['FILIPINO'][5]['effort'] ?? '' }}</span></td>
         <td colspan=7 class=remarks>{{ $grades['FILIPINO']['remarks'] ?? '' }}</td>
@@ -76,7 +79,8 @@
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['SCIENCE'][2]['effort'] ?? '' }}</span></td>
         <td colspan=3 class=finalgrade width=40>{{ $grades['SCIENCE'][3]['final'] ?? '' }}</td>
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['SCIENCE'][3]['effort'] ?? '' }}</span></td>
-        <td colspan=4 class=finalgrade width=40>{{ $grades['SCIENCE'][4]['final'] ?? '' }}</td>
+        <td colspan=4 class=finalgrade style="font-size: 13px; text-align: center;"
+            width=40>{{ $grades['SCIENCE'][4]['remarks'] ?? 'PASSED' }}</td>
         <td colspan=4 class=finalgrade>{{ $grades['SCIENCE'][5]['final'] ?? '' }}</td>
         <td colspan=2 class=finaleffort><span class="effort">{{ $grades['SCIENCE'][5]['effort'] ?? '' }}</span></td>
         <td colspan=7 class=remarks>{{ $grades['SCIENCE']['remarks'] ?? '' }}</td>
@@ -90,7 +94,8 @@
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['MATH'][2]['effort'] ?? '' }}</span></td>
         <td colspan=3 class=finalgrade width=40>{{ $grades['MATH'][3]['final'] ?? '' }}</td>
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['MATH'][3]['effort'] ?? '' }}</span></td>
-        <td colspan=4 class=finalgrade width=40>{{ $grades['MATH'][4]['final'] ?? '' }}</td>
+        <td colspan=4 class=finalgrade style="font-size: 13px; text-align: center;"
+            width=40>{{ $grades['MATH'][4]['remarks'] ?? 'PASSED' }}</td>
         <td colspan=4 class=finalgrade>{{ $grades['MATH'][5]['final'] ?? '' }}</td>
         <td colspan=2 class=finaleffort><span class="effort">{{ $grades['MATH'][5]['effort'] ?? '' }}</span></td>
         <td colspan=7 class=remarks>{{ $grades['MATH']['remarks'] ?? '' }}</td>
@@ -106,7 +111,8 @@
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['CF'][2]['effort'] ?? '' }}</span></td>
         <td colspan=3 class=finalgrade width=40>{{ $grades['CF'][3]['final'] ?? '' }}</td>
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['CF'][3]['effort'] ?? '' }}</span></td>
-        <td colspan=4 class=finalgrade width=40>{{ $grades['CF'][4]['final'] ?? '' }}</td>
+        <td colspan=4 class=finalgrade style="font-size: 13px; text-align: center;"
+            width=40>{{ $grades['CF'][4]['remarks'] ?? 'PASSED' }}</td>
         <td colspan=4 class=finalgrade>{{ $grades['CF'][5]['final'] ?? '' }}</td>
         <td colspan=2 class=finaleffort><span class="effort">{{ $grades['CF'][5]['effort'] ?? '' }}</span></td>
         <td colspan=7 class=remarks>{{ $grades['CF']['remarks'] ?? '' }}</td>
@@ -120,7 +126,8 @@
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['CIVICS'][2]['effort'] ?? '' }}</span></td>
         <td colspan=3 class=finalgrade width=40>{{ $grades['CIVICS'][3]['final'] ?? '' }}</td>
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['CIVICS'][3]['effort'] ?? '' }}</span></td>
-        <td colspan=4 class=finalgrade width=40>{{ $grades['CIVICS'][4]['final'] ?? '' }}</td>
+        <td colspan=4 class=finalgrade style="font-size: 13px; text-align: center;"
+            width=40>{{ $grades['CIVICS'][4]['remarks'] ?? 'PASSED' }}</td>
         <td colspan=4 class=finalgrade>{{ $grades['CIVICS'][5]['final'] ?? '' }}</td>
         <td colspan=2 class=finaleffort><span class="effort">{{ $grades['CIVICS'][5]['effort'] ?? '' }}</span></td>
         <td colspan=7 class=remarks>{{ $grades['CIVICS']['remarks'] ?? '' }}</td>
@@ -151,7 +158,8 @@
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['MUSIC'][2]['effort'] ?? '' }}</span></td>
         <td colspan=3 class=finalgrade width=40>{{ $grades['MUSIC'][3]['final'] ?? '' }}</td>
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['MUSIC'][3]['effort'] ?? '' }}</span></td>
-        <td colspan=4 class=finalgrade width=40>{{ $grades['MUSIC'][4]['final'] ?? '' }}</td>
+        <td colspan=4 class=finalgrade style="font-size: 13px; text-align: center;"
+            width=40>{{ $grades['MUSIC'][4]['remarks'] ?? 'PASSED' }}</td>
         <td colspan=4 class=finalgrade>{{ $grades['MUSIC'][5]['final'] ?? '' }}</td>
         <td colspan=2 class=finaleffort><span class="effort">{{ $grades['MUSIC'][5]['effort'] ?? '' }}</span></td>
         <td colspan=7 class=remarks>{{ $grades['MUSIC']['remarks'] ?? '' }}</td>
@@ -167,7 +175,8 @@
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['ART'][2]['effort'] ?? '' }}</span></td>
         <td colspan=3 class=finalgrade width=40>{{ $grades['ART'][3]['final'] ?? '' }}</td>
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['ART'][3]['effort'] ?? '' }}</span></td>
-        <td colspan=4 class=finalgrade width=40>{{ $grades['ART'][4]['final'] ?? '' }}</td>
+        <td colspan=4 class=finalgrade style="font-size: 13px; text-align: center;"
+            width=40>{{ $grades['ART'][4]['remarks'] ?? 'PASSED' }}</td>
         <td colspan=4 class=finalgrade>{{ $grades['ART'][5]['final'] ?? '' }}</td>
         <td colspan=2 class=finaleffort><span class="effort">{{ $grades['ART'][5]['effort'] ?? '' }}</span></td>
         <td colspan=7 class=remarks>{{ $grades['ART']['remarks'] ?? '' }}</td>
@@ -183,7 +192,8 @@
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['PE'][2]['effort'] ?? '' }}</span></td>
         <td colspan=3 class=finalgrade width=40>{{ $grades['PE'][3]['final'] ?? '' }}</td>
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['PE'][3]['effort'] ?? '' }}</span></td>
-        <td colspan=4 class=finalgrade width=40>{{ $grades['PE'][4]['final'] ?? '' }}</td>
+        <td colspan=4 class=finalgrade style="font-size: 13px; text-align: center;"
+            width=40>{{ $grades['PE'][4]['remarks'] ?? 'PASSED' }}</td>
         <td colspan=4 class=finalgrade>{{ $grades['PE'][5]['final'] ?? '' }}</td>
         <td colspan=2 class=finaleffort><span class="effort">{{ $grades['PE'][5]['effort'] ?? '' }}</span></td>
         <td colspan=7 class=remarks>{{ $grades['PE']['remarks'] ?? '' }}</td>
@@ -214,7 +224,11 @@
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['LIVELIHOOD'][2]['effort'] ?? '' }}</span></td>
         <td colspan=3 class=finalgrade width=40>{{ $grades['LIVELIHOOD'][3]['final'] ?? '' }}</td>
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['LIVELIHOOD'][3]['effort'] ?? '' }}</span></td>
-        <td colspan=4 class=finalgrade width=40>{{ $grades['LIVELIHOOD'][4]['final'] ?? '' }}</td>
+        <td colspan=4 class=finalgrade style="font-size: 13px; text-align: center;" width=40>
+            @if($student->gradelevel >= 4 and $student->gradelevel <= 6)
+                {{ $grades['LIVELIHOOD'][4]['remarks'] ?? 'PASSED' }}
+            @endif
+        </td>
         <td colspan=4 class=finalgrade>{{ $grades['LIVELIHOOD'][5]['final'] ?? '' }}</td>
         <td colspan=2 class=finaleffort><span class="effort">{{ $grades['LIVELIHOOD'][5]['effort'] ?? '' }}</span></td>
         <td colspan=7 class=remarks>{{ $grades['LIVELIHOOD']['remarks'] ?? '' }}</td>
@@ -229,7 +243,8 @@
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['COMPUTER'][2]['effort'] ?? '' }}</span></td>
         <td colspan=3 class=finalgrade width=40>{{ $grades['COMPUTER'][3]['final'] ?? '' }}</td>
         <td colspan=1 class=finaleffort><span class="effort">{{ $grades['COMPUTER'][3]['effort'] ?? '' }}</span></td>
-        <td colspan=4 class=finalgrade width=40>{{ $grades['COMPUTER'][4]['final'] ?? '' }}</td>
+        <td colspan=4 class=finalgrade style="font-size: 13px; text-align: center;"
+            width=40>{{ $grades['COMPUTER'][4]['remarks'] ?? 'PASSED' }}</td>
         <td colspan=4 class=finalgrade>{{ $grades['COMPUTER'][5]['final'] ?? '' }}</td>
         <td colspan=2 class=finaleffort><span class="effort">{{ $grades['COMPUTER'][5]['effort'] ?? '' }}</span></td>
         <td colspan=7 class=remarks>{{ $grades['COMPUTER']['remarks'] ?? '' }}</td>
