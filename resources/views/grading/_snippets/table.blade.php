@@ -131,7 +131,7 @@ $fields = ['final', 'effort', 'deportment', 'midquarter'];
                         @endif
                     @elseif($type == 'Quarter')
                         @if($schoolyear == "2019-2020" and $quarter == 4)
-                            @php($remarks = $grades[$student->student_id][4]["remarks"])
+                            @php($remarks = isset($grades[$student->student_id][4]["remarks"]) ? $grades[$student->student_id][4]["remarks"] : "P")
                             <td>
                                 <select class="form-control" name="grades[{{$loop->index}}][remarks]" title="Remarks">
                                     <option value="P" {{ $remarks == "P" ? "selected" : "" }}>Passed</option>
