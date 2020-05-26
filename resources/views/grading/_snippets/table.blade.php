@@ -134,8 +134,8 @@ $fields = ['final', 'effort', 'deportment', 'midquarter'];
                             @php($remarks = $grades[$student->student_id][4]["remarks"])
                             <td>
                                 <select class="form-control" name="grades[{{$loop->index}}][remarks]" title="Remarks">
-                                    <option value="PASSED" {{ $remarks == "PASSED" ? "selected" : "" }}>Passed</option>
-                                    <option value="FAILED" {{ $remarks == "FAILED" ? "selected" : "" }}>Failed</option>
+                                    <option value="P" {{ $remarks == "P" ? "selected" : "" }}>Passed</option>
+                                    <option value="F" {{ $remarks == "F" ? "selected" : "" }}>Failed</option>
                                 </select>
                             </td>
                         @else

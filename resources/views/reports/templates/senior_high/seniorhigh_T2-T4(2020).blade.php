@@ -43,7 +43,7 @@
                 @if($quarters[2] == 4 and getSchoolYear() == "2019-2020")
                     <td colspan=5 class=finalGrade
                         style="font-size: 13px; text-align: center">
-                        {{ $grades[$minor[$ctr]->subjectname][4]['remarks'] ?? 'PASSED' }}
+                        {{ $grades[$minor[$ctr]->subjectname][4]['remarks'] ?? 'P' }}
                     </td>
                 @else
                     <td colspan=3 class=finalGrade>
@@ -86,7 +86,7 @@
                 @if($quarters[2] == 4 and getSchoolYear() == "2019-2020")
                     <td colspan=5 class=finalGrade
                         style="font-size: 13px; text-align: center">
-                        {{ $grades[$core[$ctr]->subjectname][4]['remarks'] ?? 'PASSED' }}
+                        {{ $grades[$core[$ctr]->subjectname][4]['remarks'] ?? 'P' }}
                     </td>
                 @else
                     <td colspan=3 class=finalGrade>
