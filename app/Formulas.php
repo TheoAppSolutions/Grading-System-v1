@@ -27,7 +27,7 @@ class Formulas extends Model
 
                     if (isset($gradeset[$subject->subjectname][$quarter]["raweffort"]) and $gradeset[$subject->subjectname][$quarter]["raweffort"] != '') :
                         $subAverage['raweffort'][$quarter] = $gradeset[$subject->subjectname][$quarter]["raweffort"];
-                        if (!$gradeset["disqualifyForEffort"]):
+                        if (!$gradeset["disqualifyForEffort"] and getSchoolYear() != "2019-2020"):
                             $gradeset["disqualifyForEffort"] = $subAverage['raweffort'][$quarter] < 4 ? false : true; //Major Subject
                         endif;
                     endif;
@@ -41,7 +41,11 @@ class Formulas extends Model
                         $gradeset[$subject->subjectname][5]["final"] = number_format($gradeset[$subject->subjectname][5]["rawfinal"], 3);
                     endif;
 
-                    $gradeset[$subject->subjectname][5]["effort"] = Formulas::getFinalEffort(array_sum($subAverage['raweffort']), $gradeset['gradelevel']);
+                    if (getSchoolYear() == "2019-2020"):
+                        $gradeset[$subject->subjectname][5]["effort"] = number_format(array_sum($subAverage['raweffort']) / count($subAverage['raweffort']), 2);
+                    else:
+                        $gradeset[$subject->subjectname][5]["effort"] = Formulas::getFinalEffort(array_sum($subAverage['raweffort']), $gradeset['gradelevel']);
+                    endif;
                     $gradeset[$subject->subjectname]["remarks"] = $gradeset[$subject->subjectname][5]["final"] >= 75 ? 'PASSED' : 'FAILED';
 
                     if (!$gradeset["disqualifyForHonors"]):
@@ -261,7 +265,7 @@ class Formulas extends Model
 
         if (getSchoolYear() == "2019-2020"):
             $gradeset["deportment"][5] = array_sum($gradeset["rawdeportment"]) / count($gradeset["rawdeportment"]);
-            $gradeset["deportment"][5] = number_format($gradeset["deportment"][5], 0);
+            $gradeset["deportment"][5] = number_format($gradeset["deportment"][5], 3);
         else:
             if (isset($gradeset["deportment"][$endCounter]) and $gradeset["deportment"][$endCounter] > 0) :
                 $gradeset["deportment"][5] = array_sum($gradeset["rawdeportment"]) / count($gradeset["rawdeportment"]);

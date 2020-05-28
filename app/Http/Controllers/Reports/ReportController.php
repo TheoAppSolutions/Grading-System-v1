@@ -26,7 +26,6 @@ class ReportController extends Controller
     public function report($student_id)
     {
         app('debugbar')->disable();
-
         $type = request('type');
         $quarter = request('term') ? request('term') : getQuarter();
         $semester = request('semester');

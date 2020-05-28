@@ -42,7 +42,7 @@
                 </td>
                 @if($quarters[2] == 4 and getSchoolYear() == "2019-2020")
                     <td colspan=5 class=finalGrade
-                        style="font-size: 13px; text-align: center">
+                        style="font-size: 13px; text-align: center; font-style: italic; ">
                         {{ $grades[$minor[$ctr]->subjectname][4]['remarks'] ?? 'P' }}
                     </td>
                 @else
@@ -55,8 +55,13 @@
                         </sub>
                     </td>
                 @endif
-                <td colspan=6 class=finalGrade style="text-align: center;">
+                <td colspan=4 class=finalGrade style="text-align: center;">
                     {{ $grades[$minor[$ctr]->subjectname][5]['rawfinal'] ?? '' }}
+                </td>
+                <td colspan=2 class=finaleffort>
+                    <sub class="effort">
+                        {{ $grades[$minor[$ctr]->subjectname][5]['effort'] ?? '' }}
+                    </sub>
                 </td>
                 <td colspan=7 class=remarks>
                     {{ $grades[$minor[$ctr]->subjectname]['remarks'] ?? '' }}
@@ -85,7 +90,7 @@
                 </td>
                 @if($quarters[2] == 4 and getSchoolYear() == "2019-2020")
                     <td colspan=5 class=finalGrade
-                        style="font-size: 13px; text-align: center">
+                        style="font-size: 13px; text-align: center; font-style: italic; ">
                         {{ $grades[$core[$ctr]->subjectname][4]['remarks'] ?? 'P' }}
                     </td>
                 @else
@@ -96,8 +101,14 @@
                             {{ $grades[$core[$ctr]->subjectname][$quarters[2]]['effort'] ?? '' }}</sub>
                     </td>
                 @endif
-                <td colspan=6 class=finalGrade style="text-align: center;">
-                    {{ $grades[$core[$ctr]->subjectname][5]['rawfinal'] ?? '' }}</td>
+                <td colspan=4 class=finalGrade style="text-align: center;">
+                    {{ $grades[$core[$ctr]->subjectname][5]['rawfinal'] ?? '' }}
+                </td>
+                <td colspan=2 class=finaleffort>
+                    <sub class="effort">
+                        {{ $grades[$core[$ctr]->subjectname][5]['effort'] ?? '' }}
+                    </sub>
+                </td>
                 <td colspan=7 class=remarks>
                     {{ $grades[$core[$ctr]->subjectname]['remarks'] ?? '' }}</td>
             </tr>
