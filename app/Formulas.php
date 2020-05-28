@@ -154,7 +154,7 @@ class Formulas extends Model
             if ($gradeset['gradelevel'] <= 11):
                 //$gradeset['eligible'] = ordinal(getNextGradeLevel($gradeset['gradelevel'])) . " Grade";
             else:
-                $gradeset['eligible'] = "Graduate";
+                $gradeset['eligible'] = "";
             endif;
         else:
             $gradeset['eligible'] = "";
