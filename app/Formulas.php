@@ -36,13 +36,13 @@ class Formulas extends Model
                 if (isset($subAverage['final']) and isset($subAverage['raweffort'])):
                     $gradeset[$subject->subjectname][5]["rawfinal"] = array_sum($subAverage['final']) / count($subAverage['final']);
                     if (getSchoolYear() == "2019-2020"):
-                        $gradeset[$subject->subjectname][5]["final"] = number_format($gradeset[$subject->subjectname][5]["rawfinal"], 0);
+                        $gradeset[$subject->subjectname][5]["final"] = number_format($gradeset[$subject->subjectname][5]["rawfinal"], 3);
                     else:
                         $gradeset[$subject->subjectname][5]["final"] = number_format($gradeset[$subject->subjectname][5]["rawfinal"], 3);
                     endif;
 
                     if (getSchoolYear() == "2019-2020"):
-                        $gradeset[$subject->subjectname][5]["effort"] = number_format(array_sum($subAverage['raweffort']) / count($subAverage['raweffort']), 2);
+                        $gradeset[$subject->subjectname][5]["effort"] = number_format(array_sum($subAverage['raweffort']) / count($subAverage['raweffort']), 0);
                     else:
                         $gradeset[$subject->subjectname][5]["effort"] = Formulas::getFinalEffort(array_sum($subAverage['raweffort']), $gradeset['gradelevel']);
                     endif;

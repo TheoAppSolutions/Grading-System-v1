@@ -55,10 +55,8 @@
                         </sub>
                     </td>
                 @endif
-                <td colspan=4 class=finalGrade style="text-align: center;">
+                <td colspan=6 class=finalGrade style="text-align: center;">
                     {{ $grades[$minor[$ctr]->subjectname][5]['rawfinal'] ?? '' }}
-                </td>
-                <td colspan=2 class=finaleffort>
                     <sub class="effort">
                         {{ $grades[$minor[$ctr]->subjectname][5]['effort'] ?? '' }}
                     </sub>
@@ -101,10 +99,8 @@
                             {{ $grades[$core[$ctr]->subjectname][$quarters[2]]['effort'] ?? '' }}</sub>
                     </td>
                 @endif
-                <td colspan=4 class=finalGrade style="text-align: center;">
+                <td colspan=6 class=finalGrade style="text-align: center;">
                     {{ $grades[$core[$ctr]->subjectname][5]['rawfinal'] ?? '' }}
-                </td>
-                <td colspan=2 class=finaleffort>
                     <sub class="effort">
                         {{ $grades[$core[$ctr]->subjectname][5]['effort'] ?? '' }}
                     </sub>
