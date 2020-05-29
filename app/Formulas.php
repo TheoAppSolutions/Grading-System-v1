@@ -154,7 +154,7 @@ class Formulas extends Model
             if ($gradeset['gradelevel'] <= 11):
                 //$gradeset['eligible'] = ordinal(getNextGradeLevel($gradeset['gradelevel'])) . " Grade";
             else:
-                $gradeset['eligible'] = "Graduate";
+                $gradeset['eligible'] = "";
             endif;
         else:
             $gradeset['eligible'] = "";
@@ -264,10 +264,8 @@ class Formulas extends Model
         endfor;
 
         if (getSchoolYear() == "2019-2020"):
-            if (isset($gradeset["rawdeportment"])):
-                $gradeset["deportment"][5] = array_sum($gradeset["rawdeportment"]) / count($gradeset["rawdeportment"]);
-                $gradeset["deportment"][5] = number_format($gradeset["deportment"][5], 2);
-            endif;
+            $gradeset["deportment"][5] = array_sum($gradeset["rawdeportment"]) / count($gradeset["rawdeportment"]);
+            $gradeset["deportment"][5] = number_format($gradeset["deportment"][5], 3);
         else:
             if (isset($gradeset["deportment"][$endCounter]) and $gradeset["deportment"][$endCounter] > 0) :
                 $gradeset["deportment"][5] = array_sum($gradeset["rawdeportment"]) / count($gradeset["rawdeportment"]);
