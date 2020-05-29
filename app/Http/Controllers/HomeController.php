@@ -7,6 +7,7 @@ use App\Models\Grade;
 use App\Models\Homeroom;
 use App\Models\SchoolYear;
 use App\Models\Student;
+use App\Models\Subject;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -64,14 +65,16 @@ class HomeController extends Controller
 
         $gradelevels = Enrollment::where('student_id', $student_id)->get();
         $schoolyears = [];
+
         foreach ($gradelevels as $levels):
+            $subjects[$levels->gradelevel] = Subject::byLevel($levels->gradelevel);
             $studenttemp = Student::byStudentID($student_id, $levels->schoolyear);
             $gradesModel = new Grade;
             $gradesModel->setTableName($studenttemp->gradelevel);
             $schoolyears[$levels->schoolyear] = $gradesModel->byStudentID($student_id, '', $levels->schoolyear);
         endforeach;
-        dd($schoolyears);
-        return view('reports.transcript.tor', compact('student', 'schoolyears'));
+
+        return view('reports.transcript.tor', compact('student', 'schoolyears', 'subjects'));
     }
 
     public function databaseIntegrate($schoolyear)

@@ -9,7 +9,7 @@
         }
 
         .xl155066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: black;
             font-size: 11.0pt;
@@ -19,25 +19,7 @@
             font-family: Calibri, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
-            text-align: general;
-            vertical-align: bottom;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl655066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 9.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: general;
+            text-align: center;
             vertical-align: bottom;
             mso-background-source: auto;
             mso-pattern: auto;
@@ -45,43 +27,7 @@
         }
 
         .xl665066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: general;
-            vertical-align: bottom;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl675066 {
-            color: blue;
-            font-size: 13.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: "Berlin Sans FB Demi", sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: left;
-            vertical-align: middle;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: normal;
-            padding-left: 54px;
-            mso-char-indent-count: 6;
-        }
-
-        .xl685066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -99,7 +45,7 @@
         }
 
         .xl695066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -120,55 +66,10 @@
             white-space: nowrap;
         }
 
-        .xl705066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            border-top: .5pt solid windowtext;
-            border-right: none;
-            border-bottom: .5pt solid windowtext;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl715066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            border-top: .5pt solid windowtext;
-            border-right: .5pt solid windowtext;
-            border-bottom: .5pt solid windowtext;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
         .xl725066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
-            color: blue;
-            font-size: 10.0pt;
+            font-size: 24px;
             font-weight: 700;
             font-style: normal;
             text-decoration: none;
@@ -183,7 +84,7 @@
         }
 
         .xl735066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: #002060;
             font-size: 9.0pt;
@@ -200,26 +101,8 @@
             white-space: nowrap;
         }
 
-        .xl745066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: white;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: general;
-            vertical-align: bottom;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
         .xl755066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: #002060;
             font-size: 20.0pt;
@@ -237,7 +120,7 @@
         }
 
         .xl765066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -247,7 +130,7 @@
             font-family: Arial, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
-            text-align: general;
+            text-align: center;
             vertical-align: bottom;
             border-top: none;
             border-right: none;
@@ -259,7 +142,7 @@
         }
 
         .xl775066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -281,7 +164,7 @@
         }
 
         .xl785066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -303,7 +186,7 @@
         }
 
         .xl795066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -313,7 +196,7 @@
             font-family: Arial, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
-            text-align: general;
+            text-align: center;
             vertical-align: bottom;
             border-top: none;
             border-right: none;
@@ -325,7 +208,7 @@
         }
 
         .xl805066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -335,7 +218,7 @@
             font-family: Arial, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
-            text-align: general;
+            text-align: center;
             vertical-align: bottom;
             border-top: none;
             border-right: 1.0pt solid windowtext;
@@ -347,7 +230,7 @@
         }
 
         .xl815066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 10.0pt;
@@ -357,7 +240,7 @@
             font-family: Arial, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
-            text-align: general;
+            text-align: center;
             vertical-align: bottom;
             mso-background-source: auto;
             mso-pattern: auto;
@@ -365,7 +248,7 @@
         }
 
         .xl825066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -375,7 +258,7 @@
             font-family: Arial, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
-            text-align: general;
+            text-align: center;
             vertical-align: bottom;
             border-top: none;
             border-right: none;
@@ -387,7 +270,7 @@
         }
 
         .xl835066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -397,7 +280,7 @@
             font-family: Arial, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
-            text-align: general;
+            text-align: center;
             vertical-align: bottom;
             border-top: none;
             border-right: 1.0pt solid windowtext;
@@ -408,26 +291,8 @@
             white-space: nowrap;
         }
 
-        .xl845066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: general;
-            vertical-align: bottom;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
         .xl855066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 7.0pt;
@@ -437,7 +302,7 @@
             font-family: Calibri, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
-            text-align: general;
+            text-align: center;
             vertical-align: bottom;
             mso-background-source: auto;
             mso-pattern: auto;
@@ -445,7 +310,7 @@
         }
 
         .xl865066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 7.0pt;
@@ -464,7 +329,7 @@
         }
 
         .xl875066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 14.0pt;
@@ -482,7 +347,7 @@
         }
 
         .xl885066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 10.0pt;
@@ -500,7 +365,7 @@
         }
 
         .xl895066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 10.0pt;
@@ -518,7 +383,7 @@
         }
 
         .xl905066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 9.5pt;
@@ -540,7 +405,7 @@
         }
 
         .xl915066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -562,10 +427,10 @@
         }
 
         .xl925066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
-            font-size: 9.5pt;
+            font-size: 12px;
             font-weight: 700;
             font-style: normal;
             text-decoration: none;
@@ -584,7 +449,7 @@
         }
 
         .xl935066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -605,30 +470,8 @@
             white-space: nowrap;
         }
 
-        .xl945066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            border-top: none;
-            border-right: 1.0pt solid windowtext;
-            border-bottom: .5pt solid windowtext;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
         .xl955066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -650,7 +493,7 @@
         }
 
         .xl965066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -668,7 +511,7 @@
         }
 
         .xl975066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -680,35 +523,13 @@
             mso-number-format: General;
             text-align: center;
             vertical-align: middle;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl985066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            border-top: none;
-            border-right: 1.0pt solid windowtext;
-            border-bottom: none;
-            border-left: none;
             mso-background-source: auto;
             mso-pattern: auto;
             white-space: nowrap;
         }
 
         .xl995066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 9.5pt;
@@ -730,7 +551,7 @@
         }
 
         .xl1005066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -751,30 +572,8 @@
             white-space: nowrap;
         }
 
-        .xl1015066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: "\[ENG\]\[$-409\]mmmm\\-yy\;\@";
-            text-align: center;
-            vertical-align: middle;
-            border-top: none;
-            border-right: 1.0pt solid windowtext;
-            border-bottom: .5pt solid windowtext;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
         .xl1025066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -784,7 +583,7 @@
             font-family: Calibri, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
-            text-align: general;
+            text-align: center;
             vertical-align: middle;
             border: .5pt solid windowtext;
             mso-background-source: auto;
@@ -793,7 +592,7 @@
         }
 
         .xl1035066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -814,30 +613,8 @@
             white-space: nowrap;
         }
 
-        .xl1045066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            border-top: .5pt solid windowtext;
-            border-right: .5pt solid windowtext;
-            border-bottom: .5pt solid windowtext;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
         .xl1055066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 9.0pt;
@@ -858,30 +635,8 @@
             white-space: normal;
         }
 
-        .xl1065066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 9.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            border-top: none;
-            border-right: none;
-            border-bottom: .5pt solid windowtext;
-            border-left: .5pt solid windowtext;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: normal;
-        }
-
         .xl1075066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -890,7 +645,6 @@
             text-decoration: none;
             font-family: Arial, sans-serif;
             mso-font-charset: 0;
-            mso-number-format: 0;
             text-align: center;
             vertical-align: middle;
             border-top: .5pt solid windowtext;
@@ -903,7 +657,7 @@
         }
 
         .xl1085066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 9.0pt;
@@ -922,7 +676,7 @@
         }
 
         .xl1095066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -931,7 +685,6 @@
             text-decoration: none;
             font-family: Arial, sans-serif;
             mso-font-charset: 0;
-            mso-number-format: 0;
             text-align: center;
             vertical-align: middle;
             border: .5pt solid windowtext;
@@ -941,7 +694,7 @@
         }
 
         .xl1105066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -963,7 +716,7 @@
         }
 
         .xl1115066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -981,7 +734,7 @@
         }
 
         .xl1125066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -999,7 +752,7 @@
         }
 
         .xl1135066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -1016,96 +769,8 @@
             white-space: nowrap;
         }
 
-        .xl1145066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            border-top: .5pt solid windowtext;
-            border-right: none;
-            border-bottom: .5pt solid windowtext;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl1155066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: 0;
-            text-align: center;
-            vertical-align: middle;
-            border-top: .5pt solid windowtext;
-            border-right: .5pt solid windowtext;
-            border-bottom: .5pt solid windowtext;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl1165066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 9.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            border-top: .5pt solid windowtext;
-            border-right: .5pt solid windowtext;
-            border-bottom: none;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: normal;
-        }
-
-        .xl1175066 {
-            padding: 0px;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 9.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            border-top: none;
-            border-right: .5pt solid windowtext;
-            border-bottom: .5pt solid windowtext;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: normal;
-        }
-
         .xl1185066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -1115,7 +780,7 @@
             font-family: Arial, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
-            text-align: general;
+            text-align: center;
             vertical-align: bottom;
             border-top: 1.0pt solid windowtext;
             border-right: none;
@@ -1127,7 +792,7 @@
         }
 
         .xl1195066 {
-            padding: 0px;
+            padding: 0;
             mso-ignore: padding;
             color: windowtext;
             font-size: 8.0pt;
@@ -1137,7 +802,7 @@
             font-family: Arial, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
-            text-align: general;
+            text-align: center;
             vertical-align: bottom;
             border-top: 1.0pt solid windowtext;
             border-right: 1.0pt solid windowtext;
@@ -1147,52 +812,75 @@
             mso-pattern: auto;
             white-space: nowrap;
         }
+
+        .grade {
+            padding-top: 1px;
+            padding-right: 1px;
+            padding-left: 1px;
+            mso-ignore: padding;
+            color: black;
+            font-size: 10.0pt;
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            mso-font-charset: 0;
+            mso-number-format: General;
+            text-align: center;
+            vertical-align: middle;
+            border-top: .5pt solid windowtext;
+            border-bottom: .5pt solid windowtext;
+            border-right: .5pt solid windowtext;
+            border-left: .5pt solid windowtext;
+            mso-background-source: auto;
+            mso-pattern: auto;
+            white-space: normal;
+        }
     </style>
 </head>
 
 <body>
 <div style="text-align:center; position: relative;">
-    <img src="{{ url('images/logo.png') }}" style="height: 100px; width: 80px; position: absolute; left: 50px;">
+    <img src="{{ url('images/logo.png') }}" alt="" style="height: 100px; width: 80px; position: absolute; left: 50px;">
 
-    <table border=0 cellpadding=0 cellspacing=0 width=864 class=xl665066
-           style='border-collapse:collapse;table-layout:fixed;width:648pt'>
-        <col class="xl665066" width="20" span=4 style='mso-width-source:userset;
+    <table class=xl665066 style='border-collapse:collapse;table-layout:fixed;width:648pt'>
+        <col class="xl665066" span=4 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" width="20" span=8 style='mso-width-source:userset;
+        <col class="xl665066" span=8 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" width="20" span=2 style='mso-width-source:userset;
+        <col class="xl665066" span=2 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" width="20" span=2 style='mso-width-source:userset;
+        <col class="xl665066" span=2 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" width="20" span=2 style='mso-width-source:userset;
+        <col class="xl665066" span=2 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" width="20" style='mso-width-source:userset;mso-width-alt:
+        <col class="xl665066" style='mso-width-source:userset;mso-width-alt:
  731;width:15pt'>
-        <col class="xl665066" width="20" style='mso-width-source:userset;mso-width-alt:
+        <col class="xl665066" style='mso-width-source:userset;mso-width-alt:
  731;width:15pt'>
-        <col class="xl665066" width="20" span=2 style='mso-width-source:userset;
+        <col class="xl665066" span=2 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" width="20" style='mso-width-source:userset;mso-width-alt:
+        <col class="xl665066" style='mso-width-source:userset;mso-width-alt:
  731;width:15pt'>
-        <col class="xl665066" width="20" span=3 style='mso-width-source:userset;
+        <col class="xl665066" span=3 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" width="20" style='mso-width-source:userset;mso-width-alt:
+        <col class="xl665066" style='mso-width-source:userset;mso-width-alt:
  731;width:15pt'>
-        <col class="xl665066" width="20" style='mso-width-source:userset;mso-width-alt:
+        <col class="xl665066" style='mso-width-source:userset;mso-width-alt:
  731;width:15pt'>
-        <col class="xl665066" width="20" span=11 style='mso-width-source:userset;
+        <col class="xl665066" span=11 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" width="20" style='mso-width-source:userset;mso-width-alt:
+        <col class="xl665066" style='mso-width-source:userset;mso-width-alt:
  731;width:15pt'>
-        <col class="xl665066" width="64" style='width:48pt'>
+        <col class="xl665066" style='width:48pt'>
 
         <tr>
-            <td colspan=40 height=28 class=xl875066 width=740 style='height:21.0pt;width:555pt'>HIGHLANDS CHRISTIAN
+            <td colspan=40 height=28 class=xl875066 style='height:21.0pt;width:555pt'>HIGHLANDS CHRISTIAN
                 GRAMMAR SCHOOL
             </td>
         </tr> {{-- Highlands Main Title --}}
         <tr style='mso-height-source:userset;height:10.5pt'>
-            <td colspan=40 class=xl885066 width=740 style='width:555pt'>P.O. Box 1582</td>
+            <td colspan=40 class=xl885066 style='width:555pt'>P.O. Box 1582</td>
         </tr> {{-- P.O. Box --}}
         <tr style='mso-height-source:userset;height:10.5pt'>
             <td colspan=40 class=xl895066>Mt. Hagen, WHP 281 Papua New Guinea</td>
@@ -1373,7 +1061,7 @@
 
         <tr style='mso-height-source:userset;height:10.5pt'>
             <td height=14 class=xl665066 style='height:10.5pt'></td>
-            <td colspan=37 class=xl725066>PRE-SCHOOL PROGRESS REPORT</td>
+            <td colspan=37 class=xl725066>TRANSCRIPT OF RECORDS</td>
         </tr>
 
         <tr style='mso-height-source:userset;height:10.5pt'>
@@ -1388,7 +1076,7 @@
             @endif
 
             <td colspan="18">
-                <table border=0 cellpadding=0 cellspacing=0 class=xl665066>
+                <table border=0 cellpadding=0 cellspacing=0 class="xl665066">
                     <tr style='mso-height-source:userset;height:10.5pt'>
                         <td height=14 class=xl665066 style='height:10.5pt'></td>
                         <td class=xl855066></td>
@@ -1422,98 +1110,29 @@
                     <tr style='mso-height-source:userset;height:10.5pt'>
                         <td height=14 class=xl665066 style='height:10.5pt'></td>
                     </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td colspan=4 class=xl1025066>Agriculture</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>A-</td>
-                        <td colspan=2 class=xl1075066 style='border-right:.5pt solid black;border-left:none'>1
-                        </td>
-                    </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td colspan=4 class=xl1025066>Business Studies</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>B-</td>
-                        <td colspan=2 class=xl1075066 style='border-right:.5pt solid black;border-left:none'>1
-                        </td>
-                    </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td colspan=4 class=xl1025066>Agriculture</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>A+</td>
-                        <td colspan=2 class=xl1075066 style='border-right:.5pt solid black; border-left:none'>
-                            1
-                        </td>
-                    </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td colspan=4 class=xl1025066>Business Studies</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>B+</td>
-                        <td colspan=2 class=xl1075066 style='border-right:.5pt solid black; border-left:none'>1
-                        </td>
-                    </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td colspan=4 class=xl1025066>Agriculture</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>C+</td>
-                        <td colspan=2 class=xl1075066 style='border-right:.5pt solid black; border-left:none'>
-                            1
-                        </td>
-                    </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td colspan=4 class=xl1025066>Business Studies</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>B+</td>
-                        <td colspan=2 class=xl1075066 style='border-right:.5pt solid black;border-left:none'>1
-                        </td>
-                    </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td colspan=4 class=xl1025066>Agriculture</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>C+</td>
-                        <td colspan=2 class=xl1075066 style='border-right:.5pt solid black;border-left:none'>1
-                        </td>
-                    </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td colspan=4 class=xl1025066>Business Studies</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>B+</td>
-                        <td colspan=2 class=xl1075066 style='border-right:.5pt solid black;border-left:none'>1
-                        </td>
-                    </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td colspan=4 class=xl1025066>Agriculture</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                        <td colspan=3 class=xl1095066 style='border-left:none'>C+</td>
-                        <td colspan=2 class=xl1075066 style='border-right:.5pt solid black;border-left:none'>1
-                        </td>
-                    </tr>
+                    @foreach($subjects[$grades['gradelevel']] as $subject)
+                        <tr style='mso-height-source:userset;height:10.5pt'>
+                            <td height=14 class=xl665066 style='height:10.5pt'></td>
+                            <td colspan=4 class=xl1025066>{{ $subject->subjectname }}</td>
+                            @if(isset($grades[$subject->subjectname][1]["final"]) and isset($grades[$subject->subjectname][2]["final"]))
+                                <td colspan=3 class=grade
+                                    style='border-left:none'>{{ ($grades[$subject->subjectname][1]["final"] + $grades[$subject->subjectname][2]["final"]) / 2 }}</td>
+                            @else
+                                <td colspan=3 class=grade></td>
+                            @endif
+                            @if(isset($grades[$subject->subjectname][3]["final"]) and isset($grades[$subject->subjectname][4]["final"]))
+                                <td colspan=3 class=grade
+                                    style='border-left:none'>{{ ($grades[$subject->subjectname][3]["final"] + $grades[$subject->subjectname][4]["final"]) / 2 }}</td>
+                            @else
+                                <td colspan=3 class=grade></td>
+                            @endif
+                            <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
+                            <td colspan=3 class=xl1095066 style='border-left:none'>A-</td>
+                            <td colspan=2 class=xl1075066 style='border-right:.5pt solid black;border-left:none'>1
+                            </td>
+                        </tr>
+                    @endforeach
+
                     <tr style='mso-height-source:userset;height:10.5pt'>
                         <td height=14 class=xl665066 style='height:10.5pt'></td>
                     </tr>
