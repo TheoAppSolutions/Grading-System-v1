@@ -60,11 +60,26 @@ class HomeController extends Controller
 
     public function test()
     {
-        $pdf = new PDF(array(
+        $pdf = new PDF([
             'no-outline',
-            'page-size' => 'A4', //'Letter'
-            'orientation' => 'Portrait', //'Landscape'
-        ));
+            'print-media-type',
+            'enable-smart-shrinking',
+            'encoding' => 'UTF-8',
+            'orientation' => 'Portrait',
+            'page-width' => '8.5in',
+            'page-height' => '11in',
+            'margin-top' => '.5in',
+            'margin-bottom' => '.5in',
+            'margin-left' => '.5in',
+            'margin-right' => '.5in',
+            'footer-left' => '',
+            'footer-right' => 'Page [page] of [topage]',
+            'footer-font-name' => 'Arial',
+            'footer-font-size' => '8',
+            'title' => '',
+            'ignoreWarnings' => true,
+            'commandOptions' => ['useExec' => true],
+        ]);
 
         $student_id = 1425;
         $student = Student::byStudentID($student_id);
@@ -73,18 +88,20 @@ class HomeController extends Controller
         $schoolyears = [];
 
         foreach ($gradelevels as $levels):
-            $subjects[$levels->gradelevel] = Subject::byLevel($levels->gradelevel);
-            $studenttemp = Student::byStudentID($student_id, $levels->schoolyear);
-            $gradesModel = new Grade;
-            $gradesModel->setTableName($studenttemp->gradelevel);
-            $schoolyears[$levels->schoolyear] = $gradesModel->byStudentID($student_id, '', $levels->schoolyear);
+            if ($levels->schoolyera != '2020'):
+                $subjects[$levels->gradelevel] = Subject::byLevel($levels->gradelevel);
+                $studenttemp = Student::byStudentID($student_id, $levels->schoolyear);
+                $gradesModel = new Grade;
+                $gradesModel->setTableName($studenttemp->gradelevel);
+                $schoolyears[$levels->schoolyear] = $gradesModel->byStudentID($student_id, '', $levels->schoolyear);
+            endif;
         endforeach;
 
-        /*$pdf->addPage(view('reports.transcript.tor', compact('student', 'schoolyears', 'subjects')));
+        $pdf->addPage(view('reports.transcript.tor', compact('student', 'schoolyears', 'subjects')));
 
-        $pdf->send();*/
+        $pdf->send();
 
-        return view('reports.transcript.tor', compact('student', 'schoolyears', 'subjects'));
+        //return view('reports.transcript.tor', compact('student', 'schoolyears', 'subjects'));
     }
 
     public function databaseIntegrate($schoolyear)

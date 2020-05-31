@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Reports;
 
 use App\Http\Controllers\Controller;
 use App\Models\Award;
+use App\Models\Enrollment;
 use App\Models\SchoolYear;
 use App\User;
-use Illuminate\Support\Facades\Input;
 use mikehaertl\wkhtmlto\Pdf as PDF;
 use App\Models\Subject;
 use App\Models\Attendance;
@@ -318,5 +318,54 @@ class ReportController extends Controller
         endif;
 
         return response()->download($pathToFile, $name);
+    }
+
+    /*----------------------------------------------------------*/
+    public function transcript($student_id)
+    {
+        $student = Student::byStudentID($student_id);
+
+        $gradelevels = Enrollment::where('student_id', $student_id)->get();
+        $schoolyears = [];
+
+        foreach ($gradelevels as $levels):
+            if ($levels->schoolyera != '2020'):
+                $subjects[$levels->gradelevel] = Subject::byLevel($levels->gradelevel);
+                $student_temp = Student::byStudentID($student_id, $levels->schoolyear);
+                $gradesModel = new Grade;
+                $gradesModel->setTableName($student_temp->gradelevel);
+                $schoolyears[$levels->schoolyear] = $gradesModel->byStudentID($student_id, '', $levels->schoolyear);
+            endif;
+        endforeach;
+
+        return view('reports.transcript.tor', compact('student', 'schoolyears', 'subjects'));
+    }
+
+    public function generate_transcript($student_id)
+    {
+        $pdf = new PDF([
+            'no-outline',
+            'print-media-type',
+            'enable-smart-shrinking',
+            'encoding' => 'UTF-8',
+            'orientation' => 'Portrait',
+            'page-width' => '8.5in',
+            'page-height' => '11in',
+            'margin-top' => '.5in',
+            'margin-bottom' => '.5in',
+            'margin-left' => '.5in',
+            'margin-right' => '.5in',
+            'footer-left' => '',
+            'footer-right' => 'Page [page] of [topage]',
+            'footer-font-name' => 'Arial',
+            'footer-font-size' => '8',
+            'title' => '',
+            'ignoreWarnings' => true,
+            'commandOptions' => ['useExec' => true],
+        ]);
+
+        $pdf->addPage($this->transcript($student_id));
+
+        $pdf->send();
     }
 }

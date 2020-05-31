@@ -3,11 +3,6 @@
 <head>
     <title>TOR</title>
     <style>
-        table {
-            mso-displayed-decimal-separator: "\.";
-            mso-displayed-thousand-separator: "\,";
-        }
-
         .blank {
             border: none;
         }
@@ -58,11 +53,11 @@
             font-style: italic;
         }
 
-        .student_details {
+        .student__details {
             padding: 0;
             mso-ignore: padding;
             color: windowtext;
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 700;
             font-style: normal;
             text-decoration: none;
@@ -80,11 +75,11 @@
             white-space: nowrap;
         }
 
-        .student_label {
+        .student__label {
             padding: 0;
             mso-ignore: padding;
             color: windowtext;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             font-style: normal;
             text-decoration: none;
@@ -140,7 +135,7 @@
         }
 
         .grades__label {
-            padding: 5px 2px;
+            padding: 8px;
             mso-ignore: padding;
             color: windowtext;
             font-size: 12px;
@@ -230,39 +225,11 @@
 </head>
 
 <body>
-<div class="center">
+<div style="position: relative;">
     <img src="{{ url('images/logo.png') }}" alt="" style="height: 100px; width: 80px; position: absolute; left: 50px;">
 
     <table class=blank style='border-collapse:collapse;table-layout:fixed;'>
-        <col class="blank" span=4 style='mso-width-source:userset;
- mso-width-alt:731;width:15pt'>
-        <col class="blank" span=8 style='mso-width-source:userset;
- mso-width-alt:731;width:15pt'>
-        <col class="blank" span=2 style='mso-width-source:userset;
- mso-width-alt:731;width:15pt'>
-        <col class="blank" span=2 style='mso-width-source:userset;
- mso-width-alt:731;width:15pt'>
-        <col class="blank" span=2 style='mso-width-source:userset;
- mso-width-alt:731;width:15pt'>
-        <col class="blank" style='mso-width-source:userset;mso-width-alt:
- 731;width:15pt'>
-        <col class="blank" style='mso-width-source:userset;mso-width-alt:
- 731;width:15pt'>
-        <col class="blank" span=2 style='mso-width-source:userset;
- mso-width-alt:731;width:15pt'>
-        <col class="blank" style='mso-width-source:userset;mso-width-alt:
- 731;width:15pt'>
-        <col class="blank" span=3 style='mso-width-source:userset;
- mso-width-alt:731;width:15pt'>
-        <col class="blank" style='mso-width-source:userset;mso-width-alt:
- 731;width:15pt'>
-        <col class="blank" style='mso-width-source:userset;mso-width-alt:
- 731;width:15pt'>
-        <col class="blank" span=11 style='mso-width-source:userset;
- mso-width-alt:731;width:15pt'>
-        <col class="blank" style='mso-width-source:userset;mso-width-alt:
- 731;width:15pt'>
-        <col class="blank" style='width:48pt'>
+        <col class="blank" span=40 style='width:15pt'>
 
         <tr>
             <td colspan="38" height="28" class="header header__school_name">HIGHLANDS CHRISTIAN GRAMMAR SCHOOL</td>
@@ -282,33 +249,6 @@
         <tr>
             <td colspan="38" class="header header__phone">Phone / Fax: (675) 7630 2494</td>
         </tr>
-        <tr>
-            <td height="14" class="blank"></td>
-        </tr>
-
-        <tr>
-            <td height="14" class="blank"></td>
-        </tr>
-        <tr>
-            <td height="14" class="blank"></td>
-            <td colspan="8" class="student_details">{{ $student->lastname }}</td>
-            <td colspan="8" class="student_details">{{ $student->firstname }}</td>
-            <td colspan="5" class="student_details">{{ $student->middlename }}</td>
-            <td colspan="3" class="student_details">{{ $student->suffix }}</td>
-            <td colspan="6" class="student_details">{{ $student->citizenship ?? '' }}</td>
-            <td colspan="6" class="student_details">{{ $student->student_id }}</td>
-            <td height="14" class="blank"></td>
-        </tr>
-        <tr>
-            <td height="14" class="blank"></td>
-            <td colspan="8" class="student_label">Family Name</td>
-            <td colspan="8" class="student_label">First Name</td>
-            <td colspan="5" class="student_label">Middle</td>
-            <td colspan="3" class="student_label">Suffix</td>
-            <td colspan="6" class="student_label">Citizenship</td>
-            <td colspan="6" class="student_label">Student ID</td>
-            <td height="14" class="blank"></td>
-        </tr>
 
         <tr>
             <td height="14" class="blank"></td>
@@ -316,23 +256,44 @@
 
         <tr>
             <td height="14" class="blank"></td>
-            <td colspan="5" class="student_details">{{ $student->gender == "M" ? "MALE" : "FEMALE" }}</td>
-            <td colspan="6" class="student_details">{{ $student->birthdate ?? '' }}</td>
-            <td colspan="15" class="student_details">{{ $student->address ?? '' }}</td>
-            <td colspan="10" class="student_details">{{ array_key_first($schoolyears) ?? '' }}</td>
+            <td colspan="7" class="student__details">{{ $student->lastname }}</td>
+            <td colspan="7" class="student__details">{{ $student->firstname }}</td>
+            <td colspan="7" class="student__details">{{ $student->middlename }}</td>
+            <td colspan="3" class="student__details">{{ $student->suffix }}</td>
+            <td colspan="6" class="student__details">{{ $student->citizenship ?? '' }}</td>
+            <td colspan="6" class="student__details">{{ $student->student_id }}</td>
+            <td height="14" class="blank"></td>
+        </tr>
+        <tr>
+            <td height="14" class="blank"></td>
+            <td colspan="8" class="student__label">Family Name</td>
+            <td colspan="8" class="student__label">First Name</td>
+            <td colspan="5" class="student__label">Middle</td>
+            <td colspan="3" class="student__label">Suffix</td>
+            <td colspan="6" class="student__label">Citizenship</td>
+            <td colspan="6" class="student__label">Student ID</td>
             <td height="14" class="blank"></td>
         </tr>
 
         <tr>
             <td height="14" class="blank"></td>
-            <td colspan="5" class="student_label">Gender</td>
-            <td colspan="6" class="student_label">Date of Birth</td>
-            <td colspan="15" class="student_label">Address</td>
-            <td colspan="10" class="student_label">Date of Entrance</td>
+        </tr>
+
+        <tr>
+            <td height="14" class="blank"></td>
+            <td colspan="5" class="student__details">{{ $student->gender == "M" ? "MALE" : "FEMALE" }}</td>
+            <td colspan="6" class="student__details">{{ $student->birthdate ?? '' }}</td>
+            <td colspan="15" class="student__details">{{ $student->address ?? '' }}</td>
+            <td colspan="10" class="student__details">{{ array_key_first($schoolyears) ?? '' }}</td>
             <td height="14" class="blank"></td>
         </tr>
 
         <tr>
+            <td height="14" class="blank"></td>
+            <td colspan="5" class="student__label">Gender</td>
+            <td colspan="6" class="student__label">Date of Birth</td>
+            <td colspan="15" class="student__label">Address</td>
+            <td colspan="10" class="student__label">Date of Entrance</td>
             <td height="14" class="blank"></td>
         </tr>
 
@@ -424,7 +385,11 @@
                         <td height="14" class="grades__blank"></td>
                         <td colspan="10" class="grades__average_label">Weighted General Average:</td>
                         <td colspan="3" class="grades__average_value">{{ $grades['generalaverage'] ?? "" }}</td>
-                        <td colspan="3" class="grades__average_value">?</td>
+                        <td colspan="3" class="grades__average_value">
+                            @isset($grades['generalaverage'])
+                                {{ letterGrade($grades['generalaverage']) }}
+                            @endisset
+                        </td>
                     </tr>
                     <tr>
                         <td height="14" class="grades__blank"></td>
@@ -458,59 +423,6 @@
             @endif
             @php($ctr += 1)
         @endforeach
-
-        <tr style='mso-height-source:userset;height:18.75pt'>
-            <td colspan=12 class=sidenotetitle>LETTER GRADE POINTS</td>
-        </tr>
-
-        <tr style='mso-height-source:userset;height:19.5pt;'>
-            <td colspan=2 class=blank>A+</td>
-            <td colspan=5 class=blank>97 - 100</td>
-            <td colspan=2 class=blank>C+</td>
-            <td colspan=6 class=blank>77 - 79.99</td>
-        </tr>
-
-        <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-            <td colspan=2 class=blank>A</td>
-            <td colspan=5 class=blank>93 - 96.99</td>
-            <td colspan=2 class=blank>C</td>
-            <td colspan=6 class=blank>73 - 76.99</td>
-        </tr>
-
-        <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-            <td colspan=2 class=blank>A-</td>
-            <td colspan=5 class=blank>90 - 92.99</td>
-            <td colspan=2 class=blank>C-</td>
-            <td colspan=6 class=blank>70 - 72.99</td>
-        </tr>
-
-        <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-            <td colspan=2 class=blank>B+</td>
-            <td colspan=5 class=blank>87 - 89.99</td>
-            <td colspan=2 class=blank>D+</td>
-            <td colspan=6 class=blank>67 - 69.99</td>
-        </tr>
-
-        <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-            <td colspan=2 class=blank>B</td>
-            <td colspan=5 class=blank>83 - 86.99</td>
-            <td colspan=2 class=blank>D</td>
-            <td colspan=6 class=blank>63 - 66.99</td>
-        </tr>
-
-        <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-            <td colspan=2 class=blank>B-</td>
-            <td colspan=5 class=blank>80 - 82.99</td>
-            <td colspan=2 class=blank>D-</td>
-            <td colspan=6 class=blank>60 - 62.99</td>
-        </tr>
-
-        <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-            <td colspan=2 class=blank></td>
-            <td colspan=5 class=blank></td>
-            <td colspan=2 class=blank>F</td>
-            <td colspan=6 class=blank>Below 60</td>
-        </tr>
     </table>
 </div>
 </body>
