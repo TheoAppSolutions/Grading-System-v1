@@ -130,6 +130,12 @@
                                        href="{{ route('report.award', [$student->student_id,'term=award','schoolyear='.$schoolyear]) }}">
                                         Awards Card <span class='fa fa-file-pdf-o pull-right'></span>
                                     </a>
+                                    <div class="dropdown-divider"></div>
+                                    <h6 class="dropdown-header">Beta</h6>
+                                    <a style="cursor: pointer;" target="_blank" class="dropdown-item"
+                                       href="{{ route('report.transcript', [$student->student_id]) }}">
+                                        Transcript of Record<span class='fa fa-file-pdf-o pull-right'></span>
+                                    </a>
                                     {{--<div class="dropdown-divider"></div>
                                     <a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                        href="{{ route('report.student', ['award',$student->student_id,'term=4','schoolyear='.$schoolyear]) }}">
