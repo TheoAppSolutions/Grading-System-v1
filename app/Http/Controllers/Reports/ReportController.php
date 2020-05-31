@@ -32,7 +32,7 @@ class ReportController extends Controller
         $attendance = $attendance->byStudentID($student_id);
         $days = SchoolYear::getSchoolDays();
         $schoolyear = getSchoolYear();
-        $student = Student::byStudentID($student_id);
+        $student = Student::byStudentID($student_id, $schoolyear);
         $homeroom = Homeroom::byGradeLevel($student->gradelevel);
 
         $gradesModel = new Grade;

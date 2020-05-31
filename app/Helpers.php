@@ -444,3 +444,40 @@ function notify($message, $type, $option = [])
         session()->flash("notify.option." . $key, $value);
     endforeach;
 }
+
+function average($value1, $value2)
+{
+    return ($value1 + $value2) / 2;
+}
+
+function letterGrade($grade)
+{
+    switch ($grade):
+        case $grade >= 97 and $grade <= 100:
+            return "A+";
+        case $grade >= 93 and $grade <= 96.99:
+            return "A";
+        case $grade >= 90 and $grade <= 92.99:
+            return "A-";
+        case $grade >= 87 and $grade <= 89.99:
+            return "B+";
+        case $grade >= 83 and $grade <= 86.99:
+            return "B";
+        case $grade >= 80 and $grade <= 82.99:
+            return "B-";
+        case $grade >= 77 and $grade <= 79.99:
+            return "C+";
+        case $grade >= 73 and $grade <= 76.99:
+            return "C";
+        case $grade >= 70 and $grade <= 72.99:
+            return "C-";
+        case $grade >= 69 and $grade <= 69.99:
+            return "D+";
+        case $grade >= 63 and $grade <= 66.99:
+            return "D";
+        case $grade >= 60 and $grade <= 62.99:
+            return "D-";
+        case $grade < 60:
+            return "F";
+    endswitch;
+}

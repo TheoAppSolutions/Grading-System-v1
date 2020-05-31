@@ -12,6 +12,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use mikehaertl\wkhtmlto\Pdf as PDF;
 
 class HomeController extends Controller
 {
@@ -59,8 +60,13 @@ class HomeController extends Controller
 
     public function test()
     {
+        $pdf = new PDF(array(
+            'no-outline',
+            'page-size' => 'A4', //'Letter'
+            'orientation' => 'Portrait', //'Landscape'
+        ));
+
         $student_id = 1425;
-        $schoolyear = 2020;
         $student = Student::byStudentID($student_id);
 
         $gradelevels = Enrollment::where('student_id', $student_id)->get();
@@ -73,6 +79,10 @@ class HomeController extends Controller
             $gradesModel->setTableName($studenttemp->gradelevel);
             $schoolyears[$levels->schoolyear] = $gradesModel->byStudentID($student_id, '', $levels->schoolyear);
         endforeach;
+
+        /*$pdf->addPage(view('reports.transcript.tor', compact('student', 'schoolyears', 'subjects')));
+
+        $pdf->send();*/
 
         return view('reports.transcript.tor', compact('student', 'schoolyears', 'subjects'));
     }

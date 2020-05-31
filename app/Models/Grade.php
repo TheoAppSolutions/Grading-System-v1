@@ -100,7 +100,8 @@ class Grade extends Model
             ->where([
                 ['grades.student_id', $student_id],
                 ['grades.schoolyear', $schoolyear],
-                ['subjects_user.schoolyear', $schoolyear]
+                ['subjects_user.schoolyear', $schoolyear],
+                ['subjects_units.schoolyear', $schoolyear]
             ])
             ->select('subjectname',
                 'gradelevel',

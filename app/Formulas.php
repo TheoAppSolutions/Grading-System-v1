@@ -9,7 +9,6 @@ class Formula extends Model
 {
     public static function getFinalAveragePerSubject($gradeset, $subjects, $startCounter, $endCounter, $isAwardReport)
     {
-        $units = Units::getUnits();
         $lastSubjectname = '';
         $totalunits = 0;
         /*
@@ -76,13 +75,13 @@ class Formula extends Model
                             endif;
                         endif;
 
-                        if (isset($units[$subject->subject_id]) and $lastSubjectname != $subject->subjectname):
+                        if (isset($gradeset[$subject->subjectname]['unit']) and $lastSubjectname != $subject->subjectname):
                             $lastSubjectname = $subject->subjectname;
-                            $gradeset["finalave"][$subject->subjectname] = $gradeset[$subject->subjectname][5]["final"] * $units[$subject->subject_id]['unit'];
+                            $gradeset["finalave"][$subject->subjectname] = $gradeset[$subject->subjectname][5]["final"] * $gradeset[$subject->subjectname]['unit'];
 
-                            if ($units[$subject->subject_id]['unit'] > 0):
-                                $totalunits += $units[$subject->subject_id]['unit'];
-                                $gradeset[$subject->subjectname]['unit'] = number_format($units[$subject->subject_id]['unit'], 2);
+                            if ($gradeset[$subject->subjectname]['unit'] > 0):
+                                $totalunits += $gradeset[$subject->subjectname]['unit'];
+                                $gradeset[$subject->subjectname]['unit'] = number_format($gradeset[$subject->subjectname]['unit'], 2);
                             else:
                                 $gradeset[$subject->subjectname]['unit'] = '';
                             endif;

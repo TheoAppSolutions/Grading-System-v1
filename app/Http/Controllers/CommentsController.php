@@ -11,7 +11,7 @@ class CommentsController extends Controller
     public function show($student_id)
     {
         $schoolyear = getSchoolYear();
-        $student = Student::byStudentID($student_id);
+        $student = Student::byStudentID($student_id, $schoolyear);
         $prev = $student->prev;
         $next = $student->next;
         $student_id = $student->student_id;

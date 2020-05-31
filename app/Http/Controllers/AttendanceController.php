@@ -27,7 +27,7 @@ class AttendanceController extends Controller
         $days = SchoolYear::where('active', 1)->first();
         $days = json_decode($days->school_days);
 
-        $student = Student::byStudentID($student_id);
+        $student = Student::byStudentID($student_id, $schoolyear);
         $prev = $student->prev;
         $next = $student->next;
 

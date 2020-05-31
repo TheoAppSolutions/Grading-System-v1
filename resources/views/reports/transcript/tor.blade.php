@@ -2,181 +2,98 @@
 
 <head>
     <title>TOR</title>
-    <style id="Trasnscript-of-Records_Templates (1)_5066_Styles">
+    <style>
         table {
             mso-displayed-decimal-separator: "\.";
             mso-displayed-thousand-separator: "\,";
         }
 
-        .xl155066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: black;
-            font-size: 11.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
+        .blank {
+            border: none;
         }
 
-        .xl665066 {
+        .header {
             padding: 0;
             mso-ignore: padding;
             color: windowtext;
-            font-size: 8.0pt;
             font-weight: 400;
             font-style: normal;
             text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl695066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            border-top: .5pt solid windowtext;
-            border-right: none;
-            border-bottom: .5pt solid windowtext;
-            border-left: .5pt solid windowtext;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl725066 {
-            padding: 0;
-            mso-ignore: padding;
-            font-size: 24px;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: "Berlin Sans FB Demi", sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
             text-align: center;
             vertical-align: middle;
             mso-background-source: auto;
             mso-pattern: auto;
-            white-space: nowrap;
+            white-space: normal;
         }
 
-        .xl735066 {
-            padding: 0;
-            mso-ignore: padding;
+        .header__phone {
             color: #002060;
             font-size: 9.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
             font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
         }
 
-        .xl755066 {
-            padding: 0;
-            mso-ignore: padding;
+        .header__moto {
             color: #002060;
             font-size: 20.0pt;
             font-weight: 700;
+            font-family: Mistral, cursive;
+        }
+
+        .header__school_name {
+            font-size: 14.0pt;
+            font-family: "Copperplate Gothic Bold", sans-serif;
+        }
+
+        .header__address {
+            font-size: 10.0pt;
+            font-family: Arial, sans-serif;
+        }
+
+        .header__tor_label {
+            font-size: 22px;
+            font-weight: 700;
+            font-family: "Berlin Sans FB Demi", sans-serif;
+            font-style: italic;
+        }
+
+        .student_details {
+            padding: 0;
+            mso-ignore: padding;
+            color: windowtext;
+            font-size: 12px;
+            font-weight: 700;
             font-style: normal;
             text-decoration: none;
-            font-family: Mistral, cursive;
+            font-family: Calibri, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
             text-align: center;
             vertical-align: middle;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl765066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
             border-top: none;
             border-right: none;
-            border-bottom: 1.0pt solid windowtext;
+            border-bottom: 2px solid windowtext;
             border-left: none;
             mso-background-source: auto;
             mso-pattern: auto;
             white-space: nowrap;
         }
 
-        .xl775066 {
+        .student_label {
             padding: 0;
             mso-ignore: padding;
             color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 400;
             font-style: normal;
             text-decoration: none;
-            font-family: Arial, sans-serif;
+            font-family: Calibri, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
             text-align: center;
-            vertical-align: bottom;
-            border-top: 1.0pt solid windowtext;
-            border-right: none;
-            border-bottom: none;
-            border-left: 1.0pt solid windowtext;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl785066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            border-top: 1.0pt solid windowtext;
+            vertical-align: middle;
+            border-top: .5pt solid windowtext;
             border-right: none;
             border-bottom: none;
             border-left: none;
@@ -185,113 +102,7 @@
             white-space: nowrap;
         }
 
-        .xl795066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            border-top: none;
-            border-right: none;
-            border-bottom: none;
-            border-left: 1.0pt solid windowtext;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl805066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            border-top: none;
-            border-right: 1.0pt solid windowtext;
-            border-bottom: none;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl815066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 10.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl825066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            border-top: none;
-            border-right: none;
-            border-bottom: 1.0pt solid windowtext;
-            border-left: 1.0pt solid windowtext;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl835066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            border-top: none;
-            border-right: 1.0pt solid windowtext;
-            border-bottom: 1.0pt solid windowtext;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl855066 {
+        .grades__blank {
             padding: 0;
             mso-ignore: padding;
             color: windowtext;
@@ -309,125 +120,27 @@
             white-space: nowrap;
         }
 
-        .xl865066 {
-            padding: 0;
+        .grades__subject {
+            padding: 5px 10px;
             mso-ignore: padding;
             color: windowtext;
-            font-size: 7.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            border: .5pt solid windowtext;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl875066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 14.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: "Copperplate Gothic Bold", sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: normal;
-        }
-
-        .xl885066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 10.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: normal;
-        }
-
-        .xl895066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 10.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl905066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 9.5pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            border-top: none;
-            border-right: none;
-            border-bottom: .5pt solid windowtext;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl915066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
+            font-size: 12px;
             font-weight: 400;
             font-style: normal;
             text-decoration: none;
             font-family: Calibri, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
-            text-align: center;
+            text-align: left;
             vertical-align: middle;
-            border-top: .5pt solid windowtext;
-            border-right: none;
-            border-bottom: none;
-            border-left: none;
+            border: 1px solid #000000;
             mso-background-source: auto;
             mso-pattern: auto;
             white-space: nowrap;
         }
 
-        .xl925066 {
-            padding: 0;
+        .grades__label {
+            padding: 5px 2px;
             mso-ignore: padding;
             color: windowtext;
             font-size: 12px;
@@ -438,306 +151,44 @@
             mso-font-charset: 0;
             mso-number-format: General;
             text-align: center;
-            vertical-align: middle;
-            border-top: none;
-            border-right: none;
-            border-bottom: .5pt solid windowtext;
-            border-left: 1.0pt solid windowtext;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl935066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            border-top: none;
-            border-right: none;
-            border-bottom: .5pt solid windowtext;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl955066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            border-top: none;
-            border-right: none;
-            border-bottom: none;
-            border-left: 1.0pt solid windowtext;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl965066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl975066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl995066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 9.5pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: "\[ENG\]\[$-409\]mmmm\\ d\\\,\\ yyyy\;\@";
-            text-align: center;
-            vertical-align: middle;
-            border-top: none;
-            border-right: none;
-            border-bottom: .5pt solid windowtext;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl1005066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: "\[ENG\]\[$-409\]mmmm\\-yy\;\@";
-            text-align: center;
-            vertical-align: middle;
-            border-top: none;
-            border-right: none;
-            border-bottom: .5pt solid windowtext;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl1025066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            border: .5pt solid windowtext;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl1035066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
             vertical-align: bottom;
-            border-top: .5pt solid windowtext;
-            border-right: none;
-            border-bottom: .5pt solid windowtext;
-            border-left: .5pt solid windowtext;
+            border: 1px solid #000000;
             mso-background-source: auto;
             mso-pattern: auto;
             white-space: nowrap;
         }
 
-        .xl1055066 {
-            padding: 0;
+        .grades__final {
+            padding-top: 1px;
+            padding-right: 1px;
+            padding-left: 1px;
             mso-ignore: padding;
-            color: windowtext;
-            font-size: 9.0pt;
-            font-weight: 700;
+            color: black;
+            font-size: 12px;
+            font-weight: 400;
             font-style: normal;
             text-decoration: none;
-            font-family: Calibri, sans-serif;
+            font-family: Arial, sans-serif;
             mso-font-charset: 0;
             mso-number-format: General;
             text-align: center;
             vertical-align: middle;
-            border-top: .5pt solid windowtext;
-            border-right: none;
-            border-bottom: none;
-            border-left: .5pt solid windowtext;
+            border: 1px solid #000000;
             mso-background-source: auto;
             mso-pattern: auto;
             white-space: normal;
         }
 
-        .xl1075066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            text-align: center;
-            vertical-align: middle;
-            border-top: .5pt solid windowtext;
-            border-right: none;
-            border-bottom: .5pt solid windowtext;
-            border-left: .5pt solid windowtext;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
+        .grades__table {
+            border-collapse: collapse;
+            border: 1px;
         }
 
-        .xl1085066 {
+        .grades__average_value {
             padding: 0;
             mso-ignore: padding;
             color: windowtext;
-            font-size: 9.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            border: .5pt solid windowtext;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: normal;
-        }
-
-        .xl1095066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            text-align: center;
-            vertical-align: middle;
-            border: .5pt solid windowtext;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl1105066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Calibri, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            border-top: .5pt solid windowtext;
-            border-right: none;
-            border-bottom: none;
-            border-left: 1.0pt solid windowtext;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl1115066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 700;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl1125066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
+            font-size: 12px;
             font-weight: 700;
             font-style: normal;
             text-decoration: none;
@@ -751,11 +202,11 @@
             white-space: nowrap;
         }
 
-        .xl1135066 {
+        .grades__average_label {
             padding: 0;
             mso-ignore: padding;
             color: windowtext;
-            font-size: 8.0pt;
+            font-size: 12px;
             font-weight: 700;
             font-style: normal;
             text-decoration: none;
@@ -769,450 +220,296 @@
             white-space: nowrap;
         }
 
-        .xl1185066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            border-top: 1.0pt solid windowtext;
-            border-right: none;
-            border-bottom: none;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .xl1195066 {
-            padding: 0;
-            mso-ignore: padding;
-            color: windowtext;
-            font-size: 8.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: bottom;
-            border-top: 1.0pt solid windowtext;
-            border-right: 1.0pt solid windowtext;
-            border-bottom: none;
-            border-left: none;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: nowrap;
-        }
-
-        .grade {
-            padding-top: 1px;
-            padding-right: 1px;
-            padding-left: 1px;
-            mso-ignore: padding;
-            color: black;
-            font-size: 10.0pt;
-            font-weight: 400;
-            font-style: normal;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            mso-font-charset: 0;
-            mso-number-format: General;
-            text-align: center;
-            vertical-align: middle;
-            border-top: .5pt solid windowtext;
-            border-bottom: .5pt solid windowtext;
-            border-right: .5pt solid windowtext;
-            border-left: .5pt solid windowtext;
-            mso-background-source: auto;
-            mso-pattern: auto;
-            white-space: normal;
-        }
+        /*.center {
+            margin: auto;
+        // width: 50 %;
+        // border: 3 px solid green;
+        // padding: 10 px;
+        }*/
     </style>
 </head>
 
 <body>
-<div style="text-align:center; position: relative;">
+<div class="center">
     <img src="{{ url('images/logo.png') }}" alt="" style="height: 100px; width: 80px; position: absolute; left: 50px;">
 
-    <table class=xl665066 style='border-collapse:collapse;table-layout:fixed;width:648pt'>
-        <col class="xl665066" span=4 style='mso-width-source:userset;
+    <table class=blank style='border-collapse:collapse;table-layout:fixed;'>
+        <col class="blank" span=4 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" span=8 style='mso-width-source:userset;
+        <col class="blank" span=8 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" span=2 style='mso-width-source:userset;
+        <col class="blank" span=2 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" span=2 style='mso-width-source:userset;
+        <col class="blank" span=2 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" span=2 style='mso-width-source:userset;
+        <col class="blank" span=2 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" style='mso-width-source:userset;mso-width-alt:
+        <col class="blank" style='mso-width-source:userset;mso-width-alt:
  731;width:15pt'>
-        <col class="xl665066" style='mso-width-source:userset;mso-width-alt:
+        <col class="blank" style='mso-width-source:userset;mso-width-alt:
  731;width:15pt'>
-        <col class="xl665066" span=2 style='mso-width-source:userset;
+        <col class="blank" span=2 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" style='mso-width-source:userset;mso-width-alt:
+        <col class="blank" style='mso-width-source:userset;mso-width-alt:
  731;width:15pt'>
-        <col class="xl665066" span=3 style='mso-width-source:userset;
+        <col class="blank" span=3 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" style='mso-width-source:userset;mso-width-alt:
+        <col class="blank" style='mso-width-source:userset;mso-width-alt:
  731;width:15pt'>
-        <col class="xl665066" style='mso-width-source:userset;mso-width-alt:
+        <col class="blank" style='mso-width-source:userset;mso-width-alt:
  731;width:15pt'>
-        <col class="xl665066" span=11 style='mso-width-source:userset;
+        <col class="blank" span=11 style='mso-width-source:userset;
  mso-width-alt:731;width:15pt'>
-        <col class="xl665066" style='mso-width-source:userset;mso-width-alt:
+        <col class="blank" style='mso-width-source:userset;mso-width-alt:
  731;width:15pt'>
-        <col class="xl665066" style='width:48pt'>
+        <col class="blank" style='width:48pt'>
 
         <tr>
-            <td colspan=40 height=28 class=xl875066 style='height:21.0pt;width:555pt'>HIGHLANDS CHRISTIAN
-                GRAMMAR SCHOOL
-            </td>
-        </tr> {{-- Highlands Main Title --}}
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td colspan=40 class=xl885066 style='width:555pt'>P.O. Box 1582</td>
-        </tr> {{-- P.O. Box --}}
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td colspan=40 class=xl895066>Mt. Hagen, WHP 281 Papua New Guinea</td>
-        </tr> {{-- Address --}}
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td height=14 class=xl665066 style='height:10.5pt'></td>
-        </tr> {{-- Blank --}}
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td colspan=40 class=xl755066>A Christian Learning Community</td>
-        </tr> {{-- Moto --}}
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td colspan=40 class=xl735066>Phone / Fax: (675) 7630 2494</td>
-        </tr> {{-- Phone --}}
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td height=14 class=xl665066 style='height:10.5pt'></td>
-        </tr>{{-- Blank --}}
-
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td height=14 class=xl665066 style='height:10.5pt'></td>
-            <td class=xl775066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl785066>&nbsp;</td>
-            <td class=xl1185066>&nbsp;</td>
-            <td class=xl1185066>&nbsp;</td>
-            <td class=xl1185066>&nbsp;</td>
-            <td class=xl1185066>&nbsp;</td>
-            <td class=xl1185066>&nbsp;</td>
-            <td class=xl1195066>&nbsp;</td>
+            <td colspan="38" height="28" class="header header__school_name">HIGHLANDS CHRISTIAN GRAMMAR SCHOOL</td>
         </tr>
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td height=14 class=xl665066 style='height:10.5pt'></td>
-            <td colspan=9 class=xl925066>{{ $student->lastname }}</td>
-            <td colspan=9 class=xl905066>{{ $student->firstname }}</td>
-            <td colspan=6 class=xl905066>{{ $student->middlename }}</td>
-            <td colspan=3 class=xl905066>{{ $student->suffix }}</td>
-            <td colspan=6 class=xl905066>{{ $student->citizenship ?? '' }}</td>
-            <td colspan=4 class=xl935066 style='border-right:1.0pt solid black'>{{ $student->student_id }}</td>
+        <tr>
+            <td colspan="38" class="header header__address" style='width:555pt'>P.O. Box 1582</td>
         </tr>
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td height=14 class=xl665066 style='height:10.5pt'></td>
-            <td colspan=9 class=xl1105066>Family Name</td>
-            <td colspan=9 class=xl915066>First Name</td>
-            <td colspan=6 class=xl915066>Middle</td>
-            <td colspan=3 class=xl965066>Suffix</td>
-            <td colspan=6 class=xl965066>Citizenship</td>
-            <td colspan=4 class=xl975066 style='border-right:1.0pt solid black'>Student
-                ID
-            </td>
+        <tr>
+            <td colspan="38" class="header header__address">Mt. Hagen, WHP 281 Papua New Guinea</td>
         </tr>
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td height=14 class=xl665066 style='height:10.5pt'></td>
-            <td class=xl795066>&nbsp;</td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl815066></td>
-            <td class=xl815066></td>
-            <td class=xl815066></td>
-            <td class=xl815066></td>
-            <td class=xl815066></td>
-            <td class=xl815066></td>
-            <td class=xl815066></td>
-            <td class=xl815066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl815066></td>
-            <td class=xl815066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl815066></td>
-            <td class=xl665066></td>
-            <td class=xl815066></td>
-            <td class=xl815066></td>
-            <td class=xl665066></td>
-            <td class=xl815066></td>
-            <td class=xl815066></td>
-            <td class=xl815066></td>
-            <td class=xl665066></td>
-            <td class=xl815066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl805066>&nbsp;</td>
+        <tr>
+            <td height="14" class="blank"></td>
         </tr>
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td height=14 class=xl665066 style='height:10.5pt'></td>
-            <td colspan=4 class=xl925066>{{ $student->gender == "M" ? "MALE" : "FEMALE" }}</td>
-            <td colspan=7 class=xl995066>{{ $student->birthdate ?? '' }}</td>
-            <td colspan=16 class=xl905066>{{ $student->address ?? '' }}</td>
-            <td colspan=10 class=xl1005066
-                style='border-right:1.0pt solid black'>{{ $student->year_entrance ?? '' }}</td>
+        <tr>
+            <td colspan="38" class="header header__moto">A Christian Learning Community</td>
         </tr>
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td height=14 class=xl665066 style='height:10.5pt'></td>
-            <td colspan=4 class=xl955066>Gender</td>
-            <td colspan=7 class=xl965066>Date of Birth</td>
-            <td colspan=16 class=xl965066>Address</td>
-            <td colspan=10 class=xl975066 style='border-right:1.0pt solid black'>Date of Entrance
-            </td>
+        <tr>
+            <td colspan="38" class="header header__phone">Phone / Fax: (675) 7630 2494</td>
         </tr>
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td height=14 class=xl665066 style='height:10.5pt'></td>
-            <td class=xl825066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl765066>&nbsp;</td>
-            <td class=xl835066>&nbsp;</td>
+        <tr>
+            <td height="14" class="blank"></td>
         </tr>
 
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td height=14 class=xl665066 style='height:10.5pt'></td>
+        <tr>
+            <td height="14" class="blank"></td>
+        </tr>
+        <tr>
+            <td height="14" class="blank"></td>
+            <td colspan="8" class="student_details">{{ $student->lastname }}</td>
+            <td colspan="8" class="student_details">{{ $student->firstname }}</td>
+            <td colspan="5" class="student_details">{{ $student->middlename }}</td>
+            <td colspan="3" class="student_details">{{ $student->suffix }}</td>
+            <td colspan="6" class="student_details">{{ $student->citizenship ?? '' }}</td>
+            <td colspan="6" class="student_details">{{ $student->student_id }}</td>
+            <td height="14" class="blank"></td>
+        </tr>
+        <tr>
+            <td height="14" class="blank"></td>
+            <td colspan="8" class="student_label">Family Name</td>
+            <td colspan="8" class="student_label">First Name</td>
+            <td colspan="5" class="student_label">Middle</td>
+            <td colspan="3" class="student_label">Suffix</td>
+            <td colspan="6" class="student_label">Citizenship</td>
+            <td colspan="6" class="student_label">Student ID</td>
+            <td height="14" class="blank"></td>
         </tr>
 
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td height=14 class=xl665066 style='height:10.5pt'></td>
-            <td colspan=37 class=xl725066>TRANSCRIPT OF RECORDS</td>
+        <tr>
+            <td height="14" class="blank"></td>
         </tr>
 
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td height=14 class=xl665066 style='height:10.5pt'></td>
+        <tr>
+            <td height="14" class="blank"></td>
+            <td colspan="5" class="student_details">{{ $student->gender == "M" ? "MALE" : "FEMALE" }}</td>
+            <td colspan="6" class="student_details">{{ $student->birthdate ?? '' }}</td>
+            <td colspan="15" class="student_details">{{ $student->address ?? '' }}</td>
+            <td colspan="10" class="student_details">{{ array_key_first($schoolyears) ?? '' }}</td>
+            <td height="14" class="blank"></td>
+        </tr>
+
+        <tr>
+            <td height="14" class="blank"></td>
+            <td colspan="5" class="student_label">Gender</td>
+            <td colspan="6" class="student_label">Date of Birth</td>
+            <td colspan="15" class="student_label">Address</td>
+            <td colspan="10" class="student_label">Date of Entrance</td>
+            <td height="14" class="blank"></td>
+        </tr>
+
+        <tr>
+            <td height="14" class="blank"></td>
+        </tr>
+
+        <tr>
+            <td height="14" class="blank"></td>
+        </tr>
+
+        <tr>
+            <td height="14" class="blank"></td>
+            <td colspan="36" class="header header__tor_label">Official Academic Transcript</td>
+            <td height="14" class="blank"></td>
+        </tr>
+
+        <tr>
+            <td height="14" class="blank"></td>
         </tr>
 
         @php($ctr = 1)
         @foreach($schoolyears as $schoolyear => $grades)
             @if($ctr==1)
                 {!! "<tr>" !!}
-                <td height=14 class=xl665066 style='height:10.5pt'></td>
+                <td height="14" class="grades__blank"></td>
             @endif
 
             <td colspan="18">
-                <table border=0 cellpadding=0 cellspacing=0 class="xl665066">
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td class=xl855066></td>
-                        <td class=xl665066></td>
-                        <td class=xl665066></td>
-                        <td class=xl665066></td>
-                        <td colspan=3 class=xl1035066 style='border-right:.5pt solid black'>Year Level:</td>
-                        <td colspan=3 class=xl695066 style='border-right:.5pt solid black;border-left: none'>
-                            {{ $grades['gradelevel'] ?? '' }}
-                        </td>
-                        <td colspan=3 class=xl1035066 style='border-right:.5pt solid black; border-left:none'>
-                            School
-                            Year:
-                        </td>
-                        <td colspan=3 class=xl1035066
-                            style='border-right:.5pt solid black; border-left:none'>{{ $schoolyear }}
+                <table class="grades__table">
+                    <tr>
+                        <td height="14" class="grades__blank"></td>
+                        <td class="grades__blank"></td>
+                        <td class="grades__blank"></td>
+                        <td class="grades__blank"></td>
+                        <td class="grades__blank"></td>
+                        <td colspan="3" class="grades__label">Year Level:</td>
+                        <td colspan="3" class="grades__label">
+                            {{ $grades['gradelevel'] ?? '' }}</td>
+                        <td colspan="3" class="grades__label">School Year:</td>
+                        <td colspan="3" class="grades__label">{{ $schoolyear }}
                         </td>
                     </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td colspan=4 rowspan=2 class=xl865066>SUBJECTS</td>
-                        <td colspan=3 rowspan=2 class=xl1085066 width=60 style='width:45pt'>Semester<br>1</td>
-                        <td colspan=3 rowspan=2 class=xl1085066 width=60 style='width:45pt'>Semester<br>2</td>
-                        <td colspan=3 rowspan=2 class=xl1085066 width=60 style='width:45pt'>FINAL<br>GRADE</td>
-                        <td colspan=3 rowspan=2 class=xl1085066 width=60 style='width:45pt'>LETTER<br>GRADE</td>
-                        <td colspan=2 rowspan=2 class=xl1055066 width=40
-                            style='border-right:.5pt solid black;border-bottom:.5pt solid black;width:30pt'>
-                            UNITS
-                        </td>
+                    <tr>
+                        <td height="14" class="grades__blank"></td>
+                        <td colspan="4" rowspan="2" class="grades__label">SUBJECTS</td>
+                        <td colspan="3" rowspan="2" class="grades__label">Semester<br>1</td>
+                        <td colspan="3" rowspan="2" class="grades__label">Semester<br>2</td>
+                        <td colspan="3" rowspan="2" class="grades__label">FINAL<br>GRADE</td>
+                        <td colspan="3" rowspan="2" class="grades__label">LETTER<br>GRADE</td>
+                        <td colspan="2" rowspan="2" class="grades__label">UNITS</td>
                     </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
+                    <tr>
+                        <td height="14" class="grades__blank"></td>
                     </tr>
+
                     @foreach($subjects[$grades['gradelevel']] as $subject)
-                        <tr style='mso-height-source:userset;height:10.5pt'>
-                            <td height=14 class=xl665066 style='height:10.5pt'></td>
-                            <td colspan=4 class=xl1025066>{{ $subject->subjectname }}</td>
-                            @if(isset($grades[$subject->subjectname][1]["final"]) and isset($grades[$subject->subjectname][2]["final"]))
-                                <td colspan=3 class=grade
-                                    style='border-left:none'>{{ ($grades[$subject->subjectname][1]["final"] + $grades[$subject->subjectname][2]["final"]) / 2 }}</td>
-                            @else
-                                <td colspan=3 class=grade></td>
-                            @endif
-                            @if(isset($grades[$subject->subjectname][3]["final"]) and isset($grades[$subject->subjectname][4]["final"]))
-                                <td colspan=3 class=grade
-                                    style='border-left:none'>{{ ($grades[$subject->subjectname][3]["final"] + $grades[$subject->subjectname][4]["final"]) / 2 }}</td>
-                            @else
-                                <td colspan=3 class=grade></td>
-                            @endif
-                            <td colspan=3 class=xl1095066 style='border-left:none'>100</td>
-                            <td colspan=3 class=xl1095066 style='border-left:none'>A-</td>
-                            <td colspan=2 class=xl1075066 style='border-right:.5pt solid black;border-left:none'>1
-                            </td>
-                        </tr>
+                        @if(isset($grades[$subject->subjectname][1]["final"]) or isset($grades[$subject->subjectname][2]["final"]) or isset($grades[$subject->subjectname][3]["final"]) or isset($grades[$subject->subjectname][4]["final"]))
+                            <tr>
+                                <td height="14" class="grades__blank"></td>
+                                <td colspan="4" class="grades__subject">{{ $subject->subjectname }}</td>
+                                @if(isset($grades[$subject->subjectname][1]["final"]) and isset($grades[$subject->subjectname][2]["final"]))
+                                    <td colspan="3"
+                                        class="grades__final">{{ average($grades[$subject->subjectname][1]["final"], $grades[$subject->subjectname][2]["final"]) }}</td>
+                                @else
+                                    <td colspan="3" class="grades__final"></td>
+                                @endif
+
+                                @if(isset($grades[$subject->subjectname][3]["final"]) and isset($grades[$subject->subjectname][4]["final"]))
+                                    <td colspan="3"
+                                        class="grades__final">{{ average($grades[$subject->subjectname][3]["final"], $grades[$subject->subjectname][4]["final"]) }}</td>
+                                @else
+                                    <td colspan="3" class="grades__final"></td>
+                                @endif
+
+                                <td colspan="3"
+                                    class="grades__final">{{ $grades[$subject->subjectname][5]["final"] ?? "" }}</td>
+                                <td colspan="3" class="grades__final">
+                                    @isset($grades[$subject->subjectname][5]["final"])
+                                        {{ letterGrade($grades[$subject->subjectname][5]["final"]) }}
+                                    @endisset
+                                </td>
+                                <td colspan="2"
+                                    class="grades__final">{{ $grades[$subject->subjectname]["unit"] ?? "" }}</td>
+                            </tr>
+                        @endif
                     @endforeach
 
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
+                    <tr>
+                        <td height="14" class=grades__blank></td>
                     </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td colspan=10 class=xl1135066>Weighted General Average:</td>
-                        <td colspan=3 class=xl1125066>81.464</td>
-                        <td colspan=3 class=xl1115066>B-</td>
+                    <tr>
+                        <td height="14" class="grades__blank"></td>
+                        <td colspan="10" class="grades__average_label">Weighted General Average:</td>
+                        <td colspan="3" class="grades__average_value">{{ $grades['generalaverage'] ?? "" }}</td>
+                        <td colspan="3" class="grades__average_value">?</td>
                     </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td colspan=10 class=xl1135066>Weighted GPA:</td>
-                        <td colspan=3 class=xl1125066>2.8</td>
+                    <tr>
+                        <td height="14" class="grades__blank"></td>
+                        <td colspan="10" class="grades__average_label">Weighted GPA:</td>
+                        <td colspan="3" class="grades__average_value">?</td>
                     </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td colspan=10 class=xl1135066>Total Units:</td>
-                        <td colspan=3 class=xl1125066>6.25</td>
+                    <tr>
+                        <td height="14" class="grades__blank"></td>
+                        <td colspan="10" class="grades__average_label">Total Units:</td>
+                        <td colspan="3" class="grades__average_value">{{ $grades['totalunits'] ?? "" }}</td>
                     </tr>
-                    <tr style='mso-height-source:userset;height:10.5pt'>
-                        <td height=14 class=xl665066 style='height:10.5pt'></td>
-                        <td colspan=10 class=xl1135066>Remarks:</td>
-                        <td colspan=3 class=xl1125066>PASSED</td>
+                    <tr>
+                        <td height="14" class="grades__blank"></td>
+                        <td colspan="10" class="grades__average_label">Remarks:</td>
+                        <td colspan="3" class="grades__average_value">{{ $grades['generalremarks'] ?? "" }}</td>
                     </tr>
                 </table>
             </td>
 
             @if($ctr==1)
-                <td class=xl155066></td>
+                <td class="grades__blank"></td>
+                <td class="grades__blank"></td>
             @endif
 
             @if($ctr==2)
                 {!! "</tr>" !!}
-                <tr style='mso-height-source:userset;height:10.5pt'>
-                    <td height=14 class=xl665066 style='height:10.5pt'></td>
+                <tr>
+                    <td height="14" class=grades__blank></td>
                 </tr>
                 @php($ctr = 0)
             @endif
-            @php($ctr++)
+            @php($ctr += 1)
         @endforeach
 
-        <tr style='mso-height-source:userset;height:10.5pt'>
-            <td height=14 class=xl665066 style='height:10.5pt'></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
-            <td class=xl665066></td>
+        <tr style='mso-height-source:userset;height:18.75pt'>
+            <td colspan=12 class=sidenotetitle>LETTER GRADE POINTS</td>
+        </tr>
+
+        <tr style='mso-height-source:userset;height:19.5pt;'>
+            <td colspan=2 class=blank>A+</td>
+            <td colspan=5 class=blank>97 - 100</td>
+            <td colspan=2 class=blank>C+</td>
+            <td colspan=6 class=blank>77 - 79.99</td>
+        </tr>
+
+        <tr class=blank style='mso-height-source:userset;height:19.5pt'>
+            <td colspan=2 class=blank>A</td>
+            <td colspan=5 class=blank>93 - 96.99</td>
+            <td colspan=2 class=blank>C</td>
+            <td colspan=6 class=blank>73 - 76.99</td>
+        </tr>
+
+        <tr class=blank style='mso-height-source:userset;height:19.5pt'>
+            <td colspan=2 class=blank>A-</td>
+            <td colspan=5 class=blank>90 - 92.99</td>
+            <td colspan=2 class=blank>C-</td>
+            <td colspan=6 class=blank>70 - 72.99</td>
+        </tr>
+
+        <tr class=blank style='mso-height-source:userset;height:19.5pt'>
+            <td colspan=2 class=blank>B+</td>
+            <td colspan=5 class=blank>87 - 89.99</td>
+            <td colspan=2 class=blank>D+</td>
+            <td colspan=6 class=blank>67 - 69.99</td>
+        </tr>
+
+        <tr class=blank style='mso-height-source:userset;height:19.5pt'>
+            <td colspan=2 class=blank>B</td>
+            <td colspan=5 class=blank>83 - 86.99</td>
+            <td colspan=2 class=blank>D</td>
+            <td colspan=6 class=blank>63 - 66.99</td>
+        </tr>
+
+        <tr class=blank style='mso-height-source:userset;height:19.5pt'>
+            <td colspan=2 class=blank>B-</td>
+            <td colspan=5 class=blank>80 - 82.99</td>
+            <td colspan=2 class=blank>D-</td>
+            <td colspan=6 class=blank>60 - 62.99</td>
+        </tr>
+
+        <tr class=blank style='mso-height-source:userset;height:19.5pt'>
+            <td colspan=2 class=blank></td>
+            <td colspan=5 class=blank></td>
+            <td colspan=2 class=blank>F</td>
+            <td colspan=6 class=blank>Below 60</td>
         </tr>
     </table>
 </div>
