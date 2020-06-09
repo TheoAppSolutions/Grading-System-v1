@@ -369,7 +369,7 @@
                                     class="grades__final">{{ $grades[$subject->subjectname][5]["final"] ?? "" }}</td>
                                 <td colspan="3" class="grades__final">
                                     @isset($grades[$subject->subjectname][5]["final"])
-                                        {{ letterGrade($grades[$subject->subjectname][5]["final"]) }}
+                                        {{ letterGrade($grades[$subject->subjectname][5]["final"])['letter'] }}
                                     @endisset
                                 </td>
                                 <td colspan="2"
@@ -383,18 +383,17 @@
                     </tr>
                     <tr>
                         <td height="14" class="grades__blank"></td>
-                        <td colspan="10" class="grades__average_label">Weighted General Average:</td>
-                        <td colspan="3" class="grades__average_value">{{ $grades['generalaverage'] ?? "" }}</td>
+                        <td colspan="10" class="grades__average_label">Weighted GPA:</td>
                         <td colspan="3" class="grades__average_value">
                             @isset($grades['generalaverage'])
-                                {{ letterGrade($grades['generalaverage']) }}
+                                {{ letterGrade($grades['generalaverage'])['gpa'] }}
                             @endisset
                         </td>
-                    </tr>
-                    <tr>
-                        <td height="14" class="grades__blank"></td>
-                        <td colspan="10" class="grades__average_label">Weighted GPA:</td>
-                        <td colspan="3" class="grades__average_value">?</td>
+                        <td colspan="3" class="grades__average_value">
+                            @isset($grades['generalaverage'])
+                                {{ letterGrade($grades['generalaverage'])['letter'] }}
+                            @endisset
+                        </td>
                     </tr>
                     <tr>
                         <td height="14" class="grades__blank"></td>

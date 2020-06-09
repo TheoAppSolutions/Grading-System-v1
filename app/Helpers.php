@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\SchoolYear;
 use App\Models\Homeroom;
+use App\Models\SchoolYear;
 use App\Models\Student;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Subject;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 function system_logo()
 {
@@ -454,30 +454,45 @@ function letterGrade($grade)
 {
     switch ($grade):
         case $grade >= 97 and $grade <= 100:
-            return "A+";
+            $grade = ["letter" => "A+", "gpa" => 1];
+            break;
         case $grade >= 93 and $grade <= 96.99:
-            return "A";
+            $grade = ["letter" => "A", "gpa" => 1];
+            break;
         case $grade >= 90 and $grade <= 92.99:
-            return "A-";
+            $grade = ["letter" => "A-", "gpa" => 1];
+            break;
         case $grade >= 87 and $grade <= 89.99:
-            return "B+";
+            $grade = ["letter" => "B+", "gpa" => 1];
+            break;
         case $grade >= 83 and $grade <= 86.99:
-            return "B";
+            $grade = ["letter" => "B", "gpa" => 1];
+            break;
         case $grade >= 80 and $grade <= 82.99:
-            return "B-";
+            $grade = ["letter" => "B-", "gpa" => 1];
+            break;
         case $grade >= 77 and $grade <= 79.99:
-            return "C+";
+            $grade = ["letter" => "C+", "gpa" => 1];
+            break;
         case $grade >= 73 and $grade <= 76.99:
-            return "C";
+            $grade = ["letter" => "C", "gpa" => 1];
+            break;
         case $grade >= 70 and $grade <= 72.99:
-            return "C-";
+            $grade = ["letter" => "C-", "gpa" => 1];
+            break;
         case $grade >= 69 and $grade <= 69.99:
-            return "D+";
+            $grade = ["letter" => "D+", "gpa" => 1];
+            break;
         case $grade >= 63 and $grade <= 66.99:
-            return "D";
+            $grade = ["letter" => "D", "gpa" => 1];
+            break;
         case $grade >= 60 and $grade <= 62.99:
-            return "D-";
+            $grade = ["letter" => "D-", "gpa" => 1];
+            break;
         case $grade < 60:
-            return "F";
+            $grade = ["letter" => "F", "gpa" => 1];
+            break;
     endswitch;
+
+    return $grade;
 }
