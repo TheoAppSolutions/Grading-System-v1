@@ -11,6 +11,7 @@ class Formula extends Model
     {
         $lastSubjectname = '';
         $totalunits = 0;
+        $totalgpa = [];
         /*
          * Disqualification Indicators
          * */
@@ -82,29 +83,32 @@ class Formula extends Model
                             if ($gradeset[$subject->subjectname]['unit'] > 0):
                                 $totalunits += $gradeset[$subject->subjectname]['unit'];
                                 $gradeset[$subject->subjectname]['unit'] = number_format($gradeset[$subject->subjectname]['unit'], 2);
+                                $gradeset[$subject->subjectname]["grade_point"] = number_format(letterGrade($gradeset[$subject->subjectname][5]["final"])['gpa'] * $gradeset[$subject->subjectname]["unit"], 2);
+                                $totalgpa[] = $gradeset[$subject->subjectname]["grade_point"];
                             else:
-                                $gradeset[$subject->subjectname]['unit'] = '';
+                                $gradeset[$subject->subjectname]['unit'] = 0;
                             endif;
                         endif;
-                    endif;
+                        endif;
                 endif;
             endif;
         endforeach;
 
         if (isset($gradeset['finalave']) and $totalunits > 1):
-            $gradeset = Formula::getGeneralAverage($gradeset, $totalunits);
+            $gradeset = Formula::getGeneralAverage($gradeset, $totalunits, $totalgpa);
         endif;
 
         return $gradeset;
     }
 
-    public static function getGeneralAverage($gradeset, $totalunits)
+    public static function getGeneralAverage($gradeset, $totalunits, $totalgpa)
     {
         /*
          * Compute General Average
          * */
         $gradeset["totalunits"] = number_format($totalunits, 2);
-        $gradeset["generalaverage"] = array_sum($gradeset["finalave"]) / $totalunits;
+        $gradeset["totalgpa"] = number_format(array_sum($totalgpa) / $totalunits, 2);
+        $gradeset["generalaverage"] = array_sum((array)$gradeset["finalave"]) / $totalunits;
         $gradeset["generalaverage"] = number_format($gradeset["generalaverage"], 3);
         $gradeset["generalremarks"] = $gradeset["generalaverage"] >= 60 ? 'PASSED' : 'FAILED';
         $gradeset["disqualifyForHonors"] = $gradeset["generalaverage"] < 90 ? true : false;

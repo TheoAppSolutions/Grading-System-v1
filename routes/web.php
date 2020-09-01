@@ -117,6 +117,7 @@ Route::prefix('attendance')->group(function () {
 /*----------LINKS FOR PDF GENERATOR-------------------------------------------------------------------------------*/
 Route::prefix('report')->group(function () {
     Route::get('transcript/{student_id}', 'Reports\ReportController@generate_transcript')->name('report.transcript');
+    //Route::get('raw/transcript/{student_id}', 'Reports\ReportController@transcript')->name('report.transcript');
 
     Route::get('student/{type}/{student_id}', 'Reports\ReportController@report_by_student')->name('report.student');
     Route::get('grade/{type}/{gradelevel}', 'Reports\ReportController@report_by_gradelevel')->name('report.grade');

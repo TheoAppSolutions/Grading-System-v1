@@ -318,7 +318,7 @@
                 <td height="14" class="grades__blank"></td>
             @endif
 
-            <td colspan="18">
+            <td colspan="18" style="vertical-align: top;">
                 <table class="grades__table">
                     <tr>
                         <td height="14" class="grades__blank"></td>
@@ -341,6 +341,7 @@
                         <td colspan="3" rowspan="2" class="grades__label">FINAL<br>GRADE</td>
                         <td colspan="3" rowspan="2" class="grades__label">LETTER<br>GRADE</td>
                         <td colspan="2" rowspan="2" class="grades__label">UNITS</td>
+                        <td colspan="2" rowspan="2" class="grades__label">GRADE<br>POINTS</td>
                     </tr>
                     <tr>
                         <td height="14" class="grades__blank"></td>
@@ -374,6 +375,11 @@
                                 </td>
                                 <td colspan="2"
                                     class="grades__final">{{ $grades[$subject->subjectname]["unit"] ?? "" }}</td>
+                                <td colspan="2" class="grades__label">
+                                    @isset($grades[$subject->subjectname]["grade_point"])
+                                            {{ $grades[$subject->subjectname]["grade_point"] }}
+                                    @endisset
+                                </td>
                             </tr>
                         @endif
                     @endforeach
@@ -383,15 +389,19 @@
                     </tr>
                     <tr>
                         <td height="14" class="grades__blank"></td>
+                        <td colspan="10" class="grades__average_label">Weighted General Average:</td>
+                        <td colspan="3" class="grades__average_value">
+                            @isset($grades['generalaverage'])
+                                {{ $grades['generalaverage'] }}
+                            @endisset
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="14" class="grades__blank"></td>
                         <td colspan="10" class="grades__average_label">Weighted GPA:</td>
                         <td colspan="3" class="grades__average_value">
                             @isset($grades['generalaverage'])
-                                {{ letterGrade($grades['generalaverage'])['gpa'] }}
-                            @endisset
-                        </td>
-                        <td colspan="3" class="grades__average_value">
-                            @isset($grades['generalaverage'])
-                                {{ letterGrade($grades['generalaverage'])['letter'] }}
+                                {{ $grades['totalgpa'] }}
                             @endisset
                         </td>
                     </tr>
