@@ -480,7 +480,7 @@ function letterGrade($grade)
         case $grade >= 70 and $grade <= 72.99:
             $grade = ["letter" => "C-", "gpa" => 1.9];
             break;
-        case $grade >= 69 and $grade <= 69.99:
+        case $grade >= 67 and $grade <= 69.99:
             $grade = ["letter" => "D+", "gpa" => 1.6];
             break;
         case $grade >= 63 and $grade <= 66.99:
