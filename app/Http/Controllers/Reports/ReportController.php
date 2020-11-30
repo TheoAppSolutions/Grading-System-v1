@@ -97,6 +97,7 @@ class ReportController extends Controller
 
     public function report_by_student($type, $student_id)
     {
+        app('debugbar')->disable();
         $term = request("term");
         $schoolyear = getSchoolYear();
 
@@ -145,6 +146,7 @@ class ReportController extends Controller
 
     public function report_by_gradelevel($type, $gradelevel)
     {
+        app('debugbar')->disable();
         if ($type == 'midquarter'):
             $pdf = new PDF(array(
                 'no-outline',
@@ -182,6 +184,7 @@ class ReportController extends Controller
     /*----------------------------------------------------------*/
     public function summary($subject_id)
     {
+        app('debugbar')->disable();
         $schoolyear = getSchoolYear();
         $gradesModel = new Grade;
 
@@ -201,6 +204,7 @@ class ReportController extends Controller
 
     public function summary_by_subject($subject_id)
     {
+        app('debugbar')->disable();
         $pdf = new PDF(array(
             'no-outline',
             'page-size' => 'A4', //'Letter'
@@ -218,6 +222,7 @@ class ReportController extends Controller
 
     public function summary_by_gradelevel($gradelevel)
     {
+        app('debugbar')->disable();
         $pdf = new PDF(array(
             'no-outline',
             'page-size' => 'A4', //'Letter'
@@ -282,6 +287,7 @@ class ReportController extends Controller
 
     public function summary_award_by_gradelevel($gradelevel)
     {
+        app('debugbar')->disable();
         $pdf = new PDF(array(
             'no-outline',
             'page-size' => 'A4', //'Letter'
@@ -297,6 +303,7 @@ class ReportController extends Controller
     /*----------------------------------------------------------*/
     public function download_cover($category, $level = '')
     {
+        app('debugbar')->disable();
         $pathToFile = '';
         $name = '';
 
@@ -323,6 +330,7 @@ class ReportController extends Controller
     /*----------------------------------------------------------*/
     public function transcript($student_id)
     {
+        app('debugbar')->disable();
         $student = Student::byStudentID($student_id);
 
         $gradelevels = Enrollment::where('student_id', $student_id)->get();
@@ -343,6 +351,7 @@ class ReportController extends Controller
 
     public function generate_transcript($student_id)
     {
+        app('debugbar')->disable();
         $pdf = new PDF([
             'no-outline',
             'print-media-type',
