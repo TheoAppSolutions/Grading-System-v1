@@ -176,7 +176,7 @@
                                                     </label>
                                                     <div class="col-md-9">
                                                         <select class="form-control" id="gender" required name="gender">
-                                                            <option value="">{{ $selected }}</option>
+                                                            <option value=""></option>
                                                             <option value="M" {{ $selected == 'M' ? 'selected' : '' }}>
                                                                 Male
                                                             </option>

@@ -270,7 +270,7 @@
             <td colspan="8" class="student__label">First Name</td>
             <td colspan="5" class="student__label">Middle</td>
             <td colspan="3" class="student__label">Suffix</td>
-            <td colspan="6" class="student__label">Citizenship</td>
+            <td colspan="6" class="student__label"></td>
             <td colspan="6" class="student__label">Student ID</td>
             <td height="14" class="blank"></td>
         </tr>
