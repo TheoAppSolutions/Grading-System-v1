@@ -101,7 +101,9 @@ function getSchoolYears()
 function getSchoolYear($schoolyear = "")
 {
     if ($schoolyear == ""):
-        if (!session()->has('schoolyear')):
+        if (request('schoolyear')):
+            $schoolyear = request('schoolyear');
+        elseif (!session()->has('schoolyear')):
             $schoolyear = SchoolYear::getSchoolYear();
             session()->put('schoolyear', $schoolyear);
         else:
@@ -395,11 +397,12 @@ function notify($message, $type, $option = [])
     session()->flash("notify.type", $type);
 
     foreach ($option as $key => $value):
-        session()->flash("notify.option.".$key, $value);
+        session()->flash("notify.option." . $key, $value);
     endforeach;
 }
 
-function getDeportmentGrades($student_id) {
+function getDeportmentGrades($student_id)
+{
     $schoolyear = getSchoolYear();
 
     $deportment_single = \App\Models\Deportment::where([
