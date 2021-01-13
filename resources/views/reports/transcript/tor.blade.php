@@ -229,72 +229,82 @@
     <img src="{{ url('images/logo.png') }}" alt="" style="height: 100px; width: 80px; position: absolute; left: 50px;">
 
     <table class=blank style='border-collapse:collapse;table-layout:fixed;'>
-        <col class="blank" span=40 style='width:15pt'>
+        @for($i=0; $i<38; $i++)
+            <col class="blank" span=40 style='width:15pt'>
+        @endfor
 
         <tr>
-            <td colspan="38" height="28" class="header header__school_name">HIGHLANDS CHRISTIAN GRAMMAR SCHOOL</td>
-        </tr>
-        <tr>
-            <td colspan="38" class="header header__address" style='width:555pt'>P.O. Box 1582</td>
-        </tr>
-        <tr>
-            <td colspan="38" class="header header__address">Mt. Hagen, WHP 281 Papua New Guinea</td>
-        </tr>
-        <tr>
-            <td height="14" class="blank"></td>
-        </tr>
-        <tr>
-            <td colspan="38" class="header header__moto">A Christian Learning Community</td>
-        </tr>
-        <tr>
-            <td colspan="38" class="header header__phone">Phone / Fax: (675) 7630 2494</td>
-        </tr>
+            <td colspan="38">
+                <table class=blank style="border-collapse:collapse;table-layout:fixed; width: 100%;">
+                    <tr>
+                        <td colspan="38" height="28" class="header header__school_name">HIGHLANDS CHRISTIAN GRAMMAR
+                            SCHOOL
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="38" class="header header__address" style='width:555pt'>P.O. Box 1582</td>
+                    </tr>
+                    <tr>
+                        <td colspan="38" class="header header__address">Mt. Hagen, WHP 281 Papua New Guinea</td>
+                    </tr>
+                    <tr>
+                        <td height="14" class="blank"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="38" class="header header__moto">A Christian Learning Community</td>
+                    </tr>
+                    <tr>
+                        <td colspan="38" class="header header__phone">Phone / Fax: (675) 7630 2494</td>
+                    </tr>
 
-        <tr>
-            <td height="14" class="blank"></td>
-        </tr>
+                    <tr>
+                        <td height="14" class="blank"></td>
+                    </tr>
 
-        <tr>
-            <td height="14" class="blank"></td>
-            <td colspan="7" class="student__details">{{ $student->lastname }}</td>
-            <td colspan="7" class="student__details">{{ $student->firstname }}</td>
-            <td colspan="7" class="student__details">{{ $student->middlename }}</td>
-            <td colspan="3" class="student__details">{{ $student->suffix }}</td>
-            <td colspan="6" class="student__details">{{ $student->citizenship ?? '' }}</td>
-            <td colspan="6" class="student__details">{{ $student->student_id }}</td>
-            <td height="14" class="blank"></td>
-        </tr>
-        <tr>
-            <td height="14" class="blank"></td>
-            <td colspan="8" class="student__label">Family Name</td>
-            <td colspan="8" class="student__label">First Name</td>
-            <td colspan="5" class="student__label">Middle</td>
-            <td colspan="3" class="student__label">Suffix</td>
-            <td colspan="6" class="student__label"></td>
-            <td colspan="6" class="student__label">Student ID</td>
-            <td height="14" class="blank"></td>
-        </tr>
+                    <tr>
+                        <td height="14" class="blank"></td>
+                        <td colspan="7" class="student__details">{{ $student->lastname }}</td>
+                        <td colspan="7" class="student__details">{{ $student->firstname }}</td>
+                        <td colspan="7" class="student__details">{{ $student->middlename }}</td>
+                        <td colspan="3" class="student__details">{{ $student->suffix }}</td>
+                        <td colspan="6" class="student__details">{{ $student->citizenship ?? '' }}</td>
+                        <td colspan="6" class="student__details">{{ $student->student_id }}</td>
+                        <td height="14" class="blank"></td>
+                    </tr>
+                    <tr>
+                        <td height="14" class="blank"></td>
+                        <td colspan="8" class="student__label">Family Name</td>
+                        <td colspan="8" class="student__label">First Name</td>
+                        <td colspan="5" class="student__label">Middle</td>
+                        <td colspan="3" class="student__label">Suffix</td>
+                        <td colspan="6" class="student__label"></td>
+                        <td colspan="6" class="student__label">Student ID</td>
+                        <td height="14" class="blank"></td>
+                    </tr>
 
-        <tr>
-            <td height="14" class="blank"></td>
-        </tr>
+                    <tr>
+                        <td height="14" class="blank"></td>
+                    </tr>
 
-        <tr>
-            <td height="14" class="blank"></td>
-            <td colspan="5" class="student__details">{{ $student->gender == "M" ? "MALE" : "FEMALE" }}</td>
-            <td colspan="6" class="student__details">{{ $student->birthdate ?? '' }}</td>
-            <td colspan="15" class="student__details">{{ $student->address ?? '' }}</td>
-            <td colspan="10" class="student__details">{{ array_key_first($schoolyears) ?? '' }}</td>
-            <td height="14" class="blank"></td>
-        </tr>
+                    <tr>
+                        <td height="14" class="blank"></td>
+                        <td colspan="5" class="student__details">{{ $student->gender == "M" ? "MALE" : "FEMALE" }}</td>
+                        <td colspan="6" class="student__details">{{ $student->birthdate ?? '' }}</td>
+                        <td colspan="15" class="student__details">{{ $student->address ?? '' }}</td>
+                        <td colspan="10" class="student__details">{{ array_key_first($schoolyears) ?? '' }}</td>
+                        <td height="14" class="blank"></td>
+                    </tr>
 
-        <tr>
-            <td height="14" class="blank"></td>
-            <td colspan="5" class="student__label">Gender</td>
-            <td colspan="6" class="student__label">Date of Birth</td>
-            <td colspan="15" class="student__label">Address</td>
-            <td colspan="10" class="student__label">Date of Entrance</td>
-            <td height="14" class="blank"></td>
+                    <tr>
+                        <td height="14" class="blank"></td>
+                        <td colspan="5" class="student__label">Gender</td>
+                        <td colspan="6" class="student__label">Date of Birth</td>
+                        <td colspan="15" class="student__label">Address</td>
+                        <td colspan="10" class="student__label">Date of Entrance</td>
+                        <td height="14" class="blank"></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
 
         <tr>
@@ -377,7 +387,7 @@
                                     class="grades__final">{{ $grades[$subject->subjectname]["unit"] ?? "" }}</td>
                                 <td colspan="2" class="grades__label">
                                     @isset($grades[$subject->subjectname]["grade_point"])
-                                            {{ $grades[$subject->subjectname]["grade_point"] }}
+                                        {{ $grades[$subject->subjectname]["grade_point"] }}
                                     @endisset
                                 </td>
                             </tr>
@@ -385,7 +395,7 @@
                     @endforeach
 
                     <tr>
-                        <td height="14" class=grades__blank></td>
+                        <td height="14" class=grades__blank>&nbsp;</td>
                     </tr>
                     <tr>
                         <td height="14" class="grades__blank"></td>
@@ -419,14 +429,14 @@
             </td>
 
             @if($ctr==1)
-                <td class="grades__blank"></td>
-                <td class="grades__blank"></td>
+                <td class="grades__blank">&nbsp;</td>
+                <td class="grades__blank">&nbsp;</td>
             @endif
 
             @if($ctr==2)
                 {!! "</tr>" !!}
                 <tr>
-                    <td height="14" class=grades__blank></td>
+                    <td height="14" class=grades__blank>&nbsp;</td>
                 </tr>
                 @php($ctr = 0)
             @endif
