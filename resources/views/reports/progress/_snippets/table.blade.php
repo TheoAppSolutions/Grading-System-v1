@@ -6,6 +6,7 @@
             <tr>
                 <th class="text-center">#</th>
                 <th class="text-center">Name</th>
+                <th class="text-center">Year Graduated</th>
                 <th class="text-center">
                     <div class="btn-group">
                         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
@@ -57,6 +58,7 @@
                                  data-toggle="modal"
                                  data-target="#myModal" onclick="$('#img-responsive').attr('src',this.src);">
                             {{ $student->lastname . ', ' . $student->firstname }}</td>
+                        <td class="text-center">{{ $student->graduated_at ?? "" }}</td>
                         <td class="text-center">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
@@ -64,16 +66,14 @@
                                     Reports
                                 </button>
                                 <div class="dropdown-menu arrow">
-                                    @php($schoolyears = getSchoolYears())
-                                    @foreach($schoolyears as $year)
-                                        <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                           href="{{ route('report.student', ['quarter',$student->student_id,'term=4','schoolyear='.$year->schoolyear]) }}">
-                                            {{ $year->schoolyear }} <span class='fa fa-file-pdf-o pull-right'></span>
-                                        </a>
-                                    @endforeach
+                                    <a style="cursor: pointer;" target="_blank" class="dropdown-item"
+                                       href="{{ route('report.transcript', [$student->student_id]) }}">
+                                        Transcript of Record<span class='fa fa-file-pdf-o pull-right'></span>
+                                    </a>
                                 </div>
                             </div>
                         </td>
+
                     </tr>
                 @elseif($student->gradelevel == $gradelevel)
                     <tr>

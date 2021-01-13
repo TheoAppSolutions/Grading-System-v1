@@ -337,10 +337,12 @@ class ReportController extends Controller
         $schoolyears = [];
 
         foreach ($gradelevels as $levels):
-            $subjects[$levels->gradelevel] = Subject::byLevel($levels->gradelevel);
-            $gradesModel = new Grade;
-            $gradesModel->setTableName($levels->gradelevel);
-            $schoolyears[$levels->schoolyear] = $gradesModel->byStudentID($student_id, '', $levels->schoolyear);
+            if ($levels->gradelevel != 0):
+                $subjects[$levels->gradelevel] = Subject::byLevel($levels->gradelevel);
+                $gradesModel = new Grade;
+                $gradesModel->setTableName($levels->gradelevel);
+                $schoolyears[$levels->schoolyear] = $gradesModel->byStudentID($student_id, '', $levels->schoolyear);
+            endif;
         endforeach;
 
         return view('reports.transcript.tor', compact('student', 'schoolyears', 'subjects'));

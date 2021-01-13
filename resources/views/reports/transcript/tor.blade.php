@@ -440,6 +440,9 @@
                 </tr>
                 @php($ctr = 0)
             @endif
+            @if(count($schoolyears) <= 1)
+                <td colspan="18" style="vertical-align: top;"></td>
+            @endif
             @php($ctr += 1)
         @endforeach
     </table>

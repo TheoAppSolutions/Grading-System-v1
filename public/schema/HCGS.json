@@ -1,141 +1,144 @@
 {
-  "app.name": "HCGS Grading",
-  "report.card": {
-    "school.name": "HIGHLANDS CHRISTIAN GRAMMAR SCHOOL",
-    "address": "Mt. Hagen, WHP",
-    "address2": "Papua New Guinea"
-  },
-  "function": {
-    "import": false,
-    "type": false,
-    "section": false
-  },
-  "student": {
-    "student.lrn": false,
-    "pre.school": true,
-    "senior.high.school": false,
-    "section": {
-      "1": "Andrew",
-      "2": "Peter"
+    "app.name": "HCGS Grading",
+    "report.card": {
+        "school.name": "HIGHLANDS CHRISTIAN GRAMMAR SCHOOL",
+        "address": "Mt. Hagen, WHP",
+        "address2": "Papua New Guinea"
     },
-    "strands": {
-      "1": "ABM",
-      "2": "STEM",
-      "3": "HUMSS"
+    "function": {
+        "import": false,
+        "type": false,
+        "section": false
+    },
+    "student": {
+        "student.lrn": false,
+        "pre.school": true,
+        "senior.high.school": false,
+        "section": {
+            "1": "Andrew",
+            "2": "Peter"
+        },
+        "strands": {
+            "1": "ABM",
+            "2": "STEM",
+            "3": "HUMSS"
+        }
+    },
+    "card": {
+        "decimal.point": 3,
+        "passing.grade": 60
+    },
+    "quarter.term": "Term",
+    "attendance.type": "Term",
+    "attendance.count": 4,
+    "template": {
+        "quarter.1": "MidQuarter",
+        "quarter.2": "Quarter",
+        "quarter.3": "MidQuarter",
+        "quarter.4": "Quarter",
+        "values": "choices for template: (MidQuarter/Quarter/Both)"
+    },
+    "gradelevel.category": {
+        "Pre School": {
+            "11": "Jr. Kindy",
+            "12": "Prep"
+        },
+        "Lower School": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6"
+        },
+        "Upper School": {
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10"
+        },
+        "Graduated": {
+            "graduates": "Graduated"
+        }
+    },
+    "comments.quarter": {
+        "ACADEMIC PERFORMANCE": {
+            "A1": "<span style=\"font-size: 14px; color: black;\"><b>G</b>rasps new ideas readily and making steady progress</span>",
+            "A2": "<span style=\"font-size: 14px; color: black;\"><b>K</b>eep up the great work!</span>",
+            "A3": "<span style=\"font-size: 14px; color: red;\"><b>I</b>nclined to hurry too much. This affects quality of work.</span>",
+            "A4": "<span style=\"font-size: 14px; color: red;\"><b>L</b>ow grade affects his/her general average</span>",
+            "A5": "<span style=\"font-size: 14px; color: red;\"><b>H</b>as the ability but is not applying himself/herself</span>"
+        },
+        "ATTITUDE": {
+            "B1": "<span style=\"font-size: 14px; color: black;\"><b>I</b>s a steadfast, conscientious worker</span>",
+            "B2": "<span style=\"font-size: 14px; color: black;\"><b>P</b>erforms well in everything he/she undertakes</span>",
+            "B3": "<span style=\"font-size: 14px; color: red;\"><b>D</b>oes not volunteer often but is willing to take part in classwork when requested</span>",
+            "B4": "<span style=\"font-size: 14px; color: red;\"><b>I</b>s learning to share his/her ideas</span>"
+        },
+        "CONDUCT": {
+            "C1": "<span style=\"font-size: 14px; color: black;\"><b>W</b>orks well in groups, planning and carrying out activities</span>",
+            "C2": "<span style=\"font-size: 14px; color: black;\"><b>R</b>espects the authority of those in charge of various </span>",
+            "C3": "<span style=\"font-size: 14px; color: red;\"><b>N</b>eeds to listen and follow directions; has difficulty in concentrating</span>",
+            "C4": "<span style=\"font-size: 14px; color: red;\"><b>N</b>eeds to improve in self-control but seems unconcerned about it</span>"
+        },
+        "NEEDING IMPROVEMENT": {
+            "D1": "<span style=\"font-size: 14px; color: black;\"><b>D</b>oes little work in school unless given full attention by the teacher</span>",
+            "D2": "<span style=\"font-size: 14px; color: black;\"><b>N</b>ot doing school work and seems not to care about doing follow up is needed at home.</span>",
+            "D3": "<span style=\"font-size: 14px; color: red;\"><b>N</b>eeds to give full attention/concentration in all subject areas</span>",
+            "D4": "<span style=\"font-size: 14px; color: red;\"><b>L</b>anguage/Reading handicap is the main source of difficulty.</span>"
+        },
+        "ATTENDANCE AND TARDY": {
+            "E1": "<span style=\"font-size: 14px; color: red;\"><b>D</b>oes good work when present but frequent absences cause difficulties.</span>",
+            "E2": "<span style=\"font-size: 14px; color: red;\"><b>F</b>requent absences affect the quality of work and assignments.</span>",
+            "E3": "<span style=\"font-size: 14px; color: red;\"><b>I</b>s tardy frequently. This disturbs classmates and also affects his/her work.</span>"
+        },
+        "OVERALL REQUEST": {
+            "F1": "<span style=\"font-size: 14px; color: red;\"><b>A</b> Parent-Teacher Conference is requested ASAP</span>"
+        }
+    },
+    "comments.midquarter": {
+        "ENGLISH": {
+            "S1": "<span><b>Language:</b> Knowing about the English language</span>",
+            "S2": "<span><b>Literature:</b> Understanding, appreciating, responding to, analyzing and creating literary texts</span>",
+            "S3": "<span><b>Literacy:</b> Text in context and interacting with others</span>"
+        },
+        "MATHEMATICS": {
+            "S1": "<span>Understanding math concepts</span>",
+            "S2": "<span>Fluency</span>",
+            "S3": "<span>Problem-solving</span>",
+            "S4": "<span>Reasoning</span>"
+        },
+        "SCIENCE": {
+            "S1": "<span>Science understanding</span>",
+            "S2": "<span>Science as a human endeavor</span>",
+            "S3": "<span>Science inquiry skills</span>"
+        },
+        "HASS": {
+            "S1": "<span><b>Knowledge and understanding:</b> Applies concepts of disciplinary thinking</span>",
+            "S2": "<span><b>Inquiry and skills:</b> Investigates events, developments, issues and phenomena, both historical and contemporary</span>"
+        },
+        "HEALTH": {
+            "S1": "<span><b>Personal, social and community health:</b> Being healthy, safe and active</span>",
+            "S2": "<span><b>Personal, social and community health:</b> Communicating and interacting for health and well-being</span>",
+            "S3": "<span><b>Personal, social and community health:</b> Contributing to healthy and active communities</span>"
+        },
+        "P.E.": {
+            "S1": "<span><b>Movement and physical activity:</b> Refining movement skills</span>",
+            "S2": "<span><b>Movement and physical activity:</b> Developing movement concepts and strategies</span>",
+            "S3": "<span><b>Understanding movement:</b> Fitness and physical activity</span>",
+            "S4": "<span><b>Learning through movement:</b> Critical and creative thinking in movement</span>"
+        },
+        "ICT/PRACTICAL SKILLS": {
+            "S1": "<span><b>Design and Technologies:</b> Knowledge and understanding</span>",
+            "S2": "<span><b>Digital Technologies:</b> Knowledge and understanding</span>",
+            "S3": "<span><b>Design and Technologies:</b> Processes and production skills</span>"
+        },
+        "ARTS": {
+            "S1": "<span><b>Dance:</b> Communicates and expresses meaning through purposeful movement</span>",
+            "S2": "<span><b>Drama:</b> Uses body language, gesture and space to make meaning as performers and audience</span>",
+            "S3": "<span><b>Media Arts:</b> Use communications technologies to creatively explore, make and interpret stories about people, ideas and the world around them</span>",
+            "S4": "<span><b>Music:</b> Composes and performs music from a diverse range of styles, traditions and contexts</span>",
+            "S5": "<span><b>Visual Arts:</b> Develops practical skills and critical thinking which inform their work as artists and audience</span>"
+        }
     }
-  },
-  "card": {
-    "decimal.point": 3,
-    "passing.grade": 60
-  },
-  "quarter.term": "Term",
-  "attendance.type": "Term",
-  "attendance.count": 4,
-  "template": {
-    "quarter.1": "MidQuarter",
-    "quarter.2": "Quarter",
-    "quarter.3": "MidQuarter",
-    "quarter.4": "Quarter",
-    "values": "choices for template: (MidQuarter/Quarter/Both)"
-  },
-  "gradelevel.category": {
-    "Pre School": {
-      "11": "Jr. Kindy",
-      "12": "Prep"
-    },
-    "Lower School": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6"
-    },
-    "Upper School": {
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "10": "10"
-    }
-  },
-  "comments.quarter": {
-    "ACADEMIC PERFORMANCE": {
-      "A1": "<span style=\"font-size: 14px; color: black;\"><b>G</b>rasps new ideas readily and making steady progress</span>",
-      "A2": "<span style=\"font-size: 14px; color: black;\"><b>K</b>eep up the great work!</span>",
-      "A3": "<span style=\"font-size: 14px; color: red;\"><b>I</b>nclined to hurry too much. This affects quality of work.</span>",
-      "A4": "<span style=\"font-size: 14px; color: red;\"><b>L</b>ow grade affects his/her general average</span>",
-      "A5": "<span style=\"font-size: 14px; color: red;\"><b>H</b>as the ability but is not applying himself/herself</span>"
-    },
-    "ATTITUDE": {
-      "B1": "<span style=\"font-size: 14px; color: black;\"><b>I</b>s a steadfast, conscientious worker</span>",
-      "B2": "<span style=\"font-size: 14px; color: black;\"><b>P</b>erforms well in everything he/she undertakes</span>",
-      "B3": "<span style=\"font-size: 14px; color: red;\"><b>D</b>oes not volunteer often but is willing to take part in classwork when requested</span>",
-      "B4": "<span style=\"font-size: 14px; color: red;\"><b>I</b>s learning to share his/her ideas</span>"
-    },
-    "CONDUCT": {
-      "C1": "<span style=\"font-size: 14px; color: black;\"><b>W</b>orks well in groups, planning and carrying out activities</span>",
-      "C2": "<span style=\"font-size: 14px; color: black;\"><b>R</b>espects the authority of those in charge of various </span>",
-      "C3": "<span style=\"font-size: 14px; color: red;\"><b>N</b>eeds to listen and follow directions; has difficulty in concentrating</span>",
-      "C4": "<span style=\"font-size: 14px; color: red;\"><b>N</b>eeds to improve in self-control but seems unconcerned about it</span>"
-    },
-    "NEEDING IMPROVEMENT": {
-      "D1": "<span style=\"font-size: 14px; color: black;\"><b>D</b>oes little work in school unless given full attention by the teacher</span>",
-      "D2": "<span style=\"font-size: 14px; color: black;\"><b>N</b>ot doing school work and seems not to care about doing follow up is needed at home.</span>",
-      "D3": "<span style=\"font-size: 14px; color: red;\"><b>N</b>eeds to give full attention/concentration in all subject areas</span>",
-      "D4": "<span style=\"font-size: 14px; color: red;\"><b>L</b>anguage/Reading handicap is the main source of difficulty.</span>"
-    },
-    "ATTENDANCE AND TARDY": {
-      "E1": "<span style=\"font-size: 14px; color: red;\"><b>D</b>oes good work when present but frequent absences cause difficulties.</span>",
-      "E2": "<span style=\"font-size: 14px; color: red;\"><b>F</b>requent absences affect the quality of work and assignments.</span>",
-      "E3": "<span style=\"font-size: 14px; color: red;\"><b>I</b>s tardy frequently. This disturbs classmates and also affects his/her work.</span>"
-    },
-    "OVERALL REQUEST": {
-      "F1": "<span style=\"font-size: 14px; color: red;\"><b>A</b> Parent-Teacher Conference is requested ASAP</span>"
-    }
-  },
-  "comments.midquarter": {
-    "ENGLISH": {
-      "S1": "<span><b>Language:</b> Knowing about the English language</span>",
-      "S2": "<span><b>Literature:</b> Understanding, appreciating, responding to, analyzing and creating literary texts</span>",
-      "S3": "<span><b>Literacy:</b> Text in context and interacting with others</span>"
-    },
-    "MATHEMATICS": {
-      "S1": "<span>Understanding math concepts</span>",
-      "S2": "<span>Fluency</span>",
-      "S3": "<span>Problem-solving</span>",
-      "S4": "<span>Reasoning</span>"
-    },
-    "SCIENCE": {
-      "S1": "<span>Science understanding</span>",
-      "S2": "<span>Science as a human endeavor</span>",
-      "S3": "<span>Science inquiry skills</span>"
-    },
-    "HASS": {
-      "S1": "<span><b>Knowledge and understanding:</b> Applies concepts of disciplinary thinking</span>",
-      "S2": "<span><b>Inquiry and skills:</b> Investigates events, developments, issues and phenomena, both historical and contemporary</span>"
-    },
-    "HEALTH": {
-      "S1": "<span><b>Personal, social and community health:</b> Being healthy, safe and active</span>",
-      "S2": "<span><b>Personal, social and community health:</b> Communicating and interacting for health and well-being</span>",
-      "S3": "<span><b>Personal, social and community health:</b> Contributing to healthy and active communities</span>"
-    },
-    "P.E.": {
-      "S1": "<span><b>Movement and physical activity:</b> Refining movement skills</span>",
-      "S2": "<span><b>Movement and physical activity:</b> Developing movement concepts and strategies</span>",
-      "S3": "<span><b>Understanding movement:</b> Fitness and physical activity</span>",
-      "S4": "<span><b>Learning through movement:</b> Critical and creative thinking in movement</span>"
-    },
-    "ICT/PRACTICAL SKILLS": {
-      "S1": "<span><b>Design and Technologies:</b> Knowledge and understanding</span>",
-      "S2": "<span><b>Digital Technologies:</b> Knowledge and understanding</span>",
-      "S3": "<span><b>Design and Technologies:</b> Processes and production skills</span>"
-    },
-    "ARTS": {
-      "S1": "<span><b>Dance:</b> Communicates and expresses meaning through purposeful movement</span>",
-      "S2": "<span><b>Drama:</b> Uses body language, gesture and space to make meaning as performers and audience</span>",
-      "S3": "<span><b>Media Arts:</b> Use communications technologies to creatively explore, make and interpret stories about people, ideas and the world around them</span>",
-      "S4": "<span><b>Music:</b> Composes and performs music from a diverse range of styles, traditions and contexts</span>",
-      "S5": "<span><b>Visual Arts:</b> Develops practical skills and critical thinking which inform their work as artists and audience</span>"
-    }
-  }
 }
