@@ -28,6 +28,18 @@ class HomeController extends Controller
             return view('admin.initialize');
         endif;
 
+        $schoolyear = SchoolYear::where('active', 1)->first();
+
+        if (!$schoolyear):
+            SchoolYear::where('active', 1)->update(['active' => 0]);
+            $schoolyear = new SchoolYear;
+            $schoolyear->active = 1;
+            $schoolyear->schoolyear = Date('Y');
+            $schoolyear->schoolyear_start = 1;
+            $schoolyear->schoolyear_end = 12;
+            $schoolyear->save();
+        endif;
+
         $user = User::byId(Auth::id());
 
         $notifications = [];
@@ -60,7 +72,19 @@ class HomeController extends Controller
 
     public function test()
     {
-        $pdf = new PDF([
+        $schoolyear = SchoolYear::where('active', 1)->first();
+
+        if (!$schoolyear):
+            SchoolYear::where('active', 1)->update(['active' => 0]);
+            $schoolyear = new SchoolYear;
+            $schoolyear->active = 1;
+            $schoolyear->schoolyear = Date('Y');
+            $schoolyear->schoolyear_start = 1;
+            $schoolyear->schoolyear_end = 12;
+            $schoolyear->save();
+        endif;
+
+        /*$pdf = new PDF([
             'no-outline',
             'print-media-type',
             'enable-smart-shrinking',
@@ -101,7 +125,7 @@ class HomeController extends Controller
 
         $pdf->send();
 
-        //return view('reports.transcript.tor', compact('student', 'schoolyears', 'subjects'));
+        //return view('reports.transcript.tor', compact('student', 'schoolyears', 'subjects'));*/
     }
 
     public function databaseIntegrate($schoolyear)
