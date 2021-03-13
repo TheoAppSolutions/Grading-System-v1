@@ -73,7 +73,7 @@ class ReportController extends Controller
 
         if ($student->gradelevel >= 1 and $student->gradelevel <= 6): //Lower School
             if ($type == "midquarter"):
-                return view('reports.templates.lower_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.lower_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
             elseif ($type == "quarter"):
                 if ($schoolyear == '2019-2020'):
                     return view('reports.templates.lower_school.primary_T2-T4(2020)', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'type'));
@@ -83,7 +83,7 @@ class ReportController extends Controller
             endif;
         elseif ($student->gradelevel >= 7 and $student->gradelevel <= 10): //Upper School
             if ($type == "midquarter"):
-                return view('reports.templates.upper_school.secondary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.upper_school.secondary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
             elseif ($type == "quarter"):
                 if ($schoolyear == '2019-2020'):
                     return view('reports.templates.upper_school.secondary_T2-T4(2020)', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'type'));
