@@ -48,7 +48,7 @@
                         <div class="media-body media-middle">
                             <a href="#" class="media-heading" data-target='#modal' data-toggle="modal"
                                onclick="loadModal('View Student Information',
-                                       '{{ route('student.show.modal', $student->student_id) }}')">
+                                   '{{ route('student.show.modal', $student->student_id) }}')">
                                 {{ $student->lastname . ", " . $student->firstname }}
                             </a>
                         </div>
@@ -121,8 +121,13 @@
                     @endif
 
                     <a href="{{ route('student.show', $student->student_id) }}" title="Edit" class="btn btn-primary"
-                       target="_blank"><i
-                                class="ft-edit-2"></i></a>
+                       target="_blank"><i class="la la-edit"></i></a>
+                    @if($student->gradelevel != "Prep")
+                        <a style="cursor: pointer;" target="_blank" class="btn btn-secondary pull-right"
+                           href="{{ route('report.transcript', [$student->student_id]) }}">
+                            TOR <span class='la la-file-pdf-o'></span>
+                        </a>
+                    @endif
                 </td>
             </tr>
         @endforeach

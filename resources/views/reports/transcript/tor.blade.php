@@ -362,14 +362,14 @@
                             <tr>
                                 <td height="14" class="grades__blank"></td>
                                 <td colspan="4" class="grades__subject">{{ $subject->subjectname }}</td>
-                                @if(isset($grades[$subject->subjectname][1]["final"]) and isset($grades[$subject->subjectname][2]["final"]))
+                                @if(isset($grades[$subject->subjectname][1]["final"]) and $grades[$subject->subjectname][1]["final"] > 0 and isset($grades[$subject->subjectname][2]["final"]) and $grades[$subject->subjectname][2]["final"] > 0)
                                     <td colspan="3"
                                         class="grades__final">{{ average($grades[$subject->subjectname][1]["final"], $grades[$subject->subjectname][2]["final"]) }}</td>
                                 @else
                                     <td colspan="3" class="grades__final"></td>
                                 @endif
 
-                                @if(isset($grades[$subject->subjectname][3]["final"]) and isset($grades[$subject->subjectname][4]["final"]))
+                                @if(isset($grades[$subject->subjectname][3]["final"]) and $grades[$subject->subjectname][3]["final"] > 0 and isset($grades[$subject->subjectname][4]["final"]) and $grades[$subject->subjectname][4]["final"] > 0)
                                     <td colspan="3"
                                         class="grades__final">{{ average($grades[$subject->subjectname][3]["final"], $grades[$subject->subjectname][4]["final"]) }}</td>
                                 @else

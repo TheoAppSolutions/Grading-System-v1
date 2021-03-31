@@ -344,7 +344,10 @@ class ReportController extends Controller
                 $schoolyears[$levels->schoolyear] = $gradesModel->byStudentID($student_id, '', $levels->schoolyear);
             endif;
         endforeach;
-
+        if (!isset($subjects)):
+            dd("No Records available yet.");
+        endif;
+        //dd($schoolyears[2019]['ARTS'][1]);
         return view('reports.transcript.tor', compact('student', 'schoolyears', 'subjects'));
     }
 
