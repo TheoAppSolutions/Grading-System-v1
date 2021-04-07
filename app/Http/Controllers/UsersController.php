@@ -29,7 +29,7 @@ class UsersController extends Controller
 
     public function create($id = '')
     {
-        return view('users.create', compact('id', 'modal'));
+        return view('users.create', compact('id'));
     }
 
     public function store(Request $request)
