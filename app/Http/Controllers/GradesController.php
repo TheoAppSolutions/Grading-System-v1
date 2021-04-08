@@ -79,13 +79,13 @@ class GradesController extends Controller
                 array_push($exclude_list, $item->student_id);
             endforeach;
         endif;
-
+        $studentNames = [];
         foreach ($students as $student) :
             $studentNames[$student->student_id]["name"] = $student->lastname . ', ' . $student->firstname;
             $studentNames[$student->student_id]["gender"] = $student->gender;
         endforeach;
 
-        return view('grading.show', compact('grades', 'exclude_list', 'subject', 'students', 'studentNames', 'candidateForSEA'));
+        return view('grading.show', compact('grades', 'exclude_list', 'subject', 'students', 'studentNames'));
     }
 
     public function store_grade(Request $request)
@@ -298,7 +298,7 @@ class GradesController extends Controller
         arsort($studentGrades);
 
         $grades = array_slice($studentGrades, 0, 10, true);
-
+        $studentNames = [];
         foreach ($students as $student):
             $studentNames[$student->student_id] = $student;
         endforeach;

@@ -199,7 +199,7 @@ class ReportController extends Controller
             $studentNames[$student->student_id]['gender'] = $student->gender;
         endforeach;
 
-        return view('reports.templates.summary.subject_summary', compact('studentNames', 'quarter', 'schoolyear', 'subject', 'grade', 'students', 'teacher'));
+        return view('reports.templates.summary.subject_summary', compact('studentNames', 'schoolyear', 'subject', 'grade', 'students', 'teacher'));
     }
 
     public function summary_by_subject($subject_id)
@@ -347,7 +347,7 @@ class ReportController extends Controller
         if (!isset($subjects)):
             dd("No Records available yet.");
         endif;
-        //dd($schoolyears[2019]['ARTS'][1]);
+
         return view('reports.transcript.tor', compact('student', 'schoolyears', 'subjects'));
     }
 
