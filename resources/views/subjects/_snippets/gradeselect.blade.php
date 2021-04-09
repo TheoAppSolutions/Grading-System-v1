@@ -6,7 +6,8 @@
     @foreach($gradelevels as $gradelevel_category => $sub_category)
         <optgroup label="{{ $gradelevel_category }}">
             @foreach($sub_category as $category => $gradelevel)
-                <option value="{{ $category }}" {{ $category == $current_GradeLevel ? "selected" : "" }}>
+                <option @if($category == "11")value="Jr. Kindy" @elseif($category == "12") value="Prep" @else value="{{ $category }}" @endif
+                @if($current_GradeLevel == "11") selected @elseif($current_GradeLevel == "12") selected @else {{ $category == $current_GradeLevel ? "selected" : "" }} @endif>
                     {{ $gradelevel }}
                 </option>
             @endforeach

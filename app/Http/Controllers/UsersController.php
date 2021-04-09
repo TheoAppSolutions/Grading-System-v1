@@ -104,10 +104,7 @@ class UsersController extends Controller
 
         $user = User::byId($id);
 
-        /*$logs = Log::where('user_id', $id)->orderBy('created_at', 'DESC')->limit(50)->get();
-        $files = Files::where('user_id', $id)->orderBy('uploaded_at')->get();*/
-
-        return view('users.show', compact('user', 'logs', 'files', 'teacher', 'office'));
+        return view('users.show', compact('user', 'teacher', 'office'));
     }
 
     public function update(Request $request, $id)
