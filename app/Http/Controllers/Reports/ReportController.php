@@ -213,7 +213,7 @@ class ReportController extends Controller
             $studentNames[$student->student_id]['name'] = $student->lastname . ', ' . $student->firstname;
             $studentNames[$student->student_id]['gender'] = $student->gender;
         endforeach;
-        return view('reports.templates.summary.subject_summary', compact('studentNames', 'quarter', 'schoolyear', 'subject', 'grade', 'students', 'teacher'));
+        return view('reports.templates.summary.subject_summary', compact('studentNames',  'schoolyear', 'subject', 'grade', 'students', 'teacher'));
     }
 
     public function summary_by_subject($subject_id)

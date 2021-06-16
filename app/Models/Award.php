@@ -78,15 +78,15 @@ class Award extends Model
             endif;
 
             if ($awards): //if not blank
-                /*$awards->student_id = key($studentGrades);
-                $awards->save();*/
+                $awards->student_id = key($studentGrades);
+                $awards->save();
             else:
                 $insert = $subject->section != '' ? [
                     'student_id' => key($studentGrades),
                     'subject_id' => $subject_id,
                     'schoolyear' => $schoolyear,
                     'gender' => '',
-                    'section' => $section
+                    'section' => $subject->section
                 ] : [
                     'student_id' => key($studentGrades),
                     'subject_id' => $subject_id,
@@ -113,47 +113,54 @@ class Award extends Model
                 endif;
             endforeach;
 
-            arsort($seaMale);
-            arsort($seaFemale);
+            if(isset($seaMale)):
+                arsort($seaMale);
+                $Male = Award::where([
+                    ['subject_id', $subject_id],
+                    ['schoolyear', $schoolyear],
+                    ['gender', "M"]
+                ])->first();
 
-            $Male = Award::where([
-                ['subject_id', $subject_id],
-                ['schoolyear', $schoolyear],
-                ['gender', "M"]
-            ])->first();
-
-            if ($Male):
-                $Male->student_id = key($seaMale);
-                $Male->save();
-                $studentGrades["SEA"] = key($seaMale);
+                if ($Male):
+                    $Male->student_id = key($seaMale);
+                    $Male->save();
+                    $studentGrades["SEA"] = key($seaMale);
+                else:
+                    Award::create([
+                        'student_id' => key($seaMale),
+                        'subject_id' => $subject_id,
+                        'schoolyear' => $schoolyear,
+                        'gender' => 'M',
+                    ]);
+                    $studentGrades["SEA"] = key($seaMale);
+                endif;
             else:
-                Award::create([
-                    'student_id' => key($seaMale),
-                    'subject_id' => $subject_id,
-                    'schoolyear' => $schoolyear,
-                    'gender' => 'M',
-                ]);
-                $studentGrades["SEA"] = key($seaMale);
+                $Male = [];
             endif;
 
-            $Female = Award::where([
-                ['subject_id', $subject_id],
-                ['schoolyear', $schoolyear],
-                ['gender', "F"]
-            ])->first();
+            if(isset($seaFemale)):
+                arsort($seaFemale);
+                $Female = Award::where([
+                    ['subject_id', $subject_id],
+                    ['schoolyear', $schoolyear],
+                    ['gender', "F"]
+                ])->first();
 
-            if ($Female):
-                $Female->student_id = key($seaFemale);
-                $Female->save();
-                $studentGrades["SEA2"] = key($seaFemale);
+                if ($Female):
+                    $Female->student_id = key($seaFemale);
+                    $Female->save();
+                    $studentGrades["SEA2"] = key($seaFemale);
+                else:
+                    Award::create([
+                        'student_id' => key($seaFemale),
+                        'subject_id' => $subject_id,
+                        'schoolyear' => $schoolyear,
+                        'gender' => 'F'
+                    ]);
+                    $studentGrades["SEA2"] = key($seaFemale);
+                endif;
             else:
-                Award::create([
-                    'student_id' => key($seaFemale),
-                    'subject_id' => $subject_id,
-                    'schoolyear' => $schoolyear,
-                    'gender' => 'F'
-                ]);
-                $studentGrades["SEA2"] = key($seaFemale);
+                $Female = [];
             endif;
         endif;
         return $studentGrades;
@@ -172,12 +179,12 @@ class Award extends Model
 
         $awardSet = [];
         foreach ($awards as $award):
-                if ($award->subjectname == 'PE'):
-                    $gender = $award->gender == 'M' ? 'BOYS' : 'GIRLS';
-                    $awardSet[$award->student_id]["SEA"][] = preg_replace('/\s+/', ' ', $award->subjecttitle) . ' ' . $gender;
-                else:
-                    $awardSet[$award->student_id]["SEA"][] = preg_replace('/\s+/', ' ', $award->subjecttitle);
-                endif;
+            if ($award->subjectname == 'PE'):
+                $gender = $award->gender == 'M' ? 'BOYS' : 'GIRLS';
+                $awardSet[$award->student_id]["SEA"][] = preg_replace('/\s+/', ' ', $award->subjecttitle) . ' ' . $gender;
+            else:
+                $awardSet[$award->student_id]["SEA"][] = preg_replace('/\s+/', ' ', $award->subjecttitle);
+            endif;
         endforeach;
         return $awardSet;
     }

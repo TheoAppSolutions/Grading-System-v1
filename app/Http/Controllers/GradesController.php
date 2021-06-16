@@ -105,7 +105,7 @@ class GradesController extends Controller
             endif;
         endforeach;
 
-        return view('grading.show', compact('grades', 'comments', 'exclude_list', 'subject', 'students', 'currentQuarter', 'studentNames', 'candidateForSEA'));
+        return view('grading.show', compact('grades', 'comments', 'exclude_list', 'subject', 'students', 'studentNames', 'candidateForSEA'));
     }
 
     public function store_grade(Request $request)
