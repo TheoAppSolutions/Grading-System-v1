@@ -84,6 +84,9 @@ Route::middleware("check.role:Secretary,Principal")->prefix('office')->group(fun
     Route::get('settings', 'OfficeController@settings')->name('office.settings');
     Route::patch('homeroom', 'OfficeController@homeroom_update')->name('office.homeroom.update');
     Route::patch('schooldays', 'OfficeController@schooldays_update')->name('office.schooldays.update');
+    Route::get('sections', 'SectionsController@index')->name('office.sections');
+    Route::get('sections/remove/{id}', 'SectionsController@delete')->name('section.remove');
+    Route::post('sections/store', 'SectionsController@store')->name('section.store');
 
     Route::get('report/student', 'OfficeController@report_student')->name('office.report.student');
     Route::get('report/subject', 'OfficeController@report_subject')->name('office.report.subject');

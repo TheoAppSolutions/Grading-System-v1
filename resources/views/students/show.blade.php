@@ -93,10 +93,10 @@
                                     <a class="nav-link" id="base-pill2" data-toggle="pill" href="#pill2"
                                        aria-expanded="false"><i class="la la-phone"></i> Contact Info</a>
                                 </li>
-                                <li class="nav-item">
+                                {{--<li class="nav-item">
                                     <a class="nav-link" id="base-pill3" data-toggle="pill" href="#pill3"
                                        aria-expanded="false"><i class="la la-file"></i> Documents</a>
-                                </li>
+                                </li>--}}
                             </ul>
 
                             <div class="tab-content">
@@ -232,7 +232,7 @@
                                     </div>
                                 </div>
 
-                                <div class="tab-pane" id="pill3" aria-labelledby="base-pill3">
+                                {{--<div class="tab-pane" id="pill3" aria-labelledby="base-pill3">
                                     <div class="card border-primary">
                                         <div class="card-content">
                                             <div class="card-body">
@@ -240,7 +240,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>--}}
 
                                 <div class="tab-pane" id="student-level" aria-labelledby="base-student-level">
                                     @include('students._tabs.student_level_info')

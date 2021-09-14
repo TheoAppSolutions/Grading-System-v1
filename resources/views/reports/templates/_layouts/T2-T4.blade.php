@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
-    <title>{{ $student->lastname . ', ' . $student->firstname }} (Card)</title>
+    <title>{{ $student->lastname . ', ' . $student->firstname }} {{ $student->suffix ?? "" }} (Card)</title>
 
     <link href="{{ url('ReportCard.css') }}" rel="stylesheet">
 </head>
@@ -35,18 +35,21 @@
         <col class=blank width=14 span=9 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
 
         <tr style='mso-height-source:userset;height:15.0pt'>
-            <td colspan=63 height=20 class=heavylabel width=882 style='height:15.0pt;width:693pt'>BETHEL INTERNATIONAL
-                SCHOOL
+            <td colspan="22" height="60" rowspan="4" style="text-align: right">
+                <img src="{{ system_logo() }}" style="height: 60.0pt;"/>
+            </td>
+            <td colspan=41 height=20 class=heavylabel width=882 style='height:15.0pt;width:693pt;; text-align: left; padding-left: 0px;'>
+                BETHEL INTERNATIONAL SCHOOL
             </td>
         </tr>
         <tr style='mso-height-source:userset;height:15.0pt'>
-            <td colspan=63 height=20 class=lightlabel style='height:15.0pt'>PAWING, PALO, LEYTE</td>
+            <td colspan=41 height=20 class=lightlabel style='height:15.0pt; text-align: left; padding-left: 50px;'>PAWING, PALO, LEYTE</td>
         </tr>
         <tr style='mso-height-source:userset;height:15.0pt'>
-            <td colspan=63 height=20 class=lightlabel style='height:15.0pt'>Philippines</td>
+            <td colspan=41 height=20 class=lightlabel style='height:15.0pt; text-align: left; padding-left: 90px;'>Philippines</td>
         </tr>
         <tr style='mso-height-source:userset;height:15.0pt'>
-            <td colspan=63 height=20 class=heavylabel style='height:15.0pt'></td>
+            <td colspan=41 height=20 class=heavylabel style='height:15.0pt'></td>
         </tr>
         <tr style='mso-height-source:userset;height:15.0pt'>
             <td colspan=63 height=20 class=heavylabel style='height:15.0pt'>REPORT CARD</td>
@@ -71,7 +74,7 @@
         </tr>
         <tr style='mso-height-source:userset;height:18.75pt'>
             <td colspan=4 height=25 class=labels style='height:18.75pt'>NAME:</td>
-            <td colspan=20 class=info>{{ $student->lastname . ', ' . $student->firstname }}</td>
+            <td colspan=20 class=info>{{ $student->lastname . ', ' . $student->firstname }} {{ $student->suffix ?? "" }}</td>
             <td class=blank></td>
             <td colspan=3 class=labels>LRN:</td>
             <td colspan=10 class=info>{{ $student->student_lrn ?? '' }}</td>

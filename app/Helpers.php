@@ -417,3 +417,15 @@ function getDeportmentGrades($student_id)
 
     return $array;
 }
+
+function getSections()
+{
+    $schoolyear = getSchoolYear();
+    $sections = \Illuminate\Support\Facades\DB::table('sections')->where('schoolyear', $schoolyear)
+        ->orderBy('schoolyear')
+        ->orderBy('gradelevel')
+        ->orderBy('section')
+        ->get();
+
+    return $sections;
+}

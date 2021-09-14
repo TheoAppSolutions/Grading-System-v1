@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SchoolYear;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SectionsController extends Controller
 {
+    public function index()
+    {
+        $currentSchoolYear = getSchoolYear();
+        $schoolYears = SchoolYear::select("schoolyear")->get();
+        $sections = DB::table('sections')->where('schoolyear', $currentSchoolYear)->orderBy('gradelevel')->get();
+
+        return view('admin.sections', compact('sections', 'currentSchoolYear', 'schoolYears'));
+    }
+
     public function update(Request $request)
     {
         foreach ($request->sections as $sections):
@@ -47,4 +58,23 @@ class SectionsController extends Controller
             endif;
         endforeach;
     }
+
+    public function delete($section_id)
+    {
+        DB::table('sections')->where('entry_id', $section_id)->delete();
+
+        return back();
+    }
+
+    public function store(Request $request)
+    {
+        DB::table('sections')->insert([
+            'gradelevel' => $request->gradelevel,
+            'section' => $request->section,
+            'schoolyear' => $request->schoolyear
+        ]);
+
+        return back();
+    }
 }
+

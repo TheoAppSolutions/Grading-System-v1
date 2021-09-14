@@ -77,6 +77,8 @@ class ReportController extends Controller
             elseif ($type == "quarter"):
                 if ($schoolyear == '2019-2020'):
                     return view('reports.templates.lower_school.primary_T2-T4(2020)', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'type'));
+                elseif ($schoolyear == '2020-2021'):
+                    return view('reports.templates.lower_school.primary_T2-T4(2021)', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
                 else:
                     return view('reports.templates.lower_school.primary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
                 endif;
@@ -213,7 +215,7 @@ class ReportController extends Controller
             $studentNames[$student->student_id]['name'] = $student->lastname . ', ' . $student->firstname;
             $studentNames[$student->student_id]['gender'] = $student->gender;
         endforeach;
-        return view('reports.templates.summary.subject_summary', compact('studentNames',  'schoolyear', 'subject', 'grade', 'students', 'teacher'));
+        return view('reports.templates.summary.subject_summary', compact('studentNames', 'schoolyear', 'subject', 'grade', 'students', 'teacher'));
     }
 
     public function summary_by_subject($subject_id)

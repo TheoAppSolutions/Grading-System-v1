@@ -145,7 +145,9 @@ class StudentsController extends Controller
             $graduate = 0;
         endif;
 
-        return view('students.show', compact('student', 'graduate'));
+        $sections = DB::table('sections')->where('schoolyear', getSchoolYear())->get();
+
+        return view('students.show', compact('student', 'graduate', 'sections'));
     }
 
     public function show_modal($id)
@@ -261,6 +263,7 @@ class StudentsController extends Controller
                 break;
             case 'update':
                 return request()->validate([
+                    'student_lrn' => ['nullable', 'unique:students,student_lrn', 'max:255'],
                     'firstname' => ['required', 'max:255'],
                     'lastname' => ['required', 'max:255'],
                     'middlename' => ['nullable', 'string', 'max:255'],

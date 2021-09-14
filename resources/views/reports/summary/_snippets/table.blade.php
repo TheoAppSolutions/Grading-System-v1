@@ -32,7 +32,7 @@
                                  onclick="$('#img-responsive').attr('src',this.src);">
                         </td>
                         <td class="text-center">
-                            {{ $subject->lastname }} {{  isset($subject->lastname) ? ',' : '' }} {{  $subject->firstname }}</td>
+                            {{ $subject->lastname }} {{  isset($subject->lastname) ? ',' : '' }} {{  $subject->firstname }}  {{ $student->suffix ?? "" }}</td>
                         @if($gradelevel >= 11)
                             <td class="text-center">{{ $subject->semester }}</td>
                         @endif

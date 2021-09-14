@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
-    <title>{{ $student->lastname . ', ' . $student->firstname }} (MidQuarter)</title>
+    <title>{{ $student->lastname . ', ' . $student->firstname }} {{ $student->suffix ?? "" }} (MidQuarter)</title>
     <link href="{{ url('ReportCard.css') }}" rel="stylesheet">
 
 </head>
@@ -15,7 +15,7 @@
         <tr style='mso-height-source:userset;height:15.0pt'>
             <td colspan=2 height=20 class=labels width=48 style='height:15.0pt;width:36pt'>NAME:</td>
             <td colspan=15 class=info width=360
-                style='width:270pt'>{{ $student->lastname . ', ' . $student->firstname }}</td>
+                style='width:270pt'>{{ $student->lastname . ', ' . $student->firstname }} {{ $student->suffix ?? "" }}</td>
             <td class=blank width=24 style='width:18pt'></td>
             <td colspan=3 class=labels width=72 style='width:54pt'>GENDER:</td>
             <td class=info width=24 style='width:18pt'>{{ $student->gender ?? '' }}</td>

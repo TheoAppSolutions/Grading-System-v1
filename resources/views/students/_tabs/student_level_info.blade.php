@@ -6,7 +6,7 @@
                        for="userinput1">Student #:
                 </label>
                 <div class="col-md-9">
-                    <input type="text" id="userinput1"
+                    <input type="text" id="student_id"
                            class="form-control" readonly
                            value="{{ $student->student_id ?? '' }}"
                            placeholder="Student #" name="student_id">
@@ -18,7 +18,7 @@
                            for="userinput1">Student LRN#:
                     </label>
                     <div class="col-md-9">
-                        <input type="text" id="userinput1"
+                        <input type="text" id="student_lrn"
                                class="form-control"
                                value="{{ $student->student_lrn ?? '' }}"
                                placeholder="Student LRN#" name="student_lrn">
@@ -82,7 +82,8 @@
                 @php($selected = " ")
             @endif
 
-            @if (schema("function")->{"section"} and $student->gradelevel >= 1 and $student->gradelevel <= 10)
+            @php($sections = getSections())
+            @if ($sections and $student->gradelevel >= 1 and $student->gradelevel <= 10)
                 <div class="form-group row">
                     <label class="col-md-3 label-control"
                            for="userinput1">Section:
@@ -92,24 +93,20 @@
                                 name="section" id="section"
                                 data-placeholder="Select Section" required>
 
-                            @php($sections = schema("student")->{"section"})
-                            <option value="" {{ "" == $selected ? "selected" : "" }}> </option>
-                            <optgroup label="Sections">
-                                @foreach($sections as $section)
-                                    <option value="{{ $section }}" {{ $section == $selected ? "selected" : "" }}>
-                                        {{ $section }}
-                                    </option>
-                                @endforeach
-                            </optgroup>
+                            <option value=" ">&nbsp;</option>
+                            @foreach($sections as $section)
+                                <option value="{{ $section->section }}">
+                                    {{ $section->section }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
-
                 </div>
             @endif
             @if (schema("student")->{"senior.high.school"} and $student->gradelevel >= 11 and $student->gradelevel <= 12)
                 <div class="form-group row">
                     <label class="col-md-3 label-control"
-                           for="userinput1">Strand:
+                           for="section">Strand:
                     </label>
                     <div class="col-md-9">
                         <select class="select2-placeholder form-control hide-search"
@@ -119,7 +116,7 @@
                             @php($sections = schema("student")->{"strands"})
                             <optgroup label="Sections">
                                 <option value="" {{ "" == $selected ? "selected" : "" }}> </option>
-                            @foreach($sections as $section)
+                                @foreach($sections as $section)
                                     <option value="{{ $section }}" {{ $section == $selected ? "selected" : "" }}>
                                         {{ $section }}
                                     </option>

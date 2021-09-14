@@ -35,6 +35,7 @@ class Subject extends Model
             ->where([['user_id', $user_id], ['schoolyear', $schoolyear]])
             ->orWhere([['user2_id', $user_id], ['schoolyear', $schoolyear]])
             ->orderBy('semester', 'ASC')
+            ->orderBy('section', 'ASC')
             ->orderBy('subjects.subject_id', 'ASC')
             ->get();
 

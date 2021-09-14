@@ -14,6 +14,9 @@
         <li>
             <a class="menu-item" href="{{ route('student.create') }}">Enroll New Student</a>
         </li>
+        <li>
+            <a class="menu-item" href="{{ route('office.sections') }}">Grade Sections</a>
+        </li>
         {{--<li>
             <a class="menu-item" href="{{ route('student.sections') }}">Student Sections</a>
         </li>--}}

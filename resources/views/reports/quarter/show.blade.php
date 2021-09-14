@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h4><b>{{ $student->lastname . ', ' . $student->firstname }}</b></h4>
+    <h4><b>{{ $student->lastname . ', ' . $student->firstname }} {{ $student->suffix ?? "" }}</b></h4>
 </div>
 <div class="modal-body">
     <form role="form" class="ajax" name="ajax">
