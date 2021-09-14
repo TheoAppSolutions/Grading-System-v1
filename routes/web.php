@@ -20,7 +20,6 @@ Route::get('json/subjects.json', 'JSONController@get_subjects')->name('json.get_
 Route::patch('subject.mass.update/{subject_id}', 'SubjectsController@massUpdate')->name('subject.mass.update');
 Route::patch('subject.solo.update/{subject_id}', 'SubjectsController@soloUpdate')->name('subject.solo.update');
 Route::post('subject.load.data', 'SubjectsController@loadData')->name('subject.load.data');
-Route::post('students.mass.activate', 'StudentsController@destroy')->name('student.mass.activate');
 
 Route::middleware(['auth'])->group(function () {
     /*----------USER FUNCTIONS----------------------------------------------------------------------------------------*/
@@ -162,6 +161,7 @@ Route::get('unenrollment/{id}', 'EnrollmentController@un_enrollment')->name('un-
 Route::get('enrollment/{id}', 'EnrollmentController@enrollment')->name('enrollment');
 Route::post('enrollment/save/{id}', 'EnrollmentController@enrollment_save')->name('enrollment.save');
 Route::post('enrollment/mass', 'EnrollmentController@enrollment_mass')->name('enrollment.mass');
+Route::post('students.mass.activate', 'EnrollmentController@massChangeStatus')->name('student.mass.activate');
 
 Route::post('status/student', 'EnrollmentController@change_status')->name('status.student');
 

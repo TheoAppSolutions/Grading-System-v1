@@ -113,25 +113,18 @@
                         </form>
                         @break
                         @case ("enrolled")
-                        <form action="{{ route('student.mass.activate') }}" method="POST" id="deactivate_students">
-                            @csrf
+                        @case ("inactive")
+                        {{--<form action="{{ route('student.mass.activate') }}" method="POST" id="deactivate_students">
+                            @csrf--}}
                             @include('students._snippets.table',['students'=>$studentsArray[$current_GradeLevel]])
-                            @if ($current_GradeLevel != "all")
+                            {{--@if ($current_GradeLevel != "all")
                                 <button type="button" class="btn btn-primary pull-right" onclick="update_sections();">
                                     <i class="fa fa-check"></i> Update Sections
                                 </button>
                             @endif
-                            <button type="submit" class="btn-submit btn btn-success" disabled>Multiple De-activate
+                            <button type="submit" class="btn-submit btn btn-success" disabled>Multiple {{ $status == "enrolled" ? "De-activate" : "Activate" }}
                             </button>
-                        </form>
-                        @break
-                        @case ("inactive")
-                        <form action="{{ route('student.mass.activate') }}" method="POST" id="activate_students">
-                            @csrf
-                            @include('students._snippets.table',['students'=>$studentsArray[$current_GradeLevel]])
-                            <button type="submit" class="btn-submit btn btn-success" disabled>Multiple Activate
-                            </button>
-                        </form>
+                        </form>--}}
                         @break
                         @case ("graduates")
                         @include('students._snippets.table',['students'=>$studentsArray["all"]])
@@ -153,8 +146,7 @@
     <script>
         @if($status == "graduates" or $status ==  'all')
         $('#students_table').DataTable({order: [[1, 'asc']]});
-
-                @elseif($status != "graduates" and $status !=  'all')
+            @elseif($status != "graduates" and $status !=  'all')
         var table = $('#students_table').DataTable({
                 columnDefs: [
                     {
@@ -200,6 +192,36 @@
                 }
             }).catch(swal.noop);
         });
+
+        /*$('#deactivate_students').on('submit', function (e) {
+            e.preventDefault();
+            swal({
+                title: 'Mass Enroll Students?',
+                type: 'warning',
+                html: "<span class='text-danger'>Warning</span>: Student status will be de-activated.",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirm',
+            }).then((result) => {
+                if (result.value) {
+                    var form = this;
+                    var rows_selected = table.column(0).checkboxes.selected();
+                    // Iterate over all selected checkboxes
+                    $.each(rows_selected, function (index, rowId) {
+                        // Create a hidden element
+                        $(form).append(
+                            $('<input>')
+                                .attr('type', 'hidden')
+                                .attr('name', 'records[' + table.row(index).data()[0] + ']')
+                                .val(table.row(index).data()[1])
+                        );
+                    });
+                    form.submit();
+                }
+            }).catch(swal.noop);
+        });*/
+
 
         $('#students_table').on('change', 'input[type="checkbox"]', function () {
             if (table.column(0).checkboxes.selected().length > 0) {

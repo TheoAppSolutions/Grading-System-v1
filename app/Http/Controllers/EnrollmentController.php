@@ -168,4 +168,22 @@ class EnrollmentController extends Controller
         endif;
         $student->save();
     }
+
+    public function massChangeStatus(Request $request)
+    {
+        dd($request->records);
+        foreach ($request->records as $record => $value):
+            $student = Student::where('student_id', $record)->first();
+            if ($student->active):
+                //Student::where('student_id', $record)->update(["active" => 0]);
+                $student->active = 0;
+            else:
+                //Student::where('student_id', $record)->update(["active" => 1]);
+                $student->active = 1;
+            endif;
+            $student->save();
+        endforeach;
+dd($student);
+        return back();
+    }
 }
