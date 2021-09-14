@@ -95,7 +95,7 @@
 
                             <option value=" ">&nbsp;</option>
                             @foreach($sections as $section)
-                                <option value="{{ $section->section }}">
+                                <option value="{{ $section->section }}" {{ $student->section == $section->section ? "selected" : "" }}>
                                     {{ $section->section }}
                                 </option>
                             @endforeach
