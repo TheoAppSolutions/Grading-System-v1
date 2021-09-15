@@ -294,7 +294,7 @@ class SubjectsController extends Controller
 
         $records = DB::table('subjects_user')
             ->join('subjects_units', 'subjects_units.subject_id', 'subjects_user.subject_id')
-            ->where([["subjects_user.schoolyear", $request->schoolyear], ["subjects_units.schoolyear", $request->schoolyear]])
+            ->where([["subjects_user.schoolyear", $request->selected_schoolyear], ["subjects_units.schoolyear", $request->selected_schoolyear]])
             ->get();
 
         $users = User::where('active', 1)->get();

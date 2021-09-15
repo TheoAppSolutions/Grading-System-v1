@@ -132,7 +132,7 @@
                         url: '/subject.load.data',
                         type: 'POST',
                         data: {
-                            "schoolyear": result.value,
+                            "selected_schoolyear": result.value,
                             "_token": token
                         },
                         success: function (e) {
