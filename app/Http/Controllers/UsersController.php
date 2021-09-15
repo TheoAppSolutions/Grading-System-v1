@@ -29,7 +29,7 @@ class UsersController extends Controller
 
     public function create($id = '')
     {
-        return view('users.create', compact('id', 'modal'));
+        return view('users.create', compact('id'));
     }
 
     public function store(Request $request)
@@ -107,7 +107,7 @@ class UsersController extends Controller
         /*$logs = Log::where('user_id', $id)->orderBy('created_at', 'DESC')->limit(50)->get();
         $files = Files::where('user_id', $id)->orderBy('uploaded_at')->get();*/
 
-        return view('users.show', compact('user', 'logs', 'files', 'teacher', 'office'));
+        return view('users.show', compact('user',  'teacher', 'office'));
     }
 
     public function update(Request $request, $id)

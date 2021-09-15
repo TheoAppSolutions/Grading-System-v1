@@ -76,6 +76,7 @@ class GradesController extends Controller
         endif;
 
         $comments = [];
+        $studentNames = [];
 
         foreach ($students as $student) :
             $studentNames[$student->student_id]["name"] = $student->lastname . ', ' . $student->firstname;

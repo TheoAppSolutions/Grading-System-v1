@@ -54,7 +54,7 @@ $fields = ['final', 'effort', 'deportment', 'midquarter'];
                         $importStatus = 'import';
                     endif;
 
-                    ${$field . 'Lock'} = $importStatus == 'import' ? '' : $importStatus == 'found' ? ${$field} > 0 ? 'Lock' : '' : '';
+                    ${$field . 'Lock'} = $importStatus == 'import' ? '' : ($importStatus == 'found' ? ${$field} > 0 ? 'Lock' : '' : '');
 
                     if (${$field . 'Lock'} == 'Lock'):
                         if ($lockOff == 0):
