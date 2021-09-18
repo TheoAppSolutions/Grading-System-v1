@@ -7,6 +7,7 @@ use App\Formulas;
 use App\Models\Award;
 use App\Models\SchoolYear;
 use App\User;
+use Composer\Package\Archiver\ZipArchiver;
 use DebugBar\DebugBar;
 use Illuminate\Support\Facades\Input;
 use mikehaertl\wkhtmlto\Pdf as PDF;
@@ -18,6 +19,7 @@ use App\Models\Homeroom;
 use App\Models\Month;
 use App\Models\Student;
 use App\Models\Grade;
+use ZipArchive;
 
 
 class ReportController extends Controller
@@ -168,6 +170,11 @@ class ReportController extends Controller
 
     public function report_by_gradelevel($type, $gradelevel)
     {
+        $term = request("term");
+        $schoolyear = getSchoolYear();
+        $semester = request('semester');
+        $students = Student::getStudents("enrolled", $gradelevel);
+
         if ($type == 'midquarter'):
             $pdf = new PDF(array(
                 'no-outline',
@@ -182,12 +189,23 @@ class ReportController extends Controller
             ));
         endif;
 
-        $term = request("term");
-        $schoolyear = getSchoolYear();
-        $semester = request('semester');
-        $students = Student::getStudents("enrolled", $gradelevel);
-
         foreach ($students as $student) :
+            if (request("download") == "true"):
+                if ($type == 'midquarter'):
+                    $pdf = new PDF(array(
+                        'no-outline',
+                        'page-size' => 'A4', //'Letter'
+                        'orientation' => 'Landscape', //'Landscape'
+                    ));
+                else:
+                    $pdf = new PDF(array(
+                        'no-outline',
+                        'page-size' => 'A4', //'Letter'
+                        'orientation' => 'Portrait', //'Landscape'
+                    ));
+                endif;
+            endif;
+
             if ($type == 'quarter'):
                 $pdf->addPage(route('report.quarter', [$student->student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type, 'semester=' . $semester]));
             elseif ($type == 'award'):
@@ -195,11 +213,37 @@ class ReportController extends Controller
             elseif ($type == 'midquarter'):
                 $pdf->addPage(route('report.midquarter', [$student->student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type, 'semester=' . $semester]));
             endif;
+            if (request("download") == "true"):
+                $pdf->saveAs(public_path("/reports/" . $gradelevel . "/") . $student->lastname . ", " . $student->firstname . " " . $student->suffix . ".pdf");
+            endif;
         endforeach;
 
-        $pdf->send();
+        if (request("download") == "true"):
+            $zip_file = public_path("reports/zip/") . ordinal($gradelevel) . " Grade " . ucwords($type) . '.zip';
+            $zip = new ZipArchive();
+            $zip->open($zip_file, ZipArchive::CREATE | \ZipArchive::OVERWRITE);
 
-        return false;
+            $path = public_path("reports/" . $gradelevel . "/");
+            $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
+            foreach ($files as $name => $file) {
+                // We're skipping all subfolders
+                if (!$file->isDir() and $file->getFileName() != ".gitignore") {
+                    $filePath = $file->getRealPath();
+
+                    // extracting filename with substr/strlen
+                    $relativePath = ordinal($gradelevel) . " Grade" . "/" . substr($filePath, strlen($path));
+
+                    $zip->addFile($filePath, $relativePath);
+                }
+            }
+            $zip->close();
+            return response()->download($zip_file);
+        else:
+            $pdf->send();
+
+        endif;
+
+        return back();
     }
 
     /*----------------------------------------------------------*/

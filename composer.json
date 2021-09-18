@@ -17,7 +17,8 @@
         "mikehaertl/phpwkhtmltopdf": "^2.3",
         "spatie/laravel-db-snapshots": "^1.1",
         "tightenco/ziggy": "^0.8.1",
-        "ext-json": "*"
+        "ext-json": "*",
+      "ext-zip": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
