@@ -8,7 +8,8 @@
     <div class="card border-info">
         <div class="card-content">
             <div class="card-header card-head-inverse bg-info">
-                <h4 class="card-title text-white">Homeroom Advisory: {{ $gradelevel }}</h4>
+                <h4 class="card-title text-white">Homeroom Advisory: {{ $gradelevel }}  @if($section)
+                        - {{ $section }}@endif</h4>
             </div>
 
             <div class="card-body">

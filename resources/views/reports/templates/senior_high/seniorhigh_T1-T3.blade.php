@@ -452,23 +452,13 @@
     </tr>
     <tr class=blank style='mso-height-source:userset;height:15.0pt'>
         <td height=20 class=blank style='height:15.0pt'></td>
+        <td class=centerlabels colspan="8" rowspan="3">
+            {!! signatureTeacher($homeroom_id) !!}
+        </td>
         <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
+        <td class=centerlabels colspan="8" rowspan="3">
+            {!! signatureMiss() !!}
+        </td>
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
@@ -498,22 +488,6 @@
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
         <td class=remarks width=24 style='border-top:none;width:18pt'>12</td>
         <td colspan=18 class=subjects width=431 style='width:323pt'>
             Needs to participate more in discussions
@@ -522,22 +496,6 @@
     </tr>
     <tr class=blank style='mso-height-source:userset;height:15.0pt'>
         <td height=20 class=blank style='height:15.0pt'></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>

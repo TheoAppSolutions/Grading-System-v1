@@ -27,8 +27,9 @@ class HomeroomController extends Controller
 
     public function show($gradelevel)
     {
-        $students = Student::getStudents("enrolled", $gradelevel);
+        $section = request("section");
         $schoolyear = getSchoolYear();
+        $students = Student::getStudents("enrolled", $gradelevel, false, $section);
 
         if ($students):
             $search = Deportment::where('schoolyear', $schoolyear)->get();
@@ -37,14 +38,14 @@ class HomeroomController extends Controller
                 $deportment[$item->student_id] = $item->deportment;
             endforeach;
 
-            return view('reports.progress.show', compact('students', 'gradelevel', 'deportment'));
+            return view('reports.progress.show', compact('students', 'gradelevel', 'deportment', 'section'));
         endif;
         return redirect('/');
     }
 
     public function summary()
     {
-        $gradelevel = isset(request()->gradelevel) ? request()->gradelevel : "Prep";
+        $gradelevel = isset(request()->gradelevel) ? request()->gradelevel : 1;
         $subjects = Subject::getAll();
 
         return view('reports.summary.index', compact('subjects', 'gradelevel'));
@@ -52,10 +53,11 @@ class HomeroomController extends Controller
 
     public function showSummary()
     {
-        $gradelevel = isset(request()->gradelevel) ? request()->gradelevel : "Prep";
-        $subjects = Subject::getAll();
+        $section = request("section");
+        $gradelevel = isset(request()->gradelevel) ? request()->gradelevel : 1;
+        $subjects = Subject::getAll("", $section);
 
-        return view('reports.summary.show', compact('subjects', 'gradelevel'));
+        return view('reports.summary.show', compact('subjects', 'gradelevel', 'section'));
     }
 
     /*----------------------------------------------------------------*/

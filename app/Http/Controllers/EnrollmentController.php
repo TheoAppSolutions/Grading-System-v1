@@ -27,6 +27,8 @@ class EnrollmentController extends Controller
     {
         $student = Student::byStudentID($id);
         $enrolled_years = DB::table("enrollment")->where("student_id", $student->student_id)->get();
+        $grades = [];
+
         foreach ($enrolled_years as $endrolled):
             $gradesModel = new Grade;
             $gradesModel->setTableName($endrolled->gradelevel);
@@ -40,6 +42,8 @@ class EnrollmentController extends Controller
     {
         $student = Student::byStudentID($id);
         $enrolled_years = DB::table("enrollment")->where("student_id", $student->student_id)->get();
+        $grades = [];
+
         foreach ($enrolled_years as $endrolled):
             $gradesModel = new Grade;
             $gradesModel->setTableName($endrolled->gradelevel);

@@ -15,7 +15,7 @@ class OfficeController extends Controller
 {
     public function settings()
     {
-        $homeroom = Homeroom::where('schoolyear', getSchoolYear())->get();
+        $homeroom = Homeroom::where('schoolyear', getSchoolYear())->orderBy('advisory')->get();
         $users = User::byType('', 1);
         $schoolyears = SchoolYear::all();
         $terms = Month::getMonths();
@@ -23,7 +23,7 @@ class OfficeController extends Controller
 
         $homeroomArray = [];
         foreach ($homeroom as $item):
-            $homeroomArray[$item->advisory] = $item;
+            $homeroomArray[$item->advisory . $item->section] = $item;
         endforeach;
 
         return view('office.settings', compact('homeroomArray', 'users', 'schoolyears', 'terms', 'principal'));
@@ -32,19 +32,44 @@ class OfficeController extends Controller
     public function homeroom_update(Request $request)
     {
         $schoolyear = $request->schoolyear;
-
         foreach ($request->homeroom as $advisory => $user):
-            $homeroom = Homeroom::where([['schoolyear', $schoolyear], ['advisory', $advisory]])->first();
-            if ($homeroom):
-                $homeroom->user_id = $user;
-                $homeroom->save();
+            if (is_array($user) and count($user) >= 2):
+                foreach ($user as $section => $id):
+                    $homeroom = Homeroom::where([
+                        ['schoolyear', $schoolyear],
+                        ['advisory', $advisory],
+                        ['section', $section]
+                    ])->first();
+
+                    if ($homeroom):
+                        $homeroom->user_id = $id;
+                        $homeroom->save();
+                    else:
+                        Homeroom::insert([
+                            "advisory" => $advisory,
+                            "user_id" => $id,
+                            "section" => $section,
+                            "schoolyear" => $schoolyear
+                        ]);
+                    endif;
+                endforeach;
             else:
-                Homeroom::insert([
-                    "advisory" => $advisory,
-                    "user_id" => $user,
-                    "section" => '',
-                    "schoolyear" => $schoolyear
-                ]);
+                $homeroom = Homeroom::where([
+                    ['schoolyear', $schoolyear],
+                    ['advisory', $advisory],
+                ])->first();
+
+                if ($homeroom):
+                    $homeroom->user_id = $user;
+                    $homeroom->save();
+                else:
+                    Homeroom::insert([
+                        "advisory" => $advisory,
+                        "user_id" => $user,
+                        "section" => '',
+                        "schoolyear" => $schoolyear
+                    ]);
+                endif;
             endif;
         endforeach;
 

@@ -469,6 +469,9 @@
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
+        <td class=centerlabels colspan="7" rowspan="3">
+            {!! signatureTeacher($homeroom_id) !!}
+        </td>
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
@@ -478,11 +481,9 @@
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
+        <td class=centerlabels colspan="7" rowspan="3">
+            {!! signatureMiss() !!}
+        </td>
     </tr>
     <tr style='mso-height-source:userset;height:15.0pt'>
         <td colspan=9 height=20 class=midquartersubjects style='height:15.0pt'>SCIENCE</td>

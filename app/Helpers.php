@@ -6,6 +6,7 @@ use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Subject;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 function system_logo()
 {
@@ -211,6 +212,11 @@ function signatureMiss()
     return "<img src='" . url('signature.png') . "' style='height:50px;width:150px;'/>";
 }
 
+function signatureTeacher($id)
+{
+    return "<img src='" . url('images/signatures/'. $id .'.png') . "' style='height:50px;width:150px;'/>";
+}
+
 function getLastStudentID()
 {
     $id = DB::table('students')->orderBy('student_id', 'desc')->first();
@@ -241,6 +247,7 @@ function consoleLog($data)
 
 function ordinal($number)
 {
+    if ($number):
     $ends = array('th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th');
 
     if ((($number % 100) >= 11) and (($number % 100) <= 12)) {
@@ -248,6 +255,9 @@ function ordinal($number)
     } else {
         return $number . $ends[$number % 10];
     }
+    else:
+        return "";
+    endif;
 }
 
 function sendEmail($to, $subject)
@@ -421,11 +431,31 @@ function getDeportmentGrades($student_id)
 function getSections()
 {
     $schoolyear = getSchoolYear();
-    $sections = \Illuminate\Support\Facades\DB::table('sections')->where('schoolyear', $schoolyear)
+    $sections = DB::table('sections')->where('schoolyear', $schoolyear)
         ->orderBy('schoolyear')
         ->orderBy('gradelevel')
         ->orderBy('section')
         ->get();
 
-    return $sections;
+    $records_section = [];
+
+    foreach ($sections as $section):
+        $records_section[$section->gradelevel][] = $section->section;
+    endforeach;
+
+    return $records_section;
+}
+
+function getGradeLevelSection()
+{
+    $sections = getSections();
+    /*$gradelevel = schema("gradelevel.category");
+    $records = [];*/
+    $records_section = [];
+
+    foreach ($sections as $section):
+        $records_section[$section->gradelevel][] = $section;
+    endforeach;
+
+    return $records_section;
 }

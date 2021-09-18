@@ -488,6 +488,9 @@
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
+        <td class=centerlabels colspan="7" rowspan="3">
+            {!! signatureTeacher($homeroom_id) !!}
+        </td>
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
@@ -497,11 +500,9 @@
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
+        <td class=centerlabels colspan="7" rowspan="3">
+            {!! signatureMiss() !!}
+        </td>
     </tr>
     <tr style='mso-height-source:userset;height:15.0pt'>
         <td colspan=9 height=20 class=midquartersubjects style='height:15.0pt'>SCIENCE</td>
@@ -528,13 +529,6 @@
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
     </tr>
     <tr style='mso-height-source:userset;height:15.0pt'>
         <td colspan=17 height=20 class=midquartercomments style='height:15.0pt'>Makes
@@ -542,13 +536,6 @@
         </td>
         <td colspan=2 class=midquarterteachers>{{ $comments['SCIENCE']['S1'] ?? '' }}</td>
         <td colspan=4 class=midquartercomments></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
-        <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>
         <td class=blank></td>

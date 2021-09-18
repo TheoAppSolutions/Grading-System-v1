@@ -34,41 +34,74 @@
 
                                     <tbody>
                                     @php($gradelevels = schema("gradelevel.category"))
+                                    @php($sections = getSections())
                                     @foreach($gradelevels as $gradelevel_category => $sub_category)
                                         @foreach($sub_category as $category => $gradelevel)
-                                            <tr>
-                                                <td class="align-middle">
-                                                    {{ $gradelevel }}
-                                                </td>
-                                                <td>
-                                                    <select class="select2-placeholder form-control"
-                                                            style="width: 100%;"
-                                                            name="homeroom[{{ $gradelevel }}]"
-                                                            data-placeholder="Grade {{ $gradelevel }} Homeroom Adviser"
-                                                            title="Homeroom Adviser">
-                                                        <optgroup label="Grade {{ $gradelevel }} Homeroom Adviser">
-                                                            <option value=""> </option>
-                                                            @php($lastID = "")
-                                                            @foreach($users as $user)
-                                                                @if($lastID != $user->id)
+                                            @isset($sections[$gradelevel])
+                                                @foreach($sections[$gradelevel] as $section)
+                                                    <tr>
+                                                        <td class="align-middle">
+                                                            {{ $gradelevel }} - {{ $section }}
+                                                        </td>
+                                                        <td>
+                                                            <select class="select2-placeholder form-control"
+                                                                    style="width: 100%;"
+                                                                    name="homeroom[{{ $gradelevel }}][{{ $section }}]"
+                                                                    data-placeholder="Grade {{ $gradelevel }} Homeroom Adviser"
+                                                                    title="Homeroom Adviser">
+                                                                <optgroup
+                                                                    label="Grade {{ $gradelevel }} Homeroom Adviser">
+                                                                    <option value=""> </option>
+                                                                    @php($lastID = "")
+                                                                    @foreach($users as $user)
+                                                                        @if($lastID != $user->id)
+                                                                            @isset($homeroomArray[$gradelevel.$section])
+                                                                                <option {{ $user->id == $homeroomArray[$gradelevel.$section]->user_id ? "selected" : "" }}
+                                                                                    value="{{ $user->id }}">{{ $user->lastname }}, {{ $user->firstname }}</option>
+                                                                            @else
+                                                                                <option value="{{ $user->id }}">{{ $user->lastname }}, {{ $user->firstname }}</option>
+                                                                            @endisset
 
-                                                                    @isset($homeroomArray[$gradelevel])
-                                                                        <option value="{{ $user->id }}" {{ $user->id == $homeroomArray[$gradelevel]->user_id ? "selected" : "" }}>
-                                                                            {{ $user->lastname }}
-                                                                            , {{ $user->firstname }}</option>
-                                                                    @else
-                                                                        <option value="{{ $user->id }}">
-                                                                            {{ $user->lastname }}
-                                                                            , {{ $user->firstname }}</option>
-                                                                    @endisset
+                                                                            @php($lastID = $user->id)
+                                                                        @endif
+                                                                    @endforeach
+                                                                </optgroup>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td class="align-middle">
+                                                        {{ $gradelevel }}
+                                                    </td>
+                                                    <td>
+                                                        <select class="select2-placeholder form-control"
+                                                                style="width: 100%;"
+                                                                name="homeroom[{{ $gradelevel }}]"
+                                                                data-placeholder="Grade {{ $gradelevel }} Homeroom Adviser"
+                                                                title="Homeroom Adviser">
+                                                            <optgroup label="Grade {{ $gradelevel }} Homeroom Adviser">
+                                                                <option value=""> </option>
+                                                                @php($lastID = "")
+                                                                @foreach($users as $user)
+                                                                    @if($lastID != $user->id)
 
-                                                                    @php($lastID = $user->id)
-                                                                @endif
-                                                            @endforeach
-                                                        </optgroup>
-                                                    </select>
-                                                </td>
-                                            </tr>
+                                                                        @isset($homeroomArray[$gradelevel])
+                                                                            <option {{ $user->id == $homeroomArray[$gradelevel]->user_id ? "selected" : "" }}
+                                                                                value="{{ $user->id }}">{{ $user->lastname }}, {{ $user->firstname }}</option>
+                                                                        @else
+                                                                            <option value="{{ $user->id }}">{{ $user->lastname }}, {{ $user->firstname }}</option>
+                                                                        @endisset
+
+                                                                        @php($lastID = $user->id)
+                                                                    @endif
+                                                                @endforeach
+                                                            </optgroup>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            @endisset
                                         @endforeach
                                     @endforeach
                                     </tbody>

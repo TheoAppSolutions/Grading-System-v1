@@ -51,12 +51,18 @@ class Subject extends Model
         return $subjectList;
     }
 
-    public static function getAll($schoolyear = "")
+    public static function getAll($schoolyear = "", $section = "")
     {
         $schoolyear = $schoolyear != "" ? $schoolyear : getSchoolYear();
+        $query = ['schoolyear' => $schoolyear];
+
+        if ($section):
+            $query['section'] = $section;
+        endif;
+
         $subjects = Subject::leftJoin('subjects_user', 'subjects_user.subject_id', 'subjects.subject_id')
             ->leftJoin('users', 'users.id', 'subjects_user.user_id')
-            ->where('schoolyear', $schoolyear)
+            ->where($query)
             ->select('subjects.*', 'subjects_user.*', 'users.lastname', 'users.firstname', 'users.id')
             ->orderBy('gradelevel', 'ASC')
             ->orderBy('subjects_user.section', 'ASC')

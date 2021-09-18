@@ -21,13 +21,16 @@ class Homeroom extends Model
             ])
             ->select('users.title',
                 'users.firstname',
+                'homeroom.user_id',
                 'users.lastname')
             ->first();
 
         if ($records):
-            $homeroom = $records->title . ' ' . $records->firstname . ' ' . $records->lastname;
+            $homeroom['name'] = $records->title . ' ' . $records->firstname . ' ' . $records->lastname;
+            $homeroom['id'] = $records->user_id;
         else:
-            return '';
+            $homeroom['name'] = "";
+            $homeroom['id'] = "";
         endif;
 
         return $homeroom;

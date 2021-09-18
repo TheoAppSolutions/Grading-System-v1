@@ -85,19 +85,19 @@
             @php($sections = getSections())
             @if ($sections and $student->gradelevel >= 1 and $student->gradelevel <= 10)
                 <div class="form-group row">
-                    <label class="col-md-3 label-control"
-                           for="userinput1">Section:
+                    <label class="col-md-3 label-control" for="section">Section:
                     </label>
                     <div class="col-md-9">
                         <select class="select2-placeholder form-control hide-search"
-                                name="section" id="section"
-                                data-placeholder="Select Section" required>
-
+                                name="section" id="section" data-placeholder="Select Section" required>
                             <option value=" ">&nbsp;</option>
-                            @foreach($sections as $section)
-                                <option value="{{ $section->section }}" {{ $student->section == $section->section ? "selected" : "" }}>
-                                    {{ $section->section }}
-                                </option>
+                            @foreach($sections as $section_level => $section_list)
+                                @foreach($section_list as $section)
+                                    <option
+                                        value="{{ $section }}" data-gradelevel="{{ $section_level }}" {{ $student->section == $section ? "selected" : "" }}>
+                                        {{ $section }}
+                                    </option>
+                                @endforeach
                             @endforeach
                         </select>
                     </div>

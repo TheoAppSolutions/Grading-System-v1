@@ -83,16 +83,7 @@ class HomeController extends Controller
 
     public function test()
     {
-        /*$students = Student::where('section', '!=', "")->get();
-        $schoolyear = getSchoolYear();
-
-        foreach ($students as $student):
-            DB::table('students_section')->insert([
-                "student_id" => $student->student_id,
-                "section" => $student->section,
-                "schoolyear" => $schoolyear
-            ]);
-        endforeach;*/
+        $section = getSections();
     }
 
     public function databaseIntegrate($schoolyear)

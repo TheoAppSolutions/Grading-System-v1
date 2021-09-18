@@ -37,6 +37,9 @@ class ReportController extends Controller
         $schoolyear = getSchoolYear();
         $student = Student::byStudentID($student_id);
         $homeroom = Homeroom::byGradeLevel($student->gradelevel);
+        $homeroom_id = $homeroom['id'];
+        $homeroom = $homeroom['name'];
+
         $gradesModel = new Grade;
         $gradesModel->setTableName($student->gradelevel);
         if ($schoolyear == '2019-2020'):
@@ -73,24 +76,24 @@ class ReportController extends Controller
 
         if ($student->gradelevel >= 1 and $student->gradelevel <= 6): //Lower School
             if ($type == "midquarter"):
-                return view('reports.templates.lower_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.lower_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'homeroom_id'));
             elseif ($type == "quarter"):
                 if ($schoolyear == '2019-2020'):
-                    return view('reports.templates.lower_school.primary_T2-T4(2020)', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'type'));
+                    return view('reports.templates.lower_school.primary_T2-T4(2020)', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'type', 'homeroom_id'));
                 elseif ($schoolyear == '2020-2021'):
-                    return view('reports.templates.lower_school.primary_T2-T4(2021)', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                    return view('reports.templates.lower_school.primary_T2-T4(2021)', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'homeroom_id'));
                 else:
-                    return view('reports.templates.lower_school.primary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                    return view('reports.templates.lower_school.primary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'homeroom_id'));
                 endif;
             endif;
         elseif ($student->gradelevel >= 7 and $student->gradelevel <= 10): //Upper School
             if ($type == "midquarter"):
-                return view('reports.templates.upper_school.secondary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                return view('reports.templates.upper_school.secondary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'homeroom_id'));
             elseif ($type == "quarter"):
                 if ($schoolyear == '2019-2020'):
-                    return view('reports.templates.upper_school.secondary_T2-T4(2020)', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'type'));
+                    return view('reports.templates.upper_school.secondary_T2-T4(2020)', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'type', 'homeroom_id'));
                 else:
-                    return view('reports.templates.upper_school.secondary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+                    return view('reports.templates.upper_school.secondary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'homeroom_id'));
                 endif;
             endif;
         elseif ($student->gradelevel >= 11 and $student->gradelevel <= 12): //Senior High
@@ -102,12 +105,12 @@ class ReportController extends Controller
             $core = $subjects->byGradeLevelAndSection($student->gradelevel, $student->section, $semester);
 
             if ($type == "midquarter"):
-                return view('reports.templates.senior_high.seniorhigh_T1-T3', compact('student', 'grades', 'quarter', 'comments', 'homeroom', 'principal', 'minor', 'core', 'type'));
+                return view('reports.templates.senior_high.seniorhigh_T1-T3', compact('student', 'grades', 'quarter', 'comments', 'homeroom', 'principal', 'minor', 'core', 'type', 'homeroom_id'));
             elseif ($type == "quarter"):
                 if ($schoolyear == '2019-2020'):
-                    return view('reports.templates.senior_high.seniorhigh_T2-T4(2020)', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'minor', 'core', 'semester', 'quarters', 'type'));
+                    return view('reports.templates.senior_high.seniorhigh_T2-T4(2020)', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'minor', 'core', 'semester', 'quarters', 'type', 'homeroom_id'));
                 else:
-                    return view('reports.templates.senior_high.seniorhigh_T2-T4', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'minor', 'core', 'semester', 'quarters', 'type'));
+                    return view('reports.templates.senior_high.seniorhigh_T2-T4', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'minor', 'core', 'semester', 'quarters', 'type', 'homeroom_id'));
                 endif;
             endif;
         endif;
