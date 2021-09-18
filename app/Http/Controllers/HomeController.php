@@ -56,7 +56,31 @@ class HomeController extends Controller
 
     public function fix()
     {
-        for ($gradelevel = 11; $gradelevel <= 12; $gradelevel++):
+        $fix = request("fix");
+        if ($fix == "remove duplicates"):
+            $counter = 0;
+            for ($i = 1; $i <= 12; $i++):
+                $duplicateRecords = DB::table('grades_' . $i)->select('subject_id', 'quarter', 'student_id')
+                    ->selectRaw('count(*) as `occurences`')
+                    ->groupBy('subject_id', 'quarter', 'student_id')
+                    ->having('occurences', '>', 1)
+                    ->get();
+
+                $counter += count($duplicateRecords);
+
+                foreach ($duplicateRecords as $record):
+                    $duplicate = DB::table('grades_' . $i)->where([
+                        ['subject_id', $record->subject_id],
+                        ['student_id', $record->student_id],
+                        ['quarter', $record->quarter]
+                    ])->first();
+
+                    DB::table('grades_' . $i)->where('entry_id', $duplicate->entry_id)->delete();
+                endforeach;
+            endfor;
+        endif;
+
+        /*for ($gradelevel = 11; $gradelevel <= 12; $gradelevel++):
             $gradesModel = new Grade;
             $gradesModel->setTableName($gradelevel);
             $grades = DB::table('grades_' . $gradelevel . ' as grades')->join('subjects_user', 'subjects_user.subject_id', 'grades.subject_id')
@@ -76,7 +100,7 @@ class HomeController extends Controller
                         ->update(['quarter' => 4]);
                 endif;
             endforeach;
-        endfor;
+        endfor;*/
 
         return redirect('/');
     }

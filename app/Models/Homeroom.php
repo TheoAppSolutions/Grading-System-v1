@@ -9,16 +9,17 @@ class Homeroom extends Model
     protected $table = 'homeroom';
     public $timestamps = false;
 
-    public static function byGradeLevel($gradelevel)
+    public static function byGradeLevel($gradelevel, $section = "")
     {
         $schoolyear = getSchoolYear();
 
+        $query['homeroom.advisory'] = $gradelevel;
+        $query['homeroom.schoolyear'] = $schoolyear;
+        $query['homeroom.section'] = $section;
+
         $records = Homeroom
             ::join('users', 'users.id', 'homeroom.user_id')
-            ->where([
-                ['homeroom.advisory', $gradelevel],
-                ['homeroom.schoolyear', $schoolyear]
-            ])
+            ->where($query)
             ->select('users.title',
                 'users.firstname',
                 'homeroom.user_id',

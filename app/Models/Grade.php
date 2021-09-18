@@ -166,4 +166,15 @@ class Grade extends Model
 
         return $gradeset;
     }//For Report Cards
+
+    public function byRecord($subject_id, $student_id, $quarter)
+    {
+        $record = DB::table($this->table)->where([
+            ['subject_id', $subject_id],
+            ['student_id', $student_id],
+            ['quarter', $quarter]
+        ])->first();
+
+        return $record;
+    }
 }

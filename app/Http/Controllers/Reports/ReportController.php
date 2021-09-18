@@ -9,6 +9,7 @@ use App\Models\SchoolYear;
 use App\User;
 use Composer\Package\Archiver\ZipArchiver;
 use DebugBar\DebugBar;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Input;
 use mikehaertl\wkhtmlto\Pdf as PDF;
 use App\Models\Subject;
@@ -38,7 +39,7 @@ class ReportController extends Controller
         $days = SchoolYear::getSchoolDays();
         $schoolyear = getSchoolYear();
         $student = Student::byStudentID($student_id);
-        $homeroom = Homeroom::byGradeLevel($student->gradelevel);
+        $homeroom = Homeroom::byGradeLevel($student->gradelevel, $student->section);
         $homeroom_id = $homeroom['id'];
         $homeroom = $homeroom['name'];
 
@@ -237,10 +238,11 @@ class ReportController extends Controller
                 }
             }
             $zip->close();
+            $file = new Filesystem();
+            $file->cleanDirectory(public_path("reports/" . $gradelevel . "/"));
             return response()->download($zip_file);
         else:
             $pdf->send();
-
         endif;
 
         return back();

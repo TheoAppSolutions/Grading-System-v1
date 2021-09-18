@@ -209,11 +209,19 @@ function checkMark()
 
 function signatureMiss()
 {
+    $imageID = "signature.png";
+    if (!file_exists($imageID)) :
+        return "";
+    endif;
     return "<img src='" . url('signature.png') . "' style='height:50px;width:150px;'/>";
 }
 
 function signatureTeacher($id)
 {
+    $imageID = "images/signatures/" . $id . ".png";
+    if (!file_exists($imageID)) :
+        return "";
+    endif;
     return "<img src='" . url('images/signatures/'. $id .'.png') . "' style='height:50px;width:150px;'/>";
 }
 
