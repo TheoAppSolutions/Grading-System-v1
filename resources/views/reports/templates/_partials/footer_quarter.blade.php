@@ -2,263 +2,151 @@
     <td colspan=28 height=20 class=commentslabels style='height:15.0pt'>ACADEMIC PERFORMANCE
     </td>
     <td class=blank></td>
+    <td class=blank></td>
+    <td class=blank></td>
     <td colspan=34 class=commentslabels>CONDUCT</td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
-        style='height:15.0pt'>{!! $comments['A1'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=26 class=blank>Grasps new ideas readily and making steady progress
+        style='height:15.0pt'>{!! isset($comments['A1']) && $comments['A1'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Grasps new ideas readily.
     </td>
     <td class=blank></td>
     <td colspan=2
-        class=comments>{!! $comments['C1'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=32 class=blank>Works well in groups, planning and carrying out activities
+        class=comments>{!! isset($comments['C1']) && $comments['C1'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Respects the authority of those in charge of various situations
     </td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
-        style='height:15.0pt'>{!! $comments['A2'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=26 class=blank>Keep up the great work!</td>
+        style='height:15.0pt'>{!! isset($comments['A2']) && $comments['A2'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Making steady progress. Keep up the great work!</td>
     <td class=blank></td>
     <td colspan=2
-        class=comments>{!! $comments['C2'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=32 class=blank>Respects the authority of those in charge of various situations
+        class=comments>{!! isset($comments['C2']) && $comments['C2'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Works well in groups, planning and carrying out activities
     </td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
-        style='height:15.0pt'>{!! $comments['A3'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=26 class=blank>Inclined to hurry too much. This affects quality of work.
+        style='height:15.0pt'>{!! isset($comments['A3']) && $comments['A3'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Progressing towards meeting grade level standards.
     </td>
     <td class=blank></td>
     <td colspan=2
-        class=comments>{!! $comments['C3'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=32 class=blank>Needs to listen and follow directions; has difficulty in concentrating.
+        class=comments>{!! isset($comments['C3']) && $comments['C3'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Needs to listen and follow directions
     </td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
-        style='height:15.0pt'>{!! $comments['A4'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=26 class=blank>Low grade affects his/her general average</td>
+        style='height:15.0pt'>{!! isset($comments['A4']) && $comments['A4'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Inclined to hurry too much, thus affects quality of work.</td>
     <td class=blank></td>
     <td colspan=2
-        class=comments>{!! $comments['C4'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=32 class=blank>Needs to improve in self-control but seems unconcerned about it
+        class=comments>{!! isset($comments['C4']) && $comments['C4'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Needs to improve self-control
     </td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
-        style='height:15.0pt'>{!! $comments['A5'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=26 class=blank>Has the ability but is not applying himself/herself
+        style='height:15.0pt'>{!! isset($comments['A5']) && $comments['A5'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Has the ability but not consistently applying himself/herself.
     </td>
     <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
+    <td colspan=2
+        class=comments>{!! isset($comments['C5']) && $comments['C5'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Has difficulty in concentrating; needs to be more focused on
+    </td>
 </tr>
 <tr style='mso-height-source:userset;height:13.5pt'>
+    <td colspan=2 height=20 class=comments
+        style='height:15.0pt'>{!! isset($comments['A6']) && $comments['A6'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Must learn to pace himself/herself to complete an assigned
+    </td>
+    <td height=18 class=blank style='height:13.5pt'></td>
+    <td class=blank></td>
+    <td class=blank></td>
+    <td colspan=28 class=blank>his/her work at home.
+    </td>
+</tr>
+<tr style='mso-height-source:userset;height:13.5pt'>
+    <td class=blank></td>
+    <td class=blank></td>
+    <td colspan=28 class=blank>task on a given time.
+    </td>
     <td height=18 class=blank style='height:13.5pt'></td>
     <td class=blank></td>
     <td class=blank></td>
     <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
+    <td colspan=28 class=blank></td>
+</tr>
+<tr style='mso-height-source:userset;height:13.5pt'>
     <td class=blank></td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=28 height=20 class=commentslabels style='height:15.0pt'>ATTITUDE</td>
     <td class=blank></td>
+    <td class=blank></td>
+    <td class=blank></td>
     <td colspan=34 class=commentslabels>NEEDING IMPROVEMENT</td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
-        style='height:15.0pt'>{!! $comments['B1'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=26 class=blank>Is a steadfast, conscientious worker</td>
+        style='height:15.0pt'>{!! isset($comments['B1']) && $comments['B1'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Is a steadfast, conscientious worker</td>
     <td class=blank></td>
     <td colspan=2
-        class=comments>{!! $comments['D1'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=32 class=blank>Does little work in school unless given full attention by the teacher
+        class=comments>{!! isset($comments['D1']) && $comments['D1'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Does little work in school unless given full attention by the teacher.
     </td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
-        style='height:15.0pt'>{!! $comments['B2'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=26 class=blank>Performs well in everything he/she undertakes</td>
+        style='height:15.0pt'>{!! isset($comments['B2']) && $comments['B2'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Performs well given the appropriate motivation.</td>
     <td class=blank></td>
     <td colspan=2
-        class=comments>{!! $comments['D2'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=32 class=blank>Not doing school work and seems not to care about doing
+        class=comments>{!! isset($comments['D2']) && $comments['D2'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Needs to give full attention/concentration in all subject areas.</td>
+</tr>
+<tr style='mso-height-source:userset;height:15.0pt'>
+    <td colspan=2 height=20 class=comments
+        style='height:15.0pt'>{!! isset($comments['B3']) && $comments['B3'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Participates actively in class.
+    </td>
+    <td class=blank></td>
+    <td colspan=2 height=20 class=comments
+        style='height:15.0pt'>{!! isset($comments['D3']) && $comments['D3'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Language/Reading handicap is the main source of difficulty.
     </td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
-        style='height:15.0pt'>{!! $comments['B3'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=26 class=blank>Doesn’t volunteer often but is willing to take part
-    </td>
+        style='height:15.0pt'>{!! isset($comments['B4']) && $comments['B4'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Is learning to share his/her ideas</td>
     <td class=blank></td>
-    <td colspan=2 class=blank>&nbsp;</td>
-    <td colspan=32 class=blank>assignments. Follow up is needed at home.</td>
-</tr>
-<tr style='mso-height-source:userset;height:15.0pt'>
-    <td colspan=2 height=20 class=blank style='height:15.0pt'>&nbsp;</td>
-    <td colspan=26 class=blank>in classwork when requested</td>
-    <td class=blank></td>
-    <td colspan=2
-        class=comments>{!! $comments['D3'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=32 class=blank>Needs to give full attention/concentration in all subject areas
-    </td>
+    <td colspan=2 height=20 class=comments
+        style='height:15.0pt'>{!! isset($comments['D4']) && $comments['D4'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Appears not to care about doing assignments. Follow up</td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
-        style='height:15.0pt'>{!! $comments['B4'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=26 class=blank>Is learning to share his/her ideas</td>
+        style='height:15.0pt'>{!! isset($comments['B5']) && $comments['B5'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=28 class=blank>Doesn't volunteer often but is willing to take</td>
     <td class=blank></td>
-    <td colspan=2
-        class=comments>{!! $comments['D4'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=32 class=blank>Language/Reading handicap is the main source of difficulty.
-    </td>
+    <td class=blank></td>
+    <td class=blank></td>
+    <td colspan=28 class=blank>is needed at home.</td>
 </tr>
 <tr style='mso-height-source:userset;height:13.5pt'>
     <td height=18 class=blank style='height:13.5pt'></td>
     <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
+    <td colspan=28 class=blank>part in class work when requested.</td>
 </tr>
-
+<tr style='mso-height-source:userset;height:13.5pt'>
+    <td height=18 class=blank style='height:13.5pt'></td>
+</tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=8 height=20 class=attendancebold style='height:15.0pt'>{{ schema('attendance_type') }}</td>
     @for($ctr = 1, $month = getStartMonth(); $ctr <= schema('attendance_count'); $ctr++, $month++)
@@ -309,192 +197,40 @@
 
 <tr style='mso-height-source:userset;height:13.5pt'>
     <td height=18 class=blank style='height:13.5pt'></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
+
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=38 height=20 class=commentslabels style='height:15.0pt'>ATTENDANCE AND TARDY
     </td>
     <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
+    <td colspan=18 rowspan=2 class=nametitles>{!! signatureTeacher($homeroom_id)  !!}
+    </td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
-        style='height:15.0pt'>{!! $comments['E1'] >0 ? checkMark() :'' !!}</td>
-    <td colspan=36 class=blank>Does good work when present but frequent absences cause difficulties
+        style='height:15.0pt'>{!! $comments['E1'] > 0 ? checkMark() :'' !!}</td>
+    <td colspan=38 class=blank>Does good work when present but frequent absences cause difficulties
     </td>
-    <td class=blank></td>
-    <td colspan=18 rowspan=2 class=nametitles>{{ $homeroom ?? '' }}
-    </td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
-        style='height:15.0pt'>{!! $comments['E2'] >0 ? checkMark() :'' !!}</td>
+        style='height:15.0pt'>{!! $comments['E2'] > 0 ? checkMark() :'' !!}</td>
     <td colspan=36 class=blank>Frequent absences affect the quality of work and assignments.
     </td>
     <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
+    <td colspan=18 rowspan=1 class=nametitles>{{ $homeroom ?? '' }}</td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
-        style='height:15.0pt'>{!! $comments['E3'] >0 ? checkMark() :'' !!}</td>
+        style='height:15.0pt'>{!! $comments['E3'] > 0 ? checkMark() :'' !!}</td>
     <td colspan=36 class=blank>Is tardy frequently. This disturbs classmates and also affects his/ her work.
     </td>
     <td class=blank></td>
     <td colspan=18 class=undertitle>Homeroom Teacher</td>
     <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
 </tr>
 <tr style='mso-height-source:userset;height:13.5pt'>
     <td height=18 class=blank style='height:13.5pt'></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=38 height=20 class=commentslabels style='height:15.0pt'>OVERALL REQUEST</td>
@@ -502,15 +238,10 @@
     <td colspan=18 rowspan=2 class=nametitles>{!! signatureMiss() !!}
     </td>
     <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
-        style='height:15.0pt'>{!! $comments['F1'] >0 ? checkMark() :'' !!}</td>
+        style='height:15.0pt'>{!! $comments['F1'] > 0 ? checkMark() :'' !!}</td>
     <td colspan=36 class=blank>A Parent-Teacher Conference is requested ASAP.</td>
     <td class=blank></td>
 </tr>
@@ -520,11 +251,6 @@
     <td class=blank></td>
     <td colspan=18 rowspan=1 class=nametitles>{{ $principal ?? '' }}
     </td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
     <td class=blank></td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
@@ -552,10 +278,4 @@
     <td class=blank></td>
     <td class=blank></td>
     <td colspan=18 class=undertitle>Principal</td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
-    <td class=blank></td>
 </tr>

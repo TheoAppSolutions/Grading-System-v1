@@ -49,29 +49,32 @@
   },
   "comments.quarter": {
     "ACADEMIC PERFORMANCE": {
-      "A1": "<span style=\"font-size: 14px; color: black;\"><b>G</b>rasps new ideas readily and making steady progress</span>",
-      "A2": "<span style=\"font-size: 14px; color: black;\"><b>K</b>eep up the great work!</span>",
-      "A3": "<span style=\"font-size: 14px; color: red;\"><b>I</b>nclined to hurry too much. This affects quality of work.</span>",
-      "A4": "<span style=\"font-size: 14px; color: red;\"><b>L</b>ow grade affects his/her general average</span>",
-      "A5": "<span style=\"font-size: 14px; color: red;\"><b>H</b>as the ability but is not applying himself/herself</span>"
+      "A1": "<span style=\"font-size: 14px; color: black;\"><b>G</b>rasps new ideas readily</span>",
+      "A2": "<span style=\"font-size: 14px; color: black;\"><b>M</b>aking steady progress. Keep up the great work!</span>",
+      "A3": "<span style=\"font-size: 14px; color: black;\"><b>P</b>rogressing towards meeting grade level standards</span>",
+      "A4": "<span style=\"font-size: 14px; color: red;\"><b>I</b>nclined to hurry too much, thus affects quality of work.</span>",
+      "A5": "<span style=\"font-size: 14px; color: red;\"><b>H</b>as the ability but not consistently applying himself/herself</span>",
+      "A6": "<span style=\"font-size: 14px; color: red;\"><b>M</b>ust learn to pace himself/herself to complete an assigned task on a given time.</span>"
     },
     "ATTITUDE": {
       "B1": "<span style=\"font-size: 14px; color: black;\"><b>I</b>s a steadfast, conscientious worker</span>",
-      "B2": "<span style=\"font-size: 14px; color: black;\"><b>P</b>erforms well in everything he/she undertakes</span>",
-      "B3": "<span style=\"font-size: 14px; color: red;\"><b>D</b>oes not volunteer often but is willing to take part in classwork when requested</span>",
-      "B4": "<span style=\"font-size: 14px; color: red;\"><b>I</b>s learning to share his/her ideas</span>"
+      "B2": "<span style=\"font-size: 14px; color: black;\"><b>P</b>erforms well given the appropriate motivation.</span>",
+      "B3": "<span style=\"font-size: 14px; color: black;\"><b>P</b>articipates actively in class.</span>",
+      "B4": "<span style=\"font-size: 14px; color: black;\"><b>I</b>s learning to share his/her ideas</span>",
+      "B5": "<span style=\"font-size: 14px; color: red;\"><b>D</b>oesn't volunteer often but is willing to take part in class work when requested.</span>"
     },
     "CONDUCT": {
-      "C1": "<span style=\"font-size: 14px; color: black;\"><b>W</b>orks well in groups, planning and carrying out activities</span>",
-      "C2": "<span style=\"font-size: 14px; color: black;\"><b>R</b>espects the authority of those in charge of various </span>",
-      "C3": "<span style=\"font-size: 14px; color: red;\"><b>N</b>eeds to listen and follow directions; has difficulty in concentrating</span>",
-      "C4": "<span style=\"font-size: 14px; color: red;\"><b>N</b>eeds to improve in self-control but seems unconcerned about it</span>"
+      "C1": "<span style=\"font-size: 14px; color: black;\"><b>R</b>espects the authority of those in charge of various situations</span>",
+      "C2": "<span style=\"font-size: 14px; color: black;\"><b>W</b>orks well in groups, planning and carrying out activities</span>",
+      "C3": "<span style=\"font-size: 14px; color: red;\"><b>N</b>eeds to listen and follow directions</span>",
+      "C4": "<span style=\"font-size: 14px; color: red;\"><b>N</b>eeds to improve in self-control</span>",
+      "C5": "<span style=\"font-size: 14px; color: red;\"><b>H</b>as difficulty in concentrating; needs to be more focused on his/her work at home.</span>"
     },
     "NEEDING IMPROVEMENT": {
-      "D1": "<span style=\"font-size: 14px; color: black;\"><b>D</b>oes little work in school unless given full attention by the teacher</span>",
-      "D2": "<span style=\"font-size: 14px; color: black;\"><b>N</b>ot doing school work and seems not to care about doing follow up is needed at home.</span>",
-      "D3": "<span style=\"font-size: 14px; color: red;\"><b>N</b>eeds to give full attention/concentration in all subject areas</span>",
-      "D4": "<span style=\"font-size: 14px; color: red;\"><b>L</b>anguage/Reading handicap is the main source of difficulty.</span>"
+      "D1": "<span style=\"font-size: 14px; color: black;\"><b>D</b>oes little work in school unless given full attention by the teacher.</span>",
+      "D2": "<span style=\"font-size: 14px; color: black;\"><b>N</b>eeds to give full attention/concentration in all subject areas.</span>",
+      "D3": "<span style=\"font-size: 14px; color: red;\"><b>L</b>anguage/Reading handicap is the main source of difficulty.</span>",
+      "D4": "<span style=\"font-size: 14px; color: red;\"><b>A</b>ppears not to care about doing assignments. Follow up is needed at home.</span>"
     },
     "ATTENDANCE AND TARDY": {
       "E1": "<span style=\"font-size: 14px; color: red;\"><b>D</b>oes good work when present but frequent absences cause difficulties.</span>",

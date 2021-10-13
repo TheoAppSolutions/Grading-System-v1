@@ -39,7 +39,8 @@ class ReportController extends Controller
         $days = SchoolYear::getSchoolDays();
         $schoolyear = getSchoolYear();
         $student = Student::byStudentID($student_id);
-        $homeroom = Homeroom::byGradeLevel($student->gradelevel, $student->section);
+        $section = $student->gradelevel <= 10 ? $student->section : '';
+        $homeroom = Homeroom::byGradeLevel($student->gradelevel, $section);
         $homeroom_id = $homeroom['id'];
         $homeroom = $homeroom['name'];
 
@@ -104,16 +105,17 @@ class ReportController extends Controller
             $quarters[2] = $semester == 1 ? 2 : 4;
 
             $subjects = new Subject;
-            $minor = $subjects->byGradeLevelAndSection($student->gradelevel, '', $semester);
-            $core = $subjects->byGradeLevelAndSection($student->gradelevel, $student->section, $semester);
+            $core = $subjects->byGradeLevelAndSection($student->gradelevel, "Core", '', $semester);
+            $applied = $subjects->byGradeLevelAndSection($student->gradelevel, "Applied", "", $semester);
+            $specialized = $subjects->byGradeLevelAndSection($student->gradelevel, "Specialized", $student->section, $semester);
 
             if ($type == "midquarter"):
-                return view('reports.templates.senior_high.seniorhigh_T1-T3', compact('student', 'grades', 'quarter', 'comments', 'homeroom', 'principal', 'minor', 'core', 'type', 'homeroom_id'));
+                return view('reports.templates.senior_high.seniorhigh_T1-T3', compact('student', 'grades', 'quarter', 'comments', 'homeroom', 'principal', 'core', 'applied', 'specialized', 'type', 'homeroom_id'));
             elseif ($type == "quarter"):
                 if ($schoolyear == '2019-2020'):
-                    return view('reports.templates.senior_high.seniorhigh_T2-T4(2020)', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'minor', 'core', 'semester', 'quarters', 'type', 'homeroom_id'));
+                    return view('reports.templates.senior_high.seniorhigh_T2-T4(2020)', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'core', 'applied', 'specialized', 'semester', 'quarters', 'type', 'homeroom_id'));
                 else:
-                    return view('reports.templates.senior_high.seniorhigh_T2-T4', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'minor', 'core', 'semester', 'quarters', 'type', 'homeroom_id'));
+                    return view('reports.templates.senior_high.seniorhigh_T2-T4', compact('award', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'days', 'homeroom', 'principal', 'core', 'applied', 'specialized', 'semester', 'quarters', 'type', 'homeroom_id'));
                 endif;
             endif;
         endif;
@@ -137,6 +139,8 @@ class ReportController extends Controller
                 'no-outline',
                 'page-size' => 'A4', //'Letter'
                 'orientation' => 'Portrait', //'Landscape'
+                'margin-top' => 3,
+                'margin-bottom' => 3
             ));
         endif;
         $semester = request('semester');

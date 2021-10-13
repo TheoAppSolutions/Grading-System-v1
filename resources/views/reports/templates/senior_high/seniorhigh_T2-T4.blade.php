@@ -19,71 +19,46 @@
         <td colspan=5 class=quarter style='border-left:none'>Finals</td>
         <td class=blank></td>
     </tr>
-    <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-        <td colspan=43 height=26 class=subjects style='height:19.5pt;font-weight: bold;padding-left: 5px;'>Core
-            Subjects
-        </td>
-        <td class=blank></td>
-    </tr>
 
-    @for($ctr = 0; $ctr<count($minor); $ctr++)
-        @if($minor[$ctr]->user_id != "")
-            <tr style='mso-height-source:userset;height:16.5pt'>
-                <td colspan=20 height=26 class=subjects width=225
-                    style='height:19.5pt;width:171pt;padding-left: 10px;'>
-                    {{ $minor[$ctr]->subjecttitle }}</td>
-                <td colspan=3 class=finalGrade>
-                    {{ $grades[$minor[$ctr]->subjectname][$quarters[1]]['final'] ?? '' }}</td>
-                <td colspan=2 class=finaleffort><sub class="effort">
-                        {{ $grades[$minor[$ctr]->subjectname][$quarters[1]]['effort'] ?? '' }}</sub>
+    @php($category = ['core', 'applied', 'specialized'])
+
+    @foreach($category as $cat)
+        @if(isset(${$cat}) and count(${$cat}) > 0)
+            <tr class=blank style='mso-height-source:userset;height:19.5pt'>
+                <td colspan=43 height=26 class=subjects style='height:19.5pt;font-weight: bold;padding-left: 5px;'>
+                    {{ ucfirst($cat) }} Subjects
                 </td>
-                <td colspan=3 class=finalGrade>
-                    {{ $grades[$minor[$ctr]->subjectname][$quarters[2]]['final'] ?? '' }}</td>
-                <td colspan=2 class=finaleffort><sub class="effort">
-                        {{ $grades[$minor[$ctr]->subjectname][$quarters[2]]['effort'] ?? '' }}</sub>
-                </td>
-                <td colspan=4 class=finalGrade>
-                    {{ $grades[$minor[$ctr]->subjectname][5]['final'] ?? '' }}</td>
-                <td colspan=2 class=finaleffort><sub class="effort">
-                        {{ $grades[$minor[$ctr]->subjectname][5]['effort'] ?? '' }}</sub></td>
-                <td colspan=7 class=remarks>
-                    {{ $grades[$minor[$ctr]->subjectname]['remarks'] ?? '' }}</td>
+                <td class=blank></td>
             </tr>
-        @endif
-    @endfor
 
-    <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-        <td colspan=43 height=26 class=subjects width=540
-            style='height:19.5pt;width:407pt;font-weight: bold;padding-left: 5px;'>
-            Applied and Specialized Subjects
-        </td>
-    </tr>
-
-    @for($ctr = 0; $ctr<count($core); $ctr++)
-        @if($core[$ctr]->user_id != "")
-            <tr style='mso-height-source:userset;height:16.5pt'>
-                <td colspan=20 height=26 class=subjects width=225
-                    style='height:19.5pt; width:171pt; padding-left: 10px;'>
-                    {{ $core[$ctr]->subjecttitle }}</td>
-                <td colspan=3 class=finalGrade>
-                    {{ $grades[$core[$ctr]->subjectname][$quarters[1]]['final'] ?? '' }}</td>
-                <td colspan=2 class=finaleffort><sub class="effort">
-                        {{ $grades[$core[$ctr]->subjectname][$quarters[1]]['effort'] ?? '' }}</sub>
-                </td>
-                <td colspan=3 class=finalGrade>
-                    {{ $grades[$core[$ctr]->subjectname][$quarters[2]]['final'] ?? '' }}</td>
-                <td colspan=2 class=finaleffort><sub class="effort">
-                        {{ $grades[$core[$ctr]->subjectname][$quarters[2]]['effort'] ?? '' }}</sub>
-                </td>
-                <td colspan=4 class=finalGrade>
-                    {{ $grades[$core[$ctr]->subjectname][5]['final'] ?? '' }}</td>
-                <td colspan=2 class=finaleffort><sub class="effort">
-                        {{ $grades[$core[$ctr]->subjectname][5]['effort'] ?? '' }}</sub></td>
-                <td colspan=7 class=remarks>
-                    {{ $grades[$core[$ctr]->subjectname]['remarks'] ?? '' }}</td>
-            </tr>
+            @for($ctr = 0; $ctr<count(${$cat}); $ctr++)
+                @if(${$cat}[$ctr]->user_id != "")
+                    <tr style='mso-height-source:userset;height:16.5pt'>
+                        <td colspan=20 height=26 class=subjects width=225
+                            style='height:19.5pt;width:171pt;padding-left: 10px;'>
+                            {{ ${$cat}[$ctr]->subjecttitle }}</td>
+                        <td colspan=3 class=finalGrade>
+                            {{ $grades[${$cat}[$ctr]->subjectname][$quarters[1]]['final'] ?? '' }}</td>
+                        <td colspan=2 class=finaleffort><sub class="effort">
+                                {{ $grades[${$cat}[$ctr]->subjectname][$quarters[1]]['effort'] ?? '' }}</sub>
+                        </td>
+                        <td colspan=3 class=finalGrade>
+                            {{ $grades[${$cat}[$ctr]->subjectname][$quarters[2]]['final'] ?? '' }}</td>
+                        <td colspan=2 class=finaleffort><sub class="effort">
+                                {{ $grades[${$cat}[$ctr]->subjectname][$quarters[2]]['effort'] ?? '' }}</sub>
+                        </td>
+                        <td colspan=4 class=finalGrade>
+                            {{ $grades[${$cat}[$ctr]->subjectname][5]['final'] ?? '' }}</td>
+                        <td colspan=2 class=finaleffort><sub class="effort">
+                                {{ $grades[${$cat}[$ctr]->subjectname][5]['effort'] ?? '' }}</sub></td>
+                        <td colspan=7 class=remarks>
+                            {{ $grades[${$cat}[$ctr]->subjectname]['remarks'] ?? '' }}</td>
+                    </tr>
+                @endif
+            @endfor
         @endif
-    @endfor
+    @endforeach
+
     <tr style='mso-height-source:userset;height:19.5pt'>
         <td colspan=20 height=26 class=subjects width=225 style='height:19.5pt;
   width:171pt'>&nbsp;DEPORTMENT

@@ -86,6 +86,7 @@
                                         {{ $semester }}
                                     </option>
                                 @endfor
+                                <option value="3" {{ 3 == $subject->semester ? "selected" : "" }}>Hide</option>
                             </optgroup>
                         </select>
                     </td>

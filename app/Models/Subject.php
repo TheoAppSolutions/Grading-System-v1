@@ -34,6 +34,7 @@ class Subject extends Model
         $subjects = Subject::join('subjects_user', 'subjects_user.subject_id', 'subjects.subject_id')
             ->where([['user_id', $user_id], ['schoolyear', $schoolyear]])
             ->orWhere([['user2_id', $user_id], ['schoolyear', $schoolyear]])
+            ->orderBy('gradelevel', 'ASC')
             ->orderBy('semester', 'ASC')
             ->orderBy('section', 'ASC')
             ->orderBy('subjects.subject_id', 'ASC')
@@ -90,7 +91,7 @@ class Subject extends Model
         return $gradelevels;
     }//For Report Card
 
-    public function byGradeLevelAndSection($gradelevel, $section = "", $semester = "")
+    public function byGradeLevelAndSection($gradelevel, $category = "Core", $section = "", $semester = "")
     {
         $schoolyear = getSchoolYear();
         $query = [
@@ -104,8 +105,10 @@ class Subject extends Model
 
         if ($section != ""):
             array_push($query, ["section", $section]);
-        else:
-            array_push($query, ["section", ""]);
+        endif;
+
+        if ($category != ""):
+            array_push($query, ["category", $category]);
         endif;
 
         $subjects = Subject::where($query)
