@@ -9,7 +9,7 @@
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
         style='height:15.0pt'>{!! isset($comments['A1']) && $comments['A1'] > 0 ? checkMark() :'' !!}</td>
-    <td colspan=28 class=blank>Grasps new ideas readily.
+    <td colspan=28 class=blank>Grasps new ideas readily
     </td>
     <td class=blank></td>
     <td colspan=2
@@ -30,7 +30,7 @@
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
         style='height:15.0pt'>{!! isset($comments['A3']) && $comments['A3'] > 0 ? checkMark() :'' !!}</td>
-    <td colspan=28 class=blank>Progressing towards meeting grade level standards.
+    <td colspan=28 class=blank>Progressing towards meeting grade level standards
     </td>
     <td class=blank></td>
     <td colspan=2
@@ -41,17 +41,17 @@
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
         style='height:15.0pt'>{!! isset($comments['A4']) && $comments['A4'] > 0 ? checkMark() :'' !!}</td>
-    <td colspan=28 class=blank>Inclined to hurry too much, thus affects quality of work.</td>
+    <td colspan=28 class=blank>Inclined to hurry too much. This affects quality of work.</td>
     <td class=blank></td>
     <td colspan=2
         class=comments>{!! isset($comments['C4']) && $comments['C4'] > 0 ? checkMark() :'' !!}</td>
-    <td colspan=28 class=blank>Needs to improve self-control
+    <td colspan=28 class=blank>Needs to improve in self-control
     </td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
         style='height:15.0pt'>{!! isset($comments['A5']) && $comments['A5'] > 0 ? checkMark() :'' !!}</td>
-    <td colspan=28 class=blank>Has the ability but not consistently applying himself/herself.
+    <td colspan=28 class=blank>Has the ability but not consistently applying himself/herself
     </td>
     <td class=blank></td>
     <td colspan=2
@@ -73,7 +73,7 @@
 <tr style='mso-height-source:userset;height:13.5pt'>
     <td class=blank></td>
     <td class=blank></td>
-    <td colspan=28 class=blank>task on a given time.
+    <td colspan=28 class=blank>task on a given time
     </td>
     <td height=18 class=blank style='height:13.5pt'></td>
     <td class=blank></td>
@@ -98,27 +98,27 @@
     <td class=blank></td>
     <td colspan=2
         class=comments>{!! isset($comments['D1']) && $comments['D1'] > 0 ? checkMark() :'' !!}</td>
-    <td colspan=28 class=blank>Does little work in school unless given full attention by the teacher.
+    <td colspan=28 class=blank>Does little work in school unless given full attention by the teacher
     </td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
         style='height:15.0pt'>{!! isset($comments['B2']) && $comments['B2'] > 0 ? checkMark() :'' !!}</td>
-    <td colspan=28 class=blank>Performs well given the appropriate motivation.</td>
+    <td colspan=28 class=blank>Performs well given the appropriate motivation</td>
     <td class=blank></td>
     <td colspan=2
         class=comments>{!! isset($comments['D2']) && $comments['D2'] > 0 ? checkMark() :'' !!}</td>
-    <td colspan=28 class=blank>Needs to give full attention/concentration in all subject areas.</td>
+    <td colspan=28 class=blank>Needs to give full attention/concentration in all subject areas</td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
         style='height:15.0pt'>{!! isset($comments['B3']) && $comments['B3'] > 0 ? checkMark() :'' !!}</td>
-    <td colspan=28 class=blank>Participates actively in class.
+    <td colspan=28 class=blank>Participates actively in class
     </td>
     <td class=blank></td>
     <td colspan=2 height=20 class=comments
         style='height:15.0pt'>{!! isset($comments['D3']) && $comments['D3'] > 0 ? checkMark() :'' !!}</td>
-    <td colspan=28 class=blank>Language/Reading handicap is the main source of difficulty.
+    <td colspan=28 class=blank>Language/Reading handicap is the main source of difficulty
     </td>
 </tr>
 <tr style='mso-height-source:userset;height:15.0pt'>
@@ -133,7 +133,7 @@
 <tr style='mso-height-source:userset;height:15.0pt'>
     <td colspan=2 height=20 class=comments
         style='height:15.0pt'>{!! isset($comments['B5']) && $comments['B5'] > 0 ? checkMark() :'' !!}</td>
-    <td colspan=28 class=blank>Doesn't volunteer often but is willing to take</td>
+    <td colspan=28 class=blank>Doesn't volunteer often but is willing to take part in class work</td>
     <td class=blank></td>
     <td class=blank></td>
     <td class=blank></td>
@@ -142,7 +142,7 @@
 <tr style='mso-height-source:userset;height:13.5pt'>
     <td height=18 class=blank style='height:13.5pt'></td>
     <td class=blank></td>
-    <td colspan=28 class=blank>part in class work when requested.</td>
+    <td colspan=28 class=blank>when requested</td>
 </tr>
 <tr style='mso-height-source:userset;height:13.5pt'>
     <td height=18 class=blank style='height:13.5pt'></td>
