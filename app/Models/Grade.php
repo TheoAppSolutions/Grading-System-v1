@@ -102,6 +102,7 @@ class Grade extends Model
                 ['subjects_user.schoolyear', $schoolyear]
             ])
             ->select('subjectname',
+                'subjects.subject_id',
                 'gradelevel',
                 'users.title',
                 'users.lastname',
@@ -130,6 +131,7 @@ class Grade extends Model
                 if ($record->deportment > 0) :
                     $gradeset["deportment"][$record->quarter]["$record->subjectname"] = $record->deportment > 0 ? $record->deportment : '';
                 endif;
+                $gradeset["$record->subjectname"]["subject_id"] = $record->subject_id;
                 $gradeset["$record->subjectname"]["teacher"] = $record->title . $record->firstname . ' ' . $record->lastname;
                 $gradeset["$record->subjectname"][$record->quarter]["remarks"] = $record->remarks;
                 $gradeset["$record->subjectname"][$record->quarter]["midquarter"] = $record->midquarter > 0 ? $record->midquarter : '';

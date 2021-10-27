@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\Units;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\DbDumper\DbDumper;
 
 class Formulas extends Model
 {
@@ -37,15 +38,12 @@ class Formulas extends Model
                     $gradeset[$subject->subjectname][5]["rawfinal"] = array_sum($subAverage['final']) / count($subAverage['final']);
                     if (getSchoolYear() == "2019-2020"):
                         $gradeset[$subject->subjectname][5]["final"] = number_format($gradeset[$subject->subjectname][5]["rawfinal"], 3);
-                    else:
-                        $gradeset[$subject->subjectname][5]["final"] = number_format($gradeset[$subject->subjectname][5]["rawfinal"], 3);
-                    endif;
-
-                    if (getSchoolYear() == "2019-2020"):
                         $gradeset[$subject->subjectname][5]["effort"] = number_format(array_sum($subAverage['raweffort']) / count($subAverage['raweffort']), 0);
                     else:
+                        $gradeset[$subject->subjectname][5]["final"] = number_format($gradeset[$subject->subjectname][5]["rawfinal"], 3);
                         $gradeset[$subject->subjectname][5]["effort"] = Formulas::getFinalEffort(array_sum($subAverage['raweffort']), $gradeset['gradelevel']);
                     endif;
+
                     $gradeset[$subject->subjectname]["remarks"] = $gradeset[$subject->subjectname][5]["final"] >= 75 ? 'PASSED' : 'FAILED';
 
                     if (!$gradeset["disqualifyForHonors"]):
@@ -104,11 +102,19 @@ class Formulas extends Model
 
     public static function getMAPEH_TLE($gradeset)
     {
+        $units = Units::getUnits();
+        $unit["MAPEH"] = $units[$gradeset["MUSIC"]["subject_id"]]['unit'] + $units[$gradeset["ART"]["subject_id"]]['unit'] + $units[$gradeset["PE"]["subject_id"]]['unit'];
+        $unit["TLE"] = $units[$gradeset["LIVELIHOOD"]["subject_id"]]['unit'] + $units[$gradeset["COMPUTER"]["subject_id"]]['unit'];
+
         for ($ctr = 1; $ctr <= 5; $ctr++):
             if (isset($gradeset["MUSIC"][$ctr]["final"]) and isset($gradeset["ART"][$ctr]["final"]) and isset($gradeset["PE"][$ctr]["final"])):
                 if (!empty($gradeset["MUSIC"][$ctr]["final"]) and !empty($gradeset["ART"][$ctr]["final"]) and !empty($gradeset["PE"][$ctr]["final"])):
-                    $gradeset["MAPEH"][$ctr]["rawfinal"] = number_format(($gradeset["MUSIC"][$ctr]["rawfinal"] + $gradeset["ART"][$ctr]["rawfinal"] + $gradeset["PE"][$ctr]["rawfinal"]) / 3, 3);
-                    $gradeset["MAPEH"][$ctr]["final"] = number_format(($gradeset["MUSIC"][$ctr]["final"] + $gradeset["ART"][$ctr]["final"] + $gradeset["PE"][$ctr]["final"]) / 3, 3);
+                    $gradeset["MAPEH"][$ctr]["rawfinal"] = number_format((
+                        ($gradeset["MUSIC"][$ctr]["rawfinal"] * $units[$gradeset["MUSIC"]["subject_id"]]['unit']) +
+                        ($gradeset["ART"][$ctr]["rawfinal"] * $units[$gradeset["ART"]["subject_id"]]['unit']) +
+                        ($gradeset["PE"][$ctr]["rawfinal"] * $units[$gradeset["PE"]["subject_id"]]['unit'])) / $unit["MAPEH"], 3);
+
+                    $gradeset["MAPEH"][$ctr]["final"] = $gradeset["MAPEH"][$ctr]["rawfinal"];
                     if ($ctr != 5):
                         $gradeset["MAPEH"][$ctr]["final"] = round($gradeset["MAPEH"][$ctr]["final"]) <= 0 ? '' : round($gradeset["MAPEH"][$ctr]["final"]);
                     endif;
@@ -117,8 +123,12 @@ class Formulas extends Model
 
             if (isset($gradeset["LIVELIHOOD"][$ctr]["final"]) and isset($gradeset["COMPUTER"][$ctr]["final"])):
                 if (!empty($gradeset["LIVELIHOOD"][$ctr]["final"]) and !empty($gradeset["COMPUTER"][$ctr]["final"])):
-                    $gradeset["TLE"][$ctr]["rawfinal"] = number_format((($gradeset["LIVELIHOOD"][$ctr]["rawfinal"] * 2) + $gradeset["COMPUTER"][$ctr]["rawfinal"]) / 3, 3);
-                    $gradeset["TLE"][$ctr]["final"] = number_format((($gradeset["LIVELIHOOD"][$ctr]["final"] * 2) + $gradeset["COMPUTER"][$ctr]["final"]) / 3, 3);
+                    $gradeset["TLE"][$ctr]["rawfinal"] = number_format(
+                        (($gradeset["LIVELIHOOD"][$ctr]["rawfinal"] * $units[$gradeset["LIVELIHOOD"]["subject_id"]]['unit']) +
+                            ($gradeset["COMPUTER"][$ctr]["rawfinal"] * $units[$gradeset["COMPUTER"]["subject_id"]]['unit'])) / $unit["TLE"], 3);
+
+                    $gradeset["TLE"][$ctr]["final"] = $gradeset["TLE"][$ctr]["rawfinal"];
+
                     if ($ctr != 5):
                         $gradeset["TLE"][$ctr]["final"] = round($gradeset["TLE"][$ctr]["final"]) <= 0 ? '' : round($gradeset["TLE"][$ctr]["final"]);
                     endif;
@@ -152,7 +162,7 @@ class Formulas extends Model
         $gradeset["disqualifyForHonors"] = $gradeset["generalaverage"] < 92 ? true : false;
         if ($gradeset["generalremarks"] == "PASSED"):
             if ($gradeset['gradelevel'] <= 11):
-                //$gradeset['eligible'] = ordinal(getNextGradeLevel($gradeset['gradelevel'])) . " Grade";
+                $gradeset['eligible'] = ordinal(getNextGradeLevel($gradeset['gradelevel'])) . " Grade";
             else:
                 $gradeset['eligible'] = "";
             endif;
