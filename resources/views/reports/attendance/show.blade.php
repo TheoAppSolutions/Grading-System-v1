@@ -34,13 +34,13 @@
                                value="{{ $days[$index] }}">
                     </td>
                     <td>
-                        <input title="" type="text" class="form-control attendance"
-                               maxlength="5" name="attendance[A][]"
+                        <input title="" type="number" class="form-control attendance"
+                               step="0.5" min="0" max="{{ $days[$index] }}" name="attendance[A][]"
                                value="{{ $attendance->attendance->{$ctr}->A ?? '' }}">
                     </td>
                     <td>
-                        <input title="" type="text" class="form-control attendance"
-                               maxlength="5" name="attendance[T][]"
+                        <input title="" type="number" class="form-control attendance"
+                               step="0.5" min="0" max="{{ $days[$index] }}"  name="attendance[T][]"
                                value="{{ $attendance->attendance->{$ctr}->T ?? '' }}">
                     </td>
                 </tr>
@@ -84,12 +84,12 @@
 
         attendance["A"] = $("input[name='attendance[A][]']")
             .map(function () {
-                return parseInt($(this).val());
+                return $(this).val();
             }).get();
 
         attendance["T"] = $("input[name='attendance[T][]']")
             .map(function () {
-                return parseInt($(this).val());
+                return $(this).val();
             }).get();
 
         $.ajax({

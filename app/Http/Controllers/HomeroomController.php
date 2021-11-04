@@ -151,7 +151,7 @@ class HomeroomController extends Controller
         foreach ($request->attendance as $key => $values):
             foreach ($values as $ctr => $value):
                 $counter = $ctr + 1;
-                $json[$counter][$key] = intval($value) > 0 ? intval($value) : 0;
+                $json[$counter][$key] = $value > 0 ? $value : 0;
             endforeach;
         endforeach;
 
