@@ -103,12 +103,11 @@ class Formulas extends Model
     public static function getMAPEH_TLE($gradeset)
     {
         $units = Units::getUnits();
-        $unit["MAPEH"] = $units[$gradeset["MUSIC"]["subject_id"]]['unit'] + $units[$gradeset["ART"]["subject_id"]]['unit'] + $units[$gradeset["PE"]["subject_id"]]['unit'];
-        $unit["TLE"] = $units[$gradeset["LIVELIHOOD"]["subject_id"]]['unit'] + $units[$gradeset["COMPUTER"]["subject_id"]]['unit'];
 
         for ($ctr = 1; $ctr <= 5; $ctr++):
             if (isset($gradeset["MUSIC"][$ctr]["final"]) and isset($gradeset["ART"][$ctr]["final"]) and isset($gradeset["PE"][$ctr]["final"])):
                 if (!empty($gradeset["MUSIC"][$ctr]["final"]) and !empty($gradeset["ART"][$ctr]["final"]) and !empty($gradeset["PE"][$ctr]["final"])):
+                    $unit["MAPEH"] = $units[$gradeset["MUSIC"]["subject_id"]]['unit'] + $units[$gradeset["ART"]["subject_id"]]['unit'] + $units[$gradeset["PE"]["subject_id"]]['unit'];
                     $gradeset["MAPEH"][$ctr]["rawfinal"] = number_format((
                         ($gradeset["MUSIC"][$ctr]["rawfinal"] * $units[$gradeset["MUSIC"]["subject_id"]]['unit']) +
                         ($gradeset["ART"][$ctr]["rawfinal"] * $units[$gradeset["ART"]["subject_id"]]['unit']) +
@@ -123,6 +122,7 @@ class Formulas extends Model
 
             if (isset($gradeset["LIVELIHOOD"][$ctr]["final"]) and isset($gradeset["COMPUTER"][$ctr]["final"])):
                 if (!empty($gradeset["LIVELIHOOD"][$ctr]["final"]) and !empty($gradeset["COMPUTER"][$ctr]["final"])):
+                    $unit["TLE"] = $units[$gradeset["LIVELIHOOD"]["subject_id"]]['unit'] + $units[$gradeset["COMPUTER"]["subject_id"]]['unit'];
                     $gradeset["TLE"][$ctr]["rawfinal"] = number_format(
                         (($gradeset["LIVELIHOOD"][$ctr]["rawfinal"] * $units[$gradeset["LIVELIHOOD"]["subject_id"]]['unit']) +
                             ($gradeset["COMPUTER"][$ctr]["rawfinal"] * $units[$gradeset["COMPUTER"]["subject_id"]]['unit'])) / $unit["TLE"], 3);
