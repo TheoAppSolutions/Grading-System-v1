@@ -74,7 +74,9 @@
         </tr>
         <tr style='mso-height-source:userset;height:18.75pt'>
             <td colspan=4 height=25 class=labels style='height:18.75pt'>NAME:</td>
-            <td colspan=20 class=info>{{ $student->lastname . ', ' . $student->firstname }} {{ $student->suffix ?? "" }}</td>
+            <td colspan=20 class=info {{ strlen($student->lastname . ', ' . $student->firstname) > 30 ? "style=font-size:11pt" : "" }}>
+                {{ $student->lastname . ', ' . $student->firstname }} {{ $student->suffix ?? "" }}
+            </td>
             <td class=blank></td>
             <td colspan=3 class=labels>LRN:</td>
             <td colspan=10 class=info>{{ $student->student_lrn ?? '' }}</td>
