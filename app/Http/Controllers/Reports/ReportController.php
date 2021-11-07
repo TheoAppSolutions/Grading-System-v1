@@ -205,6 +205,8 @@ class ReportController extends Controller
                         'no-outline',
                         'page-size' => 'A4', //'Letter'
                         'orientation' => 'Portrait', //'Landscape'
+                        'margin-top' => 3,
+                        'margin-bottom' => 3
                     ));
                 endif;
             endif;
