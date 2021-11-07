@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
-    <title>{{ $student->lastname . ', ' . $student->firstname }} {{ $student->suffix ?? "" }} (Card)</title>
+    <title>Quarter Report Card</title>
 
     <link href="{{ url('ReportCard.css') }}" rel="stylesheet">
 </head>

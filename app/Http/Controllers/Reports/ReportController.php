@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Reports;
 
 use App\Http\Controllers\Controller;
-use App\Formulas;
 use App\Models\Award;
 use App\Models\SchoolYear;
 use App\User;
-use Composer\Package\Archiver\ZipArchiver;
-use DebugBar\DebugBar;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Input;
 use mikehaertl\wkhtmlto\Pdf as PDF;
@@ -17,7 +14,6 @@ use App\Models\Attendance;
 use App\Models\Comments_Quarter as Comments;
 use App\Models\Comments_Midquarter as MidComments;
 use App\Models\Homeroom;
-use App\Models\Month;
 use App\Models\Student;
 use App\Models\Grade;
 use ZipArchive;
@@ -191,6 +187,8 @@ class ReportController extends Controller
                 'no-outline',
                 'page-size' => 'A4', //'Letter'
                 'orientation' => 'Portrait', //'Landscape'
+                'margin-top' => 3,
+                'margin-bottom' => 3
             ));
         endif;
 
