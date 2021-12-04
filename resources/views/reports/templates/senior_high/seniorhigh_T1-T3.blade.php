@@ -62,7 +62,7 @@
     <tr class=blank style='mso-height-source:userset;height:15.0pt'>
         <td colspan=84 height=20 class=subjects style="font-weight: bold;">Core Subjects</td>
     </tr>
-    @foreach($minor as $subject)
+    @foreach($core as $subject)
         @php($grades["$subject->subjectname"]['teacher'] = $subject->title . ' ' . $subject->firstname . ' ' . $subject->lastname)
         @if (isset($grades["$subject->subjectname"]['teacher']))
             <tr class=blank style='mso-height-source:userset;height:15.0pt'>
@@ -83,7 +83,24 @@
     <tr class=blank style='mso-height-source:userset;height:15.0pt'>
         <td colspan=84 height=20 class=subjects style="font-weight: bold;">Applied and Specialized Subjects</td>
     </tr>
-    @foreach($core as $subject)
+    @foreach($specialized as $subject)
+        @php($grades["$subject->subjectname"]['teacher'] = $subject->title . ' ' . $subject->firstname . ' ' . $subject->lastname)
+        @if (isset($grades["$subject->subjectname"]['teacher']))
+            <tr class=blank style='mso-height-source:userset;height:15.0pt'>
+                <td colspan=16 height=20 class=subjects>{{ $subject->subjecttitle ?? '' }}</td>
+                <td colspan=7 class=subjects>{{ $grades["$subject->subjectname"]['teacher'] ?? '' }}</td>
+                <td colspan=4 class=midquarterteachers
+                    style="vertical-align: middle;">{{ $grades["$subject->subjectname"][$quarter]['midquarter'] ?? '' }}</td>
+                <td colspan=4 class=midquarterteachers
+                    style="vertical-align: middle;">{{ $comments["$subject->subjectname"]['performance'] ?? '' }}</td>
+                <td colspan=4 class=midquarterteachers
+                    style="vertical-align: middle;">{{ $comments["$subject->subjectname"]['behavior'] ?? '' }}</td>
+                <td colspan=13 class=midquarterteachers
+                    style="vertical-align: middle;">{{ $comments["$subject->subjectname"]['additional'] ?? '' }}</td>
+            </tr>
+        @endif
+    @endforeach
+    @foreach($applied as $subject)
         @php($grades["$subject->subjectname"]['teacher'] = $subject->title . ' ' . $subject->firstname . ' ' . $subject->lastname)
         @if (isset($grades["$subject->subjectname"]['teacher']))
             <tr class=blank style='mso-height-source:userset;height:15.0pt'>
