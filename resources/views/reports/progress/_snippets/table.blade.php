@@ -44,7 +44,11 @@
                                 <div class="dropdown-header">1st Semester</div>
                                 <a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                    href="{{ route('report.grade', ['midquarter',$gradelevel,'type=midquarter','schoolyear='.$schoolyear, 'semester=1', 'term=1']) }}">
-                                    MidQuarter <span class='fa fa-file-pdf-o pull-right'></span>
+                                    MidQuarter 1<span class='fa fa-file-pdf-o pull-right'></span>
+                                </a>
+                                <a style="cursor: pointer;" target="_blank" class="dropdown-item"
+                                   href="{{ route('report.grade', ['midquarter',$gradelevel,'type=midquarter','schoolyear='.$schoolyear, 'semester=1', 'term=2']) }}">
+                                    MidQuarter 2<span class='fa fa-file-pdf-o pull-right'></span>
                                 </a>
                                 <a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                    href="{{ route('report.grade', ['quarter',$gradelevel,'type=quarter','schoolyear='.$schoolyear, 'semester=1']) }}">
@@ -54,7 +58,11 @@
                                 <div class="dropdown-header">2nd Semester</div>
                                 <a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                    href="{{ route('report.grade', ['midquarter',$gradelevel,'type=midquarter','schoolyear='.$schoolyear, 'semester=2', 'term=3']) }}">
-                                    MidQuarter <span class='fa fa-file-pdf-o pull-right'></span>
+                                    MidQuarter 1<span class='fa fa-file-pdf-o pull-right'></span>
+                                </a>
+                                <a style="cursor: pointer;" target="_blank" class="dropdown-item"
+                                   href="{{ route('report.grade', ['midquarter',$gradelevel,'type=midquarter','schoolyear='.$schoolyear, 'semester=2', 'term=4']) }}">
+                                    MidQuarter 2<span class='fa fa-file-pdf-o pull-right'></span>
                                 </a>
                                 <a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                    href="{{ route('report.grade', ['quarter',$gradelevel,'type=quarter','schoolyear='.$schoolyear, 'semester=2']) }}">
@@ -105,7 +113,11 @@
                                 <div class="dropdown-header">1st Semester</div>
                                 <a style="cursor: pointer;" class="dropdown-item"
                                    href="{{ route('report.grade', ['midquarter',$gradelevel,'type=midquarter','schoolyear='.$schoolyear, 'semester=1', 'term=1', 'download=true']) }}">
-                                    MidQuarter <span class='fa fa-file-pdf-o pull-right'></span>
+                                    MidQuarter 1<span class='fa fa-file-pdf-o pull-right'></span>
+                                </a>
+                                <a style="cursor: pointer;" class="dropdown-item"
+                                   href="{{ route('report.grade', ['midquarter',$gradelevel,'type=midquarter','schoolyear='.$schoolyear, 'semester=1', 'term=2', 'download=true']) }}">
+                                    MidQuarter 2 <span class='fa fa-file-pdf-o pull-right'></span>
                                 </a>
                                 <a style="cursor: pointer;" class="dropdown-item"
                                    href="{{ route('report.grade', ['quarter',$gradelevel,'type=quarter','schoolyear='.$schoolyear, 'semester=1', 'download=true']) }}">
@@ -115,7 +127,11 @@
                                 <div class="dropdown-header">2nd Semester</div>
                                 <a style="cursor: pointer;" class="dropdown-item"
                                    href="{{ route('report.grade', ['midquarter',$gradelevel,'type=midquarter','schoolyear='.$schoolyear, 'semester=2', 'term=3', 'download=true']) }}">
-                                    MidQuarter <span class='fa fa-file-pdf-o pull-right'></span>
+                                    MidQuarter 1<span class='fa fa-file-pdf-o pull-right'></span>
+                                </a>
+                                <a style="cursor: pointer;" class="dropdown-item"
+                                   href="{{ route('report.grade', ['midquarter',$gradelevel,'type=midquarter','schoolyear='.$schoolyear, 'semester=2', 'term=4', 'download=true']) }}">
+                                    MidQuarter 2<span class='fa fa-file-pdf-o pull-right'></span>
                                 </a>
                                 <a style="cursor: pointer;" class="dropdown-item"
                                    href="{{ route('report.grade', ['quarter',$gradelevel,'type=quarter','schoolyear='.$schoolyear, 'semester=2', 'download=true']) }}">
@@ -235,7 +251,11 @@
                                         <div class="dropdown-header">1st Semester</div>
                                         <a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                            href="{{ route('report.student', ['midquarter',$student->student_id,'type=midquarter','schoolyear='.$schoolyear, 'semester=1', 'term=1']) }}">
-                                            MidQuarter <span class='fa fa-file-pdf-o pull-right'></span>
+                                            MidQuarter 1<span class='fa fa-file-pdf-o pull-right'></span>
+                                        </a>
+                                        <a style="cursor: pointer;" target="_blank" class="dropdown-item"
+                                           href="{{ route('report.student', ['midquarter',$student->student_id,'type=midquarter','schoolyear='.$schoolyear, 'semester=1', 'term=2']) }}">
+                                            MidQuarter 2<span class='fa fa-file-pdf-o pull-right'></span>
                                         </a>
                                         <a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                            href="{{ route('report.student', ['quarter',$student->student_id,'type=quarter','schoolyear='.$schoolyear, 'semester=1']) }}">
@@ -245,7 +265,11 @@
                                         <div class="dropdown-header">2nd Semester</div>
                                         <a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                            href="{{ route('report.student', ['midquarter',$student->student_id,'type=midquarter','schoolyear='.$schoolyear, 'semester=2', 'term=3']) }}">
-                                            MidQuarter <span class='fa fa-file-pdf-o pull-right'></span>
+                                            MidQuarter 1<span class='fa fa-file-pdf-o pull-right'></span>
+                                        </a>
+                                        <a style="cursor: pointer;" target="_blank" class="dropdown-item"
+                                           href="{{ route('report.student', ['midquarter',$student->student_id,'type=midquarter','schoolyear='.$schoolyear, 'semester=2', 'term=4']) }}">
+                                            MidQuarter 2<span class='fa fa-file-pdf-o pull-right'></span>
                                         </a>
                                         <a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                            href="{{ route('report.student', ['quarter',$student->student_id,'type=quarter','schoolyear='.$schoolyear, 'semester=2']) }}">
