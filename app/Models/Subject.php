@@ -66,9 +66,9 @@ class Subject extends Model
             ->where($query)
             ->select('subjects.*', 'subjects_user.*', 'users.lastname', 'users.firstname', 'users.id')
             ->orderBy('gradelevel', 'ASC')
-            ->orderBy('subjects_user.section', 'ASC')
             ->orderBy('subjects_user.semester', 'ASC')
-            ->orderBy('subjectname', 'ASC')
+            ->orderBy('subjects_user.section', 'ASC')
+            ->orderBy('subjects.subjecttitle', 'ASC')
             ->get();
 
         $subjectList = [];
@@ -91,7 +91,7 @@ class Subject extends Model
         return $gradelevels;
     }//For Report Card
 
-    public function byGradeLevelAndSection($gradelevel, $category = "Core", $section = "", $semester = "")
+    public function byGradeLevelAndSection($gradelevel, $section = "", $semester = "", $category = "")
     {
         $schoolyear = getSchoolYear();
         $query = [
@@ -103,20 +103,32 @@ class Subject extends Model
             array_push($query, ["semester", $semester]);
         endif;
 
-        if ($section != ""):
-            array_push($query, ["section", $section]);
-        endif;
-
         if ($category != ""):
             array_push($query, ["category", $category]);
         endif;
 
-        $subjects = Subject::where($query)
-            ->leftJoin('subjects_user', 'subjects_user.subject_id', 'subjects.subject_id')
-            ->leftJoin('users', 'users.id', 'subjects_user.user_id')
-            ->select('subjects.*', 'subjects_user.*', 'users.lastname', 'users.firstname', 'users.middlename', 'users.suffix', 'users.id', 'users.title')
-            ->orderBy('subjects.subjectname')
-            ->get();
+        if ($section != ""):
+            $query2 = $query;
+            array_push($query2, ["section", ""]);
+            array_push($query, ["section", $section]);
+        endif;
+
+        if ($section == ""):
+            $subjects = Subject::where($query)
+                ->leftJoin('subjects_user', 'subjects_user.subject_id', 'subjects.subject_id')
+                ->leftJoin('users', 'users.id', 'subjects_user.user_id')
+                ->select('subjects.*', 'subjects_user.*', 'users.lastname', 'users.firstname', 'users.middlename', 'users.suffix', 'users.id', 'users.title')
+                ->orderBy('subjects.subjectname')
+                ->get();
+        else:
+            $subjects = Subject::where($query)
+                ->orWhere($query2)
+                ->leftJoin('subjects_user', 'subjects_user.subject_id', 'subjects.subject_id')
+                ->leftJoin('users', 'users.id', 'subjects_user.user_id')
+                ->select('subjects.*', 'subjects_user.*', 'users.lastname', 'users.firstname', 'users.middlename', 'users.suffix', 'users.id', 'users.title')
+                ->orderBy('subjects.subjectname')
+                ->get();
+        endif;
 
         return $subjects;
     }

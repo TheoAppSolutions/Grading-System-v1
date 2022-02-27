@@ -80,6 +80,21 @@ class HomeController extends Controller
             endfor;
         endif;
 
+        if ($fix == "update subjects"):
+            $records = DB::table('subjects')
+                ->where('gradelevel', '>=', 11)
+                ->select('subject_id', 'category')
+                ->get();
+
+            foreach ($records as $record):
+                DB::table('subjects_user')->where([
+                    ['subject_id', $record->subject_id]
+                ])->update([
+                    'category' => $record->category
+                ]);
+            endforeach;
+        endif;
+
         /*for ($gradelevel = 11; $gradelevel <= 12; $gradelevel++):
             $gradesModel = new Grade;
             $gradesModel->setTableName($gradelevel);

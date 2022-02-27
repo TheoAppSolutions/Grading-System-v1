@@ -79,6 +79,30 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control"
+                                           for="section">Section/Strand</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="section" min="0" step="0.01"
+                                               class="form-control" name="section"
+                                               placeholder="Subject Section/Strand (Not Required)">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control"
+                                           for="category">Subject Category</label>
+                                    <div class="col-md-9">
+                                        <select class="select2-placeholder form-control hide-search"
+                                                name="category">
+                                            <option value="">Only For Senior High Subjects</option>
+                                            <optgroup label="Category">
+                                                <option value="Core">Core</option>
+                                                <option value="Applied">Applied</option>
+                                                <option value="Specialized">Specialized</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-12 col-lg-6">
                                 <h4 class="form-section"><i class="ft-user"></i> Subject Teacher</h4>

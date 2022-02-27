@@ -14,8 +14,8 @@
             @include('reports.templates._snippets.card_score_board')
         </td>
     </tr>{{-- TABLE HEADERS --}}
-    <tr style='mso-height-source:userset;height:19.5pt;'>
-        <td colspan=5 height=26 class=quarter style='height:19.5pt;'>Midterm</td>
+    <tr style='mso-height-source:userset;height:19pt;'>
+        <td colspan=5 height=26 class=quarter style='height:19pt;'>Midterm</td>
         <td colspan=5 class=quarter style='border-left:none'>Finals</td>
         <td class=blank></td>
     </tr>
@@ -24,8 +24,8 @@
 
     @foreach($category as $cat)
         @if(isset(${$cat}) and count(${$cat}) > 0)
-            <tr class=blank style='mso-height-source:userset;height:19.5pt'>
-                <td colspan=43 height=26 class=subjects style='height:19.5pt;font-weight: bold;padding-left: 5px;'>
+            <tr class=blank style='mso-height-source:userset;height:19pt'>
+                <td colspan=43 height=20 class=subjects style='height:19pt;font-weight: bold;padding-left: 5px;'>
                     {{ ucfirst($cat) }} Subjects
                 </td>
                 <td class=blank></td>
@@ -34,8 +34,8 @@
             @for($ctr = 0; $ctr<count(${$cat}); $ctr++)
                 @if(${$cat}[$ctr]->user_id != "")
                     <tr style='mso-height-source:userset;height:16.5pt'>
-                        <td colspan=20 height=26 class=subjects width=225
-                            style='height:19.5pt;width:171pt;padding-left: 10px;'>
+                        <td colspan=20 height=20 class=subjects width=225
+                            style='height:19pt;width:171pt;padding-left: 10px;'>
                             {{ ${$cat}[$ctr]->subjecttitle }}</td>
                         <td colspan=3 class=finalGrade>
                             {{ $grades[${$cat}[$ctr]->subjectname][$quarters[1]]['final'] ?? '' }}</td>
@@ -59,8 +59,8 @@
         @endif
     @endforeach
 
-    <tr style='mso-height-source:userset;height:19.5pt'>
-        <td colspan=20 height=26 class=subjects width=225 style='height:19.5pt;
+    <tr style='mso-height-source:userset;height:19pt'>
+        <td colspan=20 height=20 class=subjects width=225 style='height:19pt;
   width:171pt'>&nbsp;DEPORTMENT
         </td>
         <td colspan=5 class=deportment
@@ -70,8 +70,8 @@
         <td colspan=6 class=deportment style='width: 30px;'>{{ $grades['deportment'][5] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['deportment']['remarks'] ?? '' }}</td>
     </tr>
-    <tr style='mso-height-source:userset;height:19.5pt'>
-        <td colspan=30 height=26 class=generalaverage style='height:19.5pt'>GENERAL AVERAGE</td>
+    <tr style='mso-height-source:userset;height:19pt'>
+        <td colspan=30 height=20 class=generalaverage style='height:19pt'>GENERAL AVERAGE</td>
         <td colspan=6 class=finalGrade style="text-align: center;">{{ $grades['generalaverage'] ?? '' }}</td>
         <td colspan=7 class=remarks>{{ $grades['generalremarks'] ?? '' }}</td>
     </tr>

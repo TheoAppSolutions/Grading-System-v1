@@ -188,7 +188,10 @@
                                  style="height: 50px;width:50px;cursor: pointer;" class="img-rounded center-block"
                                  data-toggle="modal"
                                  data-target="#myModal" onclick="$('#img-responsive').attr('src',this.src);">
-                            {{ $student->lastname . ', ' . $student->firstname }} <i style="font-family: 'Times New Roman'">{{ $student->suffix ?? "" }}</i></td>
+                            {{ $student->lastname . ', ' . $student->firstname }} <i
+                                style="font-family: 'Times New Roman'">{{ $student->suffix ?? "" }}</i>
+                            @if($student->section) ({{ $student->section }}) @endif
+                        </td>
                         <td class="text-center">
                             <div class="btn-group">
                                 <button data-target='#modal' data-toggle="modal" class="btn btn-danger"

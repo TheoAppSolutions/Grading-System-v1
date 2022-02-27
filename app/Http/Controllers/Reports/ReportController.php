@@ -7,7 +7,6 @@ use App\Models\Award;
 use App\Models\SchoolYear;
 use App\User;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Input;
 use mikehaertl\wkhtmlto\Pdf as PDF;
 use App\Models\Subject;
 use App\Models\Attendance;
@@ -101,9 +100,9 @@ class ReportController extends Controller
             $quarters[2] = $semester == 1 ? 2 : 4;
 
             $subjects = new Subject;
-            $core = $subjects->byGradeLevelAndSection($student->gradelevel, "Core", '', $semester);
-            $applied = $subjects->byGradeLevelAndSection($student->gradelevel, "Applied", "", $semester);
-            $specialized = $subjects->byGradeLevelAndSection($student->gradelevel, "Specialized", $student->section, $semester);
+            $core = $subjects->byGradeLevelAndSection($student->gradelevel, $student->section, $semester, "Core");
+            $applied = $subjects->byGradeLevelAndSection($student->gradelevel, $student->section, $semester, "Applied");
+            $specialized = $subjects->byGradeLevelAndSection($student->gradelevel, $student->section, $semester, "Specialized");
 
             if ($type == "midquarter"):
                 return view('reports.templates.senior_high.seniorhigh_T1-T3', compact('student', 'grades', 'quarter', 'comments', 'homeroom', 'principal', 'core', 'applied', 'specialized', 'type', 'homeroom_id'));

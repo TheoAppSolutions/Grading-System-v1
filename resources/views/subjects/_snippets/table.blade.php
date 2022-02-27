@@ -7,11 +7,14 @@
             <th>ID</th>
             <th>Name</th>
             <th>Teacher 1</th>
-            <th>Teacher 2</th>
+            @if ($gradelevel < 11)
+                <th>Teacher 2</th>
+            @endif
             <th>Units</th>
             @if (schema("student")->{'senior.high.school'} and $gradelevel >= 11 and $gradelevel <= 12)
                 <th>Semester</th>
                 <th>Section</th>
+                <th>Category</th>
             @endif
             <th>Action</th>
         </tr>
@@ -39,10 +42,10 @@
                                 <option value="{{ $user->id }}"
                                 @if ($user_list[$subject->subject_id]["user_id"]==$user->id)
                                     {!! 'selected' !!}
-                                            @php($selected = $user->id)
-                                        @else
+                                        @php($selected = $user->id)
+                                    @else
                                     {!! '' !!}
-                                        @endif
+                                    @endif
                                 >{{ $user->lastname }}
                                     {{ isset($user->lastname) ? ',' : '' }} {{ $user->firstname }}</option>
                             @endif
@@ -50,7 +53,7 @@
                         @endforeach
                     </select>
                 </td>
-                <td class="p-1">
+                <td class="p-1" @if ($gradelevel >= 11) style="display: none" @endif>
                     @php($selected = '')
                     <select class="form-control" name="subject[{{ $subject->subject_id }}][user2_id]" title="">
                         <option value=""></option>
@@ -60,10 +63,10 @@
                                 <option value="{{ $user->id }}"
                                 @if ($user_list[$subject->subject_id]["user2_id"]==$user->id)
                                     {!! 'selected' !!}
-                                    @php($selected = $user->id)
-                                @else
+                                        @php($selected = $user->id)
+                                    @else
                                     {!! '' !!}
-                                @endif
+                                    @endif
                                 >{{ $user->lastname }}
                                     {{ isset($user->lastname) ? ',' : '' }} {{ $user->firstname }}</option>
                             @endif
@@ -82,7 +85,8 @@
                                 name="subject[{{ $subject->subject_id }}][semester]">
                             <optgroup label="Semester">
                                 @for($semester = 1; $semester <= 2; $semester++)
-                                    <option value="{{ $semester }}" {{ $semester == $subject->semester ? "selected" : "" }}>
+                                    <option
+                                        value="{{ $semester }}" {{ $semester == $subject->semester ? "selected" : "" }}>
                                         {{ $semester }}
                                     </option>
                                 @endfor
@@ -97,10 +101,26 @@
                             <option value=" "></option>
                             <optgroup label="Sections">
                                 @foreach($sections as $section)
-                                    <option value="{{ $section }}" {{ $section == $subject->section ? "selected" : "" }}>
+                                    <option
+                                        value="{{ $section }}" {{ $section == $subject->section ? "selected" : "" }}>
                                         {{ $section }}
                                     </option>
                                 @endforeach
+                            </optgroup>
+                        </select>
+                    </td>
+                    <td class="p-1">
+                        <select class="select2-placeholder form-control hide-search"
+                                name="subject[{{ $subject->subject_id }}][category]">
+                            @php($sections = schema("student")->{"strands"})
+                            <optgroup label="Category">
+                                <option value="Core" {{ $subject->category == "Core" ? "selected" : ($subject->category == "" ? "selected" : "") }}>Core</option>
+                                <option value="Applied" {{ $subject->category == "Applied" ? "selected" : "" }}>
+                                    Applied
+                                </option>
+                                <option value="Specialized" {{ $subject->category == "Specialized" ? "selected" : "" }}>
+                                    Specialized
+                                </option>
                             </optgroup>
                         </select>
                     </td>
@@ -117,9 +137,9 @@
                         </a>
 
                         <button type="button" title="Exclude Student" class="btn btn-danger" data-target='#modal'
-                           data-toggle="modal"
-                           onclick="loadModal('Student exclude list for {{ $subject->subjectname }}',
-                                   '{{ route('exclude', $subject->subject_id) }}')">
+                                data-toggle="modal"
+                                onclick="loadModal('Student exclude list for {{ $subject->subjectname }}',
+                                    '{{ route('exclude', $subject->subject_id) }}')">
                             <i class="ft-user-plus"></i>
                         </button>
                     @endif
@@ -133,11 +153,14 @@
             <th>ID</th>
             <th>Name</th>
             <th>Teacher 1</th>
-            <th>Teacher 2</th>
+            @if ($gradelevel < 11)
+                <th>Teacher 2</th>
+            @endif
             <th>Units</th>
             @if (schema("student")->{'senior.high.school'} and $gradelevel >= 11 and $gradelevel <= 12)
                 <th>Semester</th>
                 <th>Section</th>
+                <th>Category</th>
             @endif
             <th>Action</th>
         </tr>
