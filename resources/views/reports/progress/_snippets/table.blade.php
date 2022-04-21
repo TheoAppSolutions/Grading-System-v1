@@ -6,7 +6,9 @@
             <tr>
                 <th class="text-center">#</th>
                 <th class="text-center">Name</th>
-                <th class="text-center">Year Graduated</th>
+                @if($gradelevel == "graduates")
+                    <th class="text-center">Year Graduated</th>
+                @endif
                 <th class="text-center">
                     <div class="btn-group">
                         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
