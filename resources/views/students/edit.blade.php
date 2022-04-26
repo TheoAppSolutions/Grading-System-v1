@@ -137,7 +137,7 @@
                                                     </option>
                                                     <option value="Prep">Prep
                                                     </option>
-                                                    <option value="Jr. Kindy">Jr. Kindy
+                                                    <option value="Kindy">Kindy
                                                     </option>
                                                     <option value="1">1
                                                     </option>

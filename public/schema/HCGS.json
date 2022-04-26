@@ -40,8 +40,8 @@
     },
     "gradelevel.category": {
         "Pre School": {
-            "11": "Jr. Kindy",
-            "12": "Prep"
+            "11": "Prep",
+            "12": "Kindy"
         },
         "Lower School": {
             "1": "1",

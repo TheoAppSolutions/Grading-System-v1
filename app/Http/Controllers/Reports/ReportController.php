@@ -66,7 +66,7 @@ class ReportController extends Controller
 
         $schoolyear_start = SchoolYear::where("active", 1)->first()->schoolyear_start;
 
-        if ($student->gradelevel == "Prep" or $student->gradelevel == "Jr. Kindy"): //Pre School
+        if ($student->gradelevel == "Prep" or $student->gradelevel == "Kindy"): //Pre School
             if ($quarter == "award"):
                 return view('reports.templates.pre_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'attendance', 'days'));
             elseif ($quarter == 1 or $quarter == 3):

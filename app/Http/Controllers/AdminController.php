@@ -28,7 +28,7 @@ class AdminController extends Controller
             if ($advisory == 12):
                 $advisory = "Prep";
             elseif ($advisory == 11):
-                $advisory = "Jr. Kindy";
+                $advisory = "Kindy";
             endif;
             $homeroom = Homeroom::where([['schoolyear', $schoolyear], ['advisory', $advisory]])->first();
             $homeroom->user_id = $user['user_id'];

@@ -121,7 +121,7 @@ class EnrollmentController extends Controller
                     ]);
 
                     if ($import[6] == "Kindy"):
-                        $import[6] = "Jr. Kindy";
+                        $import[6] = "Kindy";
                     endif;
 
                     DB::table("enrollment")->insert([

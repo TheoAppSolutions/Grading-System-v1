@@ -55,7 +55,7 @@ class ReportStudentController extends Controller
         $subjects = $subjects->toArray();
         $award = Award::getAwardsForReportCard($grades, $schoolyear);
 
-        if ($student->gradelevel == "Prep" or $student->gradelevel == "Jr. Kindy"): //Pre School
+        if ($student->gradelevel == "Prep" or $student->gradelevel == "Kindy"): //Pre School
             if ($quarter == 1 or $quarter == 3):
                 return view('reports.templates.pre_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
             elseif ($quarter == 2 or $quarter == 4):
