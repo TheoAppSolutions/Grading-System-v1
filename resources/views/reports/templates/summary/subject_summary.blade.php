@@ -147,7 +147,7 @@
 
 <body>
 <div align="center" style="padding-top: 10pt;">
-    <h1>{{ $subject->subjectname . ' - ' . $subject->gradelevel .' (S.Y. '. getSchoolYear() .')' }}</h1>
+    <h2>{{ $subject->subjectname . ' - ' . $subject->gradelevel .' (S.Y. '. getSchoolYear() .')' }}</h2>
 
     <table border="0" cellpadding="0" cellspacing="0" width="361"
            style="border-collapse: collapse;table-layout:fixed;width:271pt">
@@ -230,9 +230,6 @@
         <tr>
             <td colspan="11">&nbsp;</td>
             <td colspan="2" align="center" style="font-size: 20px;">Subject Teacher</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
         </tr>
     </table>
 </div>

@@ -50,8 +50,8 @@ class Attendance extends Model
             $attendance->{$A} = $attendance->{$N} != -1 ? $attendance->{$A} : '';
             $attendance->{$T} = $attendance->{$N} != -1 ? $attendance->{$T} : '';
 
-            $attendance->TotalAbsent += intval($attendance->{$A});
-            $attendance->TotalTardy += intval($attendance->{$T});
+            $attendance->TotalAbsent += floatval($attendance->{$A});
+            $attendance->TotalTardy += floatval($attendance->{$T});
         endfor;
 
         return $attendance;

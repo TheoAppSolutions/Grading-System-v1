@@ -261,12 +261,13 @@ class ReportController extends Controller
         $gradesModel->setTableName($subject->gradelevel);
         $grade = $gradesModel->bySubjectID($subject_id, $schoolyear);
         $teacher = User::find($subject->user_id);
-        $students = Student::bySubjectID($subject_id);
+        $students = Student::bySubjectID($subject_id, request('section'));
 
         foreach ($students as $student) :
             $studentNames[$student->student_id]['name'] = $student->lastname . ', ' . $student->firstname;
             $studentNames[$student->student_id]['gender'] = $student->gender;
         endforeach;
+
         return view('reports.templates.summary.subject_summary', compact('studentNames', 'schoolyear', 'subject', 'grade', 'students', 'teacher'));
     }
 
@@ -281,7 +282,7 @@ class ReportController extends Controller
         $schoolyear = getSchoolYear();
         $subject = Subject::bySubjectID($subject_id);
 
-        $pdf->addPage(route('report.subject', [$subject->subject_id, 'schoolyear=' . $schoolyear]));
+        $pdf->addPage(route('report.subject', [$subject->subject_id, 'schoolyear=' . $schoolyear,'section='. request('section')]));
 
         $pdf->send();
         return false;
@@ -300,7 +301,7 @@ class ReportController extends Controller
 
         foreach ($subjects as $subject) :
             if (isset($subject->user_id)):
-                $pdf->addPage(route('report.subject', [$subject->subject_id, 'schoolyear=' . request('schoolyear')]));
+                $pdf->addPage(route('report.subject', [$subject->subject_id, 'schoolyear=' . request('schoolyear'), 'section='.request('section')]));
             endif;
         endforeach;
 

@@ -47,15 +47,20 @@ class HomeroomController extends Controller
     {
         $gradelevel = isset(request()->gradelevel) ? request()->gradelevel : 1;
         $subjects = Subject::getAll();
+        $section = "";
 
-        return view('reports.summary.index', compact('subjects', 'gradelevel'));
+        return view('reports.summary.index', compact('subjects', 'gradelevel', 'section'));
     }
 
     public function showSummary()
     {
         $section = request("section");
         $gradelevel = isset(request()->gradelevel) ? request()->gradelevel : 1;
-        $subjects = Subject::getAll("", $section);
+        if ($gradelevel > 10):
+            $subjects = Subject::getAll( getSchoolYear(), $section);
+        else:
+            $subjects = Subject::getAll( getSchoolYear());
+        endif;
 
         return view('reports.summary.show', compact('subjects', 'gradelevel', 'section'));
     }
@@ -151,7 +156,7 @@ class HomeroomController extends Controller
         foreach ($request->attendance as $key => $values):
             foreach ($values as $ctr => $value):
                 $counter = $ctr + 1;
-                $json[$counter][$key] = $value > 0 ? $value : 0;
+                $json[$counter][$key] = $value > 0 ? floatval($value) : 0;
             endforeach;
         endforeach;
 

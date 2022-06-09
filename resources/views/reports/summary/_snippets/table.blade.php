@@ -9,7 +9,7 @@
                     <th class="text-center">Semester</th>
                 @endif
                 <th class="text-center">
-                    <a href="{{ route('report.summary.grade',[$gradelevel,'schoolyear='.getSchoolYear()]) }}"
+                    <a href="{{ route('report.summary.grade',[$gradelevel,'schoolyear='.getSchoolYear(),'section='.$section]) }}"
                        class="btn btn-success" target="_blank"
                        data-toggle="tooltip"
                        data-placement="bottom" title="All Summary">
@@ -37,7 +37,7 @@
                             <td class="text-center">{{ $subject->semester }}</td>
                         @endif
                         <td class="text-center">
-                            <a href="{{ route('report.summary.subject', [$subject->subject_id,'schoolyear='.getSchoolYear()]) }}"
+                            <a href="{{ route('report.summary.subject', [$subject->subject_id,'schoolyear='.getSchoolYear(),'section='.$section]) }}"
                                class="btn btn-warning" target="_blank"
                                data-toggle="tooltip"
                                data-placement="bottom" title="Summary">
