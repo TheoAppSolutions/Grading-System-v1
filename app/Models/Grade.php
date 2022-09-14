@@ -101,7 +101,7 @@ class Grade extends Model
                 ['grades.schoolyear', $schoolyear],
                 ['subjects_user.schoolyear', $schoolyear]
             ])
-            ->select('subjectname',
+            ->select(['subjectname',
                 'subjects.subject_id',
                 'gradelevel',
                 'users.title',
@@ -118,7 +118,7 @@ class Grade extends Model
                 'students.lastname as StudLastname',
                 'students.firstname as StudFirstname',
                 'students.student_id',
-                'students.gender')
+                'students.gender'])
             ->orderBy('subjects.subjectname')
             ->get();
 

@@ -6,33 +6,33 @@
     <link href="{{ url('ReportCard.css') }}" rel="stylesheet">
 </head>
 <body>
-<div align=center>
-    <table border=0 cellpadding=0 cellspacing=0 width=910 class=blank
+<div>
+    <table class=blank
            style='border-collapse:collapse;table-layout:fixed;width:685pt'>
-        <col class=blank width=14 span=7 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 span=2 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 span=2 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 span=2 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 span=3 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 span=3 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 span=7 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 span=3 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 span=2 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 span=5 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 span=5 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 span=2 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
-        <col class=blank width=14 span=9 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank span=7 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank span=2 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank span=2 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank span=2 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank span=3 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank span=3 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank span=7 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank span=3 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank span=2 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank span=5 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank span=5 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank span=2 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
+        <col class=blank span=9 style='mso-width-source:userset;mso-width-alt:512;width:11pt'>
 
         <tr style='mso-height-source:userset;height:15.0pt'>
             <td colspan="22" height="60" rowspan="4" style="text-align: right">
@@ -85,7 +85,7 @@
             <td colspan=2 class=info>{{ $student->gender }}</td>
             <td class=blank></td>
             <td colspan=5 class=labels>GRADE:</td>
-            <td colspan={{ $student->section!='' ?'8' : '3' }} class=info>{{ ordinal($student->gradelevel) }} {{ $student->section!='' ? ' - ' . $student->section : '' }}</td>
+            <td colspan={{ $student->section!='' ?'8' : '3' }} class=info>{{ ordinal($student->gradelevel) }} {{ $student->section_or_strand !='' ? ' - ' . $student->section_or_strand : '' }}</td>
             <td class=blank></td>
             <td class=blank></td>
         </tr>

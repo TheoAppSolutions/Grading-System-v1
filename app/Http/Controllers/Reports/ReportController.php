@@ -34,7 +34,7 @@ class ReportController extends Controller
         $days = SchoolYear::getSchoolDays();
         $schoolyear = getSchoolYear();
         $student = Student::byStudentID($student_id);
-        $section = $student->gradelevel <= 10 ? $student->section : '';
+        $section = $student->section_or_strand != "" ? $student->section_or_strand : '';
         $homeroom = Homeroom::byGradeLevel($student->gradelevel, $section);
         $homeroom_id = $homeroom['id'];
         $homeroom = $homeroom['name'];
@@ -100,9 +100,9 @@ class ReportController extends Controller
             $quarters[2] = $semester == 1 ? 2 : 4;
 
             $subjects = new Subject;
-            $core = $subjects->byGradeLevelAndSection($student->gradelevel, $student->section, $semester, "Core");
-            $applied = $subjects->byGradeLevelAndSection($student->gradelevel, $student->section, $semester, "Applied");
-            $specialized = $subjects->byGradeLevelAndSection($student->gradelevel, $student->section, $semester, "Specialized");
+            $core = $subjects->byGradeLevelAndSection($student->gradelevel, $section, $semester, "Core");
+            $applied = $subjects->byGradeLevelAndSection($student->gradelevel, $section, $semester, "Applied");
+            $specialized = $subjects->byGradeLevelAndSection($student->gradelevel, $section, $semester, "Specialized");
 
             if ($type == "midquarter"):
                 return view('reports.templates.senior_high.seniorhigh_T1-T3', compact('student', 'grades', 'quarter', 'comments', 'homeroom', 'principal', 'core', 'applied', 'specialized', 'type', 'homeroom_id'));

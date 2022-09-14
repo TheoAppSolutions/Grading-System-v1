@@ -19,27 +19,50 @@
                             <thead>
                             <tr>
                                 <th>Gradelevel</th>
-                                <th>Section</th>
+                                <th>Section or Strand</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            @foreach($sections as $section)
-                                @if($section->schoolyear == $currentSchoolYear)
-                                    <tr>
-                                        <td>
-                                            {{ $section->gradelevel }}
-                                        </td>
-                                        <td>
-                                            {{ $section->section }}
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-sm btn-danger"
-                                               href="{{ route('section.remove', $section->entry_id) }}">Remove</a>
-                                        </td>
-                                    </tr>
-                                @endif
+                            @php($done = false)
+                            @foreach($sections as $gradelevel => $records)
+                                @php($done = false)
+                                @foreach($records as $section)
+                                    @if($section->schoolyear == $currentSchoolYear)
+                                        <tr>
+                                            @if(count($sections[$section->gradelevel]) > 1 and $done != true)
+                                                <td rowspan="{{ count($sections[$section->gradelevel]) }}">
+                                                    {{ $section->gradelevel }}
+                                                </td>
+                                            @elseif(count($sections[$section->gradelevel]) == 1 and $done != true)
+                                                <td>
+                                                    {{ $section->gradelevel }}
+                                                </td>
+                                            @endif
+                                            <td>
+                                                {{ $section->section }}
+                                                <a class="btn btn-sm btn-danger float-right"
+                                                   href="{{ route('section.remove', $section->entry_id) }}">Remove</a>
+                                            </td>
+                                            @if(count($sections[$section->gradelevel]) > 1 and $done != true)
+                                                @php($done = true)
+                                                <td rowspan="{{ count($sections[$section->gradelevel]) }}">
+                                                    <a class="btn btn-sm btn-primary"
+                                                       href="{{ route('sections.students', [$section->schoolyear, $section->gradelevel]) }}">Add
+                                                        Students</a>
+                                                </td>
+                                            @elseif(count($sections[$section->gradelevel]) == 1 and $done != true)
+                                                @php($done = true)
+                                                <td>
+                                                    <a class="btn btn-sm btn-primary"
+                                                       href="{{ route('sections.students', [$section->schoolyear, $section->gradelevel]) }}">Add
+                                                        Students</a>
+                                                </td>
+                                            @endif
+                                        </tr>
+                                    @endif
+                                @endforeach
                             @endforeach
                             </tbody>
                         </table>
@@ -56,9 +79,10 @@
                     <div class="card-body">
                         <form action="{{ route('section.store') }}" method="POST">
                             @csrf
+
                             <div class="row">
                                 <div class="col">
-                                    <label>Section Name</label>
+                                    <label>Section or Strand Name</label>
                                 </div>
                                 <div class="col">
                                     <input type="text" class="form-control" placeholder="Input Section Name"
@@ -67,7 +91,7 @@
                                 </div>
                             </div>
 
-                            <div class="row pt-1">
+                            <div class="row mt-1">
                                 <div class="col">
                                     <label>Grade Level</label>
                                 </div>

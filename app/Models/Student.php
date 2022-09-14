@@ -45,7 +45,7 @@ class Student extends Model
             $index = array_search($student_id, $graduates);
             $student->prev = isset($enrolled[$index - 1]) ? $enrolled[$index - 1] : '';
             $student->next = isset($enrolled[$index + 1]) ? $enrolled[$index + 1] : '';
-            $student->gradelevel = "Graduate";
+            //$student->gradelevel = "Graduate";
         elseif (array_search($student_id, $enrolled) !== false):
             $index = array_search($student_id, $enrolled);
             $student->prev = isset($enrolled[$index - 1]) ? $enrolled[$index - 1] : '';

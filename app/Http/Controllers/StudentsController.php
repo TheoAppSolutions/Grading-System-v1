@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
+use App\Models\Award;
+use App\Models\Comments_Midquarter;
+use App\Models\Comments_Quarter;
+use App\Models\Deportment;
+use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use Illuminate\Support\Facades\DB;
@@ -146,8 +152,9 @@ class StudentsController extends Controller
         endif;
 
         $sections = DB::table('sections')->where('schoolyear', getSchoolYear())->get();
+        $enrollment_records = Enrollment::getEnrollmentRecords($id);
 
-        return view('students.show', compact('student', 'graduate', 'sections'));
+        return view('students.show', compact('student', 'graduate', 'sections', 'enrollment_records'));
     }
 
     public function show_modal($id)
@@ -219,12 +226,53 @@ class StudentsController extends Controller
             $this->image_resize($request->file('avatar'), $id);
         endif;
 
+        // If Student ID is changed then change many tables
+        if ($request->student_id != $id):
+            Attendance::where('student_id', $id)
+                ->update(['student_id' => $request->student_id]);
+
+            Award::where('student_id', $id)
+                ->update(['student_id' => $request->student_id]);
+
+            Comments_Midquarter::where('student_id', $id)
+                ->update(['student_id' => $request->student_id]);
+
+            Comments_Quarter::where('student_id', $id)
+                ->update(['student_id' => $request->student_id]);
+
+            Deportment::where('student_id', $id)
+                ->update(['student_id' => $request->student_id]);
+
+            Enrollment::where('student_id', $id)
+                ->update(['student_id' => $request->student_id]);
+
+            for ($i = 1; $i <= 12; $i++):
+                DB::table('grades_' . $i)->where('student_id', $id)
+                    ->update(['student_id' => $request->student_id]);
+            endfor;
+
+            DB::table('graduates')->where('student_id', $id)
+                ->update(['student_id' => $request->student_id]);
+
+            Student::where('student_id', $id)
+                ->update(['student_id' => $request->student_id]);
+
+            DB::table('students_fields')->where('student_id', $id)
+                ->update(['student_id' => $request->student_id]);
+
+            DB::table('students_info')->where('student_id', $id)
+                ->update(['student_id' => $request->student_id]);
+
+            DB::table('students_section')->where('student_id', $id)
+                ->update(['student_id' => $request->student_id]);
+        endif;
+
         notify('Success!', 'success', [
             'timer' => 3000,
             'text' => 'Student Updated Successfully',
         ]);
 
-        return back();
+        return redirect(route('student.show', $request->student_id));
     }
 
     public function destroy(Request $request)
@@ -290,5 +338,12 @@ class StudentsController extends Controller
 
         // finally we save the image as a new file
         $img->save('images/students/' . $id . '.jpg');
+    }
+
+    public function enrollment_records($id)
+    {
+        $records = Enrollment::getStudentRecords($id);
+
+        return view('students._tabs.enrollment_records');
     }
 }

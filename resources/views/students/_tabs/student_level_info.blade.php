@@ -10,6 +10,8 @@
                            class="form-control" readonly
                            value="{{ $student->student_id ?? '' }}"
                            placeholder="Student #" name="student_id">
+                    <button type="button" class="btn btn-sm btn-warning" onclick="changeStudentID()">Update Student #
+                    </button>
                 </div>
             </div>
             @if (schema("student")->{"student.lrn"})
@@ -66,66 +68,72 @@
                             </optgroup>
                         @endforeach
                         <optgroup label="Graduate">
-                            <option value="graduate"
-                                    @if ($graduate) selected @endif>Graduate
-                            </option>
+                            <option value="graduate" @if ($graduate) selected @endif>Graduate</option>
                         </optgroup>
                     </select>
                 </div>
             </div>
-
-            @if (isset($request->section))
-                @php($selected = $request->old('section'))
-            @elseif (isset($student->section))
-                @php($selected = $student->section)
-            @else
-                @php($selected = " ")
-            @endif
-
-            @php($sections = getSections())
-            @if ($sections and $student->gradelevel >= 1 and $student->gradelevel <= 10)
-                <div class="form-group row">
-                    <label class="col-md-3 label-control" for="section">Section:
-                    </label>
-                    <div class="col-md-9">
-                        <select class="select2-placeholder form-control hide-search"
-                                name="section" id="section" data-placeholder="Select Section" required>
-                            <option value=" ">&nbsp;</option>
-                            @foreach($sections as $section_level => $section_list)
-                                @foreach($section_list as $section)
-                                    <option
-                                        value="{{ $section }}" data-gradelevel="{{ $section_level }}" {{ $student->section == $section ? "selected" : "" }}>
-                                        {{ $section }}
-                                    </option>
-                                @endforeach
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-            @endif
-            @if (schema("student")->{"senior.high.school"} and $student->gradelevel >= 11 and $student->gradelevel <= 12)
-                <div class="form-group row">
-                    <label class="col-md-3 label-control"
-                           for="section">Strand:
-                    </label>
-                    <div class="col-md-9">
-                        <select class="select2-placeholder form-control hide-search"
-                                name="section" id="section"
-                                data-placeholder="Select Academic Strand" required>
-
-                            @php($sections = schema("student")->{"strands"})
-                            <optgroup label="Sections">
-                                <option value="" {{ "" == $selected ? "selected" : "" }}> </option>
-                                @foreach($sections as $section)
-                                    <option value="{{ $section }}" {{ $section == $selected ? "selected" : "" }}>
-                                        {{ $section }}
-                                    </option>
-                                @endforeach
-                            </optgroup>
-                        </select>
-                    </div>
-                </div>
-            @endif
         </div>
     </div>
 </div>
+
+@push('js')
+    <script>
+        function changeStudentID() {
+            Swal.fire({
+                title: "Input Password To Unlock Student ID",
+                input: "password",
+                confirmButtonText: "Submit",
+                showCancelButton: true,
+                showLoaderOnConfirm: true,
+                allowOutsideClick: false,
+                inputValidator: (value) => {
+                    return new Promise((resolve) => {
+                        if (value) {
+                            resolve()
+                        } else {
+                            resolve("You need to write something!")
+                        }
+                    })
+                },
+                preConfirm: (password) => {
+                    return new Promise((resolve) => {
+                        setTimeout(function () {
+                            $.ajax(
+                                {
+                                    type: "post",
+                                    url: "/user/password/check",
+                                    data: {
+                                        "password": password,
+                                        "_token": token
+                                    },
+                                    success: function (response) {
+                                        if (response === "success") {
+                                            $("#student_id").removeAttr("readonly");
+                                            resolve("Correct Password");
+                                        } else {
+                                            resolve("Wrong Password");
+                                        }
+                                    },
+                                });
+
+                        }, 1000)
+                    })
+                }
+            }).then((result) => {
+                if (result.value === "Correct Password") {
+                    Swal.fire({
+                        type: "success",
+                        title: "Grades Unlocked"
+                    });
+                } else if (result.value === "Wrong Password") {
+                    Swal.fire({
+                        type: "error",
+                        title: "Wrong Password"
+                    });
+                }
+            });
+
+        }
+    </script>
+@endpush

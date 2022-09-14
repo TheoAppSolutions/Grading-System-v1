@@ -10,4 +10,8 @@ class Enrollment extends Model
     protected $table = "enrollment";
     public $timestamps = false;
 
+    public static function getEnrollmentRecords($id)
+    {
+        return Enrollment::where('student_id', $id)->get();
+    }
 }

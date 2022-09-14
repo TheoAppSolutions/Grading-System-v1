@@ -80,6 +80,28 @@
                                 </thead>
                                 <tbody>
                                 <tr>
+                                    <td class="text-middle align-middle">Enable Principal Signature</td>
+                                    <td class="text-center">
+                                        <input type="checkbox" class="switch hidden" id="switch2"
+                                               onchange="change_settings('principal_signature');"
+                                               data-reverse="" {{ getSettings("login_enabled") ? 'value="1" checked' : 'value="0"' }}>
+                                    </td>
+                                    <td class="align-middle">
+                                        This will disable auto insert of School Principal signature, whenever report cards are generated.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-middle align-middle">Enable Homeroom Signatures</td>
+                                    <td class="text-center">
+                                        <input type="checkbox" class="switch hidden" id="switch2"
+                                               onchange="change_settings('homeroom_signature');"
+                                               data-reverse="" {{ getSettings("login_enabled") ? 'value="1" checked' : 'value="0"' }}>
+                                    </td>
+                                    <td class="align-middle">
+                                        This will disable auto insert of Homeroom Adviser signature, whenever report cards are generated.
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td class="text-middle align-middle">Enable Login</td>
                                     <td class="text-center">
                                         <input type="checkbox" class="switch hidden" id="switch2"

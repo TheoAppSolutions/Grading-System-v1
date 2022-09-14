@@ -86,6 +86,9 @@
 
                 {{-- Action --}}
                 <td>
+                    <a href="{{ route('student.show', $student->student_id) }}" title="Edit" class="btn btn-info"
+                       target="_blank"><i
+                            class="ft-eye"></i></a>
                     @if($status == "enrolled")
                         {{--<a href="#" title="Un-enroll" class="btn btn-danger" data-target='#modal' data-toggle="modal"
                            type="button"
@@ -119,9 +122,6 @@
                                 <i class="la la-trash"></i></button>
                         @endif
                     @endif
-
-                    <a href="{{ route('student.show', $student->student_id) }}" title="Edit" class="btn btn-primary" target="_blank"><i
-                                class="ft-edit-2"></i></a>
                 </td>
             </tr>
         @endforeach

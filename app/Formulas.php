@@ -109,9 +109,9 @@ class Formulas extends Model
                 if (!empty($gradeset["MUSIC"][$ctr]["final"]) and !empty($gradeset["ART"][$ctr]["final"]) and !empty($gradeset["PE"][$ctr]["final"])):
                     $unit["MAPEH"] = $units[$gradeset["MUSIC"]["subject_id"]]['unit'] + $units[$gradeset["ART"]["subject_id"]]['unit'] + $units[$gradeset["PE"]["subject_id"]]['unit'];
                     $gradeset["MAPEH"][$ctr]["rawfinal"] = number_format((
-                        ($gradeset["MUSIC"][$ctr]["rawfinal"] * $units[$gradeset["MUSIC"]["subject_id"]]['unit']) +
-                        ($gradeset["ART"][$ctr]["rawfinal"] * $units[$gradeset["ART"]["subject_id"]]['unit']) +
-                        ($gradeset["PE"][$ctr]["rawfinal"] * $units[$gradeset["PE"]["subject_id"]]['unit'])) / $unit["MAPEH"], 3);
+                            ($gradeset["MUSIC"][$ctr]["rawfinal"] * $units[$gradeset["MUSIC"]["subject_id"]]['unit']) +
+                            ($gradeset["ART"][$ctr]["rawfinal"] * $units[$gradeset["ART"]["subject_id"]]['unit']) +
+                            ($gradeset["PE"][$ctr]["rawfinal"] * $units[$gradeset["PE"]["subject_id"]]['unit'])) / $unit["MAPEH"], 3);
 
                     $gradeset["MAPEH"][$ctr]["final"] = $gradeset["MAPEH"][$ctr]["rawfinal"];
                     if ($ctr != 5):

@@ -86,12 +86,16 @@
                                        aria-expanded="true"><i class="la la-user"></i> Personal Info</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="base-student-level" data-toggle="pill" href="#student-level"
-                                       aria-expanded="false"><i class="la la-comments-o"></i> Student Level Info</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" id="base-pill2" data-toggle="pill" href="#pill2"
                                        aria-expanded="false"><i class="la la-phone"></i> Contact Info</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="base-student-level" data-toggle="pill" href="#student-level"
+                                       aria-expanded="false"><i class="la la-comments-o"></i> Student Info</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="base-pill2" data-toggle="pill" href="#enrollment-records"
+                                       aria-expanded="false"><i class="la la-list-ol"></i> Enrollment Records</a>
                                 </li>
                                 {{--<li class="nav-item">
                                     <a class="nav-link" id="base-pill3" data-toggle="pill" href="#pill3"
@@ -232,15 +236,15 @@
                                     </div>
                                 </div>
 
-                                {{--<div class="tab-pane" id="pill3" aria-labelledby="base-pill3">
+                                <div class="tab-pane" id="enrollment-records" aria-labelledby="base-pill3">
                                     <div class="card border-primary">
                                         <div class="card-content">
                                             <div class="card-body">
-                                                <code>Still Work in Progress</code>
+                                                @include('students._tabs.enrollment_records')
                                             </div>
                                         </div>
                                     </div>
-                                </div>--}}
+                                </div>
 
                                 <div class="tab-pane" id="student-level" aria-labelledby="base-student-level">
                                     @include('students._tabs.student_level_info')

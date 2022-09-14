@@ -137,7 +137,7 @@ function unlockPassword() {
                                     let grades = $(".grades");
 
                                     for (let i = 0; i < grades.length; i++) {
-                                        grades[i].removeAttribute("readonly");
+                                        grades[i].removeAttr("readonly");
                                     }
                                     resolve("Correct Password");
                                 } else {

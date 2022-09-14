@@ -85,6 +85,7 @@ Route::middleware("check.role:Secretary,Principal")->prefix('office')->group(fun
     Route::patch('schooldays', 'OfficeController@schooldays_update')->name('office.schooldays.update');
     Route::get('sections', 'SectionsController@index')->name('office.sections');
     Route::get('sections/remove/{id}', 'SectionsController@delete')->name('section.remove');
+    Route::get('sections/students/{schoolyear}/{gradelevel}', 'SectionsController@studentLists')->name('sections.students');
     Route::post('sections/store', 'SectionsController@store')->name('section.store');
 
     Route::get('report/student', 'OfficeController@report_student')->name('office.report.student');
@@ -180,3 +181,4 @@ Route::get('test', 'HomeController@test');
 Route::get('fix', 'HomeController@fix')->name('fix');
 
 Route::patch('section/students', 'SectionsController@update')->name('student.sections.update');
+Route::post('section/students', 'SectionsController@updateSections')->name('student.sections.update2');
