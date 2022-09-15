@@ -37,7 +37,6 @@ class HomeroomController extends Controller
             foreach ($search as $item):
                 $deportment[$item->student_id] = $item->deportment;
             endforeach;
-
             return view('reports.progress.show', compact('students', 'gradelevel', 'deportment', 'section'));
         endif;
         return redirect('/');

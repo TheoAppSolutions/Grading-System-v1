@@ -58,13 +58,15 @@
                                 <li class="nav-item">
                                     <a class="nav-link active"
                                        id="baseLable-tab1" data-toggle="tab"
-                                       aria-controls="tabLable1" href="#{{ $subject->semester == 1 ? 1 : 3 }}" aria-expanded="true">
+                                       aria-controls="tabLable1" href="#{{ $subject->semester == 1 ? 1 : 3 }}"
+                                       aria-expanded="true">
                                         {{ schema("quarter.term") }} 1</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
                                        id="baseLable-tab1" data-toggle="tab"
-                                       aria-controls="tabLable1" href="#{{ $subject->semester == 1 ? 2 : 4 }}" aria-expanded="true">
+                                       aria-controls="tabLable1" href="#{{ $subject->semester == 1 ? 2 : 4 }}"
+                                       aria-expanded="true">
                                         {{ schema("quarter.term") }} 2</a>
                                 </li>
                             @else
@@ -110,13 +112,15 @@
                                         </select>
                                     </div>
                                 @endif
-                                <div class="pull-right">
-                                    <a href="{{ route('report.summary.subject', $subject->subject_id) . '?type='.$type }}"
-                                       class="btn btn-outline-success" target="_blank">
-                                        <i class="la la-file"></i>
-                                        Summary
-                                    </a>
-                                </div>
+                                @if($type == "Quarter")
+                                    <div class="pull-right">
+                                        <a href="{{ route('report.summary.subject', $subject->subject_id) . '?type='.$type }}"
+                                           class="btn btn-outline-success" target="_blank">
+                                            <i class="la la-file"></i>
+                                            Summary
+                                        </a>
+                                    </div>
+                                @endif
                             </li>
                         </ul>
                     </div>

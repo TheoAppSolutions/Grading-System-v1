@@ -3,8 +3,10 @@
     <i class="la la-ellipsis-h ft-minus" data-toggle="tooltip" data-placement="right"
        data-original-title="Subjects"></i>
 </li>
+@php($lastSubjectName = "")
 
 @foreach($subjects['subjects_seniorhigh'] as $semester => $value)
+    @php($subjects['subjects_seniorhigh'])
     <li>
         <a href="#" class="menu-item"><i class="la la-coffee"></i>
             <span class="menu-title">{{ ordinal($semester) }} Semester</span>
@@ -17,7 +19,6 @@
                     <a href="#" class="menu-item"><i class="la la-file"></i>
                         <span class="menu-title">Grade: {{ $subject->gradelevel }}</span>
                     </a>
-
                     {!! '<ul class="menu-content">' !!}
 
                 @elseif($lastGradeLevel != $subject->gradelevel)
@@ -28,7 +29,7 @@
                     {!! '<ul class="menu-content">' !!}
                 @endif
 
-                @if($lastSubjectName = $subject->subjectname)
+                @if($lastSubjectName != $subject->subjectname)
                     <li>
                         @if ($subject->section)
                             <a class="menu-item"

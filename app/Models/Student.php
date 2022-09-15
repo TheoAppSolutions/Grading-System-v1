@@ -108,7 +108,7 @@ class Student extends Model
                     ];
 
                 if ($section):
-                    array_push($where, ['students.section', $section]);
+                    array_push($where, ['enrollment.section_or_strand', $section]);
                 endif;
 
                 $students = DB::table("enrollment")
@@ -146,7 +146,7 @@ class Student extends Model
                 ];
 
                 if ($section):
-                    array_push($where, ['students.section', $section]);
+                    array_push($where, ['enrollment.section_or_strand', $section]);
                 endif;
 
                 $students = Student::join('students_info', 'students_info.student_id', 'students.student_id')

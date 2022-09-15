@@ -7,20 +7,26 @@
     @foreach($homerooms as $homeroom)
         <a href="#" class="menu-item"><i class="la la-files-o"></i>
             <span class="menu-title">Grade: {{ $homeroom->advisory }} @if($homeroom->section)
-                    - {{ $homeroom->section }}@endif</span>
+                    - {{ $homeroom->section }}
+                @endif</span>
         </a>
         <ul class="menu-content">
             <li>
-                <a href="{{ route("homeroom.show", [$homeroom->advisory, "section" => $homeroom->section]) }}" class="menu-item">
+                <a href="{{ route("homeroom.show", [$homeroom->advisory, "section" => $homeroom->section]) }}"
+                   class="menu-item">
                     <span class="menu-title">Progress Reports</span>
                 </a>
             </li>
             <li>
-                <a class="menu-item" href="{{ route('homeroom.summary.show', [$homeroom->advisory, "section" => $homeroom->section]) }}">
+                <a class="menu-item"
+                   href="{{ route('homeroom.summary.show', [$homeroom->advisory, "section" => $homeroom->section]) }}">
                     <span class="menu-title">Subject Summary</span>
                 </a>
             </li>
         </ul>
+        @if($homeroom->advisory)
+            @break
+        @endif
     @endforeach
 </li>
 {{--<li>

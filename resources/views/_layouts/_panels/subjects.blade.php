@@ -22,8 +22,6 @@
 
     @endif
 
-    @php($lastSubjectName = $subject->subjectname)
-
     @if($lastGradeLevel != $subject->gradelevel)
         <li>
             <a class="menu-item"
@@ -32,6 +30,7 @@
         </li>
     @endif
 
+    @php($lastSubjectName = $subject->subjectname)
     @php($lastGradeLevel = '')
 
     @if($loop->last)
