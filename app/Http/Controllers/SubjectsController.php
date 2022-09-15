@@ -76,7 +76,7 @@ class SubjectsController extends Controller
             'user_id' => $request->teacher1,
             'user2_id' => $request->teacher2,
             'schoolyear' => getSchoolYear(),
-            'category' => $request->category
+            'category' => isset($request->category) ? $request->category : ""
         ]);
 
         notify('Success!', 'success', [
@@ -124,7 +124,7 @@ class SubjectsController extends Controller
             'user2_id' => $request->user2_id,
             'section' => $request->section,
             'semester' => $request->semester,
-            'category' => $request->category
+            'category' => isset($request->category) ? $request->category : ""
         ]);
 
         $result = \DB::table('subjects_units')->where([
@@ -192,7 +192,7 @@ class SubjectsController extends Controller
                     'user2_id' => $subject['user2_id'],
                     'section' => $subject['section'],
                     'semester' => $subject['semester'],
-                    'category' => $subject['category']
+                    'category' => isset($subject['category']) ? $subject['category'] : ""
                 ]);
             else:
                 \DB::table('subjects_user')->where([
@@ -203,7 +203,7 @@ class SubjectsController extends Controller
                     'user2_id' => $subject['user2_id'],
                     'section' => $subject['section'],
                     'semester' => $subject['semester'],
-                    'category' => $subject['category']
+                    'category' => isset($subject['category']) ? $subject['category'] : ""
                 ]);
             endif;
 
@@ -259,8 +259,8 @@ class SubjectsController extends Controller
                 'user2_id' => $subject['user2_id'],
                 'section' => $subject['section'],
                 'semester' => $subject['semester'],
-                'category' => $subject['category']
-             ]);
+                'category' => isset($subject['category']) ? $subject['category'] : ""
+            ]);
         else:
             \DB::table('subjects_user')->where([
                 ['subject_id', $subject_id],
@@ -322,8 +322,9 @@ class SubjectsController extends Controller
                     'schoolyear' => $schoolyear,
                     'user_id' => isset($user_data[$subject->user_id]) ? $subject->user_id : null,
                     'user2_id' => isset($user_data[$subject->user2_id]) ? $subject->user2_id : null,
-                    'category' => $subject->category
-]);
+                    'category' => isset($subject->category) ? $subject->category : ""
+
+                ]);
             else:
                 DB::table('subjects_user')->where([
                     ['subject_id', $subject->subject_id],
@@ -331,7 +332,7 @@ class SubjectsController extends Controller
                 ])->update([
                     'user_id' => isset($user_data[$subject->user_id]) ? $subject->user_id : null,
                     'user2_id' => isset($user_data[$subject->user2_id]) ? $subject->user2_id : null,
-                    'category' => $subject->category
+                    'category' => isset($subject->category) ? $subject->category : ""
                 ]);
             endif;
 
