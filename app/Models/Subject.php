@@ -34,10 +34,10 @@ class Subject extends Model
         $subjects = Subject::join('subjects_user', 'subjects_user.subject_id', 'subjects.subject_id')
             ->where([['user_id', $user_id], ['schoolyear', $schoolyear]])
             ->orWhere([['user2_id', $user_id], ['schoolyear', $schoolyear]])
+            ->orderBy('subjects.subject_id', 'ASC')
             ->orderBy('gradelevel', 'ASC')
             ->orderBy('semester', 'ASC')
             ->orderBy('section', 'ASC')
-            ->orderBy('subjects.subject_id', 'ASC')
             ->get();
 
         $subjectList = [];
@@ -45,7 +45,7 @@ class Subject extends Model
             if ($subject->gradelevel >= 1 and $subject->gradelevel <= 10):
                 $subjectList['subjects'][$subject->subject_id] = $subject;
             elseif ($subject->gradelevel >= 11 and $subject->gradelevel <= 12):
-                $subjectList['subjects_seniorhigh'][$subject->semester][$subject->subject_id] = $subject;
+                $subjectList['subjects_seniorhigh'][$subject->semester][$subject->gradelevel][$subject->subject_id] = $subject;
             endif;
         endforeach;
 
@@ -64,7 +64,7 @@ class Subject extends Model
         $subjects = Subject::leftJoin('subjects_user', 'subjects_user.subject_id', 'subjects.subject_id')
             ->leftJoin('users', 'users.id', 'subjects_user.user_id')
             ->where($query)
-            ->select('subjects.*', 'subjects_user.*', 'users.lastname', 'users.firstname', 'users.id')
+            ->select(['subjects.*', 'subjects_user.*', 'users.lastname', 'users.firstname', 'users.id'])
             ->orderBy('gradelevel', 'ASC')
             ->orderBy('subjects_user.semester', 'ASC')
             ->orderBy('subjects_user.section', 'ASC')

@@ -5,7 +5,7 @@
 </li>
 @php($lastSubjectName = "")
 
-@foreach($subjects['subjects_seniorhigh'] as $semester => $value)
+@foreach($subjects['subjects_seniorhigh'] as $semester => $records)
     @php($subjects['subjects_seniorhigh'])
     <li>
         <a href="#" class="menu-item"><i class="la la-coffee"></i>
@@ -13,42 +13,44 @@
         </a>
 
         <ul class="menu-content">
-            @foreach($value as $subject)
-                @if($loop->first)
-                    {!! '<li>' !!}
-                    <a href="#" class="menu-item"><i class="la la-file"></i>
-                        <span class="menu-title">Grade: {{ $subject->gradelevel }}</span>
-                    </a>
-                    {!! '<ul class="menu-content">' !!}
+            @foreach($records as $record)
+                @foreach($record as $gradelevel => $subject)
+                    @if($loop->first)
+                        {!! '<li>' !!}
+                        <a href="#" class="menu-item"><i class="la la-file"></i>
+                            <span class="menu-title">Grade: {{ $subject->gradelevel }}</span>
+                        </a>
+                        {!! '<ul class="menu-content">' !!}
 
-                @elseif($lastGradeLevel != $subject->gradelevel)
-                    {!! '</ul></li><li>' !!}
-                    <a href="#" class="menu-item"><i class="la la-file"></i>
-                        <span class="menu-title">Grade: {{ $subject->gradelevel }}</span>
-                    </a>
-                    {!! '<ul class="menu-content">' !!}
-                @endif
+                    @elseif($lastGradeLevel != $subject->gradelevel)
+                        {!! '</ul></li><li>' !!}
+                        <a href="#" class="menu-item"><i class="la la-file"></i>
+                            <span class="menu-title">Grade: {{ $subject->gradelevel }}</span>
+                        </a>
+                        {!! '<ul class="menu-content">' !!}
+                    @endif
 
-                @if($lastSubjectName != $subject->subjectname)
-                    <li>
-                        @if ($subject->section)
-                            <a class="menu-item"
-                               href='{{ route('grades.show', [$subject->subject_id, 'section='.$subject->section]) }}'>{{ $subject->subjectname }}
-                            </a>
-                        @else
-                            <a class="menu-item"
-                               href='{{ route('grades.show', [$subject->subject_id]) }}'>{{ $subject->subjectname }}
-                            </a>
-                        @endif
-                    </li>
-                @endif
+                    @if($lastSubjectName != $subject->subjectname)
+                        <li>
+                            @if ($subject->section)
+                                <a class="menu-item"
+                                   href='{{ route('grades.show', [$subject->subject_id, 'section='.$subject->section]) }}'>{{ $subject->subjectname }}
+                                </a>
+                            @else
+                                <a class="menu-item"
+                                   href='{{ route('grades.show', [$subject->subject_id]) }}'>{{ $subject->subjectname }}
+                                </a>
+                            @endif
+                        </li>
+                    @endif
 
-                @php($lastSubjectName = $subject->subjectname)
-                @php($lastGradeLevel = $subject->gradelevel)
+                    @php($lastSubjectName = $subject->subjectname)
+                    @php($lastGradeLevel = $subject->gradelevel)
 
-                @if($loop->last)
-                    {!! "</ul>" !!}
-                @endif
+                    @if($loop->last)
+                        {!! "</ul>" !!}
+                    @endif
+                @endforeach
             @endforeach
         </ul>
     </li>
