@@ -7,6 +7,7 @@ use App\Models\Award;
 use App\Models\SchoolYear;
 use App\User;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\File;
 use mikehaertl\wkhtmlto\Pdf as PDF;
 use App\Models\Subject;
 use App\Models\Attendance;
@@ -218,14 +219,17 @@ class ReportController extends Controller
                 $pdf->addPage(route('report.midquarter', [$student->student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type, 'semester=' . $semester]));
             endif;
             if (request("download") == "true"):
+                File::ensureDirectoryExists(public_path("/reports/" . $gradelevel . "/"));
                 $pdf->saveAs(public_path("/reports/" . $gradelevel . "/") . $student->lastname . ", " . $student->firstname . " " . $student->suffix . ".pdf");
             endif;
         endforeach;
 
         if (request("download") == "true"):
+            File::ensureDirectoryExists("reports/zip/");
+
             $zip_file = public_path("reports/zip/") . ordinal($gradelevel) . " Grade " . ucwords($type) . '.zip';
             $zip = new ZipArchive();
-            $zip->open($zip_file, ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+            $zip->open($zip_file, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
             $path = public_path("reports/" . $gradelevel . "/");
             $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));

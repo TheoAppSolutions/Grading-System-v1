@@ -24,13 +24,14 @@ class Student extends Model
             ->orderBy('enrollment.schoolyear', 'DESC')
             ->first();
 
-        $sections = DB::table('students_section')->where('schoolyear', request('schoolyear'))->get();
+        $student->section = $student->section_or_strand;
+        /*$sections = DB::table('students_section')->where('schoolyear', request('schoolyear'))->get();
 
         foreach ($sections as $section) :
             if ($section->student_id == $student_id):
                 $student->section = $section->section;
             endif;
-        endforeach;
+        endforeach;*/
 
         $student->next_gradelevel = getNextGradeLevel($student->gradelevel);
         $student->prev = 0;

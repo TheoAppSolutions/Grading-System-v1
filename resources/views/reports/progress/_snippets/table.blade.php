@@ -189,7 +189,7 @@
                                  data-toggle="modal"
                                  data-target="#myModal" onclick="$('#img-responsive').attr('src',this.src);">
                             {{ $student->lastname . ', ' . $student->firstname }} {{ $student->suffix ?? "" }}
-                            @if($student->section) ({{ $student->section }}) @endif
+                            @if($student->section_or_strand) ({{ $student->section_or_strand }}) @endif
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
