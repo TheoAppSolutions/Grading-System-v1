@@ -220,7 +220,9 @@ class ReportController extends Controller
             endif;
             if (request("download") == "true"):
                 File::ensureDirectoryExists(public_path("/reports/" . $gradelevel . "/"));
-                $pdf->saveAs(public_path("/reports/" . $gradelevel . "/") . $student->lastname . ", " . $student->firstname . " " . $student->suffix . ".pdf");
+                $section = $student->section_or_strand ? " (" . $student->section_or_strand . ")" : "";
+                $suffix = $student->suffix ? " " . $student->suffix : "";
+                $pdf->saveAs(public_path("/reports/" . $gradelevel . "/") . $student->lastname . ", " . $student->firstname . $suffix . $section . ".pdf");
             endif;
         endforeach;
 
@@ -286,7 +288,7 @@ class ReportController extends Controller
         $schoolyear = getSchoolYear();
         $subject = Subject::bySubjectID($subject_id);
 
-        $pdf->addPage(route('report.subject', [$subject->subject_id, 'schoolyear=' . $schoolyear,'section='. request('section')]));
+        $pdf->addPage(route('report.subject', [$subject->subject_id, 'schoolyear=' . $schoolyear, 'section=' . request('section')]));
 
         $pdf->send();
         return false;
@@ -305,7 +307,7 @@ class ReportController extends Controller
 
         foreach ($subjects as $subject) :
             if (isset($subject->user_id)):
-                $pdf->addPage(route('report.subject', [$subject->subject_id, 'schoolyear=' . request('schoolyear'), 'section='.request('section')]));
+                $pdf->addPage(route('report.subject', [$subject->subject_id, 'schoolyear=' . request('schoolyear'), 'section=' . request('section')]));
             endif;
         endforeach;
 
