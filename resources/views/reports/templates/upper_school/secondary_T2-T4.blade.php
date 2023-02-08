@@ -180,7 +180,7 @@
     </tr>{{-- TLE --}}
     <tr style='mso-height-source:userset;height:18.75pt'>
         <td colspan=16 height=25 class=subjects width=210 style='height:18.75pt;
-  width:160pt'>&nbsp;&nbsp;&nbsp;&nbsp;HELE
+  width:160pt'>&nbsp;&nbsp;&nbsp;&nbsp;Livelihood Education
         </td>
         @for($ctr = 1; $ctr <= 5; $ctr++)
             <td colspan={{ $ctr < 5 ? 3: 4 }} class=finalgrade {{ $ctr < 5 ? "width=40" : "" }}>
