@@ -57,28 +57,58 @@ class HomeController extends Controller
     public function fix()
     {
         $fix = request("fix");
-        if ($fix == "remove duplicates"):
-            $counter = 0;
-            for ($i = 1; $i <= 12; $i++):
-                $duplicateRecords = DB::table('grades_' . $i)->select('subject_id', 'quarter', 'student_id')
-                    ->selectRaw('count(*) as `occurences`')
-                    ->groupBy('subject_id', 'quarter', 'student_id')
-                    ->having('occurences', '>', 1)
-                    ->get();
+        $duplicates = [];
+        $duplicatesCounter = 0;
+        date_default_timezone_set("Asia/Manila");
+        $date = date("m-d-Y_h-i-sa");
 
-                $counter += count($duplicateRecords);
+        $duplicates[] = $date;
 
-                foreach ($duplicateRecords as $record):
-                    $duplicate = DB::table('grades_' . $i)->where([
-                        ['subject_id', $record->subject_id],
-                        ['student_id', $record->student_id],
-                        ['quarter', $record->quarter]
-                    ])->first();
+        // Remove Duplicates in Grades Table
+        for ($i = 1; $i <= 12; $i++):
+            $duplicateRecords = DB::table('grades_' . $i)->select('subject_id', 'quarter', 'student_id')
+                ->selectRaw('count(*) as `occurences`')
+                ->groupBy('subject_id', 'quarter', 'student_id')
+                ->having('occurences', '>', 1)
+                ->get();
 
-                    DB::table('grades_' . $i)->where('entry_id', $duplicate->entry_id)->delete();
-                endforeach;
-            endfor;
-        endif;
+            foreach ($duplicateRecords as $record):
+                $duplicate = DB::table('grades_' . $i)->where([
+                    ['subject_id', $record->subject_id],
+                    ['student_id', $record->student_id],
+                    ['quarter', $record->quarter]
+                ])->first();
+
+                DB::table('grades_' . $i)->where('entry_id', $duplicate->entry_id)->delete();
+                $duplicates['grades_' . $i][] = $duplicate;
+                $duplicatesCounter++;
+            endforeach;
+        endfor;
+
+        // Remove Duplicates in in the following Tables
+        $table = ['enrollment', 'attendance', 'comments_midquarter', 'comments_quarter'];
+        for ($i = 0; $i < count($table); $i++):
+            $duplicateRecords = DB::table($table[$i])->select('student_id', 'schoolyear')
+                ->selectRaw('count(*) as `occurences`')
+                ->groupBy('student_id', 'schoolyear')
+                ->having('occurences', '>', 1)
+                ->get();
+
+            foreach ($duplicateRecords as $record):
+                $duplicate = DB::table($table[$i])->where([
+                    ['student_id', $record->student_id],
+                    ['schoolyear', $record->schoolyear]
+                ])->first();
+
+                DB::table($table[$i])->where('entry_id', $duplicate->entry_id)->delete();
+                $duplicates[$table[$i]][] = $duplicate;
+                $duplicatesCounter++;
+            endforeach;
+        endfor;
+
+        file_put_contents('logs/'.$date . ".txt", print_r($duplicates, true));
+
+        notify("Removed " . $duplicatesCounter . " number of record(s), check logs folder for details.", 'success');
 
         if ($fix == "update subjects"):
             $records = DB::table('subjects')

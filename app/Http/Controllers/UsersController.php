@@ -107,7 +107,7 @@ class UsersController extends Controller
         /*$logs = Log::where('user_id', $id)->orderBy('created_at', 'DESC')->limit(50)->get();
         $files = Files::where('user_id', $id)->orderBy('uploaded_at')->get();*/
 
-        return view('users.show', compact('user',  'teacher', 'office'));
+        return view('users.show', compact('user', 'teacher', 'office'));
     }
 
     public function update(Request $request, $id)
@@ -134,7 +134,15 @@ class UsersController extends Controller
         endif;
 
         if ($request->hasFile('avatar')) :
-            $this->image_resize($request->file('avatar'), $id);
+            $this->image_resize($request->file('avatar'), $id, 'profile');
+        endif;
+
+        if ($request->removeSignature == 'true'):
+            Storage::delete('/images/signatures/' . $id . '.png');
+        endif;
+
+        if ($request->hasFile('signature')) :
+            $this->image_resize($request->file('signature'), $id, 'signatures');
         endif;
 
         notify('Success!', 'success', [
@@ -237,7 +245,7 @@ class UsersController extends Controller
         return '';
     }
 
-    protected function image_resize($file, $id)
+    protected function image_resize($file, $id, $location)
     {
         // open an image file
         $img = Image::make($file);
@@ -246,6 +254,7 @@ class UsersController extends Controller
         $img->resize(520, 520);
 
         // finally we save the image as a new file
-        $img->save('images/profile/' . $id . '.jpg');
+        $fileType = $location == "profile" ? ".jpg" : ".png";
+        $img->save('images/' . $location . '/' . $id . $fileType);
     }
 }

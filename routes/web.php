@@ -179,6 +179,7 @@ Route::get('image.editor', 'FilesController@image_editor')->name('image.editor')
 
 Route::get('test', 'HomeController@test');
 Route::get('fix', 'HomeController@fix')->name('fix');
+Route::get('fix/enrollment', 'HomeController@fix')->name('fix.enrollment');
 
 Route::patch('section/students', 'SectionsController@update')->name('student.sections.update');
 Route::post('section/students', 'SectionsController@updateSections')->name('student.sections.update2');

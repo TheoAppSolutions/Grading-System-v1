@@ -35,8 +35,11 @@
                     @method("PATCH")
                     @csrf
                     <input name="avatar" id="avatar" type="file" accept="image/*" hidden
-                           onchange="changeImage(this);">
-                    <input type="hidden" value="false" id="removeAvatar" name="removeAvatar">
+                           onchange="changeImage(this, 'img-avatar');">
+                    <input type="hidden" value="false" id="remove-avatar" name="removeAvatar">
+                    <input name="signature" id="signature" type="file" accept="image/*" hidden
+                           onchange="changeImage(this, 'img-signature');">
+                    <input type="hidden" value="false" id="remove-signature" name="removeSignature">
 
                     <div class="form-body row">
                         <div class="col-4">
@@ -48,7 +51,7 @@
                                             </h4>
                                         </div>
                                         <div class="card-body">
-                                            <img src="{{ profile_image($user->id) }}" class="img-circle" id="avatar-img"
+                                            <img src="{{ profile_image($user->id) }}" class="img-circle" id="img-avatar"
                                                  style="max-width: 200px; width: 100%;">
                                         </div>
                                         <div class="card-footer">
@@ -92,7 +95,7 @@
                                 @if (settings("file_storage_enabled") === "false" or checkAdmin(auth()->id()))
                                     <li class="nav-item">
                                         <a class="nav-link" id="base-pill3" data-toggle="pill" href="#pill3"
-                                           aria-expanded="false"><i class="la la-file"></i> Documents</a>
+                                           aria-expanded="false"><i class="la la-file"></i> Signature</a>
                                     </li>
                                 @endif
                             </ul>
@@ -107,7 +110,7 @@
                                                 <div class="form-group row">
                                                     <label class="col-md-3 label-control" for="firstname">First Name
                                                         <span
-                                                                class="danger">*</span>: </label>
+                                                            class="danger">*</span>: </label>
                                                     <div class="col-md-9">
                                                         <input type="text" id="firstname"
                                                                value="{{ $user->firstname ?? old('firstname', '') }}"
@@ -118,7 +121,7 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <label class="col-md-3 label-control" for="lastname">Last Name <span
-                                                                class="danger">*</span>:</label>
+                                                            class="danger">*</span>:</label>
                                                     <div class="col-md-9">
                                                         <input type="text" id="lastname"
                                                                value="{{ $user->lastname ?? old('lastname', '') }}"
@@ -177,7 +180,8 @@
                                                             <option value="Ms." {{ $title == "Ms."  ? "selected" : ""}}>
                                                                 Ms.
                                                             </option>
-                                                            <option value="Mrs." {{ $title == "Mrs." ? "selected" : "" }}>
+                                                            <option
+                                                                value="Mrs." {{ $title == "Mrs." ? "selected" : "" }}>
                                                                 Mrs.
                                                             </option>
                                                         </select>
@@ -231,11 +235,30 @@
                                     <div class="card border-primary">
                                         <div class="card-content">
                                             <div class="card-body">
-                                                @if (settings("file_storage_enabled") === "false" or checkAdmin(auth()->id()))
-                                                    <code>Still Work in Progress</code>
-                                                @else
-                                                    <code>File storage disabled by the Administrator</code>
-                                                @endif
+                                                <img src="{{ "/images/signatures/" . $user->id . ".png" }}"
+                                                     id="img-signature"
+                                                     style="max-width: 200px; width: 100%;">
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="btn-group">
+                                                    <button type="button"
+                                                            class="btn btn-icon btn-success dropdown-toggle"
+                                                            data-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="true">
+                                                        <i class="la la-camera"></i> Signature Action
+                                                    </button>
+                                                    <div class="dropdown-menu" x-placement="bottom-start">
+                                                        <a class="dropdown-item" href="#"
+                                                           onclick="$('#signature').click();">
+                                                            <i class="la la-upload"></i> Change Signature
+                                                        </a>
+
+                                                        <a class="dropdown-item" href="#"
+                                                           onclick="removeImage('signature');">
+                                                            <i class="la la-times"></i> Remove Signature
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

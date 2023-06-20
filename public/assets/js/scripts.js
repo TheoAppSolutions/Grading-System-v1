@@ -622,11 +622,11 @@ function activate(schoolyear) {
     });
 }
 
-function changeImage(input) {
+function changeImage(input, elementID) {
     if (input.files[0].size > 2097152) {
         alert("File is too big!");
     } else {
-        let img = $("#avatar-img");
+        let img = $("#" + elementID);
         let url = input.value;
         let ext = url.substring(url.lastIndexOf(".") + 1).toLowerCase();
 
@@ -643,10 +643,10 @@ function changeImage(input) {
     }
 }
 
-function removeImage() {
-    $('#removeAvatar').val('true');
-    $('#avatar').val('');
-    $('#avatar-img').attr('src', '{{ profile_image() }}');
+function removeImage(elementID) {
+    $('#remove-' + elementID).val('true');
+    $('#' + elementID).val('');
+    $('#img-' + elementID).attr('src', '{{ profile_image() }}');
 }
 
 function announcement_create() {

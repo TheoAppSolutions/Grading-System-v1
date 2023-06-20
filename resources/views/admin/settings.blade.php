@@ -175,7 +175,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="text-middle align-middle">Clear Duplicates Grades</td>
+                                    <td class="text-middle align-middle">Clear Duplicates</td>
                                     <td class="text-center">
                                         <a href="{{ route('fix', "fix=remove duplicates") }}" class="btn btn-danger" >
                                             <i class="la la-recycle"></i>
@@ -183,8 +183,8 @@
                                         </a>
                                     </td>
                                     <td class="align-middle">
-                                        Remove duplicate grade entry
-                                        <span class="text-danger">(May fix grades not updating bug)</span>
+                                        Remove duplicates
+                                        <span class="text-danger">(May fix grades not updating bug & duplicate enrollments)</span>
                                     </td>
                                 </tr>
                                 </tbody>
