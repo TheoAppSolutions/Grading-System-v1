@@ -139,10 +139,10 @@ class UsersController extends Controller
 
         if ($request->removeSignature == 'true'):
             Storage::delete('/images/signatures/' . $id . '.png');
-        endif;
-
-        if ($request->hasFile('signature')) :
-            $this->image_resize($request->file('signature'), $id, 'signatures');
+        else:
+            if ($request->hasFile('signature')) :
+                $this->image_resize($request->file('signature'), $id, 'signatures');
+            endif;
         endif;
 
         notify('Success!', 'success', [

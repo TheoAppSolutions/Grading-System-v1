@@ -209,20 +209,30 @@ function checkMark()
 
 function signatureMiss()
 {
-    $imageID = "signature.png";
-    if (!file_exists($imageID)) :
-        return "";
+    $setting = DB::table('settings')->where('field_name', "principal_signature")->first()->field_value;
+
+    if ($setting == 1):
+        $imageID = "signature.png";
+        if (!file_exists($imageID)) :
+            return "";
+        endif;
+        return "<img src='" . url('signature.png') . "' style='height:50px;width:150px;'/>";
     endif;
-    return "<img src='" . url('signature.png') . "' style='height:50px;width:150px;'/>";
+    return "";
 }
 
 function signatureTeacher($id)
 {
-    $imageID = "images/signatures/" . $id . ".png";
-    if (!file_exists($imageID)) :
-        return "";
+    $setting = DB::table('settings')->where('field_name', "homeroom_signature")->first()->field_value;
+
+    if ($setting == 1):
+        $imageID = "images/signatures/" . $id . ".png";
+        if (!file_exists($imageID)) :
+            return "";
+        endif;
+        return "<img src='" . url('images/signatures/' . $id . '.png') . "' style='height:50px;width:150px;'/>";
     endif;
-    return "<img src='" . url('images/signatures/'. $id .'.png') . "' style='height:50px;width:150px;'/>";
+    return "";
 }
 
 function getLastStudentID()
@@ -256,13 +266,13 @@ function consoleLog($data)
 function ordinal($number)
 {
     if ($number):
-    $ends = array('th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th');
+        $ends = array('th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th');
 
-    if ((($number % 100) >= 11) and (($number % 100) <= 12)) {
-        return $number . 'th';
-    } else {
-        return $number . $ends[$number % 10];
-    }
+        if ((($number % 100) >= 11) and (($number % 100) <= 12)) {
+            return $number . 'th';
+        } else {
+            return $number . $ends[$number % 10];
+        }
     else:
         return "";
     endif;

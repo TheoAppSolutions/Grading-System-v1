@@ -51,7 +51,8 @@ class SettingsController extends Controller
                 break;
 
             default:
-                DB::table('settings')->where('field_name', $request->field_name)->update(["field_value" => $request->field_value]);
+                $setting = DB::table('settings')->where('field_name', $request->field_name)->first();
+                DB::table('settings')->where('field_name', $request->field_name)->update(["field_value" => $setting->field_value == 1 ? 0 : 1]);
                 break;
         endswitch;
 
