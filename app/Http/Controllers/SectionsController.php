@@ -49,9 +49,9 @@ class SectionsController extends Controller
                 $student_id = str_replace("section[", '', $student[0]);
                 $student_id = str_replace("]", '', $student_id);
 
-                Student::where('student_id', $student_id)->update([
+                /*Student::where('student_id', $student_id)->update([
                     'section' => $student[1]
-                ]);
+                ]);*/
                 $schoolyear = getSchoolYear();
 
                 $section = \DB::table('students_section')
@@ -101,7 +101,7 @@ class SectionsController extends Controller
 
     public function studentLists($schoolyear, $gradelevel)
     {
-        $section_list = DB::table('sections')->where("gradelevel", $gradelevel)->get();
+        $section_list = DB::table('sections')->where(["schoolyear" => $schoolyear, "gradelevel" => $gradelevel])->get();
 
         $students = Student::leftJoin("enrollment", "enrollment.student_id", "students.student_id")
             ->where(["schoolyear" => $schoolyear, "gradelevel" => $gradelevel])
