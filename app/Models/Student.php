@@ -46,7 +46,7 @@ class Student extends Model
             $index = array_search($student_id, $graduates);
             $student->prev = isset($enrolled[$index - 1]) ? $enrolled[$index - 1] : '';
             $student->next = isset($enrolled[$index + 1]) ? $enrolled[$index + 1] : '';
-            //$student->gradelevel = "Graduate";
+        //$student->gradelevel = "Graduate";
         elseif (array_search($student_id, $enrolled) !== false):
             $index = array_search($student_id, $enrolled);
             $student->prev = isset($enrolled[$index - 1]) ? $enrolled[$index - 1] : '';
@@ -99,8 +99,10 @@ class Student extends Model
             case "enrolled":
                 $graduates = Student::getStudents("graduates", "all", true);
                 $inactive = Student::getStudents("inactive", "all", true);
-                $array = array_merge($graduates, $inactive);
-
+                $array = [];
+                if ($gradelevel < 12):
+                    $array = array_merge($graduates, $inactive);
+                endif;
                 $where = $gradelevel == "all" ? [["enrollment.schoolyear", $schoolyear], ['students.active', 1]] :
                     [
                         ["enrollment.schoolyear", $schoolyear],
