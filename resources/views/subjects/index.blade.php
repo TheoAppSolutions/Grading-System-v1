@@ -102,7 +102,7 @@
                 title: 'Select Select School Year Data',
                 input: 'select',
                 type: 'warning',
-                text: "Warning: This will override  all the current subject information data!",
+                text: "Warning: This will override all the current subject information data!",
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
                 confirmButtonText: 'Load Data',
