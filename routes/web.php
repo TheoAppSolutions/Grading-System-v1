@@ -155,9 +155,9 @@ Route::get('cover/{category}/{level?}', 'Reports\ReportController@downloadCover'
 Route::patch('settings', 'SettingsController@change_settings')->name('setting.user');
 
 Route::get('unenrollment/{id}', 'EnrollmentController@un_enrollment')->name('un-enroll');
-Route::get('enrollment/{id}', 'EnrollmentController@enrollment')->name('enrollment');
-Route::post('enrollment/save/{id}', 'EnrollmentController@enrollment_save')->name('enrollment.save');
 Route::post('enrollment/mass', 'EnrollmentController@enrollment_mass')->name('enrollment.mass');
+Route::post('enrollment/save/{id}', 'EnrollmentController@enrollment_save')->name('enrollment.save');
+Route::get('enrollment/{id}', 'EnrollmentController@enrollment')->name('enrollment');
 
 Route::post('status/student', 'EnrollmentController@change_status')->name('status.student');
 

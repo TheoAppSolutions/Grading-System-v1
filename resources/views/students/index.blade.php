@@ -193,7 +193,7 @@
                             $('<input>')
                                 .attr('type', 'hidden')
                                 .attr('name', 'enroll[' + table.row(index).data()[1] + ']')
-                                .val(table.row(index).data()[6])
+                                .val(table.row(index).data()[5])
                         );
                     });
                     form.submit();
