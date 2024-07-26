@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class Student extends Model
@@ -28,6 +29,7 @@ class Student extends Model
         $student->prev = 0;
         $student->next = 0;
         $student->next_notenrolled = 0;
+        $student->birthdate = Carbon::parse($student->birthdate)->format('F d, Y');
 
         $enrolled = Student::getStudents("enrolled", $student->gradelevel, true);
         $notenrolled = Student::getStudents("notenrolled", $student->gradelevel, true);

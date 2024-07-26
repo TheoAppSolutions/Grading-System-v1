@@ -43,6 +43,7 @@ class StudentsController extends Controller
             endforeach;
         endif;
 
+
         return view('students.index', compact('studentsArray'));
     }
 

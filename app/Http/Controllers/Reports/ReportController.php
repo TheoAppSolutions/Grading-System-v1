@@ -336,12 +336,14 @@ class ReportController extends Controller
         $gradelevels = Enrollment::where('student_id', $student_id)->get();
         $schoolyears = [];
 
-        foreach ($gradelevels as $levels):
-            if ($levels->gradelevel != 0):
+        foreach ($gradelevels as $levels) :
+            if ($levels->gradelevel != 0) :
                 $subjects[$levels->gradelevel] = Subject::byLevel($levels->gradelevel);
                 $gradesModel = new Grade;
                 $gradesModel->setTableName($levels->gradelevel);
-                $schoolyears[$levels->schoolyear] = $gradesModel->byStudentID($student_id, '', $levels->schoolyear);
+                if (!empty($gradesModel->byStudentID($student_id, '', $levels->schoolyear))) :
+                    $schoolyears[$levels->schoolyear] = $gradesModel->byStudentID($student_id, '', $levels->schoolyear);
+                endif;
             endif;
         endforeach;
         if (!isset($subjects)):
