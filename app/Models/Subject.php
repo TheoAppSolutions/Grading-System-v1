@@ -117,6 +117,18 @@ class Subject extends Model
         return $subjects;
     }
 
+    public static function byLevelAndSchoolYear($gradelevel, $schoolyear)
+    {
+        $subjects = Subject::leftJoin('subjects_user', 'subjects_user.subject_id', '=', 'subjects.subject_id')
+            ->where('subjects.gradelevel', $gradelevel)
+            ->where('subjects_user.schoolyear', $schoolyear)
+            ->select('subjects.subjectname', 'subjects.subject_id')
+            ->groupBy('subjects.subjectname', 'subjects.subject_id')
+            ->get();
+
+        return $subjects;
+    }
+
     public static function getExcludedSubjects($gradeset)
     {
         $excluded = Excluded::byStudent($gradeset["student_id"]);

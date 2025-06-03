@@ -178,3 +178,5 @@ Route::patch('section/students', 'SectionsController@update')->name('student.sec
 
 Route::patch('grades/sea/{subject_id}', 'GradesController@sea')->name('sea.save');
 Route::get('grades/sea/{subject_id}', 'GradesController@sea_show')->name('sea.show');
+
+Route::get('updater', 'AdminController@updater');

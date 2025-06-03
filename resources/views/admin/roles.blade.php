@@ -32,32 +32,31 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="text-middle align-middle">School Registrar</td>
-                                        <td class="text-center">
-                                            <select class="select2-placeholder form-control hide-search"
-                                                    style="width: 100%;" name="role[Registrar]"
-                                                    data-placeholder="School Registrar" title="School Registrar">
-                                                <option value=""> </option>
-                                                    @php($lastID = "")
-                                                    @foreach($users as $user)
-                                                        @if($user->lastname != 'ADMIN' and $lastID != $user->id)
-                                                            <option value="{{ $user->id }}" {{ $user->id == $roles['Registrar'] ? "selected" : "" }}>
-                                                                {{ $user->lastname }}{{ isset($user->lastname) ? ',' : '' }} {{ $user->firstname }}</option>
-                                                            @php($lastID = $user->id)
-                                                        @endif
-                                                    @endforeach
-                                            </select>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="text-middle align-middle">School Secretary</td>
-                                        <td class="text-center">
-                                            <select class="select2-placeholder form-control hide-search"
-                                                    style="width: 100%;" name="role[Secretary]"
-                                                    data-placeholder="School Secretary" title="School Secretary">
-                                                <option value=""> </option>
+                                        <tr>
+                                            <td class="text-middle align-middle">Principal</td>
+                                            <td class="text-center">
+                                                <select class="select2-placeholder form-control hide-search"
+                                                        style="width: 100%;" name="role[Principal]"
+                                                        data-placeholder="School Principal" title="School Principal">
+                                                    <option value=""> </option>
+                                                        @php($lastID = "")
+                                                        @foreach($users as $user)
+                                                            @if($user->lastname != 'ADMIN' and $lastID != $user->id)
+                                                                <option value="{{ $user->id }}" {{ $user->id == $roles['Principal'] ? "selected" : "" }}>
+                                                                    {{ $user->lastname }}{{ isset($user->lastname) ? ',' : '' }} {{ $user->firstname }}</option>
+                                                                @php($lastID = $user->id)
+                                                            @endif
+                                                        @endforeach
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-middle align-middle">Deputy Principal</td>
+                                            <td class="text-center">
+                                                <select class="select2-placeholder form-control hide-search"
+                                                        style="width: 100%;" name="role[Secretary]"
+                                                        data-placeholder="School Secretary" title="School Secretary">
+                                                    <option value=""> </option>
                                                     @php($lastID = "")
                                                     @foreach($users as $user)
                                                         @if($user->lastname != 'ADMIN' and $lastID != $user->id)
@@ -66,29 +65,27 @@
                                                             @php($lastID = $user->id)
                                                         @endif
                                                     @endforeach
-                                            </select>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="text-middle align-middle">School Principal</td>
-                                        <td class="text-center">
-                                            <select class="select2-placeholder form-control hide-search"
-                                                    style="width: 100%;" name="role[Principal]"
-                                                    data-placeholder="School Principal" title="School Principal">
-                                                <option value=""> </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-middle align-middle">Registrar</td>
+                                            <td class="text-center">
+                                                <select class="select2-placeholder form-control hide-search"
+                                                        style="width: 100%;" name="role[Registrar]"
+                                                        data-placeholder="School Registrar" title="School Registrar">
+                                                    <option value=""> </option>
                                                     @php($lastID = "")
                                                     @foreach($users as $user)
                                                         @if($user->lastname != 'ADMIN' and $lastID != $user->id)
-                                                            <option value="{{ $user->id }}" {{ $user->id == $roles['Principal'] ? "selected" : "" }}>
+                                                            <option value="{{ $user->id }}" {{ $user->id == $roles['Registrar'] ? "selected" : "" }}>
                                                                 {{ $user->lastname }}{{ isset($user->lastname) ? ',' : '' }} {{ $user->firstname }}</option>
                                                             @php($lastID = $user->id)
                                                         @endif
                                                     @endforeach
-                                            </select>
-                                        </td>
-                                    </tr>
-
+                                                </select>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

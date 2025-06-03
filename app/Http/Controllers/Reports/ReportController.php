@@ -377,8 +377,40 @@ class ReportController extends Controller
             'commandOptions' => ['useExec' => true],
         ]);
 
-        $pdf->addPage($this->transcript($student_id));
+        $student = Student::byStudentID($student_id);
+
+        $gradelevels = Enrollment::where('student_id', $student_id)->get();
+        $schoolyears = [];
+        $counter = 0;
+        $subjectCtr = 0;
+        foreach ($gradelevels as $levels) :
+            if ($levels->gradelevel != 0) :
+                if($counter == 4):
+                    $counter = 0;
+                    $subjectCtr++;
+                endif;
+                $subjects[$subjectCtr][$levels->gradelevel] = Subject::byLevelAndSchoolYear($levels->gradelevel, $levels->schoolyear);
+                $gradesModel = new Grade;
+                $gradesModel->setTableName($levels->gradelevel);
+                if (!empty($gradesModel->byStudentID($student_id, '', $levels->schoolyear))) :
+                    $schoolyears[$subjectCtr][$levels->schoolyear] = $gradesModel->byStudentID($student_id, '', $levels->schoolyear);
+                    $counter++;
+                endif;
+            endif;
+        endforeach;
+        if (!isset($subjects)):
+            dd("No Records available yet.");
+        endif;
+
+        for($i=0; $i <= $subjectCtr; $i++):
+            $pdf->addPage($this->test_tor($student, $schoolyears[$i], $subjects[$i]));
+        endfor;
 
         $pdf->send();
+    }
+
+    private function test_tor($student, $schoolyears, $subjects)
+    {
+        return view('reports.transcript.tor', compact('student', 'schoolyears', 'subjects'));
     }
 }

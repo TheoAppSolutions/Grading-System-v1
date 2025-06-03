@@ -6,7 +6,9 @@ use App\User;
 use App\Models\Homeroom;
 use App\Models\Month;
 use App\Models\SchoolYear;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -96,5 +98,43 @@ class AdminController extends Controller
         ]);
 
         return back();
+    }
+
+    public function updater()
+    {
+        // Step 1: Get the current branch name
+        $currentBranch = trim(shell_exec('git rev-parse --abbrev-ref HEAD'));
+        echo "Current Branch: <b>$currentBranch</b><br/><br/>";
+
+        if ($currentBranch) {
+            // Step 2: Fetch the latest changes from the remote branch
+            $fetchCommand = "git fetch origin $currentBranch 2>&1"; // Capture both output and errors
+            $fetchOutput = shell_exec($fetchCommand);
+            echo "Git Fetch Output: ";
+            echo "<pre style='background-color: #1A237E; padding: 10px 10px; color: white;'>$fetchOutput</pre>"; // Display the fetch output
+
+            // Step 3: Reset the branch to match the remote branch
+            $resetCommand = "git reset --hard FETCH_HEAD";
+            $resetOutput = shell_exec($resetCommand);
+
+            // Output the result of the reset command
+            echo "<pre style='background-color: #1A237E; padding: 10px 10px; color: white;'>$resetOutput</pre>";
+        } else {
+            echo "<p style='background-color: darkred; padding: 10px 10px; color: white;'>Failed to retrieve the current branch.</p><br/>";
+            return;
+        }
+
+        // Step 4: Clear caches and optimize the application
+        try {
+            // Run the optimize:clear command via Artisan
+            Artisan::call('optimize:clear');
+
+            // Get the output of the command
+            $output = Artisan::output();
+            echo "Optimization Output: ";
+            echo "<pre style='background-color: #1A237E; padding: 10px 10px; color: white;'>".trim($output)."</pre>";
+        } catch (Exception $e) {
+            echo "<p style='background-color: darkred; padding: 10px 10px; color: white;'>Error running Artisan command: " . $e->getMessage() . "</p><br/>";
+        }
     }
 }

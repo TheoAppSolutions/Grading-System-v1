@@ -36,7 +36,8 @@
                                     @php($gradelevels = schema("gradelevel.category"))
                                     @foreach($gradelevels as $gradelevel_category => $sub_category)
                                         @foreach($sub_category as $category => $gradelevel)
-                                            <tr>
+                                            @if($gradelevel != "Graduated")
+                                                <tr>
                                                 <td class="align-middle">
                                                     {{ $gradelevel }}
                                                 </td>
@@ -69,6 +70,7 @@
                                                     </select>
                                                 </td>
                                             </tr>
+                                            @endif
                                         @endforeach
                                     @endforeach
                                     </tbody>

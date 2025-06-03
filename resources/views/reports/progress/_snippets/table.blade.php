@@ -146,6 +146,16 @@
                                 </div>
                             </div>
                         </td>
+                        @if($student->gradelevel != "Prep" and $student->gradelevel != "Kindy")
+                            <td>
+                                <a style="cursor: pointer;" target="_blank"
+                                   href="{{ route('report.transcript', [$student->student_id]) }}">
+                                    <button class="btn btn-black">
+                                        TOR
+                                    </button>
+                                </a>
+                            </td>
+                        @endif
                     </tr>
                 @endif
             @endforeach
