@@ -66,6 +66,7 @@
                                 <div class="col-md-9">
                                     <select class="select2-placeholder form-control hide-search" name="days_settings"
                                             id="single-placeholder">
+                                        <option value="2" @if($schoolyear->days_settings == 2) selected @endif>By Semester (2 Entries)</option>
                                         <option value="4" @if($schoolyear->days_settings == 4) selected @endif>By Terms (4 Entries)</option>
                                         <option value="12" @if($schoolyear->days_settings == 12) selected @endif>By Months (12 Entries)</option>
                                     </select>

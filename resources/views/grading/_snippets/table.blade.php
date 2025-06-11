@@ -14,7 +14,7 @@ $fields = ['final', 'effort', 'deportment'];
         <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Term Grade</th>
+            <th>Semester Grade</th>
             <th>Effort Grade</th>
             <th>Deportment</th>
             @if($type == 'MidQuarter' and $comment_show)
@@ -83,7 +83,7 @@ $fields = ['final', 'effort', 'deportment'];
 
                     <td>
                         <input type='number' step='0.01' min='0' max='100'
-                               class='form-control grades' title="Term Grade"
+                               class='form-control grades' title="Semester Grade"
                                name='grades[{{$loop->index}}][final]'
                                value="{{ $final>0?$final:'' }}"
                                 {{ $finalLock=='Lock'?'readonly':'' }}>
@@ -121,7 +121,7 @@ $fields = ['final', 'effort', 'deportment'];
         <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Term Grade</th>
+            <th>Semester Grade</th>
             <th>Effort Grade</th>
             <th>Deportment</th>
             @if($type == 'MidQuarter' and $comment_show)

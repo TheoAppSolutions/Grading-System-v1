@@ -45,7 +45,7 @@ class Month extends Model
         $term = self::getMonths();
         $termArray = [];
 
-        for ($ctr = 1; $ctr <= 4; $ctr++):
+        for ($ctr = 1; $ctr <= 2; $ctr++):
             $termArray[$ctr] = $term->{"term" . $ctr} != '' ? $term->{"term" . $ctr} : 0;
         endfor;
 

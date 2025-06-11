@@ -124,7 +124,7 @@
                                     </a>
                                     {{--<div class="dropdown-divider"></div>
                                     <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                       href="{{ route('report.student', ['award',$student->student_id,'term=4','schoolyear='.$schoolyear]) }}">
+                                       href="{{ route('report.student', ['award',$student->student_id,'term=2','schoolyear='.$schoolyear]) }}">
                                         Award Card <span class='fa fa-file-pdf-o pull-right'></span>
                                     </a>--}}
                                 </div>

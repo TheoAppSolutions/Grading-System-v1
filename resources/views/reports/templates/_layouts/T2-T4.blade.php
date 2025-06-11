@@ -633,7 +633,7 @@
         <tr style='mso-height-source:userset;{{ $height }}'>
             <td colspan=12 rowspan=2 height=48 class=cardlabel width=180>SUBJECTS
             </td>
-            <td colspan=20 class=cardlabel>TERM</td>
+            <td colspan=20 class=cardlabel>SEMESTER</td>
             <td colspan=6 rowspan=2 class=cardlabel width=90 style='width:66pt'>FINAL<br>
                 GRADE
             </td>
@@ -646,10 +646,8 @@
             </td>
         </tr>
         <tr style='mso-height-source:userset;{{ $height }}'>
-            <td colspan=5 class=term>1</td>
-            <td colspan=5 class=term>2</td>
-            <td colspan=5 class=term>3</td>
-            <td colspan=5 class=term>4</td>
+            <td colspan=10 class=term>1</td>
+            <td colspan=10 class=term>2</td>
             <td class=blank></td>
         </tr>
 

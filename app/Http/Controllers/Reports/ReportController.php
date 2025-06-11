@@ -48,10 +48,6 @@ class ReportController extends Controller
             else:
                 $grades[$subject->subjectname]['teacher'] = $subject->title . " " . $subject->firstname . " " . $subject->middlename . " " . $subject->lastname . " " . $subject->suffix;
             endif;
-
-            /*if ($quarter == "award"):
-                Award::getSEA($subject->subject_id, $schoolyear, $grades[$subject->subjectname]);
-            endif;*/
         endforeach;
 
         if ($quarter == "award"):
