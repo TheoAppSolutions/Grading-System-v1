@@ -28,14 +28,14 @@
         "decimal.point": 3,
         "passing.grade": 60
     },
-    "quarter.term": "Term",
-    "attendance.type": "Term",
+    "quarter.term": "Semester",
+    "attendance.type": "Semester",
     "attendance.count": 4,
     "template": {
-        "quarter.1": "MidQuarter",
-        "quarter.2": "Quarter",
-        "quarter.3": "MidQuarter",
-        "quarter.4": "Quarter",
+        "quarter.1": "Semester",
+        "quarter.2": "Semester",
+        "quarter.3": "Semester",
+        "quarter.4": "Semester",
         "values": "choices for template: (MidQuarter/Quarter/Both)"
     },
     "gradelevel.category": {

@@ -3,7 +3,7 @@
     <select class="select2-placeholder form-control hide-search" id="gradelevel-picker"
             data-placeholder="Select Grade Level" onchange="changeTable();"
             title="Select Grade Level">
-        <option value=""></option>
+        <option value="">All</option>
         @php($gradelevels = schema("gradelevel.category"))
         @foreach($gradelevels as $gradelevel_category => $sub_category)
             <optgroup label="{{ $gradelevel_category }}">

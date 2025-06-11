@@ -19,19 +19,11 @@
                             <h6 class="dropdown-header">Progress Report</h6>
                             <a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                href="{{ route('report.grade', ['midquarter',$gradelevel,'term=1','schoolyear='.$schoolyear]) }}">
-                                Term 1 Card <span class='fa fa-file-pdf-o pull-right'></span>
+                                Semester 1 Card <span class='fa fa-file-pdf-o pull-right'></span>
                             </a>
                             <a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                href="{{ route('report.grade', ['quarter',$gradelevel,'term=2','schoolyear='.$schoolyear]) }}">
-                                Term 2 Card <span class='fa fa-file-pdf-o pull-right'></span>
-                            </a>
-                            <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                               href="{{ route('report.grade', ['midquarter',$gradelevel,'term=3','schoolyear='.$schoolyear]) }}">
-                                Term 3 Card <span class='fa fa-file-pdf-o pull-right'></span>
-                            </a>
-                            <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                               href="{{ route('report.grade', ['quarter',$gradelevel,'term=4','schoolyear='.$schoolyear]) }}">
-                                Term 4 Card <span class='fa fa-file-pdf-o pull-right'></span>
+                                Semester 2 Card <span class='fa fa-file-pdf-o pull-right'></span>
                             </a>
                             <div class="dropdown-divider"></div>
                             <h6 class="dropdown-header">Awards Report</h6>
@@ -111,20 +103,12 @@
                                 <div class="dropdown-menu arrow">
                                     <h6 class="dropdown-header">Progress Report</h6>
                                     <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                       href="{{ route('report.student', ['midquarter',$student->student_id,'term=1','schoolyear='.$schoolyear]) }}">
-                                        Term 1 Card <span class='fa fa-file-pdf-o pull-right'></span>
+                                       href="{{ route('report.student', ['quarter',$student->student_id,'term=1','schoolyear='.$schoolyear]) }}">
+                                        Semester 1 Card <span class='fa fa-file-pdf-o pull-right'></span>
                                     </a>
                                     <a style="cursor: pointer;" target="_blank" class="dropdown-item"
                                        href="{{ route('report.student', ['quarter',$student->student_id,'term=2','schoolyear='.$schoolyear]) }}">
-                                        Term 2 Card <span class='fa fa-file-pdf-o pull-right'></span>
-                                    </a>
-                                    <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                       href="{{ route('report.student', ['midquarter',$student->student_id,'term=3','schoolyear='.$schoolyear]) }}">
-                                        Term 3 Card <span class='fa fa-file-pdf-o pull-right'></span>
-                                    </a>
-                                    <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                       href="{{ route('report.student', ['quarter',$student->student_id,'term=4','schoolyear='.$schoolyear]) }}">
-                                        Term 4 Card <span class='fa fa-file-pdf-o pull-right'></span>
+                                        Semester 2 Card <span class='fa fa-file-pdf-o pull-right'></span>
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <h6 class="dropdown-header">Awards Report</h6>
@@ -146,16 +130,6 @@
                                 </div>
                             </div>
                         </td>
-                        @if($student->gradelevel != "Prep" and $student->gradelevel != "Kindy")
-                            <td>
-                                <a style="cursor: pointer;" target="_blank"
-                                   href="{{ route('report.transcript', [$student->student_id]) }}">
-                                    <button class="btn btn-black">
-                                        TOR
-                                    </button>
-                                </a>
-                            </td>
-                        @endif
                     </tr>
                 @endif
             @endforeach

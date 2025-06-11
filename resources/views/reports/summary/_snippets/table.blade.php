@@ -5,9 +5,6 @@
             <tr>
                 <th class="text-center">Subject Name</th>
                 <th colspan="2" class="text-center">Teacher</th>
-                @if($gradelevel >= 11)
-                    <th class="text-center">Semester</th>
-                @endif
                 <th class="text-center">
                     <a href="{{ route('report.summary.grade',[$gradelevel,'schoolyear='.getSchoolYear()]) }}"
                        class="btn btn-success" target="_blank"
@@ -33,9 +30,6 @@
                         </td>
                         <td class="text-center">
                             {{ $subject->lastname }} {{  isset($subject->lastname) ? ',' : '' }} {{  $subject->firstname }}</td>
-                        @if($gradelevel >= 11)
-                            <td class="text-center">{{ $subject->semester }}</td>
-                        @endif
                         <td class="text-center">
                             <a href="{{ route('report.summary.subject', [$subject->subject_id,'schoolyear='.getSchoolYear()]) }}"
                                class="btn btn-warning" target="_blank"

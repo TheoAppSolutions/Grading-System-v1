@@ -171,11 +171,11 @@
             <td colspan=1 rowspan=2 height=40 class=label width=135
                 style="border-bottom:1pt solid black; height:30.0pt;width:101pt">Name
             </td>
-            <td colspan=8 rowspan=1 class=label width=181 style="border-left:none;width:136pt">Term</td>
+            <td colspan=4 rowspan=1 class=label width=181 style="border-left:none;width:136pt">Semester</td>
             <td colspan=2 rowspan=2 class=label width=45
                 style="border-right:1pt solid black; border-bottom:1pt solid black;width:34pt">Final<br>Ave.
             </td>
-            <td colspan=1 rowspan=2 class=label width=45
+            <td colspan=5 rowspan=2 class=label width=45
                 style="border-right:1pt solid black; border-bottom:1pt solid black;width:34pt">Comments / Remarks /
                 Changes
             </td>
@@ -183,8 +183,6 @@
         <tr style="height:15.0pt">
             <td colspan="2" class="quarter" style="border-right:1pt solid black;">1</td>
             <td colspan="2" class="quarter" style="border-right:1pt solid black;">2</td>
-            <td colspan="2" class="quarter" style="border-right:1pt solid black;">3</td>
-            <td colspan="2" class="quarter" style="border-right:1pt solid black;">4</td>
         </tr>
         @foreach($students as $student)
             @php($ctr = $loop->index + 1)
@@ -192,7 +190,7 @@
                 <td colspan="1" class="data" style="text-align: center">{{ $ctr }}</td>
                 <td colspan="1" class="data"
                     style="border-right: 1pt solid black">{{ $student->lastname . ', ' . $student->firstname }}</td>
-                @for($quarter = 1; $quarter <= 5; $quarter++)
+                @for($quarter = 1; $quarter <= 3; $quarter++)
                     @php($final = isset($grade[$student->student_id][$quarter]['final'])?$grade[$student->student_id][$quarter]['final']:'')
                     @php($effort = isset($grade[$student->student_id][$quarter]['effort'])?$grade[$student->student_id][$quarter]['effort']:'')
                     @php($color='')
@@ -208,7 +206,7 @@
                     <td colspan=1 style="{!! $color !!}"
                         class=effort>{{ $grade[$student->student_id][$quarter]['effort'] ?? '' }}</td>
                 @endfor
-                <td colspan=1 class="blank" style='border:1pt solid black;'>
+                <td colspan=5 class="blank" style='border:1pt solid black;'>
                     &nbsp;
                 </td>
             </tr>

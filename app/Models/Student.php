@@ -29,8 +29,10 @@ class Student extends Model
         $student->prev = 0;
         $student->next = 0;
         $student->next_notenrolled = 0;
-        $student->birthdate = Carbon::parse($student->birthdate)->format('F d, Y');
-
+        $student->birthdate = $student->birthdate ? Carbon::parse($student->birthdate)->format('F d, Y') : '-';
+        $student->contact = $student->contact ?: '-';
+        $student->address = $student->address ?: '-';
+        $student->email = $student->email ?: '-';
         $enrolled = Student::getStudents("enrolled", $student->gradelevel, true);
         $notenrolled = Student::getStudents("notenrolled", $student->gradelevel, true);
         $graduates = Student::getStudents("graduates", "all", true);

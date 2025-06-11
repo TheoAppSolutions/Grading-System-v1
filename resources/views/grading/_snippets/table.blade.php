@@ -40,7 +40,20 @@ $fields = ['final', 'effort', 'deportment'];
                             ${$field} = $import[$student->student_id][$quarter][$field];
                             $importStatus = 'import';
                         endif;
-                        ${$field . 'Lock'} = $importStatus == 'import' ? '' : $importStatus == 'found' ? ${$field} > 0 ? 'Lock' : '' : '';
+
+                        if ($importStatus == 'import') {
+                            ${$field . 'Lock'} = '';
+                        } else {
+                            if ($importStatus == 'found') {
+                                if (${$field} > 0) {
+                                    ${$field . 'Lock'} = 'Lock';
+                                } else {
+                                    ${$field . 'Lock'} = '';
+                                }
+                            } else {
+                                ${$field . 'Lock'} = '';
+                            }
+                        }
 
                         if (${$field . 'Lock'} == 'Lock'):
                             if ($lockOff == 0):

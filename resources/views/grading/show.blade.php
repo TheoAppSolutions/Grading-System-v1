@@ -29,55 +29,17 @@
                 <div class="card-header">
                     <div class="card-title">
                         <ul class="nav nav-tabs nav-top-border no-hover-bg">
-                            @if (schema('student')->{"senior.high.school"} and $subject->gradelevel >= 11 and $subject->gradelevel <= 12)
                                 <li class="nav-item">
                                     <a class="nav-link active" id="baseLable-tab1" data-toggle="tab"
-                                       aria-controls="tabLable1" href="#1" aria-expanded="true">
+                                       aria-controls="tabLable1" href="#2" aria-expanded="true">
                                         {{ schema("quarter.term") }} 1</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="baseLable-tab2" data-toggle="tab" aria-controls="tabLable2"
-                                       href="#2" aria-expanded="false">
-                                        {{ schema("quarter.term") }} 2</a>
-                                </li>
-                            @else
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="baseLable-tab1" data-toggle="tab"
-                                       aria-controls="tabLable1" href="#1" aria-expanded="true">
-                                        {{ schema("quarter.term") }} 1</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="baseLable-tab2" data-toggle="tab" aria-controls="tabLable2"
-                                       href="#2" aria-expanded="false">
-                                        {{ schema("quarter.term") }} 2</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="baseLable-tab3" data-toggle="tab" aria-controls="tabLable3"
-                                       href="#3" aria-expanded="false">
-                                        {{ schema("quarter.term") }} 3</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="baseLable-tab4" data-toggle="tab" aria-controls="tabLable4"
                                        href="#4" aria-expanded="false">
-                                        {{ schema("quarter.term") }} 4</a>
+                                        {{ schema("quarter.term") }} 2</a>
                                 </li>
-                            @endif
                             <li class="nav-item heading-elements">
-                                @if (schema('function')->type)
-                                    <div class="pull-left mr-1">
-                                        <select class="select2-placeholder form-control hide-search"
-                                                title="Select Quarter"
-                                                id="quarter"
-                                                onchange="changeQuarter();">
-                                            <option value="MidQuarter" {{ $type == "MidQuarter" ? "selected" : "" }}>
-                                                MidQuarter
-                                            </option>
-                                            <option value="Quarter" {{ $type == "Quarter" ? "selected" : "" }}>
-                                                Quarter
-                                            </option>
-                                        </select>
-                                    </div>
-                                @endif
                                 <div class="pull-right">
                                     <a href="{{ route('report.summary.subject', $subject->subject_id) }}"
                                        class="btn btn-outline-success" target="_blank">
@@ -90,13 +52,9 @@
                     </div>
                 </div>
                 <div class="tab-content p-1">
-                    @for($quarter = 1; $quarter <= 4; $quarter++)
+                    @for($quarter = 1; $quarter <= 2; $quarter++)
                         <div role="tabpanel" class="tab-pane {{ $quarter == 1 ? 'active' : '' }}" id="{{ $quarter }}">
-                            @if($quarter == 1 or $quarter == 3)
-                                <?php $type = 'MidQuarter'; ?>
-                            @elseif($quarter == 2 or $quarter == 4)
-                                <?php $type = 'AfterQuarter'; ?>
-                            @endif
+                            <?php $type = 'AfterQuarter'; ?>
                             @include('grading._snippets.table', compact('quarter', 'type'))
                         </div>
                     @endfor

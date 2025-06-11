@@ -9,8 +9,7 @@
           href="{{ url('/app-assets/vendors/css/tables/extensions/responsive.dataTables.min.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ url('/app-assets/css/pages/users.css') }}">
-    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css"
-          rel="stylesheet"/>
+    <link type="text/css" href="{{ url('/app-assets/css/dataTables.checkboxes.css') }}" rel="stylesheet"/>
 
 @endpush
 
@@ -24,7 +23,7 @@
             type="text/javascript"></script>
 
     <script type="text/javascript"
-            src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
+            src="{{ url('/app-assets/js/dataTables.checkboxes.min.js') }}"></script>
 @endpush
 
 @section('content-title')
@@ -70,7 +69,7 @@
                             </select>
                         </div>
                         <div class="col-12 col-md-6">
-                            @if ($status != "all")
+                            @if ($status == "enrolled")
                                 @include('students._snippets.gradeselect')
                             @else
                                 <input type="hidden" id="gradelevel-picker" value="">
@@ -102,40 +101,42 @@
                 @if(isset($studentsArray[$current_GradeLevel]) and count($studentsArray[$current_GradeLevel]) > 0)
                     @switch($status)
                         @case ("all")
-                        @include('students._snippets.table',['students'=>$studentsArray["all"]])
-                        @break
+                            @include('students._snippets.table',['students'=>$studentsArray["all"]])
+                            @break
                         @case ("notenrolled")
-                        <form action="{{ route('enrollment.mass') }}" method="POST" id="enroll_students">
-                            @csrf
-                            @include('students._snippets.table',['students'=>$studentsArray[$current_GradeLevel]])
-                            <input type="hidden" name="schoolyear" value="{{ getSchoolYear() }}">
-                            <button type="submit" class="btn-submit btn btn-success" disabled>Multiple Enroll</button>
-                        </form>
-                        @break
-                        @case ("enrolled")
-                        <form action="{{ route('student.mass.activate') }}" method="POST" id="deactivate_students">
-                            @csrf
-                            @include('students._snippets.table',['students'=>$studentsArray[$current_GradeLevel]])
-                            @if ($current_GradeLevel != "all")
-                                <button type="button" class="btn btn-primary pull-right" onclick="update_sections();">
-                                    <i class="fa fa-check"></i> Update Sections
+                            <form action="{{ route('enrollment.mass') }}" method="POST" id="enroll_students">
+                                @csrf
+                                @include('students._snippets.table',['students'=>$studentsArray["all"]])
+                                <input type="hidden" name="schoolyear" value="{{ getSchoolYear() }}">
+                                <button type="submit" class="btn-submit btn btn-success" disabled>Multiple Enroll
                                 </button>
-                            @endif
-                            <button type="submit" class="btn-submit btn btn-success" disabled>Multiple De-activate
-                            </button>
-                        </form>
-                        @break
+                            </form>
+                            @break
+                        @case ("enrolled")
+                            <form action="{{ route('student.mass.activate') }}" method="POST" id="deactivate_students">
+                                @csrf
+                                @include('students._snippets.table',['students'=>$studentsArray[$current_GradeLevel]])
+                                @if ($current_GradeLevel != "all")
+                                    <button type="button" class="btn btn-primary pull-right"
+                                            onclick="update_sections();">
+                                        <i class="fa fa-check"></i> Update Sections
+                                    </button>
+                                @endif
+                                <button type="submit" class="btn-submit btn btn-success" disabled>Multiple De-activate
+                                </button>
+                            </form>
+                            @break
                         @case ("inactive")
-                        <form action="{{ route('student.mass.activate') }}" method="POST" id="activate_students">
-                            @csrf
-                            @include('students._snippets.table',['students'=>$studentsArray[$current_GradeLevel]])
-                            <button type="submit" class="btn-submit btn btn-success" disabled>Multiple Activate
-                            </button>
-                        </form>
-                        @break
+                            <form action="{{ route('student.mass.activate') }}" method="POST" id="activate_students">
+                                @csrf
+                                @include('students._snippets.table',['students'=>$studentsArray["all"]])
+                                <button type="submit" class="btn-submit btn btn-success" disabled>Multiple Activate
+                                </button>
+                            </form>
+                            @break
                         @case ("graduates")
-                        @include('students._snippets.table',['students'=>$studentsArray["all"]])
-                        @break
+                            @include('students._snippets.table',['students'=>$studentsArray["all"]])
+                            @break
                     @endswitch
                 @else
                     <code>No Students Records Found.</code> Please Enroll Old Students or Add New Students.
@@ -151,24 +152,25 @@
 
 @push('js')
     <script>
-        @if($status == "graduates" or $status ==  'all')
+    @if($status == "graduates" or $status ==  'all')
         $('#students_table').DataTable({order: [[1, 'asc']]});
 
-                @elseif($status != "graduates" and $status !=  'all')
+    @elseif($status ==  'enrolled')
         var table = $('#students_table').DataTable({
-                columnDefs: [
-                    {
-                        targets: 0,
-                        checkboxes: {
-                            selectRow: true
-                        }
+            columnDefs: [
+                {
+                    targets: 0,
+                    checkboxes: {
+                        selectRow: true
                     }
-                ],
-                select: {
-                    style: 'multi'
-                },
-                order: [[2, 'asc']]
-            });
+                }
+            ],
+            select: {
+                style: 'multi'
+            },
+            order: [[2, 'asc']],
+            pageLength: 25
+        });
 
         // Handle form submission event
 
@@ -188,6 +190,7 @@
                     var rows_selected = table.column(0).checkboxes.selected();
                     // Iterate over all selected checkboxes
                     $.each(rows_selected, function (index, rowId) {
+                        console.log(table.row(index).data()[1]);
                         // Create a hidden element
                         $(form).append(
                             $('<input>')
@@ -208,8 +211,7 @@
                 $('.btn-submit').prop("disabled", true);
             }
         });
-
-        @endif
+    @endif
 
         function changeTable() {
             var url = window.location.pathname;

@@ -29,13 +29,14 @@
                 @php($user_list[$subject->subject_id]["user2_id"] = '')
             @endif
 
-            @foreach($users as $user)
-                @if ($user_list[$subject->subject_id]["user_id"]==$user->id)
-                    @php($teacher[1] = $user->lastname . ', ' . $user->firstname)
-                @elseif ($user_list[$subject->subject_id]["user2_id"]==$user->id)
-                    @php($teacher[2] = $user->lastname . ', ' . $user->firstname)
-                @endif
-            @endforeach
+            @if($user_list[$subject->subject_id]["user_id"] || $user_list[$subject->subject_id]["user2_id"])
+                @foreach($users as $user)
+                    @if ($user_list[$subject->subject_id]["user_id"] == $user->id)
+                        @php($teacher[1] = $user->lastname . ', ' . $user->firstname)
+                    @elseif ($user_list[$subject->subject_id]["user2_id"] == $user->id)
+                        @php($teacher[2] = $user->lastname . ', ' . $user->firstname)
+                    @endif
+                @endforeach
 
             @if (isset($teacher[1]) or isset($teacher[2]))
                 <tr>
@@ -73,6 +74,7 @@
                 @php($teacher[1] = "")
                 @php($teacher[2] = "")
             @endif
+           @endif
         @endforeach
         </tbody>
 

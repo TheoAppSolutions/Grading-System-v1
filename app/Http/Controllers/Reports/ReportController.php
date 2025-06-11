@@ -56,10 +56,7 @@ class ReportController extends Controller
 
         if ($quarter == "award"):
             $award = Award::getAwardsForReportCard($student, $grades, $schoolyear);
-        elseif ($quarter == 1 or $quarter == 3):
-            $comments = new MidComments;
-            $comments = $comments->byStudentID($student_id);
-        elseif ($quarter == 2 or $quarter == 4):
+        else:
             $comments = new Comments;
             $comments = $comments->byStudentID($student_id);
         endif;
@@ -69,25 +66,19 @@ class ReportController extends Controller
         if ($student->gradelevel == "Prep" or $student->gradelevel == "Kindy"): //Pre School
             if ($quarter == "award"):
                 return view('reports.templates.pre_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'attendance', 'days'));
-            elseif ($quarter == 1 or $quarter == 3):
-                return view('reports.templates.pre_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
-            elseif ($quarter == 2 or $quarter == 4):
+            else:
                 return view('reports.templates.pre_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             endif;
         elseif ($student->gradelevel >= 1 and $student->gradelevel <= 6): //Lower School
             if ($quarter == "award"):
                 return view('reports.templates.lower_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'attendance', 'days'));
-            elseif ($quarter == 1 or $quarter == 3):
-                return view('reports.templates.lower_school.primary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
-            elseif ($quarter == 2 or $quarter == 4):
+            else:
                 return view('reports.templates.lower_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             endif;
         elseif ($student->gradelevel >= 7 and $student->gradelevel <= 10): //Upper School
             if ($quarter == "award"):
                 return view('reports.templates.upper_school.secondary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'attendance', 'days'));
-            elseif ($quarter == 1 or $quarter == 3):
-                return view('reports.templates.upper_school.secondary_T1-T3', compact('student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
-            elseif ($quarter == 2 or $quarter == 4):
+            else:
                 return view('reports.templates.upper_school.secondary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             endif;
         endif;
@@ -101,19 +92,12 @@ class ReportController extends Controller
         $term = request("term");
         $schoolyear = getSchoolYear();
 
-        if ($type == 'midquarter'):
-            $pdf = new PDF(array(
-                'no-outline',
-                'page-size' => 'A4', //'Letter'
-                'orientation' => 'Landscape', //'Landscape'
-            ));
-        else:
-            $pdf = new PDF(array(
-                'no-outline',
-                'page-size' => 'A4', //'Letter'
-                'orientation' => 'Portrait', //'Landscape'
-            ));
-        endif;
+        $pdf = new PDF(array(
+            'no-outline',
+            'page-size' => 'A4', //'Letter'
+            'orientation' => 'Portrait', //'Landscape'
+        ));
+
         $semester = request('semester');
 
         if ($type == 'award'):
@@ -135,8 +119,6 @@ class ReportController extends Controller
             $pdf->addPage(route('report.quarter', [$student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type, 'semester=' . $semester]));
         elseif ($type == 'award'):
             $pdf->addPage(route('report.award', [$student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type, 'semester=' . $semester]));
-        elseif ($type == 'midquarter'):
-            $pdf->addPage(route('report.midquarter', [$student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type, 'semester=' . $semester]));
         endif;
 
         $pdf->send();
@@ -147,19 +129,11 @@ class ReportController extends Controller
     public function report_by_gradelevel($type, $gradelevel)
     {
         app('debugbar')->disable();
-        if ($type == 'midquarter'):
-            $pdf = new PDF(array(
-                'no-outline',
-                'page-size' => 'A4', //'Letter'
-                'orientation' => 'Landscape', //'Landscape'
-            ));
-        else:
-            $pdf = new PDF(array(
-                'no-outline',
-                'page-size' => 'A4', //'Letter'
-                'orientation' => 'Portrait', //'Landscape'
-            ));
-        endif;
+        $pdf = new PDF(array(
+            'no-outline',
+            'page-size' => 'A4', //'Letter'
+            'orientation' => 'Portrait', //'Landscape'
+        ));
 
         $term = request("term");
         $schoolyear = getSchoolYear();
@@ -171,8 +145,6 @@ class ReportController extends Controller
                 $pdf->addPage(route('report.quarter', [$student->student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type, 'semester=' . $semester]));
             elseif ($type == 'award'):
                 $pdf->addPage(route('report.award', [$student->student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type, 'semester=' . $semester]));
-            elseif ($type == 'midquarter'):
-                $pdf->addPage(route('report.midquarter', [$student->student_id, 'term=' . $term, 'schoolyear=' . $schoolyear, 'type=' . $type, 'semester=' . $semester]));
             endif;
         endforeach;
 

@@ -4,6 +4,7 @@
     <option value=""></option>
     @php($gradelevels = schema("gradelevel.category"))
     @foreach($gradelevels as $gradelevel_category => $sub_category)
+        @if($gradelevel_category != "Graduated")
         <optgroup label="{{ $gradelevel_category }}">
             @foreach($sub_category as $category => $gradelevel)
                 <option @if($category == 11) value="Kindy" @elseif($category == 12) value="Prep" @else value="{{ $category }}" @endif
@@ -12,6 +13,12 @@
                 </option>
             @endforeach
         </optgroup>
+        @elseif(isset($includeGraduate) and $includeGraduate)
+        <optgroup label="Others">
+            <option value="graduates">Graduated</option>
+            <option value="inactive">Inactive</option>
+        </optgroup>
+        @endif
     @endforeach
 </select>
 

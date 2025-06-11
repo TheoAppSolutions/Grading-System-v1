@@ -17,7 +17,7 @@
                 <div class="card-header">
                     <div class="card-title">
                         <p>Select a <code>grade level</code> to view</p>
-                        @include('subjects._snippets.gradeselect',['current_GradeLevel'=>$gradelevel])
+                        @include('subjects._snippets.gradeselect',['current_GradeLevel'=>$gradelevel, 'includeGraduate'=>true])
                     </div>
                 </div>
             </div>
