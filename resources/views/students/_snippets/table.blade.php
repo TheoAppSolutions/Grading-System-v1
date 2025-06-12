@@ -38,12 +38,12 @@
 
                 <td>
                     <span hidden>{{ $student->lastname }}</span>
-                    <div class="media">
+                    <div class="media align-items-center">
                         <div class="media-left pr-1">
-                                <span class="avatar avatar-sm rounded-circle">
+                            <span class="avatar avatar-sm rounded-circle">
                                 <img src="{{ student_image($student->student_id) }}"
                                      alt="avatar">
-                                </span>
+                            </span>
                         </div>
                         <div class="media-body media-middle">
                             <a href="#" class="media-heading" data-target='#modal' data-toggle="modal"

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Formula extends Model
 {
-    public static function getFinalAveragePerSubject($gradeset, $subjects, $startCounter, $endCounter, $isAwardReport)
+    public static function getFinalAveragePerSubject($gradeset, $subjects, $startCounter, $endCounter, $isAwardReport, $schoolyear)
     {
         $lastSubjectname = '';
         $totalunits = 0;
@@ -46,23 +46,31 @@ class Formula extends Model
                             /*
                              * Check if effort grade is still valid for award
                              * */
-                            $gradeset["disqualifyForEffort"] = $subAverage['raweffort'][$quarter] < 4 ? true : false; //Major Subject
+                            if ($schoolyear > 2024):
+                                $gradeset["disqualifyForEffort"] = $subAverage['raweffort'][$quarter] < 2 ? true : false; //Major Subject
+                            else:
+                                $gradeset["disqualifyForEffort"] = $subAverage['raweffort'][$quarter] < 4 ? true : false; //Major Subject
+                            endif;
                         endif;
                     endif;
                 endfor;
 
                 if (isset($subAverage['final']) and isset($subAverage['raweffort'])):
-                    if (count($subAverage['final']) == 4):
+                    if (count($subAverage['final']) == 4 and $schoolyear < 2025 or count($subAverage['final']) == 2 and $schoolyear > 2024):
                         $gradeset[$subject->subjectname][5]["rawfinal"] = array_sum($subAverage['final']) / count($subAverage['final']);
                         $gradeset[$subject->subjectname][5]["rawfinal"] = number_format($gradeset[$subject->subjectname][5]["rawfinal"], 2);
                         $gradeset[$subject->subjectname][5]["final"] = $gradeset[$subject->subjectname][5]["rawfinal"];
 
-                        if (count($subAverage['raweffort']) == 4):
-                            $gradeset[$subject->subjectname][5]["effort"] = Formula::getFinalEffort(array_sum($subAverage['raweffort']));
+                        if (count($subAverage['raweffort']) == 4 and $schoolyear < 2025 or count($subAverage['raweffort']) == 2 and $schoolyear > 2024):
+                            $gradeset[$subject->subjectname][5]["effort"] = Formula::getFinalEffort(array_sum($subAverage['raweffort']), $schoolyear);
 
                             if ($gradeset["disqualifyForEffort"]):
                                 $gradeset["finaleffort"][$subject->subjectname] = $gradeset[$subject->subjectname][5]["effort"];
-                                $gradeset["disqualifyForEffort"] = $gradeset[$subject->subjectname][5]["effort"] < 4 ? true : false; //Major Subject
+                                if (count($subAverage['raweffort']) == 4 and $schoolyear < 2025):
+                                    $gradeset["disqualifyForEffort"] = $gradeset[$subject->subjectname][5]["effort"] < 4 ? true : false; //Major Subject
+                                elseif(count($subAverage['raweffort']) == 2 and $schoolyear > 2024):
+                                    $gradeset["disqualifyForEffort"] = $gradeset[$subject->subjectname][5]["effort"] < 2 ? true : false; //Major Subject
+                                endif;
                             else:
                                 $gradeset["disqualifyForEffort"] = true;
                             endif;
@@ -71,7 +79,7 @@ class Formula extends Model
                         $gradeset[$subject->subjectname]["remarks"] = $gradeset[$subject->subjectname][5]["final"] >= 60 ? 'PASSED' : 'FAILED';
 
                         if (!$gradeset["disqualifyForHonors"]):
-                            if (count($subAverage['final']) != 4):
+                            if (count($subAverage['final']) != 4 and $schoolyear < 2025 or count($subAverage['final']) != 2 and $schoolyear > 2024):
                                 $gradeset["disqualifyForHonors"] = true;
                             endif;
                         endif;
@@ -116,12 +124,19 @@ class Formula extends Model
         return $gradeset;
     }
 
-    public static function getFinalEffort($effortGrades)
+    public static function getFinalEffort($effortGrades, $schoolyear)
     {
-        return $effortGrades / 4;
+        $return = 0;
+        if ($schoolyear > 2024):
+            $return = $effortGrades / 2;
+        elseif ($schoolyear < 2025):
+            $return = $effortGrades / 4;
+        endif;
+
+        return $return;
     }
 
-    public static function getDeportmentAverage($gradeset, $startCounter = 1, $endCounter = 4)
+    public static function getDeportmentAverage($gradeset, $schoolyear, $startCounter = 1, $endCounter = 4)
     {
         for ($quarter = $startCounter; $quarter <= $endCounter; $quarter++):
             if (isset($gradeset["deportment"][$quarter]) and $gradeset["deportment"][$quarter] > 0) :
@@ -132,7 +147,7 @@ class Formula extends Model
         endfor;
 
         if (isset($gradeset["deportment"][$endCounter]) and $gradeset["deportment"][$endCounter] > 0) :
-            if (count($gradeset["deportment"]) == 4):
+            if (count($gradeset["deportment"]) == 4 and $schoolyear < 2025 or count($gradeset['deportment']) == 2 and $schoolyear > 2024):
                 $gradeset["deportment"][5] = array_sum($gradeset["rawdeportment"]) / count($gradeset["rawdeportment"]);
                 $gradeset["deportment"][5] = number_format($gradeset["deportment"][5], 3);
             endif;

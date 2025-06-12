@@ -30,12 +30,10 @@
     },
     "quarter.term": "Semester",
     "attendance.type": "Semester",
-    "attendance.count": 4,
+    "attendance.count": 2,
     "template": {
         "quarter.1": "Semester",
         "quarter.2": "Semester",
-        "quarter.3": "Semester",
-        "quarter.4": "Semester",
         "values": "choices for template: (MidQuarter/Quarter/Both)"
     },
     "gradelevel.category": {

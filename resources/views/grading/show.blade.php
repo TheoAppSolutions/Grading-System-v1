@@ -31,12 +31,12 @@
                         <ul class="nav nav-tabs nav-top-border no-hover-bg">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="baseLable-tab1" data-toggle="tab"
-                                       aria-controls="tabLable1" href="#2" aria-expanded="true">
+                                       aria-controls="tabLable1" href="#1" aria-expanded="true">
                                         {{ schema("quarter.term") }} 1</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="baseLable-tab2" data-toggle="tab" aria-controls="tabLable2"
-                                       href="#4" aria-expanded="false">
+                                    <a class="nav-link" id="baseLable-tab2" data-toggle="tab"
+                                       aria-controls="tabLable2" href="#2" aria-expanded="false">
                                         {{ schema("quarter.term") }} 2</a>
                                 </li>
                             <li class="nav-item heading-elements">

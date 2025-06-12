@@ -116,10 +116,10 @@
                                     </tfoot>
 
                                     <tbody>
-                                    @for($ctr = 1, $month = getStartMonth(); $ctr <= schema("attendance.count"); $ctr++, $month++)
+                                    @for($ctr = 1, $month = getStartMonth(); $ctr <= 2; $ctr++, $month++)
                                         <tr>
-                                            @if (schema("attendance.type") == "Term")
-                                                <td class="align-middle">
+                                            @if (schema("attendance.type") == "Semester")
+                                                <td class="align-middle text-center">
                                                     {{ $ctr }}
                                                 </td>
                                                 <td class="p-1">

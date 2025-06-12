@@ -149,20 +149,15 @@ class Grade extends Model
 
         if (isset($gradeset["student_id"])): //If no records in the grades database then do not execute computations
             $subjectList = Subject::byLevel($gradeset["gradelevel"]);
-
             $startCounter = 1;
             $endCounter = 4;
-            $semester = request('semester') == null ? 1 : request('semester');
-            if ($gradeset["gradelevel"] >= 11 and $semester == 1):
-                $startCounter = 1;
+
+            if ($schoolyear > 2024):
                 $endCounter = 2;
-            elseif ($gradeset["gradelevel"] >= 11 and $semester == 2):
-                $startCounter = 3;
-                $endCounter = 4;
             endif;
 
-            $gradeset = Formula::getFinalAveragePerSubject($gradeset, $subjectList, $startCounter, $endCounter, $isAwardReport);
-            $gradeset = Formula::getDeportmentAverage($gradeset, $startCounter, $endCounter);
+            $gradeset = Formula::getFinalAveragePerSubject($gradeset, $subjectList, $startCounter, $endCounter, $isAwardReport, $schoolyear);
+            $gradeset = Formula::getDeportmentAverage($gradeset, $schoolyear, $startCounter, $endCounter);
             $gradeset = Subject::getExcludedSubjects($gradeset);
         endif;
 

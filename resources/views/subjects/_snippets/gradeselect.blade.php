@@ -16,7 +16,6 @@
         @elseif(isset($includeGraduate) and $includeGraduate)
         <optgroup label="Others">
             <option value="graduates">Graduated</option>
-            <option value="inactive">Inactive</option>
         </optgroup>
         @endif
     @endforeach

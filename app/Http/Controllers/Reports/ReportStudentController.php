@@ -51,11 +51,11 @@ class ReportStudentController extends Controller
         $award = Award::getAwardsForReportCard($grades, $schoolyear);
 
         if ($student->gradelevel == "Prep" or $student->gradelevel == "Kindy"): //Pre School
-            return view('reports.templates.pre_school.primary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+            return view('reports.templates.pre_school.primary_2025', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
         elseif ($student->gradelevel >= 1 and $student->gradelevel <= 6): //Lower School
-            return view('reports.templates.lower_school.primary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+            return view('reports.templates.lower_school.primary_2025', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
         elseif ($student->gradelevel >= 7 and $student->gradelevel <= 10): //Upper School
-            return view('reports.templates.upper_school.secondary_T2-T4', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
+            return view('reports.templates.upper_school.secondary_2025', compact('student', 'grades', 'schoolyear', 'attendance', 'term', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type'));
         endif;
 
         return false;

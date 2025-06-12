@@ -18,12 +18,8 @@
                         <div class="dropdown-menu arrow">
                             <h6 class="dropdown-header">Progress Report</h6>
                             <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                               href="{{ route('report.grade', ['midquarter',$gradelevel,'term=1','schoolyear='.$schoolyear]) }}">
-                                Semester 1 Card <span class='fa fa-file-pdf-o pull-right'></span>
-                            </a>
-                            <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                               href="{{ route('report.grade', ['quarter',$gradelevel,'term=2','schoolyear='.$schoolyear]) }}">
-                                Semester 2 Card <span class='fa fa-file-pdf-o pull-right'></span>
+                               href="{{ route('report.grade', ['quarter',$gradelevel,'schoolyear='.$schoolyear]) }}">
+                                Semester Card <span class='fa fa-file-pdf-o pull-right'></span>
                             </a>
                             <div class="dropdown-divider"></div>
                             <h6 class="dropdown-header">Awards Report</h6>
@@ -103,12 +99,8 @@
                                 <div class="dropdown-menu arrow">
                                     <h6 class="dropdown-header">Progress Report</h6>
                                     <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                       href="{{ route('report.student', ['quarter',$student->student_id,'term=1','schoolyear='.$schoolyear]) }}">
-                                        Semester 1 Card <span class='fa fa-file-pdf-o pull-right'></span>
-                                    </a>
-                                    <a style="cursor: pointer;" target="_blank" class="dropdown-item"
-                                       href="{{ route('report.student', ['quarter',$student->student_id,'term=2','schoolyear='.$schoolyear]) }}">
-                                        Semester 2 Card <span class='fa fa-file-pdf-o pull-right'></span>
+                                       href="{{ route('report.student', ['quarter',$student->student_id,'schoolyear='.$schoolyear]) }}">
+                                        Semester Card <span class='fa fa-file-pdf-o pull-right'></span>
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <h6 class="dropdown-header">Awards Report</h6>

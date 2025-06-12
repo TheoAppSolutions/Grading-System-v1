@@ -17,7 +17,8 @@
             @php($total = 0)
             @php($total_absent = 0)
             @php($total_tardy = 0)
-            @php($count = schema("attendance.count"))
+            @php($count = 2)
+            @php($days = isset($days) ? $days : [0, 0])
 
             @for($ctr=1, $index=0; $ctr <= $count; $ctr++, $index++)
                 @php($total += $days[$index])

@@ -61,21 +61,21 @@ class ReportController extends Controller
 
         if ($student->gradelevel == "Prep" or $student->gradelevel == "Kindy"): //Pre School
             if ($quarter == "award"):
-                return view('reports.templates.pre_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'attendance', 'days'));
+                return view('reports.templates.pre_school.primary_2025', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'attendance', 'days'));
             else:
-                return view('reports.templates.pre_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
+                return view('reports.templates.pre_school.primary_2025', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             endif;
         elseif ($student->gradelevel >= 1 and $student->gradelevel <= 6): //Lower School
             if ($quarter == "award"):
-                return view('reports.templates.lower_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'attendance', 'days'));
+                return view('reports.templates.lower_school.primary_2025', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'attendance', 'days'));
             else:
-                return view('reports.templates.lower_school.primary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
+                return view('reports.templates.lower_school.primary_2025', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             endif;
         elseif ($student->gradelevel >= 7 and $student->gradelevel <= 10): //Upper School
             if ($quarter == "award"):
-                return view('reports.templates.upper_school.secondary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'attendance', 'days'));
+                return view('reports.templates.upper_school.secondary_2025', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'award', 'type', 'attendance', 'days'));
             else:
-                return view('reports.templates.upper_school.secondary_T2-T4', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
+                return view('reports.templates.upper_school.secondary_2025', compact('schoolyear_start', 'student', 'grades', 'schoolyear', 'attendance', 'comments', 'homeroom', 'principal', 'quarter', 'days', 'subjects', 'type'));
             endif;
         endif;
 
