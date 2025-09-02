@@ -144,23 +144,20 @@
 
 @push('js')
     <script>
-        @if($status == "graduates" or $status ==  'all')
+    @if($status == "graduates" or $status ==  'all')
         $('#students_table').DataTable({order: [[1, 'asc']]});
-            @elseif($status != "graduates" and $status !=  'all')
+    @elseif($status != "graduates" and $status !=  'all')
         var table = $('#students_table').DataTable({
-                columnDefs: [
-                    {
-                        targets: 0,
-                        checkboxes: {
-                            selectRow: true
-                        }
-                    }
-                ],
-                select: {
-                    style: 'multi'
-                },
-                order: [[2, 'asc']]
-            });
+            rowId: 1,
+            columnDefs: [
+                {
+                    targets: 0,
+                    checkboxes: { selectRow: true },
+                }
+            ],
+            select: { style: 'multi' },
+            order: [[2, 'asc']]
+        });
 
         // Handle form submission event
 
@@ -180,12 +177,13 @@
                     var rows_selected = table.column(0).checkboxes.selected();
                     // Iterate over all selected checkboxes
                     $.each(rows_selected, function (index, rowId) {
-                        // Create a hidden element
+                        var rowData = table.row('#' + rowId).data();
                         $(form).append(
-                            $('<input>')
-                                .attr('type', 'hidden')
-                                .attr('name', 'enroll[' + table.row(index).data()[1] + ']')
-                                .val(table.row(index).data()[6])
+                            $('<input>', {
+                                type: 'hidden',
+                                name: 'enroll[' + rowData[1] + ']',
+                                value: rowData[5]
+                            })
                         );
                     });
                     form.submit();
@@ -231,7 +229,7 @@
             }
         });
 
-        @endif
+    @endif
 
         function changeTable() {
             var url = window.location.pathname;

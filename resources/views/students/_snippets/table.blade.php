@@ -30,7 +30,7 @@
             @isset($student->student_id)
                 <tr>
                     @if($status != "graduates" and $status !=  'all')
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $student->student_id ?? ''}}</td>
                     @endif
 
                     <td>
