@@ -16,7 +16,7 @@ class Formula extends Model
          * Disqualification Indicators
          * */
         $gradeset["disqualifyForHonors"] = false;
-        $gradeset["disqualifyForEffort"] = false;
+        $gradeset["disqualifyForEffort"] = true;
         $gradeset["disqualifyForDeportment"] = false;
         $gradeset["isEligibleForNextGrade"] = false;
 
@@ -42,44 +42,28 @@ class Formula extends Model
                          * If the subject has a effort grade then insert the raw final grade
                          * */
                         $subAverage['raweffort'][$quarter] = $gradeset[$subject->subjectname][$quarter]["raweffort"];
-                        if (!$gradeset["disqualifyForEffort"]):
-                            /*
-                             * Check if effort grade is still valid for award
-                             * */
-                            if ($schoolyear > 2024):
-                                $gradeset["disqualifyForEffort"] = $subAverage['raweffort'][$quarter] < 2 ? true : false; //Major Subject
-                            else:
-                                $gradeset["disqualifyForEffort"] = $subAverage['raweffort'][$quarter] < 4 ? true : false; //Major Subject
-                            endif;
-                        endif;
+                        $gradeset["disqualifyForEffort"] = $subAverage['raweffort'][$quarter] < 4 ? true : false; //Major Subject
                     endif;
                 endfor;
 
                 if (isset($subAverage['final']) and isset($subAverage['raweffort'])):
-                    if (count($subAverage['final']) == 4 and $schoolyear < 2025 or count($subAverage['final']) == 2 and $schoolyear > 2024):
+                    if ((count($subAverage['final']) == 4 and $schoolyear < 2025) or (count($subAverage['final']) == 2 and $schoolyear > 2024)):
                         $gradeset[$subject->subjectname][5]["rawfinal"] = array_sum($subAverage['final']) / count($subAverage['final']);
                         $gradeset[$subject->subjectname][5]["rawfinal"] = number_format($gradeset[$subject->subjectname][5]["rawfinal"], 2);
                         $gradeset[$subject->subjectname][5]["final"] = $gradeset[$subject->subjectname][5]["rawfinal"];
 
-                        if (count($subAverage['raweffort']) == 4 and $schoolyear < 2025 or count($subAverage['raweffort']) == 2 and $schoolyear > 2024):
+                        if ((count($subAverage['raweffort']) == 4 and $schoolyear < 2025) or (count($subAverage['raweffort']) == 2 and $schoolyear > 2024)):
                             $gradeset[$subject->subjectname][5]["effort"] = Formula::getFinalEffort(array_sum($subAverage['raweffort']), $schoolyear);
-
-                            if ($gradeset["disqualifyForEffort"]):
-                                $gradeset["finaleffort"][$subject->subjectname] = $gradeset[$subject->subjectname][5]["effort"];
-                                if (count($subAverage['raweffort']) == 4 and $schoolyear < 2025):
-                                    $gradeset["disqualifyForEffort"] = $gradeset[$subject->subjectname][5]["effort"] < 4 ? true : false; //Major Subject
-                                elseif(count($subAverage['raweffort']) == 2 and $schoolyear > 2024):
-                                    $gradeset["disqualifyForEffort"] = $gradeset[$subject->subjectname][5]["effort"] < 2 ? true : false; //Major Subject
-                                endif;
-                            else:
-                                $gradeset["disqualifyForEffort"] = true;
+                            $gradeset["finaleffort"][$subject->subjectname] = $gradeset[$subject->subjectname][5]["effort"];
+                            if ((count($subAverage['raweffort']) == 4 and $schoolyear < 2025) or (count($subAverage['raweffort']) == 2 and $schoolyear > 2024)):
+                                $gradeset["disqualifyForEffort"] = $gradeset[$subject->subjectname][5]["effort"] < 4 ? true : false;
                             endif;
                         endif;
 
                         $gradeset[$subject->subjectname]["remarks"] = $gradeset[$subject->subjectname][5]["final"] >= 60 ? 'PASSED' : 'FAILED';
 
                         if (!$gradeset["disqualifyForHonors"]):
-                            if (count($subAverage['final']) != 4 and $schoolyear < 2025 or count($subAverage['final']) != 2 and $schoolyear > 2024):
+                            if ((count($subAverage['final']) != 4 and $schoolyear < 2025) or (count($subAverage['final']) != 2 and $schoolyear > 2024)):
                                 $gradeset["disqualifyForHonors"] = true;
                             endif;
                         endif;

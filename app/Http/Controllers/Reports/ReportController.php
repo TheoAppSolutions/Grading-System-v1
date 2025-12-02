@@ -243,9 +243,9 @@ class ReportController extends Controller
             $awards[$student->student_id]["HIGHESTHONORS"] = isset($award[$student->student_id]["HIGHESTHONORS"]) ? true : false;
             $awards[$student->student_id]["HIGHHONORS"] = isset($award[$student->student_id]["HIGHHONORS"]) ? true : false;
             $awards[$student->student_id]["HONORS"] = isset($award[$student->student_id]["HONORS"]) ? true : false;
-            $awards[$student->student_id]["DEPORTMENT"] = $award[$student->student_id]["DEPORTMENT"] ? true : false;
+            $awards[$student->student_id]["DEPORTMENT"] = isset($award[$student->student_id]["DEPORTMENT"]) && $award[$student->student_id]["DEPORTMENT"] ? true : false;
             $awards[$student->student_id]["DEPORTMENT_grade"] = isset($grades['deportment'][5]) ? $grades['deportment'][5] : '';
-            $awards[$student->student_id]["EFFORT"] = $award[$student->student_id]["EFFORT"] ? true : false;
+            $awards[$student->student_id]["EFFORT"] = isset($award[$student->student_id]["EFFORT"]) && $award[$student->student_id]["EFFORT"] ? true : false;
 
             $attendance[$student->student_id] = $attendanceModel->byStudentID($student->student_id)['PerfectAttendance'];
         endforeach;
