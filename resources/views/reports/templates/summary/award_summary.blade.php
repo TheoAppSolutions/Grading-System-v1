@@ -589,11 +589,10 @@
                 <td colspan=10 class=cardlabel style='vertical-align: middle;'>
                     @if(isset($awards[$student->student_id]["SEA"]))
                         @foreach($awards[$student->student_id]["SEA"] as $SEA)
-
-                            @if ($SEA == "PHYSICAL EDUCATION")
-                                {!! checkMark() !!}P.E. ({!! $student->gender == "M" ? "BOYS" : "GIRLS" !!})
+                            @if ($SEA['subjecttitle'] == "PHYSICAL EDUCATION")
+                                {!! checkMark() !!}P.E. ({!! $student->gender == "M" ? "BOYS" : "GIRLS" !!} . ' (' . $SEA['grade'] . ')' ) !!}
                             @else
-                                {!! checkMark() . $SEA  !!}
+                                {!! checkMark() . $SEA['subjecttitle'] . ' (' . $SEA['grade'] . ')'  !!}
                             @endif
                             <br/>
                         @endforeach

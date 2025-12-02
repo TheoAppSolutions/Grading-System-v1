@@ -106,7 +106,8 @@ class Award extends Model
                             'subject_id' => $subject_id,
                             'schoolyear' => $schoolyear,
                             'gender' => '',
-                            'section' => ''
+                            'section' => '',
+                            'grade' => $highest
                         ]);
                     endforeach;
                 endif;
@@ -167,7 +168,8 @@ class Award extends Model
                                 'subject_id' => $subject_id,
                                 'schoolyear' => $schoolyear,
                                 'gender' => 'M',
-                                'section' => ''
+                                'section' => '',
+                                'grade' => $highest
                             ]);
                         endforeach;
                     endif;
@@ -216,7 +218,8 @@ class Award extends Model
                                 'subject_id' => $subject_id,
                                 'schoolyear' => $schoolyear,
                                 'gender' => 'F',
-                                'section' => ''
+                                'section' => '',
+                                'grade' => $highest
                             ]);
                         endforeach;
                     endif;
@@ -237,11 +240,15 @@ class Award extends Model
             ])->get();
 
         $awardSet = [];
+        $ctr = 0;
         foreach ($awards as $award):
             if ($award->student_id):
-                $awardSet[$award->student_id]['SEA'][] = preg_replace('/\s+/', ' ', $award->subjecttitle);
+                $awardSet[$award->student_id]['SEA'][$ctr]['subjecttitle'] = preg_replace('/\s+/', ' ', $award->subjecttitle);
+                $awardSet[$award->student_id]['SEA'][$ctr]['grade'] = number_format($award->grade, 2);
+                $ctr++;
             endif;
         endforeach;
+
         return $awardSet;
     }
 
