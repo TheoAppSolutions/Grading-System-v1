@@ -142,7 +142,7 @@ $fields = ['final', 'effort', 'deportment'];
     @if($lockOff == 1)
         <button type="button" class="btn btn-info pull-left" onclick="unlockPassword();">Unlock All</button>
 
-        @if($quarter == 4)
+        @if(($quarter == 4 && $schoolyear < 2025) || ($quarter == 2 && $schoolyear > 2024))
             <button type="button"
                     onclick="loadModal('Subject Excellence Ranking','{{ route('sea.show', $subject->subject_id) }}');"
                     class="btn btn-success ml-1" data-target='#modal' data-toggle="modal">

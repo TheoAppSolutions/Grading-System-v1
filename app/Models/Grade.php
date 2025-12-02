@@ -61,7 +61,7 @@ class Grade extends Model
 
         foreach ($records as $record) :
             $temp = [];
-            for ($quarter = 1; $quarter <= 4; $quarter++):
+            for ($quarter = 1; $quarter <= 2; $quarter++):
                 if (isset($gradeset["$record->student_id"][$quarter]["final"]) and $gradeset["$record->student_id"][$quarter]["final"] != '') :
                     $temp['final'][$quarter] = $gradeset["$record->student_id"][$quarter]["final"];
                     $temp['effort'][$quarter] = $gradeset["$record->student_id"][$quarter]["effort"];
@@ -69,13 +69,16 @@ class Grade extends Model
             endfor;
 
             if (isset($temp['final']) and isset($temp['effort'])):
-            if (count($temp['final']) == 4 and count($temp['effort']) == 4):
+            if (count($temp['final']) == 2 and count($temp['effort']) == 2):
                 $gradeset["$record->student_id"][5]["final"] = array_sum($temp['final']) / count($temp['final']);
                 $gradeset["$record->student_id"][5]["final"] = number_format($gradeset["$record->student_id"][5]["final"], 3);
                 $gradeset["$record->student_id"][5]["effort"] = array_sum($temp['effort']) / count($temp['effort']);
                 $gradeset["$record->student_id"][5]["effort"] = round($gradeset["$record->student_id"][5]["effort"]);
 
                 $disqualifyForSEA = count($temp['final']) == 4 ? false : true;
+                if ($schoolyear > 2024 && count($temp['final']) == 2):
+                    $disqualifyForSEA = false;
+                endif;
                 if ($gradeset["$record->student_id"][5]["final"] >= 92 and $disqualifyForSEA != true):
                     $gradeset["academicAward"]["$record->student_id"] = $gradeset["$record->student_id"][5]["final"];
                 endif;
