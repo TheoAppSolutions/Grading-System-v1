@@ -362,18 +362,27 @@
                             <tr>
                                 <td height="10" class="grades__blank"></td>
                                 <td colspan="4" class="grades__subject" style="white-space: normal;">{{ $subject->subjectname }}</td>
-                                @if(isset($grades[$subject->subjectname][1]["final"]) and $grades[$subject->subjectname][1]["final"] > 0 and isset($grades[$subject->subjectname][2]["final"]) and $grades[$subject->subjectname][2]["final"] > 0)
-                                    <td colspan="3"
-                                        class="grades__final">{{ average($grades[$subject->subjectname][1]["final"], $grades[$subject->subjectname][2]["final"]) }}</td>
-                                @else
-                                    <td colspan="3" class="grades__final"></td>
-                                @endif
+                                @if((isset($grades[$subject->subjectname][3]["final"]) && $grades[$subject->subjectname][3]["final"] > 0) || (isset($grades[$subject->subjectname][4]["final"]) && $grades[$subject->subjectname][4]["final"] > 0))
+                                    {{-- Q3 or Q4 has data: show both semester averages as before --}}
+                                    @if(isset($grades[$subject->subjectname][1]["final"]) and $grades[$subject->subjectname][1]["final"] > 0 and isset($grades[$subject->subjectname][2]["final"]) and $grades[$subject->subjectname][2]["final"] > 0)
+                                        <td colspan="3" class="grades__final">{{ average($grades[$subject->subjectname][1]["final"], $grades[$subject->subjectname][2]["final"]) }}</td>
+                                    @else
+                                        <td colspan="3" class="grades__final"></td>
+                                    @endif
 
-                                @if(isset($grades[$subject->subjectname][3]["final"]) and $grades[$subject->subjectname][3]["final"] > 0 and isset($grades[$subject->subjectname][4]["final"]) and $grades[$subject->subjectname][4]["final"] > 0)
-                                    <td colspan="3"
-                                        class="grades__final">{{ average($grades[$subject->subjectname][3]["final"], $grades[$subject->subjectname][4]["final"]) }}</td>
+                                    @if(isset($grades[$subject->subjectname][3]["final"]) and $grades[$subject->subjectname][3]["final"] > 0 and isset($grades[$subject->subjectname][4]["final"]) and $grades[$subject->subjectname][4]["final"] > 0)
+                                        <td colspan="3" class="grades__final">{{ average($grades[$subject->subjectname][3]["final"], $grades[$subject->subjectname][4]["final"]) }}</td>
+                                    @else
+                                        <td colspan="3" class="grades__final"></td>
+                                    @endif
                                 @else
-                                    <td colspan="3" class="grades__final"></td>
+                                    {{-- No Q3/Q4 data: show Q1 and Q2 individually instead of averaging --}}
+                                    <td colspan="3" class="grades__final">
+                                        {{ isset($grades[$subject->subjectname][1]["final"]) && $grades[$subject->subjectname][1]["final"] > 0 ? $grades[$subject->subjectname][1]["final"] : '' }}
+                                    </td>
+                                    <td colspan="3" class="grades__final">
+                                        {{ isset($grades[$subject->subjectname][2]["final"]) && $grades[$subject->subjectname][2]["final"] > 0 ? $grades[$subject->subjectname][2]["final"] : '' }}
+                                    </td>
                                 @endif
 
                                 <td colspan="3"
